@@ -1,0 +1,125 @@
+(** @canonical IR.Annot *)
+module Annot = IR__Annot
+
+(** @canonical IR.Attributes *)
+module Attributes = IR__Attributes
+
+(** @canonical IR.BUILTINS *)
+module BUILTINS = IR__BUILTINS
+
+(** @canonical IR.BiabductionModels *)
+module BiabductionModels = IR__BiabductionModels
+
+(** @canonical IR.Binop *)
+module Binop = IR__Binop
+
+(** @canonical IR.BuiltinDecl *)
+module BuiltinDecl = IR__BuiltinDecl
+
+(** @canonical IR.CSharpClassName *)
+module CSharpClassName = IR__CSharpClassName
+
+(** @canonical IR.CallFlags *)
+module CallFlags = IR__CallFlags
+
+(** @canonical IR.CapturedVar *)
+module CapturedVar = IR__CapturedVar
+
+(** @canonical IR.Cfg *)
+module Cfg = IR__Cfg
+
+(** @canonical IR.ClangMethodKind *)
+module ClangMethodKind = IR__ClangMethodKind
+
+(** @canonical IR.Const *)
+module Const = IR__Const
+
+(** @canonical IR.DecompiledExp *)
+module DecompiledExp = IR__DecompiledExp
+
+(** @canonical IR.DotCfg *)
+module DotCfg = IR__DotCfg
+
+(** @canonical IR.Exp *)
+module Exp = IR__Exp
+
+(** @canonical IR.Fieldname *)
+module Fieldname = IR__Fieldname
+
+(** @canonical IR.Filtering *)
+module Filtering = IR__Filtering
+
+(** @canonical IR.Ident *)
+module Ident = IR__Ident
+
+(** @canonical IR.Inferconfig *)
+module Inferconfig = IR__Inferconfig
+
+(** @canonical IR.Instrs *)
+module Instrs = IR__Instrs
+
+(** @canonical IR.IntLit *)
+module IntLit = IR__IntLit
+
+(** @canonical IR.Io_infer *)
+module Io_infer = IR__Io_infer
+
+(** @canonical IR.JConfig *)
+module JConfig = IR__JConfig
+
+(** @canonical IR.JavaClassName *)
+module JavaClassName = IR__JavaClassName
+
+(** @canonical IR.Mangled *)
+module Mangled = IR__Mangled
+
+(** @canonical IR.PredSymb *)
+module PredSymb = IR__PredSymb
+
+(** @canonical IR.ProcAttributes *)
+module ProcAttributes = IR__ProcAttributes
+
+(** @canonical IR.Procdesc *)
+module Procdesc = IR__Procdesc
+
+(** @canonical IR.Procname *)
+module Procname = IR__Procname
+
+(** @canonical IR.Pvar *)
+module Pvar = IR__Pvar
+
+(** @canonical IR.QualifiedCppName *)
+module QualifiedCppName = IR__QualifiedCppName
+
+(** @canonical IR.Sil *)
+module Sil = IR__Sil
+
+(** @canonical IR.SourceFiles *)
+module SourceFiles = IR__SourceFiles
+
+(** @canonical IR.SpecializeProcdesc *)
+module SpecializeProcdesc = IR__SpecializeProcdesc
+
+(** @canonical IR.StdTyp *)
+module StdTyp = IR__StdTyp
+
+(** @canonical IR.Struct *)
+module Struct = IR__Struct
+
+(** @canonical IR.Subtype *)
+module Subtype = IR__Subtype
+
+(** @canonical IR.Tenv *)
+module Tenv = IR__Tenv
+
+(** @canonical IR.Typ *)
+module Typ = IR__Typ
+
+(** @canonical IR.Unop *)
+module Unop = IR__Unop
+
+(** @canonical IR.Var *)
+module Var = IR__Var
+
+(** @canonical IR.WeakTopologicalOrder *)
+module WeakTopologicalOrder = IR__WeakTopologicalOrder

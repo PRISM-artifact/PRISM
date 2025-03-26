@@ -1,0 +1,11 @@
+--- Closure21b/src/com/google/javascript/jscomp/CheckSideEffects.java
++++ Closure21b/src/com/google/javascript/jscomp/CheckSideEffects.java
+@@ -114,7 +114,7 @@
+       if (isResultUsed) {
+         return;
+       }
+-      if (n == parent.getLastChild()) {
++      if ((((!isSimpleOp) && (n.isGetProp())) && (parent.isAssign())) && ("prototype".equals(n.getLastChild().getString()))) {
+         for (Node an : parent.getAncestors()) {
+           int ancestorType = an.getType();
+           if (ancestorType == Token.COMMA) continue;

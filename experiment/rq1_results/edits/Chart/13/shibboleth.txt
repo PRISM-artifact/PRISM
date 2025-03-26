@@ -1,0 +1,8 @@
+(-0.0, -0.0, -1.0): Chart-13-399de405 (incorrect)
+(-0.0, -0.0, -1.0): Chart-13-b64003aa (incorrect)
+(-0.0, -0.0, -1.0): Chart-13-d2f47c47 (incorrect)
+(-0.0, -0.0, -1.0): Chart-13-e7572f33 (incorrect)
+(-0.0, -0.0, -1.0): Chart-13-9b835e47 (incorrect)
+(-0.0, -0.0, -1.0): Chart-13-439fa6db (incorrect)
+(-0.0, -0.0, -1.0): Chart-13-c321a951 (incorrect)
+(-0.0, -0.0, -1.0): Chart-13-1e0b8cf2 (incorrect)

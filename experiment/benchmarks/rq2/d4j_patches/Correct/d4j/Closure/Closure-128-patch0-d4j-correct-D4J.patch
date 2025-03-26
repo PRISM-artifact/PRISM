@@ -1,0 +1,20 @@
+--- Closure128b/src/com/google/javascript/jscomp/CodeGenerator.java	2021-10-26 15:41:05.150308701 +0900
++++ Closure128f/src/com/google/javascript/jscomp/CodeGenerator.java	2021-10-26 15:41:07.982328633 +0900
+@@ -782,13 +782,16 @@
+ 
+   static boolean isSimpleNumber(String s) {
+     int len = s.length();
++    if (len == 0) {
++      return false;
++    }
+     for (int index = 0; index < len; index++) {
+       char c = s.charAt(index);
+       if (c < '0' || c > '9') {
+         return false;
+       }
+     }
+-    return len > 0 && s.charAt(0) != '0';
++    return len == 1 || s.charAt(0) != '0';
+   }
+ 
+   static double getSimpleNumber(String s) {

@@ -1,0 +1,4 @@
+(-0.0, -0.0, -1.0): Lang-59-7eec0ebd (incorrect)
+(-0.0, -0.0, -1.0): Lang-59-45af6c86 (correct)
+(-0.0, -0.0, -1.0): Lang-59-e23e96c4 (incorrect)
+(-0.0, -0.0, -1.0): Lang-59-199ee974 (incorrect)

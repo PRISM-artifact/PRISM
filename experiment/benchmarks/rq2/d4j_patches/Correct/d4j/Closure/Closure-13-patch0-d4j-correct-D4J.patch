@@ -1,0 +1,12 @@
+--- Closure13b/src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java	2021-10-26 15:32:50.162354212 +0900
++++ Closure13f/src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java	2021-10-26 15:32:53.126388385 +0900
+@@ -123,8 +123,8 @@
+     do {
+       Node c = node.getFirstChild();
+       while(c != null) {
+-        traverse(c);
+         Node next = c.getNext();
++        traverse(c);
+         c = next;
+       }
+ 

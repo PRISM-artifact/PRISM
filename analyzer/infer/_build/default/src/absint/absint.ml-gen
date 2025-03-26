@@ -1,0 +1,131 @@
+(** @canonical Absint.AbstractDomain *)
+module AbstractDomain = Absint__AbstractDomain
+
+(** @canonical Absint.AbstractInterpreter *)
+module AbstractInterpreter = Absint__AbstractInterpreter
+
+(** @canonical Absint.AccessPath *)
+module AccessPath = Absint__AccessPath
+
+(** @canonical Absint.AccessTree *)
+module AccessTree = Absint__AccessTree
+
+(** @canonical Absint.AnalysisCallbacks *)
+module AnalysisCallbacks = Absint__AnalysisCallbacks
+
+(** @canonical Absint.AnalysisState *)
+module AnalysisState = Absint__AnalysisState
+
+(** @canonical Absint.AndroidFramework *)
+module AndroidFramework = Absint__AndroidFramework
+
+(** @canonical Absint.Annotations *)
+module Annotations = Absint__Annotations
+
+(** @canonical Absint.Bindings *)
+module Bindings = Absint__Bindings
+
+(** @canonical Absint.CallSite *)
+module CallSite = Absint__CallSite
+
+(** @canonical Absint.ConcurrencyModels *)
+module ConcurrencyModels = Absint__ConcurrencyModels
+
+(** @canonical Absint.DataFlow *)
+module DataFlow = Absint__DataFlow
+
+(** @canonical Absint.Decompile *)
+module Decompile = Absint__Decompile
+
+(** @canonical Absint.Errlog *)
+module Errlog = Absint__Errlog
+
+(** @canonical Absint.Exe_env *)
+module Exe_env = Absint__Exe_env
+
+(** @canonical Absint.ExplicitTrace *)
+module ExplicitTrace = Absint__ExplicitTrace
+
+(** @canonical Absint.FormalMap *)
+module FormalMap = Absint__FormalMap
+
+(** @canonical Absint.HilExp *)
+module HilExp = Absint__HilExp
+
+(** @canonical Absint.HilInstr *)
+module HilInstr = Absint__HilInstr
+
+(** @canonical Absint.IdAccessPathMapDomain *)
+module IdAccessPathMapDomain = Absint__IdAccessPathMapDomain
+
+(** @canonical Absint.InterproceduralAnalysis *)
+module InterproceduralAnalysis = Absint__InterproceduralAnalysis
+
+(** @canonical Absint.IntraproceduralAnalysis *)
+module IntraproceduralAnalysis = Absint__IntraproceduralAnalysis
+
+(** @canonical Absint.IssueLog *)
+module IssueLog = Absint__IssueLog
+
+(** @canonical Absint.IssueToReport *)
+module IssueToReport = Absint__IssueToReport
+
+(** @canonical Absint.Localise *)
+module Localise = Absint__Localise
+
+(** @canonical Absint.LowerHil *)
+module LowerHil = Absint__LowerHil
+
+(** @canonical Absint.MethodMatcher *)
+module MethodMatcher = Absint__MethodMatcher
+
+(** @canonical Absint.Mleak_buckets *)
+module Mleak_buckets = Absint__Mleak_buckets
+
+(** @canonical Absint.NoReturnModels *)
+module NoReturnModels = Absint__NoReturnModels
+
+(** @canonical Absint.Passthrough *)
+module Passthrough = Absint__Passthrough
+
+(** @canonical Absint.PatternMatch *)
+module PatternMatch = Absint__PatternMatch
+
+(** @canonical Absint.ProcCfg *)
+module ProcCfg = Absint__ProcCfg
+
+(** @canonical Absint.ProcnameDispatcher *)
+module ProcnameDispatcher = Absint__ProcnameDispatcher
+
+(** @canonical Absint.Reporting *)
+module Reporting = Absint__Reporting
+
+(** @canonical Absint.Sanitizer *)
+module Sanitizer = Absint__Sanitizer
+
+(** @canonical Absint.Scheduler *)
+module Scheduler = Absint__Scheduler
+
+(** @canonical Absint.Sink *)
+module Sink = Absint__Sink
+
+(** @canonical Absint.SinkTrace *)
+module SinkTrace = Absint__SinkTrace
+
+(** @canonical Absint.Source *)
+module Source = Absint__Source
+
+(** @canonical Absint.SubtypingCheck *)
+module SubtypingCheck = Absint__SubtypingCheck
+
+(** @canonical Absint.TaintTrace *)
+module TaintTrace = Absint__TaintTrace
+
+(** @canonical Absint.TaintTraceElem *)
+module TaintTraceElem = Absint__TaintTraceElem
+
+(** @canonical Absint.TaskSchedulerTypes *)
+module TaskSchedulerTypes = Absint__TaskSchedulerTypes
+
+(** @canonical Absint.TransferFunctions *)
+module TransferFunctions = Absint__TransferFunctions

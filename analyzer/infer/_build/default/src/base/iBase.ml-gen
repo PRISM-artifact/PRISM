@@ -1,0 +1,116 @@
+(** @canonical IBase.BuckMode *)
+module BuckMode = IBase__BuckMode
+
+(** @canonical IBase.Checker *)
+module Checker = IBase__Checker
+
+(** @canonical IBase.ClangProc *)
+module ClangProc = IBase__ClangProc
+
+(** @canonical IBase.CommandDoc *)
+module CommandDoc = IBase__CommandDoc
+
+(** @canonical IBase.CommandLineOption *)
+module CommandLineOption = IBase__CommandLineOption
+
+(** @canonical IBase.Config *)
+module Config = IBase__Config
+
+(** @canonical IBase.CostIssues *)
+module CostIssues = IBase__CostIssues
+
+(** @canonical IBase.CostIssuesTestField *)
+module CostIssuesTestField = IBase__CostIssuesTestField
+
+(** @canonical IBase.CostKind *)
+module CostKind = IBase__CostKind
+
+(** @canonical IBase.DB *)
+module DB = IBase__DB
+
+(** @canonical IBase.DBWriter *)
+module DBWriter = IBase__DBWriter
+
+(** @canonical IBase.Die *)
+module Die = IBase__Die
+
+(** @canonical IBase.Epilogues *)
+module Epilogues = IBase__Epilogues
+
+(** @canonical IBase.FileDiff *)
+module FileDiff = IBase__FileDiff
+
+(** @canonical IBase.ForkUtils *)
+module ForkUtils = IBase__ForkUtils
+
+(** @canonical IBase.IssueType *)
+module IssueType = IBase__IssueType
+
+(** @canonical IBase.IssuesTestField *)
+module IssuesTestField = IBase__IssuesTestField
+
+(** @canonical IBase.Language *)
+module Language = IBase__Language
+
+(** @canonical IBase.LineReader *)
+module LineReader = IBase__LineReader
+
+(** @canonical IBase.Location *)
+module Location = IBase__Location
+
+(** @canonical IBase.LogEntry *)
+module LogEntry = IBase__LogEntry
+
+(** @canonical IBase.Logging *)
+module Logging = IBase__Logging
+
+(** @canonical IBase.MarkupFormatter *)
+module MarkupFormatter = IBase__MarkupFormatter
+
+(** @canonical IBase.PerfEvent *)
+module PerfEvent = IBase__PerfEvent
+
+(** @canonical IBase.Process *)
+module Process = IBase__Process
+
+(** @canonical IBase.ProcessPool *)
+module ProcessPool = IBase__ProcessPool
+
+(** @canonical IBase.ProcessPoolState *)
+module ProcessPoolState = IBase__ProcessPoolState
+
+(** @canonical IBase.ResultsDatabase *)
+module ResultsDatabase = IBase__ResultsDatabase
+
+(** @canonical IBase.ResultsDir *)
+module ResultsDir = IBase__ResultsDir
+
+(** @canonical IBase.ResultsDirEntryName *)
+module ResultsDirEntryName = IBase__ResultsDirEntryName
+
+(** @canonical IBase.Scuba *)
+module Scuba = IBase__Scuba
+
+(** @canonical IBase.ScubaLogging *)
+module ScubaLogging = IBase__ScubaLogging
+
+(** @canonical IBase.Serialization *)
+module Serialization = IBase__Serialization
+
+(** @canonical IBase.SourceFile *)
+module SourceFile = IBase__SourceFile
+
+(** @canonical IBase.SqliteUtils *)
+module SqliteUtils = IBase__SqliteUtils
+
+(** @canonical IBase.SymOp *)
+module SymOp = IBase__SymOp
+
+(** @canonical IBase.TaskBar *)
+module TaskBar = IBase__TaskBar
+
+(** @canonical IBase.Utils *)
+module Utils = IBase__Utils
+
+(** @canonical IBase.Version *)
+module Version = IBase__Version

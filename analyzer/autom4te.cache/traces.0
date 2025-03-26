@@ -1,0 +1,630 @@
+m4trace:acinclude.m4:6: -1- AC_DEFUN([AC_ASSERT_OCAML_MIN_VERSION], [dnl
+  AC_REQUIRE([AC_PROG_OCAML])
+
+  AC_MSG_CHECKING([if OCaml version is >= $1])
+
+  AC_COMPARE_VERSION_STRINGS([$1], [$OCAMLVERSION],
+    [AC_MSG_RESULT([yes])],
+    [AC_MSG_ERROR([m4_join([],[found version $OCAMLVERSION.
+      m4_newline([  Please upgrade to OCaml >= $1. If you are using opam, you can run])
+      m4_newline([dnl
+    opam switch $1
+    eval \$(opam env)])
+])])])
+])
+m4trace:acinclude.m4:32: -1- AC_DEFUN([AC_ASSERT_OCAML_PKG], [dnl
+  AC_CHECK_OCAML_PKG_PATH([$1], [$2], [$3])
+
+  unset has_pkg
+  unset pkg
+  unset version
+
+  AS_IF([test "$OCAMLFIND" = "no"], [dnl
+    # trick to detect if ocamlfind is correctly installed and give the
+    # right opam instructions to install it if not since they're the
+    # same as when any other opam package is missing.
+    has_pkg=no
+    pkg=ocamlfind
+    version=
+  ], [dnl
+    has_pkg=$AS_TR_SH[OCAML_PKG_$1]
+    pkg=$1
+    version=
+    AS_IF([test "x$3" != "x"], [dnl
+      version=" version $3"
+    ])
+  ])
+  AS_IF([test "$has_pkg" = "no"], [dnl
+    AC_MSG_ERROR([missing OCaml dependency: $pkg$version
+
+If you are using opam, please run
+
+  opam update
+  opam install --deps-only infer .])
+  ])
+])
+m4trace:acinclude.m4:73: -1- AC_DEFUN([AC_ASSERT_PROG], [dnl
+  AS_IF([test "$2" = "no"],
+  [dnl
+    AC_MSG_ERROR([$1 not found.])
+  ])
+])
+m4trace:acinclude.m4:89: -1- AC_DEFUN([AC_CHECK_OCAML_PKG_PATH], [dnl
+  AC_REQUIRE([AC_PROG_FINDLIB])
+  AC_CHECK_OCAML_PKG([$1], [$2])
+
+  unset version_msg
+  version_msg=""
+  AS_IF([test "x$3" != "x"], [version_msg=" version $3"])
+  AC_MSG_CHECKING([for OCaml findlib package $1$version_msg])
+
+  unset path
+  unset pkg
+  unset version
+  pkg=$AS_TR_SH([OCAML_PKG_$1])
+  found=no
+  if test "x$pkg" != "xno"; then
+    path=`$OCAMLFIND query $pkg 2>/dev/null`
+    if test "x$3" != "x"; then
+      version=`$OCAMLFIND query -format '%v' $pkg 2>/dev/null`
+      AC_COMPARE_VERSION_STRINGS([$3], [$version],
+        [found=yes],
+        [],
+      )
+    else
+      found=yes
+    fi
+    if test "$found" = "yes" ; then
+      AC_MSG_RESULT([$path])
+      AS_TR_SH([OCAML_PKG_$1])=$pkg
+      AS_TR_SH([OCAML_PKG_PATH_$1])=$path
+    fi
+  fi
+
+  if test "$found" = "no" ; then
+    AC_MSG_RESULT([not found])
+    AS_TR_SH([OCAML_PKG_$1])=no
+  fi
+
+  AC_SUBST(AS_TR_SH([OCAML_PKG_$1]))
+  AC_SUBST(AS_TR_SH([OCAML_PKG_PATH_$1]))
+])
+m4trace:acinclude.m4:135: -1- AC_DEFUN([AC_COMPARE_VERSION_STRINGS], [dnl
+  unset major_req
+  unset minor_req
+  unset patch_req
+  unset major_inst
+  unset minor_inst
+  unset patch_inst
+
+  major_req=$(printf "$1" | cut -d . -f 1)
+  minor_req=$(printf "$1" | cut -d . -f 2)
+  patch_req=$(printf "$1" | cut -d . -f 3)
+
+  major_inst=$(printf "$2" | cut -d . -f 1)
+  minor_inst=$(printf "$2" | cut -d . -f 2)
+  # discard trailing characters after patch number, eg 1.2.3+4~5 -> 3
+  patch_inst=$(printf "$2" | cut -d . -f 3 | grep -o -e '^[[[:digit:]]]*')
+  AS_IF([test $major_inst -gt $major_req || \
+         (test $major_inst -eq $major_req && \
+          (test $minor_inst -gt $minor_req || \
+           (test $minor_inst -eq $minor_req && \
+            test $patch_inst -ge $patch_req)))],
+        $3,
+        $4)
+])
+m4trace:acinclude.m4:160: -1- AC_DEFUN([AC_CHECK_INFER_MAN_LAST_MODIFIED], [INFER_MAN_LAST_MODIFIED=2025-01-24
+ AC_SUBST([INFER_MAN_LAST_MODIFIED])
+])
+m4trace:acinclude.m4:200: -1- AC_DEFUN([AC_PROG_OCAML], [dnl
+  # checking for ocamlc
+  AC_PATH_TOOL([OCAMLC],[ocamlc],[no])
+
+  if test "$OCAMLC" != "no"; then
+     OCAMLVERSION=`$OCAMLC -v | sed -n -e 's|.*version* *\(.*\)$|\1|p'`
+     AC_MSG_RESULT([OCaml version is $OCAMLVERSION])
+     # If OCAMLLIB is set, use it
+     if test "$OCAMLLIB" = ""; then
+        OCAMLLIB=`$OCAMLC -where 2>/dev/null | tr -d '\015' || $OCAMLC -v|tail -1|cut -d ' ' -f 4`
+     else
+        AC_MSG_RESULT([OCAMLLIB previously set; preserving it.])
+     fi
+     AC_MSG_RESULT([OCaml library path is $OCAMLLIB])
+
+     AC_SUBST([OCAMLVERSION])
+     AC_SUBST([OCAMLLIB])
+
+     # checking for ocamlopt
+     AC_PATH_TOOL([OCAMLOPT],[ocamlopt],[no])
+     OCAMLBEST=byte
+     if test "$OCAMLOPT" = "no"; then
+        AC_MSG_WARN([Cannot find ocamlopt; bytecode compilation only.])
+     else
+        TMPVERSION=`$OCAMLOPT -v | sed -n -e 's|.*version* *\(.*\)$|\1|p' `
+        if test "$TMPVERSION" != "$OCAMLVERSION" ; then
+           AC_MSG_RESULT([versions differs from ocamlc; ocamlopt discarded.])
+           OCAMLOPT=no
+        else
+           OCAMLBEST=opt
+        fi
+     fi
+
+     AC_SUBST([OCAMLBEST])
+
+     # checking for ocamlc.opt
+     AC_PATH_TOOL([OCAMLCDOTOPT],[ocamlc.opt],[no])
+     if test "$OCAMLCDOTOPT" != "no"; then
+        TMPVERSION=`$OCAMLCDOTOPT -v | sed -n -e 's|.*version* *\(.*\)$|\1|p' `
+        if test "$TMPVERSION" != "$OCAMLVERSION" ; then
+           AC_MSG_RESULT([versions differs from ocamlc; ocamlc.opt discarded.])
+        else
+           OCAMLC=$OCAMLCDOTOPT
+        fi
+     fi
+
+     # checking for ocamlopt.opt
+     if test "$OCAMLOPT" != "no" ; then
+        AC_PATH_TOOL([OCAMLOPTDOTOPT],[ocamlopt.opt],[no])
+        if test "$OCAMLOPTDOTOPT" != "no"; then
+           TMPVERSION=`$OCAMLOPTDOTOPT -v | sed -n -e 's|.*version* *\(.*\)$|\1|p' `
+           if test "$TMPVERSION" != "$OCAMLVERSION" ; then
+              AC_MSG_RESULT([version differs from ocamlc; ocamlopt.opt discarded.])
+           else
+              OCAMLOPT=$OCAMLOPTDOTOPT
+           fi
+       fi
+     fi
+
+     AC_SUBST([OCAMLOPT])
+  fi
+
+  AC_SUBST([OCAMLC])
+
+  # checking for native dynlink
+  AC_MSG_CHECKING([for dynlink.cmxa])
+  if test -f "$OCAMLLIB/dynlink.cmxa" ; then
+     OCAMLNATDYNLINK=yes
+     AC_MSG_RESULT([yes])
+  else
+     OCAMLNATDYNLINK=no
+     AC_MSG_RESULT([no])
+  fi
+
+  AC_SUBST([OCAMLNATDYNLINK])
+
+  # checking for ocaml toplevel
+  AC_PATH_TOOL([OCAML],[ocaml],[no])
+
+  # checking for ocamldep
+  AC_PATH_TOOL([OCAMLDEP],[ocamldep],[no])
+
+  # checking for ocamlmktop
+  AC_PATH_TOOL([OCAMLMKTOP],[ocamlmktop],[no])
+
+  # checking for ocamlmklib
+  AC_PATH_TOOL([OCAMLMKLIB],[ocamlmklib],[no])
+
+  # checking for ocamldoc
+  AC_PATH_TOOL([OCAMLDOC],[ocamldoc],[no])
+
+  # checking for ocamlbuild
+  AC_PATH_TOOL([OCAMLBUILD],[ocamlbuild],[no])
+])
+m4trace:acinclude.m4:297: -1- AC_DEFUN([AC_PROG_OCAMLLEX], [dnl
+  # checking for ocamllex
+  AC_PATH_TOOL([OCAMLLEX],[ocamllex],[no])
+  if test "$OCAMLLEX" != "no"; then
+     AC_PATH_TOOL([OCAMLLEXDOTOPT],[ocamllex.opt],[no])
+     if test "$OCAMLLEXDOTOPT" != "no"; then
+        OCAMLLEX=$OCAMLLEXDOTOPT
+     fi
+  fi
+  AC_SUBST([OCAMLLEX])
+])
+m4trace:acinclude.m4:310: -1- AC_DEFUN([AC_PROG_OCAMLYACC], [dnl
+  AC_PATH_TOOL([OCAMLYACC],[ocamlyacc],[no])
+  AC_SUBST([OCAMLYACC])
+])
+m4trace:acinclude.m4:317: -1- AC_DEFUN([AC_PROG_CAMLP4], [dnl
+  AC_REQUIRE([AC_PROG_OCAML])dnl
+
+  # checking for camlp4
+  AC_PATH_TOOL([CAMLP4],[camlp4],[no])
+  if test "$CAMLP4" != "no"; then
+     TMPVERSION=`$CAMLP4 -v 2>&1| sed -n -e 's|.*version *\(.*\)$|\1|p'`
+     if test "$TMPVERSION" != "$OCAMLVERSION" ; then
+        AC_MSG_RESULT([versions differs from ocamlc])
+        CAMLP4=no
+     fi
+  fi
+  AC_SUBST([CAMLP4])
+
+  # checking for companion tools
+  AC_PATH_TOOL([CAMLP4BOOT],[camlp4boot],[no])
+  AC_PATH_TOOL([CAMLP4O],[camlp4o],[no])
+  AC_PATH_TOOL([CAMLP4OF],[camlp4of],[no])
+  AC_PATH_TOOL([CAMLP4OOF],[camlp4oof],[no])
+  AC_PATH_TOOL([CAMLP4ORF],[camlp4orf],[no])
+  AC_PATH_TOOL([CAMLP4PROF],[camlp4prof],[no])
+  AC_PATH_TOOL([CAMLP4R],[camlp4r],[no])
+  AC_PATH_TOOL([CAMLP4RF],[camlp4rf],[no])
+  AC_SUBST([CAMLP4BOOT])
+  AC_SUBST([CAMLP4O])
+  AC_SUBST([CAMLP4OF])
+  AC_SUBST([CAMLP4OOF])
+  AC_SUBST([CAMLP4ORF])
+  AC_SUBST([CAMLP4PROF])
+  AC_SUBST([CAMLP4R])
+  AC_SUBST([CAMLP4RF])
+])
+m4trace:acinclude.m4:352: -1- AC_DEFUN([AC_PROG_FINDLIB], [dnl
+  AC_REQUIRE([AC_PROG_OCAML])dnl
+
+  # checking for ocamlfind
+  AC_PATH_TOOL([OCAMLFIND],[ocamlfind],[no])
+  AC_SUBST([OCAMLFIND])
+])
+m4trace:acinclude.m4:365: -1- AC_DEFUN([AC_CHECK_OCAML_PKG], [dnl
+  AC_REQUIRE([AC_PROG_FINDLIB])dnl
+
+  dnl NOTE: commented out, see ac_check_ocaml_pkg_path.m4
+  dnl AC_MSG_CHECKING([for OCaml findlib package $1])
+
+  unset found
+  unset pkg
+  found=no
+  for pkg in $1 $2 ; do
+    if $OCAMLFIND query $pkg >/dev/null 2>/dev/null; then
+       dnl NOTE: commented out, see ac_check_ocaml_pkg_path.m4
+       dnl AC_MSG_RESULT([found])
+       AS_TR_SH([OCAML_PKG_$1])=$pkg
+       found=yes
+       break
+    fi
+  done
+  if test "$found" = "no" ; then
+     dnl NOTE: commented out, see ac_check_ocaml_pkg_path.m4
+     dnl AC_MSG_RESULT([not found])
+     AS_TR_SH([OCAML_PKG_$1])=no
+  fi
+
+  AC_SUBST(AS_TR_SH([OCAML_PKG_$1]))
+])
+m4trace:acinclude.m4:394: -1- AC_DEFUN([AC_CHECK_OCAML_MODULE], [dnl
+  AC_MSG_CHECKING([for OCaml module $2])
+
+  cat > conftest.ml <<EOF
+open $3
+EOF
+  unset found
+  for $1 in $$1 $4 ; do
+    if $OCAMLC -c -I "$$1" conftest.ml >&5 2>&5 ; then
+       found=yes
+       break
+    fi
+  done
+
+  if test "$found" ; then
+     AC_MSG_RESULT([$$1])
+  else
+     AC_MSG_RESULT([not found])
+     $1=no
+  fi
+  AC_SUBST([$1])
+])
+m4trace:acinclude.m4:420: -1- AC_DEFUN([AC_CHECK_OCAML_WORD_SIZE], [dnl
+  AC_REQUIRE([AC_PROG_OCAML])dnl
+  AC_MSG_CHECKING([for OCaml compiler word size])
+  cat > conftest.ml <<EOF
+  print_endline (string_of_int Sys.word_size)
+EOF
+  OCAML_WORD_SIZE=`$OCAML conftest.ml`
+  AC_MSG_RESULT([$OCAML_WORD_SIZE])
+  AC_SUBST([OCAML_WORD_SIZE])
+])
+m4trace:acinclude.m4:432: -1- AC_DEFUN([AC_CHECK_OCAML_OS_TYPE], [dnl
+  AC_REQUIRE([AC_PROG_OCAML])dnl
+  AC_MSG_CHECKING([OCaml Sys.os_type])
+
+  cat > conftest.ml <<EOF
+  print_string(Sys.os_type);;
+EOF
+
+  OCAML_OS_TYPE=`$OCAML conftest.ml`
+  AC_MSG_RESULT([$OCAML_OS_TYPE])
+  AC_SUBST([OCAML_OS_TYPE])
+])
+m4trace:configure.ac:14: -1- m4_pattern_forbid([^_?A[CHUM]_])
+m4trace:configure.ac:14: -1- m4_pattern_forbid([_AC_])
+m4trace:configure.ac:14: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section `AC_LIBOBJ vs LIBOBJS'])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^AS_FLAGS$])
+m4trace:configure.ac:14: -1- m4_pattern_forbid([^_?m4_])
+m4trace:configure.ac:14: -1- m4_pattern_forbid([^dnl$])
+m4trace:configure.ac:14: -1- m4_pattern_forbid([^_?AS_])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^SHELL$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PATH_SEPARATOR$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_NAME$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_TARNAME$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_VERSION$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_STRING$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_BUGREPORT$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_URL$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^exec_prefix$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^prefix$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^program_transform_name$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^bindir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^sbindir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^libexecdir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^datarootdir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^datadir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^sysconfdir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^sharedstatedir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^localstatedir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^runstatedir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^includedir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^oldincludedir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^docdir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^infodir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^htmldir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^dvidir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^pdfdir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^psdir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^libdir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^localedir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^mandir$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_NAME$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_TARNAME$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_VERSION$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_STRING$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_BUGREPORT$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^PACKAGE_URL$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^DEFS$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^ECHO_C$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^ECHO_N$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^ECHO_T$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^LIBS$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^build_alias$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^host_alias$])
+m4trace:configure.ac:14: -1- m4_pattern_allow([^target_alias$])
+m4trace:configure.ac:25: -1- m4_pattern_allow([^INFER_MAJOR$])
+m4trace:configure.ac:26: -1- m4_pattern_allow([^INFER_MINOR$])
+m4trace:configure.ac:27: -1- m4_pattern_allow([^INFER_PATCH$])
+m4trace:configure.ac:30: -1- _m4_warn([cross], [cannot check for file existence when cross compiling], [./lib/autoconf/general.m4:3010: AC_CHECK_FILE is expanded from...
+configure.ac:30: the top level])
+m4trace:configure.ac:32: -1- m4_pattern_allow([^IS_RELEASE_TREE$])
+m4trace:configure.ac:35: -1- _m4_warn([cross], [cannot check for file existence when cross compiling], [./lib/autoconf/general.m4:3010: AC_CHECK_FILE is expanded from...
+configure.ac:35: the top level])
+m4trace:configure.ac:37: -1- m4_pattern_allow([^IS_FACEBOOK_TREE$])
+m4trace:configure.ac:39: -1- m4_pattern_allow([^PATH$])
+m4trace:configure.ac:42: -1- m4_pattern_allow([^CLANG_PREFIX$])
+m4trace:configure.ac:47: -1- m4_pattern_allow([^CLANG_INCLUDES$])
+m4trace:configure.ac:79: -1- m4_pattern_allow([^BUILD_PLATFORM$])
+m4trace:configure.ac:84: -1- m4_pattern_allow([^WINDOWS_BUILD$])
+m4trace:configure.ac:92: -1- m4_pattern_allow([^BUILD_C_ANALYZERS$])
+m4trace:configure.ac:101: -1- m4_pattern_allow([^BUILD_JAVA_ANALYZERS$])
+m4trace:configure.ac:109: -1- m4_pattern_allow([^SHASUM$])
+m4trace:configure.ac:109: -1- AC_ASSERT_PROG([shasum], [$SHASUM])
+m4trace:configure.ac:109: -1- m4_pattern_allow([^CMAKE$])
+m4trace:configure.ac:109: -1- AC_ASSERT_PROG([cmake], [$CMAKE])
+m4trace:configure.ac:109: -1- m4_pattern_allow([^ENABLE_OCAMLOPT_CUSTOM_CC$])
+m4trace:configure.ac:140: -1- m4_pattern_allow([^XCODE_SELECT$])
+m4trace:configure.ac:143: -1- m4_pattern_allow([^XCODE_BASE$])
+m4trace:configure.ac:144: -1- _m4_warn([cross], [cannot check for file existence when cross compiling], [./lib/autoconf/general.m4:3010: AC_CHECK_FILE is expanded from...
+lib/m4sugar/m4sh.m4:699: AS_IF is expanded from...
+configure.ac:144: the top level])
+m4trace:configure.ac:151: -1- m4_pattern_allow([^XCRUN$])
+m4trace:configure.ac:153: -1- m4_pattern_allow([^SDKROOT$])
+m4trace:configure.ac:159: -1- m4_pattern_allow([^XCODE_BASE$])
+m4trace:configure.ac:160: -1- m4_pattern_allow([^HAS_OBJC$])
+m4trace:configure.ac:161: -1- m4_pattern_allow([^SDKROOT$])
+m4trace:configure.ac:166: -1- m4_pattern_allow([^CC$])
+m4trace:configure.ac:166: -1- m4_pattern_allow([^CFLAGS$])
+m4trace:configure.ac:166: -1- m4_pattern_allow([^LDFLAGS$])
+m4trace:configure.ac:166: -1- m4_pattern_allow([^LIBS$])
+m4trace:configure.ac:166: -1- m4_pattern_allow([^CPPFLAGS$])
+m4trace:configure.ac:166: -1- m4_pattern_allow([^CC$])
+m4trace:configure.ac:166: -1- m4_pattern_allow([^ac_ct_CC$])
+m4trace:configure.ac:166: -1- m4_pattern_allow([^EXEEXT$])
+m4trace:configure.ac:166: -1- m4_pattern_allow([^OBJEXT$])
+m4trace:configure.ac:167: -1- m4_pattern_allow([^AWK$])
+m4trace:configure.ac:168: -1- m4_pattern_allow([^INSTALL_PROGRAM$])
+m4trace:configure.ac:168: -1- m4_pattern_allow([^INSTALL_SCRIPT$])
+m4trace:configure.ac:168: -1- m4_pattern_allow([^INSTALL_DATA$])
+m4trace:configure.ac:169: -1- m4_pattern_allow([^LN_S$])
+m4trace:configure.ac:170: -1- m4_pattern_allow([^SET_MAKE$])
+m4trace:configure.ac:171: -1- m4_pattern_allow([^MKDIR_P$])
+m4trace:configure.ac:174: -1- m4_pattern_allow([^CPP$])
+m4trace:configure.ac:174: -1- m4_pattern_allow([^CPPFLAGS$])
+m4trace:configure.ac:174: -1- m4_pattern_allow([^CPP$])
+m4trace:configure.ac:175: -1- m4_pattern_allow([^CXX$])
+m4trace:configure.ac:175: -1- m4_pattern_allow([^CXXFLAGS$])
+m4trace:configure.ac:175: -1- m4_pattern_allow([^LDFLAGS$])
+m4trace:configure.ac:175: -1- m4_pattern_allow([^LIBS$])
+m4trace:configure.ac:175: -1- m4_pattern_allow([^CPPFLAGS$])
+m4trace:configure.ac:175: -1- m4_pattern_allow([^CXX$])
+m4trace:configure.ac:175: -1- m4_pattern_allow([^ac_ct_CXX$])
+m4trace:configure.ac:211: -1- AC_DEFUN([_AC_Header_stdio_h], [m4_divert_text([INIT_PREPARE],
+  [AS_VAR_APPEND([ac_header_]]_AC_LANG_ABBREV[[_list],
+  [" stdio.h ]AS_TR_SH([stdio.h]) AS_TR_CPP([HAVE_stdio.h])["])])_AC_HEADERS_EXPANSION(_AC_LANG_ABBREV)])
+m4trace:configure.ac:211: -1- AC_DEFUN([_AC_Header_stdlib_h], [m4_divert_text([INIT_PREPARE],
+  [AS_VAR_APPEND([ac_header_]]_AC_LANG_ABBREV[[_list],
+  [" stdlib.h ]AS_TR_SH([stdlib.h]) AS_TR_CPP([HAVE_stdlib.h])["])])_AC_HEADERS_EXPANSION(_AC_LANG_ABBREV)])
+m4trace:configure.ac:211: -1- AC_DEFUN([_AC_Header_string_h], [m4_divert_text([INIT_PREPARE],
+  [AS_VAR_APPEND([ac_header_]]_AC_LANG_ABBREV[[_list],
+  [" string.h ]AS_TR_SH([string.h]) AS_TR_CPP([HAVE_string.h])["])])_AC_HEADERS_EXPANSION(_AC_LANG_ABBREV)])
+m4trace:configure.ac:211: -1- AC_DEFUN([_AC_Header_inttypes_h], [m4_divert_text([INIT_PREPARE],
+  [AS_VAR_APPEND([ac_header_]]_AC_LANG_ABBREV[[_list],
+  [" inttypes.h ]AS_TR_SH([inttypes.h]) AS_TR_CPP([HAVE_inttypes.h])["])])_AC_HEADERS_EXPANSION(_AC_LANG_ABBREV)])
+m4trace:configure.ac:211: -1- AC_DEFUN([_AC_Header_stdint_h], [m4_divert_text([INIT_PREPARE],
+  [AS_VAR_APPEND([ac_header_]]_AC_LANG_ABBREV[[_list],
+  [" stdint.h ]AS_TR_SH([stdint.h]) AS_TR_CPP([HAVE_stdint.h])["])])_AC_HEADERS_EXPANSION(_AC_LANG_ABBREV)])
+m4trace:configure.ac:211: -1- AC_DEFUN([_AC_Header_strings_h], [m4_divert_text([INIT_PREPARE],
+  [AS_VAR_APPEND([ac_header_]]_AC_LANG_ABBREV[[_list],
+  [" strings.h ]AS_TR_SH([strings.h]) AS_TR_CPP([HAVE_strings.h])["])])_AC_HEADERS_EXPANSION(_AC_LANG_ABBREV)])
+m4trace:configure.ac:211: -1- AC_DEFUN([_AC_Header_sys_stat_h], [m4_divert_text([INIT_PREPARE],
+  [AS_VAR_APPEND([ac_header_]]_AC_LANG_ABBREV[[_list],
+  [" sys/stat.h ]AS_TR_SH([sys/stat.h]) AS_TR_CPP([HAVE_sys/stat.h])["])])_AC_HEADERS_EXPANSION(_AC_LANG_ABBREV)])
+m4trace:configure.ac:211: -1- AC_DEFUN([_AC_Header_sys_types_h], [m4_divert_text([INIT_PREPARE],
+  [AS_VAR_APPEND([ac_header_]]_AC_LANG_ABBREV[[_list],
+  [" sys/types.h ]AS_TR_SH([sys/types.h]) AS_TR_CPP([HAVE_sys/types.h])["])])_AC_HEADERS_EXPANSION(_AC_LANG_ABBREV)])
+m4trace:configure.ac:211: -1- AC_DEFUN([_AC_Header_unistd_h], [m4_divert_text([INIT_PREPARE],
+  [AS_VAR_APPEND([ac_header_]]_AC_LANG_ABBREV[[_list],
+  [" unistd.h ]AS_TR_SH([unistd.h]) AS_TR_CPP([HAVE_unistd.h])["])])_AC_HEADERS_EXPANSION(_AC_LANG_ABBREV)])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^STDC_HEADERS$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_FCNTL_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_INTTYPES_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_LIMITS_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_LOCALE_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_MALLOC_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_STDDEF_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_STDINT_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_STDLIB_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_STRING_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_SYS_MOUNT_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_SYS_PARAM_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_SYS_SOCKET_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_SYS_STATFS_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_SYS_TIME_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_UNISTD_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_WCHAR_H$])
+m4trace:configure.ac:211: -1- m4_pattern_allow([^HAVE_WCTYPE_H$])
+m4trace:configure.ac:217: -1- AC_PROG_OCAML
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLC$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLVERSION$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLLIB$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLOPT$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLBEST$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLCDOTOPT$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLOPTDOTOPT$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLOPT$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLC$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLNATDYNLINK$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAML$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLDEP$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLMKTOP$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLMKLIB$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLDOC$])
+m4trace:configure.ac:217: -1- m4_pattern_allow([^OCAMLBUILD$])
+m4trace:configure.ac:218: -1- AC_ASSERT_PROG([ocamlc], [$OCAMLC])
+m4trace:configure.ac:220: -1- AC_ASSERT_OCAML_MIN_VERSION([4.06.1])
+m4trace:configure.ac:220: -1- AC_COMPARE_VERSION_STRINGS([4.06.1], [$OCAMLVERSION], [AC_MSG_RESULT([yes])], [AC_MSG_ERROR([m4_join([],[found version $OCAMLVERSION.
+      m4_newline([  Please upgrade to OCaml >= 4.06.1. If you are using opam, you can run])
+      m4_newline([dnl
+    opam switch 4.06.1
+    eval \$(opam env)])
+])])])
+m4trace:configure.ac:221: -1- AC_ASSERT_PROG([ocamlopt], [$OCAMLOPT])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^OCAMLBUILD$])
+m4trace:configure.ac:223: -1- AC_ASSERT_PROG([ocamlbuild], [$OCAMLBUILD])
+m4trace:configure.ac:224: -1- AC_PROG_FINDLIB
+m4trace:configure.ac:224: -1- m4_pattern_allow([^OCAMLFIND$])
+m4trace:configure.ac:224: -1- m4_pattern_allow([^OCAMLFIND$])
+m4trace:configure.ac:225: -1- AC_PROG_OCAMLLEX
+m4trace:configure.ac:225: -1- m4_pattern_allow([^OCAMLLEX$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^OCAMLLEXDOTOPT$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^OCAMLLEX$])
+m4trace:configure.ac:226: -1- AC_ASSERT_PROG([ocamllex], [$OCAMLLEX])
+m4trace:configure.ac:227: -1- m4_pattern_allow([^MENHIR$])
+m4trace:configure.ac:228: -1- AC_ASSERT_PROG([menhir], [$MENHIR])
+m4trace:configure.ac:229: -1- AC_ASSERT_OCAML_PKG([atdgen])
+m4trace:configure.ac:229: -1- AC_CHECK_OCAML_PKG_PATH([atdgen], [], [])
+m4trace:configure.ac:229: -1- AC_CHECK_OCAML_PKG([atdgen], [])
+m4trace:configure.ac:229: -1- m4_pattern_allow([^OCAML_PKG_atdgen$])
+m4trace:configure.ac:229: -1- AC_COMPARE_VERSION_STRINGS([], [$version], [found=yes], [], [])
+m4trace:configure.ac:229: -1- m4_pattern_allow([^OCAML_PKG_atdgen$])
+m4trace:configure.ac:229: -1- m4_pattern_allow([^OCAML_PKG_PATH_atdgen$])
+m4trace:configure.ac:230: -1- AC_ASSERT_OCAML_PKG([biniou])
+m4trace:configure.ac:230: -1- AC_CHECK_OCAML_PKG_PATH([biniou], [], [])
+m4trace:configure.ac:230: -1- AC_CHECK_OCAML_PKG([biniou], [])
+m4trace:configure.ac:230: -1- m4_pattern_allow([^OCAML_PKG_biniou$])
+m4trace:configure.ac:230: -1- AC_COMPARE_VERSION_STRINGS([], [$version], [found=yes], [], [])
+m4trace:configure.ac:230: -1- m4_pattern_allow([^OCAML_PKG_biniou$])
+m4trace:configure.ac:230: -1- m4_pattern_allow([^OCAML_PKG_PATH_biniou$])
+m4trace:configure.ac:231: -1- AC_ASSERT_OCAML_PKG([camlzip], [zip])
+m4trace:configure.ac:231: -1- AC_CHECK_OCAML_PKG_PATH([camlzip], [zip], [])
+m4trace:configure.ac:231: -1- AC_CHECK_OCAML_PKG([camlzip], [zip])
+m4trace:configure.ac:231: -1- m4_pattern_allow([^OCAML_PKG_camlzip$])
+m4trace:configure.ac:231: -1- AC_COMPARE_VERSION_STRINGS([], [$version], [found=yes], [], [])
+m4trace:configure.ac:231: -1- m4_pattern_allow([^OCAML_PKG_camlzip$])
+m4trace:configure.ac:231: -1- m4_pattern_allow([^OCAML_PKG_PATH_camlzip$])
+m4trace:configure.ac:232: -1- AC_ASSERT_OCAML_PKG([easy-format])
+m4trace:configure.ac:232: -1- AC_CHECK_OCAML_PKG_PATH([easy-format], [], [])
+m4trace:configure.ac:232: -1- AC_CHECK_OCAML_PKG([easy-format], [])
+m4trace:configure.ac:232: -1- m4_pattern_allow([^OCAML_PKG_easy_format$])
+m4trace:configure.ac:232: -1- AC_COMPARE_VERSION_STRINGS([], [$version], [found=yes], [], [])
+m4trace:configure.ac:232: -1- m4_pattern_allow([^OCAML_PKG_easy_format$])
+m4trace:configure.ac:232: -1- m4_pattern_allow([^OCAML_PKG_PATH_easy_format$])
+m4trace:configure.ac:233: -1- AC_ASSERT_OCAML_PKG([oUnit])
+m4trace:configure.ac:233: -1- AC_CHECK_OCAML_PKG_PATH([oUnit], [], [])
+m4trace:configure.ac:233: -1- AC_CHECK_OCAML_PKG([oUnit], [])
+m4trace:configure.ac:233: -1- m4_pattern_allow([^OCAML_PKG_oUnit$])
+m4trace:configure.ac:233: -1- AC_COMPARE_VERSION_STRINGS([], [$version], [found=yes], [], [])
+m4trace:configure.ac:233: -1- m4_pattern_allow([^OCAML_PKG_oUnit$])
+m4trace:configure.ac:233: -1- m4_pattern_allow([^OCAML_PKG_PATH_oUnit$])
+m4trace:configure.ac:234: -1- m4_pattern_allow([^UTOP$])
+m4trace:configure.ac:235: -1- AC_ASSERT_OCAML_PKG([yojson])
+m4trace:configure.ac:235: -1- AC_CHECK_OCAML_PKG_PATH([yojson], [], [])
+m4trace:configure.ac:235: -1- AC_CHECK_OCAML_PKG([yojson], [])
+m4trace:configure.ac:235: -1- m4_pattern_allow([^OCAML_PKG_yojson$])
+m4trace:configure.ac:235: -1- AC_COMPARE_VERSION_STRINGS([], [$version], [found=yes], [], [])
+m4trace:configure.ac:235: -1- m4_pattern_allow([^OCAML_PKG_yojson$])
+m4trace:configure.ac:235: -1- m4_pattern_allow([^OCAML_PKG_PATH_yojson$])
+m4trace:configure.ac:242: -1- m4_pattern_allow([^OCAMLFORMAT$])
+m4trace:configure.ac:244: -1- m4_pattern_allow([^CPATH$])
+m4trace:configure.ac:245: -1- m4_pattern_allow([^LIBRARY_PATH$])
+m4trace:configure.ac:246: -1- m4_pattern_allow([^CAML_LD_LIBRARY_PATH$])
+m4trace:configure.ac:248: -1- m4_pattern_allow([^OPAMROOT$])
+m4trace:configure.ac:249: -1- m4_pattern_allow([^OPAMSWITCH$])
+m4trace:configure.ac:251: -1- m4_pattern_allow([^OPAM$])
+m4trace:configure.ac:269: -1- m4_pattern_allow([^OPAMROOT$])
+m4trace:configure.ac:270: -1- m4_pattern_allow([^OPAMSWITCH$])
+m4trace:configure.ac:273: -1- m4_pattern_allow([^JAVA$])
+m4trace:configure.ac:274: -1- m4_pattern_allow([^JAVAC$])
+m4trace:configure.ac:275: -1- AC_ASSERT_PROG([javac], [$JAVAC])
+m4trace:configure.ac:276: -1- AC_ASSERT_PROG([java], [$JAVA])
+m4trace:configure.ac:277: -1- AC_ASSERT_OCAML_PKG([javalib])
+m4trace:configure.ac:277: -1- AC_CHECK_OCAML_PKG_PATH([javalib], [], [])
+m4trace:configure.ac:277: -1- AC_CHECK_OCAML_PKG([javalib], [])
+m4trace:configure.ac:277: -1- m4_pattern_allow([^OCAML_PKG_javalib$])
+m4trace:configure.ac:277: -1- AC_COMPARE_VERSION_STRINGS([], [$version], [found=yes], [], [])
+m4trace:configure.ac:277: -1- m4_pattern_allow([^OCAML_PKG_javalib$])
+m4trace:configure.ac:277: -1- m4_pattern_allow([^OCAML_PKG_PATH_javalib$])
+m4trace:configure.ac:278: -1- AC_ASSERT_OCAML_PKG([sawja])
+m4trace:configure.ac:278: -1- AC_CHECK_OCAML_PKG_PATH([sawja], [], [])
+m4trace:configure.ac:278: -1- AC_CHECK_OCAML_PKG([sawja], [])
+m4trace:configure.ac:278: -1- m4_pattern_allow([^OCAML_PKG_sawja$])
+m4trace:configure.ac:278: -1- AC_COMPARE_VERSION_STRINGS([], [$version], [found=yes], [], [])
+m4trace:configure.ac:278: -1- m4_pattern_allow([^OCAML_PKG_sawja$])
+m4trace:configure.ac:278: -1- m4_pattern_allow([^OCAML_PKG_PATH_sawja$])
+m4trace:configure.ac:290: -1- m4_pattern_allow([^JAVA_MAJOR_VERSION$])
+m4trace:configure.ac:320: -1- m4_pattern_allow([^USER_JAVA_HOME$])
+m4trace:configure.ac:327: -1- m4_pattern_allow([^ATDGEN$])
+m4trace:configure.ac:328: -1- AC_ASSERT_PROG([atdgen], [$ATDGEN])
+m4trace:configure.ac:335: -1- m4_pattern_allow([^ENABLE_OCAML_BINANNOT$])
+m4trace:configure.ac:345: -1- m4_pattern_allow([^GETCONF$])
+m4trace:configure.ac:356: -1- m4_pattern_allow([^NCPU$])
+m4trace:configure.ac:360: -1- m4_pattern_allow([^ANT$])
+m4trace:configure.ac:361: -1- m4_pattern_allow([^BUCK$])
+m4trace:configure.ac:362: -1- m4_pattern_allow([^EMACS$])
+m4trace:configure.ac:363: -1- m4_pattern_allow([^MVN$])
+m4trace:configure.ac:364: -1- m4_pattern_allow([^MVN$])
+m4trace:configure.ac:369: -1- m4_pattern_allow([^NDKBUILD$])
+m4trace:configure.ac:373: -1- m4_pattern_allow([^NDKBUILD$])
+m4trace:configure.ac:377: -1- m4_pattern_allow([^NINJA$])
+m4trace:configure.ac:379: -1- m4_pattern_allow([^XCPRETTY$])
+m4trace:configure.ac:381: -1- m4_pattern_allow([^SED$])
+m4trace:configure.ac:382: -1- m4_pattern_allow([^GNU_SED$])
+m4trace:configure.ac:392: -1- m4_pattern_allow([^GNU_SED$])
+m4trace:configure.ac:394: -1- m4_pattern_allow([^BREW$])
+m4trace:configure.ac:396: -1- m4_pattern_allow([^INSTALL_NAME_TOOL$])
+m4trace:configure.ac:397: -1- m4_pattern_allow([^INSTALL_NAME_TOOL$])
+m4trace:configure.ac:398: -1- m4_pattern_allow([^LDD$])
+m4trace:configure.ac:399: -1- m4_pattern_allow([^LDD$])
+m4trace:configure.ac:400: -1- m4_pattern_allow([^OTOOL$])
+m4trace:configure.ac:401: -1- m4_pattern_allow([^OTOOL$])
+m4trace:configure.ac:402: -1- m4_pattern_allow([^PATCHELF$])
+m4trace:configure.ac:403: -1- m4_pattern_allow([^PATCHELF$])
+m4trace:configure.ac:405: -1- AC_CHECK_INFER_MAN_LAST_MODIFIED([])
+m4trace:configure.ac:405: -1- m4_pattern_allow([^INFER_MAN_LAST_MODIFIED$])
+m4trace:configure.ac:411: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.ac:411: -1- m4_pattern_allow([^LTLIBOBJS$])

@@ -1,0 +1,20 @@
+--- Closure112b/src/com/google/javascript/jscomp/TypeInference.java	2021-10-26 15:39:36.165713910 +0900
++++ Closure112f/src/com/google/javascript/jscomp/TypeInference.java	2021-10-26 15:39:39.021731996 +0900
+@@ -1189,9 +1189,15 @@
+     }
+ 
+     // Try to infer the template types
+-    Map<TemplateType, JSType> inferred = 
+-        inferTemplateTypesFromParameters(fnType, n);
++    Map<TemplateType, JSType> inferred = Maps.filterKeys(
++        inferTemplateTypesFromParameters(fnType, n),
++        new Predicate<TemplateType>() {
+ 
++          @Override
++          public boolean apply(TemplateType key) {
++            return keys.contains(key);
++          }}
++        );
+ 
+     // Replace all template types. If we couldn't find a replacement, we
+     // replace it with UNKNOWN.

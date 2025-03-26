@@ -1,0 +1,12 @@
+--- Mockito28b/src/org/mockito/internal/configuration/DefaultInjectionEngine.java	2021-10-27 14:21:16.547539575 +0900
++++ Mockito28f/src/org/mockito/internal/configuration/DefaultInjectionEngine.java	2021-10-27 14:21:18.955569933 +0900
+@@ -90,7 +90,8 @@
+ 
+     private void injectMockCandidate(Class<?> awaitingInjectionClazz, Set<Object> mocks, Object fieldInstance) {
+         for(Field field : orderedInstanceFieldsFrom(awaitingInjectionClazz)) {
+-            mockCandidateFilter.filterCandidate(mocks, field, fieldInstance).thenInject();
++            Object injected = mockCandidateFilter.filterCandidate(mocks, field, fieldInstance).thenInject();
++            mocks.remove(injected);
+         }
+     }
+ 

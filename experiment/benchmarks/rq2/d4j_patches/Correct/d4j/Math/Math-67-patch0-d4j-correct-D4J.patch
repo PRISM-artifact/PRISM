@@ -1,0 +1,17 @@
+--- Math67b/src/main/java/org/apache/commons/math/optimization/MultiStartUnivariateRealOptimizer.java	2021-10-27 13:44:59.141732382 +0900
++++ Math67f/src/main/java/org/apache/commons/math/optimization/MultiStartUnivariateRealOptimizer.java	2021-10-27 13:45:01.573764467 +0900
+@@ -89,12 +89,12 @@
+ 
+     /** {@inheritDoc} */
+     public double getFunctionValue() {
+-        return optimizer.getFunctionValue();
++        return optimaValues[0];
+     }
+ 
+     /** {@inheritDoc} */
+     public double getResult() {
+-        return optimizer.getResult();
++        return optima[0];
+     }
+ 
+     /** {@inheritDoc} */

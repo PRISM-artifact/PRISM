@@ -1,0 +1,5 @@
+(** @canonical Labs.ResourceLeakDomain *)
+module ResourceLeakDomain = Labs__ResourceLeakDomain
+
+(** @canonical Labs.ResourceLeaks *)
+module ResourceLeaks = Labs__ResourceLeaks

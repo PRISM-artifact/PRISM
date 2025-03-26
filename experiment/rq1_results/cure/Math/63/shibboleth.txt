@@ -1,0 +1,3 @@
+(-0.0, -0.0, -1.0): Math-63-507e531d (incorrect)
+(-0.0, -0.0, -1.0): Math-63-0519c270 (incorrect)
+(-0.0, -0.0, -1.0): Math-63-f8d9ecbb (incorrect)

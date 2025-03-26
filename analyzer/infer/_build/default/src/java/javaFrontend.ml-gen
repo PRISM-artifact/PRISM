@@ -1,0 +1,44 @@
+(** @canonical JavaFrontend.JAnnotation *)
+module JAnnotation = JavaFrontend__JAnnotation
+
+(** @canonical JavaFrontend.JClasspath *)
+module JClasspath = JavaFrontend__JClasspath
+
+(** @canonical JavaFrontend.JContext *)
+module JContext = JavaFrontend__JContext
+
+(** @canonical JavaFrontend.JFrontend *)
+module JFrontend = JavaFrontend__JFrontend
+
+(** @canonical JavaFrontend.JMain *)
+module JMain = JavaFrontend__JMain
+
+(** @canonical JavaFrontend.JModels *)
+module JModels = JavaFrontend__JModels
+
+(** @canonical JavaFrontend.JProgramDesc *)
+module JProgramDesc = JavaFrontend__JProgramDesc
+
+(** @canonical JavaFrontend.JSourceAST *)
+module JSourceAST = JavaFrontend__JSourceAST
+
+(** @canonical JavaFrontend.JSourceFileInfo *)
+module JSourceFileInfo = JavaFrontend__JSourceFileInfo
+
+(** @canonical JavaFrontend.JSourceLexer *)
+module JSourceLexer = JavaFrontend__JSourceLexer
+
+(** @canonical JavaFrontend.JSourceLocations *)
+module JSourceLocations = JavaFrontend__JSourceLocations
+
+(** @canonical JavaFrontend.JSourceParser *)
+module JSourceParser = JavaFrontend__JSourceParser
+
+(** @canonical JavaFrontend.JTrans *)
+module JTrans = JavaFrontend__JTrans
+
+(** @canonical JavaFrontend.JTransExn *)
+module JTransExn = JavaFrontend__JTransExn
+
+(** @canonical JavaFrontend.JTransType *)
+module JTransType = JavaFrontend__JTransType

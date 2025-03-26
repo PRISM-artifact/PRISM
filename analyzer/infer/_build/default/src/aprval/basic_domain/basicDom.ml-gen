@@ -1,0 +1,8 @@
+(** @canonical BasicDom.Constraint *)
+module Constraint = BasicDom__Constraint
+
+(** @canonical BasicDom.SymDom *)
+module SymDom = BasicDom__SymDom
+
+(** @canonical BasicDom.ValToAP *)
+module ValToAP = BasicDom__ValToAP

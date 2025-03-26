@@ -1,0 +1,29 @@
+--- Closure103b/src/com/google/javascript/jscomp/ControlFlowAnalysis.java	2021-10-26 15:38:46.165409087 +0900
++++ Closure103f/src/com/google/javascript/jscomp/ControlFlowAnalysis.java	2021-10-26 15:38:48.933425359 +0900
+@@ -891,6 +891,7 @@
+       case Token.ASSIGN:
+       case Token.INC:
+       case Token.DEC:
++      case Token.INSTANCEOF:
+         return true;
+       case Token.FUNCTION:
+         return false;
+--- Closure103b/src/com/google/javascript/jscomp/DisambiguateProperties.java	2021-10-26 15:38:46.165409087 +0900
++++ Closure103f/src/com/google/javascript/jscomp/DisambiguateProperties.java	2021-10-26 15:38:48.933425359 +0900
+@@ -760,9 +760,16 @@
+       }
+       // If the property does not exist on the referenced type but the original
+       // type is an object type, see if any subtype has the property.
++      if (foundType == null) {
++        ObjectType maybeType = ObjectType.cast(
++            registry.getGreatestSubtypeWithProperty(type, field));
+         // getGreatestSubtypeWithProperty does not guarantee that the property
+         // is defined on the returned type, it just indicates that it might be,
+         // so we have to double check.
++        if (maybeType != null && maybeType.hasOwnProperty(field)) {
++          foundType = maybeType;
++        }
++      }
+       return foundType;
+     }
+ 

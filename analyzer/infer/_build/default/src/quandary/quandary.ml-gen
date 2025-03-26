@@ -1,0 +1,23 @@
+(** @canonical Quandary.ClangTaintAnalysis *)
+module ClangTaintAnalysis = Quandary__ClangTaintAnalysis
+
+(** @canonical Quandary.ClangTrace *)
+module ClangTrace = Quandary__ClangTrace
+
+(** @canonical Quandary.JavaTaintAnalysis *)
+module JavaTaintAnalysis = Quandary__JavaTaintAnalysis
+
+(** @canonical Quandary.JavaTrace *)
+module JavaTrace = Quandary__JavaTrace
+
+(** @canonical Quandary.QuandaryConfig *)
+module QuandaryConfig = Quandary__QuandaryConfig
+
+(** @canonical Quandary.QuandarySummary *)
+module QuandarySummary = Quandary__QuandarySummary
+
+(** @canonical Quandary.TaintAnalysis *)
+module TaintAnalysis = Quandary__TaintAnalysis
+
+(** @canonical Quandary.TaintSpec *)
+module TaintSpec = Quandary__TaintSpec

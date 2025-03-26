@@ -1,0 +1,23 @@
+diff -r -u -w Chart13b/source/org/jfree/chart/block/BorderArrangement.java Chart13f/source/org/jfree/chart/block/BorderArrangement.java
+--- Chart13b/source/org/jfree/chart/block/BorderArrangement.java	2021-11-24 11:13:05.888787099 +0900
++++ Chart13f/source/org/jfree/chart/block/BorderArrangement.java	2021-11-24 11:13:52.657509397 +0900
+@@ -304,7 +304,6 @@
+                     LengthConstraintType.RANGE, 0.0, null,
+                     LengthConstraintType.NONE);
+             Size2D size = this.rightBlock.arrange(g2, c3);
+-            w[3] = size.width;
+             h[3] = size.height;
+         }
+ 
+diff -r -u -w Chart13b/source/org/jfree/data/Range.java Chart13f/source/org/jfree/data/Range.java
+--- Chart13b/source/org/jfree/data/Range.java	2021-11-24 11:13:03.036743053 +0900
++++ Chart13f/source/org/jfree/data/Range.java	2021-11-24 11:14:31.546110048 +0900
+@@ -84,7 +84,7 @@
+         if (lower > upper) {
+             String msg = "Range(double, double): require lower (" + lower 
+                 + ") <= upper (" + upper + ").";
+-            throw new IllegalArgumentException(msg);
++            Comparable result = null;
+         }
+         this.lower = lower;
+         this.upper = upper;

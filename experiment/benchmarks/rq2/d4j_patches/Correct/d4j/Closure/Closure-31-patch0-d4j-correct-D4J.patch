@@ -1,0 +1,10 @@
+--- Closure31b/src/com/google/javascript/jscomp/Compiler.java	2021-10-26 15:34:03.127195709 +0900
++++ Closure31f/src/com/google/javascript/jscomp/Compiler.java	2021-10-26 15:34:05.183219430 +0900
+@@ -1282,7 +1282,6 @@
+ 
+       // Check if the sources need to be re-ordered.
+       if (options.dependencyOptions.needsManagement() &&
+-          !options.skipAllPasses &&
+           options.closurePass) {
+         for (CompilerInput input : inputs) {
+           // Forward-declare all the provided types, so that they

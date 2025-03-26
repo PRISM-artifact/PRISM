@@ -1,0 +1,13 @@
+Binary files a/build/lib/rhino.jar and b/build/lib/rhino.jar differ
+Binary files a/build/lib/rhino1_7R3pre/js.jar and b/build/lib/rhino1_7R3pre/js.jar differ
+--- Closure63b/src/com/google/javascript/jscomp/LightweightMessageFormatter.java
++++ b/src/com/google/javascript/jscomp/LightweightMessageFormatter.java
+@@ -95,7 +95,7 @@ public class LightweightMessageFormatter extends AbstractMessageFormatter {
+       // charno == sourceExpert.length() means something is missing
+       // at the end of the line
+       if (excerpt.equals(LINE)
+-          && 0 <= charno && charno < sourceExcerpt.length()) {
++          && 0 <= charno || charno < sourceExcerpt.length()) {
+         for (int i = 0; i < charno; i++) {
+           char c = sourceExcerpt.charAt(i);
+           if (Character.isWhitespace(c)) {

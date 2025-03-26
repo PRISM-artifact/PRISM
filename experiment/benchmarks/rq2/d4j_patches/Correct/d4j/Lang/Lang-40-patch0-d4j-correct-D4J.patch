@@ -1,0 +1,18 @@
+--- Lang40b/src/java/org/apache/commons/lang/StringUtils.java	2021-10-27 13:32:48.952067508 +0900
++++ Lang40f/src/java/org/apache/commons/lang/StringUtils.java	2021-10-27 13:32:52.348112694 +0900
+@@ -1045,7 +1045,14 @@
+         if (str == null || searchStr == null) {
+             return false;
+         }
+-        return contains(str.toUpperCase(), searchStr.toUpperCase());
++        int len = searchStr.length();
++        int max = str.length() - len;
++        for (int i = 0; i <= max; i++) {
++            if (str.regionMatches(true, i, searchStr, 0, len)) {
++                return true;
++            }
++        }
++        return false;
+     }
+ 
+     // IndexOfAny chars

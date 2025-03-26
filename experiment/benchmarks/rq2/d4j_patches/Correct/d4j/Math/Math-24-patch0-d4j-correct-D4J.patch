@@ -1,0 +1,20 @@
+--- Math24b/src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java	2021-10-27 13:40:28.742162078 +0900
++++ Math24f/src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java	2021-10-27 13:40:32.150207123 +0900
+@@ -227,7 +227,7 @@
+ 
+                 if (checker != null) {
+                     if (checker.converged(iter, previous, current)) {
+-                        return current;
++                        return best(current, previous, isMinim);
+                     }
+                 }
+ 
+@@ -264,7 +264,7 @@
+                     }
+                 }
+             } else { // Default termination (Brent's criterion).
+-                return current;
++                return best(current, previous, isMinim);
+             }
+             ++iter;
+         }

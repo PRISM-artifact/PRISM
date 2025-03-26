@@ -1,0 +1,8 @@
+(** @canonical TestDeterminators.JProcname *)
+module JProcname = TestDeterminators__JProcname
+
+(** @canonical TestDeterminators.JavaProfilerSamples *)
+module JavaProfilerSamples = TestDeterminators__JavaProfilerSamples
+
+(** @canonical TestDeterminators.TestDeterminator *)
+module TestDeterminator = TestDeterminators__TestDeterminator

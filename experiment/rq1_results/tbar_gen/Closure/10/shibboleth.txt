@@ -1,0 +1,6 @@
+(-0.0, -0.0, -1.0): Closure-10-4137d6be (incorrect)
+(-0.0, -0.0, -1.0): Closure-10-a51f18af (correct)
+(-0.0, -0.0, -1.0): Closure-10-020483fc (incorrect)
+(-0.0, -0.0, -1.0): Closure-10-f6cc5917 (incorrect)
+(-0.0, -0.0, -1.0): Closure-10-40579b13 (incorrect)
+(-0.0, -0.0, -1.0): Closure-10-65761c8a (incorrect)

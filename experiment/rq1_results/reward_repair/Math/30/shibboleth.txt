@@ -1,0 +1,7 @@
+(-0.0, -0.0, -1.0): Math-30-9634b702 (correct)
+(-0.0, -0.0, -1.0): Math-30-e582d365 (correct)
+(-0.0, -0.0, -1.0): Math-30-df9a52b2 (correct)
+(-0.0, -0.0, -1.0): Math-30-ebe52375 (correct)
+(-0.0, -0.0, -1.0): Math-30-ebe52375 (correct)
+(-0.0, -0.0, -1.0): Math-30-9634b702 (correct)
+(-0.0, -0.0, -1.0): Math-30-13aa2ecb (correct)

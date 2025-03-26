@@ -1,0 +1,17 @@
+(** @canonical Topllib.Topl *)
+module Topl = Topllib__Topl
+
+(** @canonical Topllib.ToplAst *)
+module ToplAst = Topllib__ToplAst
+
+(** @canonical Topllib.ToplAstOps *)
+module ToplAstOps = Topllib__ToplAstOps
+
+(** @canonical Topllib.ToplAutomaton *)
+module ToplAutomaton = Topllib__ToplAutomaton
+
+(** @canonical Topllib.ToplLexer *)
+module ToplLexer = Topllib__ToplLexer
+
+(** @canonical Topllib.ToplParser *)
+module ToplParser = Topllib__ToplParser

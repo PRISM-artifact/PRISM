@@ -1,0 +1,2 @@
+(** @canonical ClangFrontend.ClangFrontendStubs *)
+module ClangFrontendStubs = ClangFrontend__ClangFrontendStubs

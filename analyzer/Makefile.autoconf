@@ -1,0 +1,99 @@
+# Copyright (c) Facebook, Inc. and its affiliates.
+#
+# This source code is licensed under the MIT license found in the
+# LICENSE file in the root directory of this source tree.
+
+
+
+ANT = no
+ATDGEN = atdgen
+bindir = ${exec_prefix}/bin
+BUCK = no
+BUILD_C_ANALYZERS = no
+BUILD_JAVA_ANALYZERS = yes
+BUILD_PLATFORM = Linux
+CAML_LD_LIBRARY_PATH = /home/dowon/.opam/ocaml-variants.4.11.1+flambda/lib/stublibs:/home/dowon/.opam/ocaml-variants.4.11.1+flambda/lib/ocaml/stublibs:/home/dowon/.opam/ocaml-variants.4.11.1+flambda/lib/ocaml
+CC = gcc
+CFLAGS = -g -O2
+CLANG_INCLUDES = /home/dowon/patch-identifier/analyzer/facebook-clang-plugins/clang/install/include
+CLANG_PREFIX = /home/dowon/patch-identifier/analyzer/facebook-clang-plugins/clang/install
+CMAKE = 
+CPATH = 
+CPP = 
+CXX = 
+CXXFLAGS = 
+# this is useless but autoconf is picky...
+datarootdir = ${prefix}/share
+EMACS = no
+ENABLE_OCAMLOPT_CUSTOM_CC = 
+ENABLE_OCAML_BINANNOT = yes
+exec_prefix = ${prefix}
+GNU_SED = sed
+HAS_OBJC = no
+INFER_MAJOR = 1
+INFER_MAN_LAST_MODIFIED = 2025-01-24
+INFER_MINOR = 1
+INFER_PATCH = 0
+INSTALL = /usr/bin/install -c
+INSTALL_DATA = ${INSTALL} -m 644
+INSTALL_NAME_TOOL = no
+INSTALL_PROGRAM = ${INSTALL}
+IS_FACEBOOK_TREE = no
+IS_RELEASE_TREE = no
+JAVA_MAJOR_VERSION = 8
+JAVAC = javac
+LDD = ldd
+LDFLAGS = 
+libdir = ${exec_prefix}/lib
+# override in your `make` command to make the install relocatable
+libdir_relative_to_bindir = $(libdir)
+LIBRARY_PATH = 
+LIBS = 
+mandir = ${datarootdir}/man
+MENHIR = menhir
+MKDIR_P_CMD = case "/usr/bin/mkdir -p" in \
+    ./*) printf "$(ROOT_DIR)//usr/bin/mkdir -p\n";; \
+    *) printf "/usr/bin/mkdir -p\n";; \
+    esac
+MKDIR_P = $(shell $(MKDIR_P_CMD))
+MVN = mvn
+NCPU = 128
+NDKBUILD = no
+NINJA = no
+OCAMLBUILD = /home/dowon/.opam/ocaml-variants.4.11.1+flambda/bin/ocamlbuild
+OCAMLC = /home/dowon/.opam/ocaml-variants.4.11.1+flambda/bin/ocamlc.opt
+OCAMLFIND = /home/dowon/.opam/ocaml-variants.4.11.1+flambda/bin/ocamlfind
+OCAMLFORMAT_EXE = ocamlformat
+OCAMLLEX = /home/dowon/.opam/ocaml-variants.4.11.1+flambda/bin/ocamllex.opt
+OCAMLOPT = /home/dowon/.opam/ocaml-variants.4.11.1+flambda/bin/ocamlopt.opt
+OPAM = opam
+OPAMROOT = /home/dowon/.opam
+OPAMSWITCH = ocaml-variants.4.11.1+flambda
+OTOOL = no
+PATCHELF = no
+PATH = /home/dowon/.opam/ocaml-variants.4.11.1+flambda/bin:/home/dowon/.jenv/shims:/home/dowon/.jenv/bin:/home/dowon/.jenv/shims:/home/dowon/.jenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/dowon/d4j/d4j-2.0/framework/bin:/home/dowon/d4j/d4j-2.0/framework/bin
+prefix = /usr/local
+SDKROOT = 
+SHASUM = 
+USER_JAVA_HOME = /usr/lib/jvm/java-8-openjdk-amd64/jre/..
+UTOP = utop
+WINDOWS_BUILD = no
+XCODE_BASE = 
+XCODE_SELECT = no
+XCPRETTY = no
+XCRUN = no
+
+ifneq (,$(findstring s,$(MAKEFLAGS)))
+# quiet mode
+LN_S = ln -s
+else
+LN_S = ln -s -v
+endif
+
+# Export parts of the config relevant to running other programs
+export PATH := $(PATH)
+export CPATH := $(CPATH)
+export LIBRARY_PATH := $(LIBRARY_PATH)
+export CAML_LD_LIBRARY_PATH := $(CAML_LD_LIBRARY_PATH)
+export OPAMROOT := $(OPAMROOT)
+export SDKROOT := $(SDKROOT)

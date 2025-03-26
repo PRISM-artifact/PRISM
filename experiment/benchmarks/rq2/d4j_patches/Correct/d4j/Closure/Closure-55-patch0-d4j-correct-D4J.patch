@@ -1,0 +1,12 @@
+--- Closure55b/src/com/google/javascript/jscomp/FunctionRewriter.java	2021-10-26 15:35:39.152303947 +0900
++++ Closure55f/src/com/google/javascript/jscomp/FunctionRewriter.java	2021-10-26 15:35:41.124326715 +0900
+@@ -114,7 +114,8 @@
+   }
+ 
+   private static boolean isReduceableFunctionExpression(Node n) {
+-    return NodeUtil.isFunctionExpression(n);
++    return NodeUtil.isFunctionExpression(n)
++        && !NodeUtil.isGetOrSetKey(n.getParent());
+   }
+ 
+   /**

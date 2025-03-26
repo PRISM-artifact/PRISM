@@ -1,0 +1,92 @@
+(** @canonical Checkers.AddressTaken *)
+module AddressTaken = Checkers__AddressTaken
+
+(** @canonical Checkers.AnnotationReachability *)
+module AnnotationReachability = Checkers__AnnotationReachability
+
+(** @canonical Checkers.AnnotationReachabilityDomain *)
+module AnnotationReachabilityDomain = Checkers__AnnotationReachabilityDomain
+
+(** @canonical Checkers.ConfigChecksBetweenMarkers *)
+module ConfigChecksBetweenMarkers = Checkers__ConfigChecksBetweenMarkers
+
+(** @canonical Checkers.ConfigImpactAnalysis *)
+module ConfigImpactAnalysis = Checkers__ConfigImpactAnalysis
+
+(** @canonical Checkers.Control *)
+module Control = Checkers__Control
+
+(** @canonical Checkers.Dominators *)
+module Dominators = Checkers__Dominators
+
+(** @canonical Checkers.ExternalConfigImpactData *)
+module ExternalConfigImpactData = Checkers__ExternalConfigImpactData
+
+(** @canonical Checkers.FragmentRetainsViewChecker *)
+module FragmentRetainsViewChecker = Checkers__FragmentRetainsViewChecker
+
+(** @canonical Checkers.FunctionPointers *)
+module FunctionPointers = Checkers__FunctionPointers
+
+(** @canonical Checkers.Impurity *)
+module Impurity = Checkers__Impurity
+
+(** @canonical Checkers.ImpurityDomain *)
+module ImpurityDomain = Checkers__ImpurityDomain
+
+(** @canonical Checkers.InefficientKeysetIterator *)
+module InefficientKeysetIterator = Checkers__InefficientKeysetIterator
+
+(** @canonical Checkers.LithoDomain *)
+module LithoDomain = Checkers__LithoDomain
+
+(** @canonical Checkers.Liveness *)
+module Liveness = Checkers__Liveness
+
+(** @canonical Checkers.LoopInvariant *)
+module LoopInvariant = Checkers__LoopInvariant
+
+(** @canonical Checkers.Loop_control *)
+module Loop_control = Checkers__Loop_control
+
+(** @canonical Checkers.NullabilityPreanalysis *)
+module NullabilityPreanalysis = Checkers__NullabilityPreanalysis
+
+(** @canonical Checkers.PrintfArgs *)
+module PrintfArgs = Checkers__PrintfArgs
+
+(** @canonical Checkers.PurityAnalysis *)
+module PurityAnalysis = Checkers__PurityAnalysis
+
+(** @canonical Checkers.PurityChecker *)
+module PurityChecker = Checkers__PurityChecker
+
+(** @canonical Checkers.PurityDomain *)
+module PurityDomain = Checkers__PurityDomain
+
+(** @canonical Checkers.PurityModels *)
+module PurityModels = Checkers__PurityModels
+
+(** @canonical Checkers.ReachingDefs *)
+module ReachingDefs = Checkers__ReachingDefs
+
+(** @canonical Checkers.RequiredProps *)
+module RequiredProps = Checkers__RequiredProps
+
+(** @canonical Checkers.SelfInBlock *)
+module SelfInBlock = Checkers__SelfInBlock
+
+(** @canonical Checkers.Siof *)
+module Siof = Checkers__Siof
+
+(** @canonical Checkers.SiofDomain *)
+module SiofDomain = Checkers__SiofDomain
+
+(** @canonical Checkers.SiofTrace *)
+module SiofTrace = Checkers__SiofTrace
+
+(** @canonical Checkers.Uninit *)
+module Uninit = Checkers__Uninit
+
+(** @canonical Checkers.UninitDomain *)
+module UninitDomain = Checkers__UninitDomain

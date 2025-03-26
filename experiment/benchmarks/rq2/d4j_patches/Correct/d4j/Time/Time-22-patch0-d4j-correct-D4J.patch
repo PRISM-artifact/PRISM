@@ -1,0 +1,17 @@
+--- Time22b/src/main/java/org/joda/time/base/BasePeriod.java	2021-10-27 14:23:25.821428605 +0900
++++ Time22f/src/main/java/org/joda/time/base/BasePeriod.java	2021-10-27 14:23:27.305451869 +0900
+@@ -219,8 +219,13 @@
+      * @param duration  the duration, in milliseconds
+      */
+     protected BasePeriod(long duration) {
+-        this(duration, null, null);
++        super();
+         // bug [3264409]
++        iType = PeriodType.time();
++        int[] values = ISOChronology.getInstanceUTC().get(this, duration);
++        iType = PeriodType.standard();
++        iValues = new int[8];
++        System.arraycopy(values, 0, iValues, 4, 4);
+     }
+ 
+     /**

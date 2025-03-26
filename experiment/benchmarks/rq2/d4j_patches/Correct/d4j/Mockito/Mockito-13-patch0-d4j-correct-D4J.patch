@@ -1,0 +1,18 @@
+--- Mockito13b/src/org/mockito/internal/MockHandler.java	2021-10-27 14:19:42.002348359 +0900
++++ Mockito13f/src/org/mockito/internal/MockHandler.java	2021-10-27 14:19:44.394378478 +0900
+@@ -74,12 +74,14 @@
+         if (verificationMode != null) {
+             //We need to check if verification was started on the correct mock 
+             // - see VerifyingWithAnExtraCallToADifferentMockTest (bug 138)
+-            if (verificationMode instanceof MockAwareVerificationMode && ((MockAwareVerificationMode) verificationMode).getMock() == invocation.getMock()) {                
++            if (((MockAwareVerificationMode) verificationMode).getMock() == invocation.getMock()) {                
+                 VerificationDataImpl data = new VerificationDataImpl(invocationContainerImpl, invocationMatcher);            
+                 verificationMode.verify(data);
+                 return null;
++            } else {
+                 // this means there is an invocation on a different mock. Re-adding verification mode 
+                 // - see VerifyingWithAnExtraCallToADifferentMockTest (bug 138)
++                mockingProgress.verificationStarted(verificationMode);
+             }
+         }
+         

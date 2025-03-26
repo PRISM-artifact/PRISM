@@ -1,0 +1,15 @@
+make[1]: Entering directory '/home/dowon/patch-identifier/analyzer/infer/src'
+/usr/bin/install -c -C /home/dowon/patch-identifier/analyzer/infer/bin/infer.exe /home/dowon/patch-identifier/analyzer/infer/bin/infer
+make INTERACTIVE=1 /home/dowon/patch-identifier/analyzer/infer/bin/infer-analyze /home/dowon/patch-identifier/analyzer/infer/bin/infer-capture /home/dowon/patch-identifier/analyzer/infer/bin/infer-compile /home/dowon/patch-identifier/analyzer/infer/bin/infer-debug /home/dowon/patch-identifier/analyzer/infer/bin/infer-explore /home/dowon/patch-identifier/analyzer/infer/bin/infer-help /home/dowon/patch-identifier/analyzer/infer/bin/infer-report /home/dowon/patch-identifier/analyzer/infer/bin/infer-reportdiff /home/dowon/patch-identifier/analyzer/infer/bin/infer-run
+make[2]: Entering directory '/home/dowon/patch-identifier/analyzer/infer/src'
+make[2]: '/home/dowon/patch-identifier/analyzer/infer/bin/infer-analyze' is up to date.
+make[2]: '/home/dowon/patch-identifier/analyzer/infer/bin/infer-capture' is up to date.
+make[2]: '/home/dowon/patch-identifier/analyzer/infer/bin/infer-compile' is up to date.
+make[2]: '/home/dowon/patch-identifier/analyzer/infer/bin/infer-debug' is up to date.
+make[2]: '/home/dowon/patch-identifier/analyzer/infer/bin/infer-explore' is up to date.
+make[2]: '/home/dowon/patch-identifier/analyzer/infer/bin/infer-help' is up to date.
+make[2]: '/home/dowon/patch-identifier/analyzer/infer/bin/infer-report' is up to date.
+make[2]: '/home/dowon/patch-identifier/analyzer/infer/bin/infer-reportdiff' is up to date.
+make[2]: '/home/dowon/patch-identifier/analyzer/infer/bin/infer-run' is up to date.
+make[2]: Leaving directory '/home/dowon/patch-identifier/analyzer/infer/src'
+make[1]: Leaving directory '/home/dowon/patch-identifier/analyzer/infer/src'

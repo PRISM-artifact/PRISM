@@ -1,0 +1,2 @@
+(-0.0, -0.0, -1.0): Mockito-29-eb40a31f (incorrect)
+(-0.0, -0.0, -1.0): Mockito-29-77e9fe59 (correct)

@@ -1,0 +1,65 @@
+(** @canonical BO.AbsLoc *)
+module AbsLoc = BO__AbsLoc
+
+(** @canonical BO.ArrayBlk *)
+module ArrayBlk = BO__ArrayBlk
+
+(** @canonical BO.Boolean *)
+module Boolean = BO__Boolean
+
+(** @canonical BO.Bounds *)
+module Bounds = BO__Bounds
+
+(** @canonical BO.BufferOverrunAnalysis *)
+module BufferOverrunAnalysis = BO__BufferOverrunAnalysis
+
+(** @canonical BO.BufferOverrunAnalysisSummary *)
+module BufferOverrunAnalysisSummary = BO__BufferOverrunAnalysisSummary
+
+(** @canonical BO.BufferOverrunChecker *)
+module BufferOverrunChecker = BO__BufferOverrunChecker
+
+(** @canonical BO.BufferOverrunCheckerSummary *)
+module BufferOverrunCheckerSummary = BO__BufferOverrunCheckerSummary
+
+(** @canonical BO.BufferOverrunDomain *)
+module BufferOverrunDomain = BO__BufferOverrunDomain
+
+(** @canonical BO.BufferOverrunField *)
+module BufferOverrunField = BO__BufferOverrunField
+
+(** @canonical BO.BufferOverrunModels *)
+module BufferOverrunModels = BO__BufferOverrunModels
+
+(** @canonical BO.BufferOverrunOndemandEnv *)
+module BufferOverrunOndemandEnv = BO__BufferOverrunOndemandEnv
+
+(** @canonical BO.BufferOverrunProofObligations *)
+module BufferOverrunProofObligations = BO__BufferOverrunProofObligations
+
+(** @canonical BO.BufferOverrunSemantics *)
+module BufferOverrunSemantics = BO__BufferOverrunSemantics
+
+(** @canonical BO.BufferOverrunTrace *)
+module BufferOverrunTrace = BO__BufferOverrunTrace
+
+(** @canonical BO.BufferOverrunTypModels *)
+module BufferOverrunTypModels = BO__BufferOverrunTypModels
+
+(** @canonical BO.BufferOverrunUtils *)
+module BufferOverrunUtils = BO__BufferOverrunUtils
+
+(** @canonical BO.FuncPtr *)
+module FuncPtr = BO__FuncPtr
+
+(** @canonical BO.Ints *)
+module Ints = BO__Ints
+
+(** @canonical BO.Itv *)
+module Itv = BO__Itv
+
+(** @canonical BO.Polynomials *)
+module Polynomials = BO__Polynomials
+
+(** @canonical BO.Symb *)
+module Symb = BO__Symb

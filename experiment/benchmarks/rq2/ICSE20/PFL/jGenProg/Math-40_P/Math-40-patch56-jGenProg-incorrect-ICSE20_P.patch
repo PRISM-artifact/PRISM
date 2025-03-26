@@ -1,0 +1,10 @@
+--- Math40b/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java	2024-10-18 14:16:58.741008795 +0900
++++ Math40f/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java	2024-10-18 16:34:52.721306710 +0900
+@@ -233,6 +233,7 @@
+             if (agingA >= MAXIMAL_AGING) {
+                 // we keep updating the high bracket, try to compensate this
+                 targetY = -REDUCTION_FACTOR * yB;
++                signChangeIndex = 2;
+             } else if (agingB >= MAXIMAL_AGING) {
+                 // we keep updating the low bracket, try to compensate this
+                 targetY = -REDUCTION_FACTOR * yA;

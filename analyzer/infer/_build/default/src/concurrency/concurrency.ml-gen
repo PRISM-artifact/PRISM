@@ -1,0 +1,29 @@
+(** @canonical Concurrency.AbstractAddress *)
+module AbstractAddress = Concurrency__AbstractAddress
+
+(** @canonical Concurrency.ConcurrencyUtils *)
+module ConcurrencyUtils = Concurrency__ConcurrencyUtils
+
+(** @canonical Concurrency.IssueAuxData *)
+module IssueAuxData = Concurrency__IssueAuxData
+
+(** @canonical Concurrency.RacerDDomain *)
+module RacerDDomain = Concurrency__RacerDDomain
+
+(** @canonical Concurrency.RacerDFileAnalysis *)
+module RacerDFileAnalysis = Concurrency__RacerDFileAnalysis
+
+(** @canonical Concurrency.RacerDModels *)
+module RacerDModels = Concurrency__RacerDModels
+
+(** @canonical Concurrency.RacerDProcAnalysis *)
+module RacerDProcAnalysis = Concurrency__RacerDProcAnalysis
+
+(** @canonical Concurrency.Starvation *)
+module Starvation = Concurrency__Starvation
+
+(** @canonical Concurrency.StarvationDomain *)
+module StarvationDomain = Concurrency__StarvationDomain
+
+(** @canonical Concurrency.StarvationModels *)
+module StarvationModels = Concurrency__StarvationModels

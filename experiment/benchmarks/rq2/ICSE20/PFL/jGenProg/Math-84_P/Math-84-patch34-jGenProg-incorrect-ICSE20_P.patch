@@ -1,0 +1,10 @@
+--- Math84b/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java	2024-10-18 16:36:13.455053315 +0900
++++ Math84f/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java	2024-10-18 16:37:26.120626030 +0900
+@@ -93,6 +93,7 @@
+             // check convergence
+                 return;
+             }
++            return;
+ 
+         }
+ 

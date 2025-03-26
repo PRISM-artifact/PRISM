@@ -1,0 +1,18 @@
+--- Time25b/src/main/java/org/joda/time/DateTimeZone.java	2021-10-27 14:23:35.649582471 +0900
++++ Time25f/src/main/java/org/joda/time/DateTimeZone.java	2021-10-27 14:23:37.261607661 +0900
+@@ -896,6 +896,15 @@
+                     return offsetLocal;
+                 }
+             }
++        } else if (offsetLocal > 0) {
++            long prev = previousTransition(instantAdjusted);
++            if (prev < instantAdjusted) {
++                int offsetPrev = getOffset(prev);
++                int diff = offsetPrev - offsetLocal;
++                if (instantAdjusted - prev <= diff) {
++                    return offsetPrev;
++                }
++            }
+         }
+         return offsetAdjusted;
+     }

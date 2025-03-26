@@ -1,0 +1,13 @@
+apr,baseline_top1_count,baseline_top5_count,ods_top1_count,ods_top1_delta,ods_top5_count,ods_top5_delta
+alpha_repair,23,28,22,-1,27,-1
+coconut,9,10,9,0,10,0
+tbar,31,34,29,-2,34,0
+ar_gen,14,18,13,-1,17,-1
+tbar_gen,29,33,27,-2,34,1
+recoder,28,29,27,-1,28,-1
+selfapr,29,32,28,-1,32,0
+reward_repair,25,28,23,-2,28,0
+cure,13,18,13,0,17,-1
+edits,2,2,2,0,2,0
+sequencer,13,16,14,1,16,0
+simfix,14,15,14,0,15,0

@@ -1,0 +1,506 @@
+[3730107][environment] CWD = /home/dowon/patch-identifier/analyzer/infer/models
+[3730107][environment] Read configuration in /home/dowon/patch-identifier/analyzer/infer/models/.inferconfig
+[3730107][environment] Project root = /home/dowon/patch-identifier/analyzer/infer/models
+[3730107][environment] INFER_ARGS =   @/tmp/args.tmp.28e134
+[3730107][environment] command line arguments:   /home/dowon/patch-identifier/analyzer/infer/bin/infer
+[3730107][environment]                           --continue capture --jobs 1 --biabduction-only
+[3730107][environment]                           --results-dir infer-out --biabduction-models-mode
+[3730107][environment]                           -- javac -bootclasspath
+[3730107][environment]                           /home/dowon/patch-identifier/analyzer/infer/lib/java/android/android-23.jar
+[3730107][environment]                           -d java/models -classpath
+[3730107][environment]                           /home/dowon/patch-identifier/analyzer/infer/lib/java/android/android-23.jar:/home/dowon/patch-identifier/analyzer/dependencies/java/guava/guava-23.0.jar:/home/dowon/patch-identifier/analyzer/dependencies/java/jackson/jackson-2.2.3.jar:/home/dowon/patch-identifier/analyzer/dependencies/java/jsr-305/jsr305.jar:/home/dowon/patch-identifier/analyzer/infer/annotations/annotations.jar
+[3730107][environment]                           /home/dowon/patch-identifier/analyzer/infer/models/java/builtins/com/facebook/infer/builtins/InferUndefined.java
+[3730107][environment]                           /home/dowon/patch-identifier/analyzer/infer/models/java/builtins/com/facebook/infer/builtins/InferTaint.java
+[3730107][environment]                           /home/dowon/patch-identifier/analyzer/infer/models/java/builtins/com/facebook/infer/builtins/InferUtils.java
+[3730107][environment]                           /home/dowon/patch-identifier/analyzer/infer/models/java/builtins/com/facebook/infer/builtins/InferCloseables.java
+[3730107][environment]                           /home/dowon/patch-identifier/analyzer/infer/models/java/builtins/com/facebook/infer/builtins/InferBuiltins.java
+[3730107][environment]                           java/src/dalvik/system/CloseGuard.java
+[3730107][environment]                           java/src/javax/net/ssl/SSLSocketFactory.java
+[3730107][environment]                           java/src/javax/net/ssl/HttpsURLConnection.java
+[3730107][environment]                           java/src/javax/crypto/CipherInputStream.java
+[3730107][environment]                           java/src/javax/crypto/CipherOutputStream.java
+[3730107][environment]                           java/src/org/apache/commons/lang3/StringUtils.java
+[3730107][environment]                           java/src/org/assertj/core/util/Preconditions.java
+[3730107][environment]                           java/src/android/database/sqlite/SQLiteDatabaseConfiguration.java
+[3730107][environment]                           java/src/android/database/sqlite/SQLiteDatabase.java
+[3730107][environment]                           java/src/android/database/sqlite/SQLiteCursor.java
+[3730107][environment]                           java/src/android/database/sqlite/SQLiteConnectionPool.java
+[3730107][environment]                           java/src/android/database/sqlite/SQLiteQueryBuilder.java
+[3730107][environment]                           java/src/android/database/Cursor.java
+[3730107][environment]                           java/src/android/database/CrossProcessCursor.java
+[3730107][environment]                           java/src/android/database/CrossProcessCursorWrapper.java
+[3730107][environment]                           java/src/android/database/AbstractCursor.java
+[3730107][environment]                           java/src/android/database/CursorWrapper.java
+[3730107][environment]                           java/src/android/view/View.java
+[3730107][environment]                           java/src/android/provider/MediaStore.java
+[3730107][environment]                           java/src/android/content/res/TypedArray.java
+[3730107][environment]                           java/src/android/content/res/Resources.java
+[3730107][environment]                           java/src/android/content/ContentResolver.java
+[3730107][environment]                           java/src/android/content/IContentProvider.java
+[3730107][environment]                           java/src/android/content/IContentService.java
+[3730107][environment]                           java/src/android/content/ContentProviderClient.java
+[3730107][environment]                           java/src/android/content/Context.java
+[3730107][environment]                           java/src/android/text/TextUtils.java
+[3730107][environment]                           java/src/android/app/Activity.java
+[3730107][environment]                           java/src/android/app/DownloadManager.java
+[3730107][environment]                           java/src/android/app/AlarmManager.java
+[3730107][environment]                           java/src/com/fasterxml/jackson/core/JsonParser.java
+[3730107][environment]                           java/src/com/fasterxml/jackson/core/JsonFactory.java
+[3730107][environment]                           java/src/com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java
+[3730107][environment]                           java/src/com/facebook/infer/annotation/Assertions.java
+[3730107][environment]                           java/src/com/google/common/base/Preconditions.java
+[3730107][environment]                           java/src/com/google/common/base/Optional.java
+[3730107][environment]                           java/src/com/google/common/collect/ImmutableList.java
+[3730107][environment]                           java/src/com/google/common/collect/Iterators.java
+[3730107][environment]                           java/src/com/google/common/io/Closeables.java
+[3730107][environment]                           java/src/java/net/JarURLConnection.java
+[3730107][environment]                           java/src/java/net/URLConnection.java
+[3730107][environment]                           java/src/java/net/Socket.java
+[3730107][environment]                           java/src/java/net/ServerSocket.java
+[3730107][environment]                           java/src/java/net/URL.java
+[3730107][environment]                           java/src/java/net/PlainSocketImpl.java
+[3730107][environment]                           java/src/java/net/HttpURLConnection.java
+[3730107][environment]                           java/src/java/lang/Runtime.java
+[3730107][environment]                           java/src/java/lang/String.java
+[3730107][environment]                           java/src/java/lang/NullPointerException.java
+[3730107][environment]                           java/src/java/lang/Class.java
+[3730107][environment]                           java/src/java/lang/Process.java
+[3730107][environment]                           java/src/java/lang/Double.java
+[3730107][environment]                           java/src/java/lang/Object.java
+[3730107][environment]                           java/src/java/lang/ProcessManager.java
+[3730107][environment]                           java/src/java/lang/System.java
+[3730107][environment]                           java/src/java/lang/Integer.java
+[3730107][environment]                           java/src/java/lang/Thread.java
+[3730107][environment]                           java/src/java/lang/reflect/Array.java
+[3730107][environment]                           java/src/java/security/DigestInputStream.java
+[3730107][environment]                           java/src/java/security/DigestOutputStream.java
+[3730107][environment]                           java/src/java/nio/channels/FileChannel.java
+[3730107][environment]                           java/src/java/nio/channels/spi/AbstractInterruptibleChannel.java
+[3730107][environment]                           java/src/java/nio/FileChannelImpl.java
+[3730107][environment]                           java/src/java/util/Vector.java
+[3730107][environment]                           java/src/java/util/LinkedList.java
+[3730107][environment]                           java/src/java/util/Scanner.java
+[3730107][environment]                           java/src/java/util/concurrent/Lock.java
+[3730107][environment]                           java/src/java/util/concurrent/ReentrantLock.java
+[3730107][environment]                           java/src/java/util/jar/JarOutputStream.java
+[3730107][environment]                           java/src/java/util/jar/JarFile.java
+[3730107][environment]                           java/src/java/util/jar/JarInputStream.java
+[3730107][environment]                           java/src/java/util/Properties.java
+[3730107][environment]                           java/src/java/util/List.java
+[3730107][environment]                           java/src/java/util/ArrayList.java
+[3730107][environment]                           java/src/java/util/HashMap.java
+[3730107][environment]                           java/src/java/util/AbstractList.java
+[3730107][environment]                           java/src/java/util/zip/CheckedOutputStream.java
+[3730107][environment]                           java/src/java/util/zip/DeflaterInputStream.java
+[3730107][environment]                           java/src/java/util/zip/CheckedInputStream.java
+[3730107][environment]                           java/src/java/util/zip/InflaterInputStream.java
+[3730107][environment]                           java/src/java/util/zip/GZIPOutputStream.java
+[3730107][environment]                           java/src/java/util/zip/InflaterOutputStream.java
+[3730107][environment]                           java/src/java/util/zip/ZipOutputStream.java
+[3730107][environment]                           java/src/java/util/zip/ZipInputStream.java
+[3730107][environment]                           java/src/java/util/zip/Inflater.java
+[3730107][environment]                           java/src/java/util/zip/ZipFile.java
+[3730107][environment]                           java/src/java/util/zip/GZIPInputStream.java
+[3730107][environment]                           java/src/java/util/zip/Deflater.java
+[3730107][environment]                           java/src/java/util/zip/DeflaterOutputStream.java
+[3730107][environment]                           java/src/java/io/FilterInputStream.java
+[3730107][environment]                           java/src/java/io/PipedOutputStream.java
+[3730107][environment]                           java/src/java/io/PipedInputStream.java
+[3730107][environment]                           java/src/java/io/OutputStreamWriter.java
+[3730107][environment]                           java/src/java/io/InputStreamReader.java
+[3730107][environment]                           java/src/java/io/ObjectOutputStream.java
+[3730107][environment]                           java/src/java/io/PrintWriter.java
+[3730107][environment]                           java/src/java/io/BufferedInputStream.java
+[3730107][environment]                           java/src/java/io/FileInputStream.java
+[3730107][environment]                           java/src/java/io/PipedWriter.java
+[3730107][environment]                           java/src/java/io/BufferedOutputStream.java
+[3730107][environment]                           java/src/java/io/FilterReader.java
+[3730107][environment]                           java/src/java/io/RandomAccessFile.java
+[3730107][environment]                           java/src/java/io/DataInputStream.java
+[3730107][environment]                           java/src/java/io/PushbackReader.java
+[3730107][environment]                           java/src/java/io/Writer.java
+[3730107][environment]                           java/src/java/io/PushbackInputStream.java
+[3730107][environment]                           java/src/java/io/FilterOutputStream.java
+[3730107][environment]                           java/src/java/io/BufferedWriter.java
+[3730107][environment]                           java/src/java/io/FileOutputStream.java
+[3730107][environment]                           java/src/java/io/InputStream.java
+[3730107][environment]                           java/src/java/io/DataOutputStream.java
+[3730107][environment]                           java/src/java/io/PipedReader.java
+[3730107][environment]                           java/src/java/io/ObjectInputStream.java
+[3730107][environment]                           java/src/java/io/OutputStream.java
+[3730107][environment]                           java/src/java/io/BufferedReader.java
+[3730107][environment]                           java/src/java/io/File.java
+[3730107][environment]                           java/src/java/io/Reader.java
+[3730107][environment]                           java/src/junit/framework/Assert.java
+[3730107][environment]                           java/builtins/com/facebook/infer/builtins/InferUndefined.java
+[3730107][environment]                           java/builtins/com/facebook/infer/builtins/InferTaint.java
+[3730107][environment]                           java/builtins/com/facebook/infer/builtins/InferUtils.java
+[3730107][environment]                           java/builtins/com/facebook/infer/builtins/InferCloseables.java
+[3730107][environment]                           java/builtins/com/facebook/infer/builtins/InferBuiltins.java
+[3730107][environment]                           -source 7 -target 7
+[3730107][environment] Available memory at startup: 243845 MB
+[3730107][environment] Active checkers: biabduction (C/C++/ObjC, Java, C#/.Net)
+[3730107][environment] Scheduler: file
+[3730107][environment] Cores used: 1
+[3730107][environment] Infer version v1.1.0-unknown
+[3730107][environment] Copyright 2009 - present Facebook. All Rights Reserved.
+[3730107][environment] 
+[3730107][   progress] Capturing in javac mode...
+[3730107][      debug] Current working directory: '/home/dowon/patch-identifier/analyzer/infer/models'
+[3730107][      debug] Trying to execute: javac '-J-Duser.language=en' '@/home/dowon/patch-identifier/analyzer/infer/models/infer-out/tmp/javac_args.tmp.700437' 2>'/home/dowon/patch-identifier/analyzer/infer/models/infer-out/tmp/javac.tmp.f9b564.out'
+[3730107][      debug] *** Success. Logs:
+[3730107][      debug] Translating 122 source files (141 classes)
+[3730107][      debug] done capturing all files
+[3730107][      debug] GC stats for capture:
+[3730107][      debug]   minor_words: 2.1603e+07
+[3730107][      debug]   promoted_words: 2.59574e+06
+[3730107][      debug]   major_words: 3.05904e+06
+[3730107][      debug]   minor_collections: 31
+[3730107][      debug]   major_collections: 5
+[3730107][      debug]   compactions: 0
+[3730107][      debug]   top_heap_words: 3082752
+[3730107][      debug]   
+[3730107][      debug] GC stats for main_process_full:
+[3730107][      debug]   minor_words: 2.34679e+07
+[3730107][      debug]   promoted_words: 2.75849e+06
+[3730107][      debug]   major_words: 3.24322e+06
+[3730107][      debug]   minor_collections: 36
+[3730107][      debug]   major_collections: 7
+[3730107][      debug]   compactions: 1
+[3730107][      debug]   top_heap_words: 3082752
+[3730107][      debug]   
+
+[3730394][      phase] ============================================================
+[3730394][      phase] = New infer execution begins
+[3730394][      phase] ============================================================
+[3730394][environment] CWD = /home/dowon/patch-identifier/analyzer/infer/models
+[3730394][environment] Read configuration in /home/dowon/patch-identifier/analyzer/infer/models/.inferconfig
+[3730394][environment] Project root = /home/dowon/patch-identifier/analyzer/infer/models
+[3730394][environment] INFER_ARGS =   @/tmp/args.tmp.e45d6c
+[3730394][environment] command line arguments:   /home/dowon/patch-identifier/analyzer/infer/bin/infer
+[3730394][environment]                           analyze --jobs 1 --biabduction-only --results-dir
+[3730394][environment]                           infer-out --biabduction-models-mode
+[3730394][environment] Available memory at startup: 244327 MB
+[3730394][environment] Active checkers: biabduction (C/C++/ObjC, Java, C#/.Net)
+[3730394][environment] Scheduler: file
+[3730394][environment] Cores used: 1
+[3730394][environment] Infer version v1.1.0-unknown
+[3730394][environment] Copyright 2009 - present Facebook. All Rights Reserved.
+[3730394][environment] 
+[3730394][      debug] GC stats for capture:
+[3730394][      debug]   minor_words: 63
+[3730394][      debug]   promoted_words: 0
+[3730394][      debug]   major_words: 0
+[3730394][      debug]   minor_collections: 0
+[3730394][      debug]   major_collections: 0
+[3730394][      debug]   compactions: 0
+[3730394][      debug]   top_heap_words: 249856
+[3730394][      debug]   
+[3730394][   progress] Found 123 source files to analyze in /home/dowon/patch-identifier/analyzer/infer/models/infer-out
+[3730394][   progress] java/builtins/com/facebook/infer/builtins/InferBuiltins.java starting
+[3730394][   progress] java/builtins/com/facebook/infer/builtins/InferBuiltins.java DONE
+[3730394][   progress] java/builtins/com/facebook/infer/builtins/InferCloseables.java starting
+[3730394][   progress] java/builtins/com/facebook/infer/builtins/InferCloseables.java DONE
+[3730394][   progress] java/builtins/com/facebook/infer/builtins/InferTaint.java starting
+[3730394][   progress] java/builtins/com/facebook/infer/builtins/InferTaint.java DONE
+[3730394][   progress] java/builtins/com/facebook/infer/builtins/InferUndefined.java starting
+[3730394][   progress] java/builtins/com/facebook/infer/builtins/InferUndefined.java DONE
+[3730394][   progress] java/builtins/com/facebook/infer/builtins/InferUtils.java starting
+[3730394][   progress] java/builtins/com/facebook/infer/builtins/InferUtils.java DONE
+[3730394][   progress] java/src/android/app/Activity.java starting
+[3730394][   progress] java/src/android/app/Activity.java DONE
+[3730394][   progress] java/src/android/app/AlarmManager.java starting
+[3730394][   progress] java/src/android/app/AlarmManager.java DONE
+[3730394][   progress] java/src/android/app/DownloadManager.java starting
+[3730394][   progress] java/src/android/app/DownloadManager.java DONE
+[3730394][   progress] java/src/android/content/ContentProviderClient.java starting
+[3730394][   progress] java/src/android/content/ContentProviderClient.java DONE
+[3730394][   progress] java/src/android/content/ContentResolver.java starting
+[3730394][   progress] java/src/android/content/ContentResolver.java DONE
+[3730394][   progress] java/src/android/content/Context.java starting
+[3730394][   progress] java/src/android/content/Context.java DONE
+[3730394][   progress] java/src/android/content/IContentProvider.java starting
+[3730394][   progress] java/src/android/content/IContentProvider.java DONE
+[3730394][   progress] java/src/android/content/IContentService.java starting
+[3730394][   progress] java/src/android/content/IContentService.java DONE
+[3730394][   progress] java/src/android/content/res/Resources.java starting
+[3730394][   progress] java/src/android/content/res/Resources.java DONE
+[3730394][   progress] java/src/android/content/res/TypedArray.java starting
+[3730394][   progress] java/src/android/content/res/TypedArray.java DONE
+[3730394][   progress] java/src/android/database/AbstractCursor.java starting
+[3730394][   progress] java/src/android/database/AbstractCursor.java DONE
+[3730394][   progress] java/src/android/database/CrossProcessCursor.java starting
+[3730394][   progress] java/src/android/database/CrossProcessCursor.java DONE
+[3730394][   progress] java/src/android/database/CrossProcessCursorWrapper.java starting
+[3730394][   progress] java/src/android/database/CrossProcessCursorWrapper.java DONE
+[3730394][   progress] java/src/android/database/Cursor.java starting
+[3730394][   progress] java/src/android/database/Cursor.java DONE
+[3730394][   progress] java/src/android/database/CursorWrapper.java starting
+[3730394][   progress] java/src/android/database/CursorWrapper.java DONE
+[3730394][   progress] java/src/android/database/sqlite/SQLiteConnectionPool.java starting
+[3730394][   progress] java/src/android/database/sqlite/SQLiteConnectionPool.java DONE
+[3730394][   progress] java/src/android/database/sqlite/SQLiteCursor.java starting
+[3730394][   progress] java/src/android/database/sqlite/SQLiteCursor.java DONE
+[3730394][   progress] java/src/android/database/sqlite/SQLiteDatabase.java starting
+[3730394][   progress] java/src/android/database/sqlite/SQLiteDatabase.java DONE
+[3730394][   progress] java/src/android/database/sqlite/SQLiteDatabaseConfiguration.java starting
+[3730394][   progress] java/src/android/database/sqlite/SQLiteDatabaseConfiguration.java DONE
+[3730394][   progress] java/src/android/database/sqlite/SQLiteQueryBuilder.java starting
+[3730394][   progress] java/src/android/database/sqlite/SQLiteQueryBuilder.java DONE
+[3730394][   progress] java/src/android/provider/MediaStore.java starting
+[3730394][   progress] java/src/android/provider/MediaStore.java DONE
+[3730394][   progress] java/src/android/text/TextUtils.java starting
+[3730394][   progress] java/src/android/text/TextUtils.java DONE
+[3730394][   progress] java/src/android/view/View.java starting
+[3730394][   progress] java/src/android/view/View.java DONE
+[3730394][   progress] java/src/com/facebook/infer/annotation/Assertions.java starting
+[3730394][   progress] java/src/com/facebook/infer/annotation/Assertions.java DONE
+[3730394][   progress] java/src/com/fasterxml/jackson/core/JsonFactory.java starting
+[3730394][   progress] java/src/com/fasterxml/jackson/core/JsonFactory.java DONE
+[3730394][   progress] java/src/com/fasterxml/jackson/core/JsonParser.java starting
+[3730394][   progress] java/src/com/fasterxml/jackson/core/JsonParser.java DONE
+[3730394][   progress] java/src/com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java starting
+[3730394][   progress] java/src/com/fasterxml/jackson/core/json/UTF8StreamJsonParser.java DONE
+[3730394][   progress] java/src/com/google/common/base/Optional.java starting
+[3730394][   progress] java/src/com/google/common/base/Optional.java DONE
+[3730394][   progress] java/src/com/google/common/base/Preconditions.java starting
+[3730394][   progress] java/src/com/google/common/base/Preconditions.java DONE
+[3730394][   progress] java/src/com/google/common/collect/ImmutableList.java starting
+[3730394][   progress] java/src/com/google/common/collect/ImmutableList.java DONE
+[3730394][   progress] java/src/com/google/common/collect/Iterators.java starting
+[3730394][   progress] java/src/com/google/common/collect/Iterators.java DONE
+[3730394][   progress] java/src/com/google/common/io/Closeables.java starting
+[3730394][   progress] java/src/com/google/common/io/Closeables.java DONE
+[3730394][   progress] java/src/dalvik/system/CloseGuard.java starting
+[3730394][   progress] java/src/dalvik/system/CloseGuard.java DONE
+[3730394][   progress] java/src/java/io/BufferedInputStream.java starting
+[3730394][   progress] java/src/java/io/BufferedInputStream.java DONE
+[3730394][   progress] java/src/java/io/BufferedOutputStream.java starting
+[3730394][   progress] java/src/java/io/BufferedOutputStream.java DONE
+[3730394][   progress] java/src/java/io/BufferedReader.java starting
+[3730394][   progress] java/src/java/io/BufferedReader.java DONE
+[3730394][   progress] java/src/java/io/BufferedWriter.java starting
+[3730394][   progress] java/src/java/io/BufferedWriter.java DONE
+[3730394][   progress] java/src/java/io/DataInputStream.java starting
+[3730394][   progress] java/src/java/io/DataInputStream.java DONE
+[3730394][   progress] java/src/java/io/DataOutputStream.java starting
+[3730394][   progress] java/src/java/io/DataOutputStream.java DONE
+[3730394][   progress] java/src/java/io/File.java starting
+[3730394][   progress] java/src/java/io/File.java DONE
+[3730394][   progress] java/src/java/io/FileInputStream.java starting
+[3730394][   progress] java/src/java/io/FileInputStream.java DONE
+[3730394][   progress] java/src/java/io/FileOutputStream.java starting
+[3730394][   progress] java/src/java/io/FileOutputStream.java DONE
+[3730394][   progress] java/src/java/io/FilterInputStream.java starting
+[3730394][   progress] java/src/java/io/FilterInputStream.java DONE
+[3730394][   progress] java/src/java/io/FilterOutputStream.java starting
+[3730394][   progress] java/src/java/io/FilterOutputStream.java DONE
+[3730394][   progress] java/src/java/io/FilterReader.java starting
+[3730394][   progress] java/src/java/io/FilterReader.java DONE
+[3730394][   progress] java/src/java/io/InputStream.java starting
+[3730394][   progress] java/src/java/io/InputStream.java DONE
+[3730394][   progress] java/src/java/io/InputStreamReader.java starting
+[3730394][   progress] java/src/java/io/InputStreamReader.java DONE
+[3730394][   progress] java/src/java/io/ObjectInputStream.java starting
+[3730394][   progress] java/src/java/io/ObjectInputStream.java DONE
+[3730394][   progress] java/src/java/io/ObjectOutputStream.java starting
+[3730394][   progress] java/src/java/io/ObjectOutputStream.java DONE
+[3730394][   progress] java/src/java/io/OutputStream.java starting
+[3730394][   progress] java/src/java/io/OutputStream.java DONE
+[3730394][   progress] java/src/java/io/OutputStreamWriter.java starting
+[3730394][   progress] java/src/java/io/OutputStreamWriter.java DONE
+[3730394][   progress] java/src/java/io/PipedInputStream.java starting
+[3730394][   progress] java/src/java/io/PipedInputStream.java DONE
+[3730394][   progress] java/src/java/io/PipedOutputStream.java starting
+[3730394][   progress] java/src/java/io/PipedOutputStream.java DONE
+[3730394][   progress] java/src/java/io/PipedReader.java starting
+[3730394][   progress] java/src/java/io/PipedReader.java DONE
+[3730394][   progress] java/src/java/io/PipedWriter.java starting
+[3730394][   progress] java/src/java/io/PipedWriter.java DONE
+[3730394][   progress] java/src/java/io/PrintWriter.java starting
+[3730394][   progress] java/src/java/io/PrintWriter.java DONE
+[3730394][   progress] java/src/java/io/PushbackInputStream.java starting
+[3730394][   progress] java/src/java/io/PushbackInputStream.java DONE
+[3730394][   progress] java/src/java/io/PushbackReader.java starting
+[3730394][   progress] java/src/java/io/PushbackReader.java DONE
+[3730394][   progress] java/src/java/io/RandomAccessFile.java starting
+[3730394][   progress] java/src/java/io/RandomAccessFile.java DONE
+[3730394][   progress] java/src/java/io/Reader.java starting
+[3730394][   progress] java/src/java/io/Reader.java DONE
+[3730394][   progress] java/src/java/io/Writer.java starting
+[3730394][   progress] java/src/java/io/Writer.java DONE
+[3730394][   progress] java/src/java/lang/Class.java starting
+[3730394][   progress] java/src/java/lang/Class.java DONE
+[3730394][   progress] java/src/java/lang/Double.java starting
+[3730394][   progress] java/src/java/lang/Double.java DONE
+[3730394][   progress] java/src/java/lang/Integer.java starting
+[3730394][   progress] java/src/java/lang/Integer.java DONE
+[3730394][   progress] java/src/java/lang/NullPointerException.java starting
+[3730394][   progress] java/src/java/lang/NullPointerException.java DONE
+[3730394][   progress] java/src/java/lang/Object.java starting
+[3730394][   progress] java/src/java/lang/Object.java DONE
+[3730394][   progress] java/src/java/lang/Process.java starting
+[3730394][   progress] java/src/java/lang/Process.java DONE
+[3730394][   progress] java/src/java/lang/ProcessManager.java starting
+[3730394][   progress] java/src/java/lang/ProcessManager.java DONE
+[3730394][   progress] java/src/java/lang/Runtime.java starting
+[3730394][   progress] java/src/java/lang/Runtime.java DONE
+[3730394][   progress] java/src/java/lang/String.java starting
+[3730394][   progress] java/src/java/lang/String.java DONE
+[3730394][   progress] java/src/java/lang/System.java starting
+[3730394][   progress] java/src/java/lang/System.java DONE
+[3730394][   progress] java/src/java/lang/Thread.java starting
+[3730394][   progress] java/src/java/lang/Thread.java DONE
+[3730394][   progress] java/src/java/lang/reflect/Array.java starting
+[3730394][   progress] java/src/java/lang/reflect/Array.java DONE
+[3730394][   progress] java/src/java/net/HttpURLConnection.java starting
+[3730394][   progress] java/src/java/net/HttpURLConnection.java DONE
+[3730394][   progress] java/src/java/net/JarURLConnection.java starting
+[3730394][   progress] java/src/java/net/JarURLConnection.java DONE
+[3730394][   progress] java/src/java/net/PlainSocketImpl.java starting
+[3730394][   progress] java/src/java/net/PlainSocketImpl.java DONE
+[3730394][   progress] java/src/java/net/ServerSocket.java starting
+[3730394][   progress] java/src/java/net/ServerSocket.java DONE
+[3730394][   progress] java/src/java/net/Socket.java starting
+[3730394][   progress] java/src/java/net/Socket.java DONE
+[3730394][   progress] java/src/java/net/URL.java starting
+[3730394][   progress] java/src/java/net/URL.java DONE
+[3730394][   progress] java/src/java/net/URLConnection.java starting
+[3730394][   progress] java/src/java/net/URLConnection.java DONE
+[3730394][   progress] java/src/java/nio/FileChannelImpl.java starting
+[3730394][   progress] java/src/java/nio/FileChannelImpl.java DONE
+[3730394][   progress] java/src/java/nio/channels/FileChannel.java starting
+[3730394][   progress] java/src/java/nio/channels/FileChannel.java DONE
+[3730394][   progress] java/src/java/nio/channels/spi/AbstractInterruptibleChannel.java starting
+[3730394][   progress] java/src/java/nio/channels/spi/AbstractInterruptibleChannel.java DONE
+[3730394][   progress] java/src/java/security/DigestInputStream.java starting
+[3730394][   progress] java/src/java/security/DigestInputStream.java DONE
+[3730394][   progress] java/src/java/security/DigestOutputStream.java starting
+[3730394][   progress] java/src/java/security/DigestOutputStream.java DONE
+[3730394][   progress] java/src/java/util/AbstractList.java starting
+[3730394][   progress] java/src/java/util/AbstractList.java DONE
+[3730394][   progress] java/src/java/util/ArrayList.java starting
+[3730394][   progress] java/src/java/util/ArrayList.java DONE
+[3730394][   progress] java/src/java/util/HashMap.java starting
+[3730394][   progress] java/src/java/util/HashMap.java DONE
+[3730394][   progress] java/src/java/util/LinkedList.java starting
+[3730394][   progress] java/src/java/util/LinkedList.java DONE
+[3730394][   progress] java/src/java/util/List.java starting
+[3730394][   progress] java/src/java/util/List.java DONE
+[3730394][   progress] java/src/java/util/Properties.java starting
+[3730394][   progress] java/src/java/util/Properties.java DONE
+[3730394][   progress] java/src/java/util/Scanner.java starting
+[3730394][   progress] java/src/java/util/Scanner.java DONE
+[3730394][   progress] java/src/java/util/Vector.java starting
+[3730394][   progress] java/src/java/util/Vector.java DONE
+[3730394][   progress] java/src/java/util/concurrent/Lock.java starting
+[3730394][   progress] java/src/java/util/concurrent/Lock.java DONE
+[3730394][   progress] java/src/java/util/concurrent/ReentrantLock.java starting
+[3730394][   progress] java/src/java/util/concurrent/ReentrantLock.java DONE
+[3730394][   progress] java/src/java/util/jar/JarFile.java starting
+[3730394][   progress] java/src/java/util/jar/JarFile.java DONE
+[3730394][   progress] java/src/java/util/jar/JarInputStream.java starting
+[3730394][   progress] java/src/java/util/jar/JarInputStream.java DONE
+[3730394][   progress] java/src/java/util/jar/JarOutputStream.java starting
+[3730394][   progress] java/src/java/util/jar/JarOutputStream.java DONE
+[3730394][   progress] java/src/java/util/zip/CheckedInputStream.java starting
+[3730394][   progress] java/src/java/util/zip/CheckedInputStream.java DONE
+[3730394][   progress] java/src/java/util/zip/CheckedOutputStream.java starting
+[3730394][   progress] java/src/java/util/zip/CheckedOutputStream.java DONE
+[3730394][   progress] java/src/java/util/zip/Deflater.java starting
+[3730394][   progress] java/src/java/util/zip/Deflater.java DONE
+[3730394][   progress] java/src/java/util/zip/DeflaterInputStream.java starting
+[3730394][   progress] java/src/java/util/zip/DeflaterInputStream.java DONE
+[3730394][   progress] java/src/java/util/zip/DeflaterOutputStream.java starting
+[3730394][   progress] java/src/java/util/zip/DeflaterOutputStream.java DONE
+[3730394][   progress] java/src/java/util/zip/GZIPInputStream.java starting
+[3730394][   progress] java/src/java/util/zip/GZIPInputStream.java DONE
+[3730394][   progress] java/src/java/util/zip/GZIPOutputStream.java starting
+[3730394][   progress] java/src/java/util/zip/GZIPOutputStream.java DONE
+[3730394][   progress] java/src/java/util/zip/Inflater.java starting
+[3730394][   progress] java/src/java/util/zip/Inflater.java DONE
+[3730394][   progress] java/src/java/util/zip/InflaterInputStream.java starting
+[3730394][   progress] java/src/java/util/zip/InflaterInputStream.java DONE
+[3730394][   progress] java/src/java/util/zip/InflaterOutputStream.java starting
+[3730394][   progress] java/src/java/util/zip/InflaterOutputStream.java DONE
+[3730394][   progress] java/src/java/util/zip/ZipFile.java starting
+[3730394][   progress] java/src/java/util/zip/ZipFile.java DONE
+[3730394][   progress] java/src/java/util/zip/ZipInputStream.java starting
+[3730394][   progress] java/src/java/util/zip/ZipInputStream.java DONE
+[3730394][   progress] java/src/java/util/zip/ZipOutputStream.java starting
+[3730394][   progress] java/src/java/util/zip/ZipOutputStream.java DONE
+[3730394][   progress] java/src/javax/crypto/CipherInputStream.java starting
+[3730394][   progress] java/src/javax/crypto/CipherInputStream.java DONE
+[3730394][   progress] java/src/javax/crypto/CipherOutputStream.java starting
+[3730394][   progress] java/src/javax/crypto/CipherOutputStream.java DONE
+[3730394][   progress] java/src/javax/net/ssl/HttpsURLConnection.java starting
+[3730394][   progress] java/src/javax/net/ssl/HttpsURLConnection.java DONE
+[3730394][   progress] java/src/javax/net/ssl/SSLSocketFactory.java starting
+[3730394][   progress] java/src/javax/net/ssl/SSLSocketFactory.java DONE
+[3730394][   progress] java/src/junit/framework/Assert.java starting
+[3730394][   progress] java/src/junit/framework/Assert.java DONE
+[3730394][   progress] java/src/org/apache/commons/lang3/StringUtils.java starting
+[3730394][   progress] java/src/org/apache/commons/lang3/StringUtils.java DONE
+[3730394][   progress] java/src/org/assertj/core/util/Preconditions.java starting
+[3730394][   progress] java/src/org/assertj/core/util/Preconditions.java DONE
+[3730394][      debug] Backend stats:
+[3730394][      debug]   summary_file_try_load= 2757
+[3730394][      debug]   summary_read_from_disk= 293
+[3730394][      debug]   summary_cache_hits= 2415 (46%)
+[3730394][      debug]   summary_cache_misses= 2757
+[3730394][      debug]   ondemand_procs_analyzed= 798
+[3730394][      debug]   ondemand_local_cache_hits= 2062 (70%)
+[3730394][      debug]   ondemand_local_cache_misses= 846
+[3730394][      debug]   proc_locker_lock_time_user= 0.00000000
+[3730394][      debug]   proc_locker_lock_time_sys= 0.00000000
+[3730394][      debug]   proc_locker_lock_time_wall= 0.00000000
+[3730394][      debug]   proc_locker_unlock_time_user= 0.00000000
+[3730394][      debug]   proc_locker_unlock_time_sys= 0.00000000
+[3730394][      debug]   proc_locker_unlock_time_wall= 0.00000000
+[3730394][      debug]   restart_scheduler_useful_time_user= 0.00000000
+[3730394][      debug]   restart_scheduler_useful_time_sys= 0.00000000
+[3730394][      debug]   restart_scheduler_useful_time_wall= 0.00000000
+[3730394][      debug]   restart_scheduler_total_time_user= 0.00000000
+[3730394][      debug]   restart_scheduler_total_time_sys= 0.00000000
+[3730394][      debug]   restart_scheduler_total_time_wall= 0.00000000
+[3730394][      debug]   
+[3730394][      debug] GC stats for backend_stats.:
+[3730394][      debug]   minor_words: 9.79645e+08
+[3730394][      debug]   promoted_words: 3.41586e+06
+[3730394][      debug]   major_words: 5.66602e+06
+[3730394][      debug]   minor_collections: 940
+[3730394][      debug]   major_collections: 11
+[3730394][      debug]   compactions: 0
+[3730394][      debug]   top_heap_words: 2138624
+[3730394][      debug]   
+[3730394][      debug] Analysis phase finished in 2.257s
+[3730394][      debug] backend_stats.scheduler_process_analysis_time_user= 2.18975400
+[3730394][      debug] backend_stats.scheduler_process_analysis_time_sys= 0.06770100
+[3730394][      debug] backend_stats.scheduler_process_analysis_time_wall= 2.25749520
+[3730394][      debug] GC stats for analysis_scheduler:
+[3730394][      debug]   minor_words: 9.79655e+08
+[3730394][      debug]   promoted_words: 3.41586e+06
+[3730394][      debug]   major_words: 5.66654e+06
+[3730394][      debug]   minor_collections: 940
+[3730394][      debug]   major_collections: 11
+[3730394][      debug]   compactions: 0
+[3730394][      debug]   top_heap_words: 2138624
+[3730394][      debug]   
+[3730394][      debug] GC stats for report:
+[3730394][      debug]   minor_words: 149983
+[3730394][      debug]   promoted_words: 0
+[3730394][      debug]   major_words: 2729
+[3730394][      debug]   minor_collections: 0
+[3730394][      debug]   major_collections: 0
+[3730394][      debug]   compactions: 0
+[3730394][      debug]   top_heap_words: 2138624
+[3730394][      debug]   
+[3730394][      debug] GC stats for main_process_full:
+[3730394][      debug]   minor_words: 9.81654e+08
+[3730394][      debug]   promoted_words: 3.5867e+06
+[3730394][      debug]   major_words: 5.86205e+06
+[3730394][      debug]   minor_collections: 945
+[3730394][      debug]   major_collections: 13
+[3730394][      debug]   compactions: 1
+[3730394][      debug]   top_heap_words: 2138624
+[3730394][      debug]   

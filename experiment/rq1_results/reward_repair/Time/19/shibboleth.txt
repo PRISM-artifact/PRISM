@@ -1,0 +1,5 @@
+(-0.0, -0.0, -1.0): Time-19-1a8dc0eb (correct)
+(-0.0, -0.0, -1.0): Time-19-e775733c (incorrect)
+(-0.0, -0.0, -1.0): Time-19-be16ecf9 (incorrect)
+(-0.0, -0.0, -1.0): Time-19-614f8dad (correct)
+(-0.0, -0.0, -1.0): Time-19-bf3a3e85 (correct)

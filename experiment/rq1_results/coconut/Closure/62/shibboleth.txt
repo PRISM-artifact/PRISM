@@ -1,0 +1,2 @@
+(-0.0, -0.0, -1.0): Closure-62-4e1196ad (incorrect)
+(-0.0, -0.0, -1.0): Closure-62-0a1defe3 (incorrect)

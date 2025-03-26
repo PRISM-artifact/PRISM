@@ -1,0 +1,20 @@
+--- Chart19b/source/org/jfree/chart/plot/CategoryPlot.java
++++ Chart19f/source/org/jfree/chart/plot/CategoryPlot.java
+@@ -695,7 +695,7 @@
+      * @since 1.0.3
+      */
+     public int getDomainAxisIndex(CategoryAxis axis) {
+-        return this.domainAxes.indexOf(axis);
++if (axis == null){throw new IllegalArgumentException();}        return this.domainAxes.indexOf(axis);
+     }
+     
+     /**
+@@ -978,7 +978,7 @@
+                 result = p.getRangeAxisIndex(axis);
+             }
+         }
+-        return result;
++if (axis == null){throw new IllegalArgumentException();}        return result;
+     }
+     
+     /**

@@ -1,0 +1,12 @@
+--- Lang9b/src/main/java/org/apache/commons/lang3/time/FastDateParser.java	2021-10-26 16:20:18.289721806 +0900
++++ Lang9f/src/main/java/org/apache/commons/lang3/time/FastDateParser.java	2021-10-26 16:20:21.669758019 +0900
+@@ -141,6 +141,9 @@
+             currentFormatField= nextFormatField;
+             currentStrategy= nextStrategy;
+         }
++        if (patternMatcher.regionStart() != patternMatcher.regionEnd()) {
++            throw new IllegalArgumentException("Failed to parse \""+pattern+"\" ; gave up at index "+patternMatcher.regionStart());
++        }
+         if(currentStrategy.addRegex(this, regex)) {
+             collector.add(currentStrategy);
+         }

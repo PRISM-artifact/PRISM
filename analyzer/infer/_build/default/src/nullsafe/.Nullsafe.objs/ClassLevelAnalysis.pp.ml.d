@@ -1,0 +1,1 @@
+src/nullsafe/ClassLevelAnalysis.pp.ml: AggregatedSummaries AnnotationGraph Config Errlog Format IOption IStd IssueType JavaClassName Jsonbug_t List Location Logging NullsafeMode NullsafeSummary Option Procname ProvisionalViolation Reporting Struct Tenv Trust Typ TypeErr

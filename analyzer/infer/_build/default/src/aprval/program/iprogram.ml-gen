@@ -1,0 +1,38 @@
+(** @canonical Iprogram.ASTExp *)
+module ASTExp = Iprogram__ASTExp
+
+(** @canonical Iprogram.AccessCond *)
+module AccessCond = Iprogram__AccessCond
+
+(** @canonical Iprogram.AccessExpr *)
+module AccessExpr = Iprogram__AccessExpr
+
+(** @canonical Iprogram.DynInfo *)
+module DynInfo = Iprogram__DynInfo
+
+(** @canonical Iprogram.InstrNode *)
+module InstrNode = Iprogram__InstrNode
+
+(** @canonical Iprogram.InterNode *)
+module InterNode = Iprogram__InterNode
+
+(** @canonical Iprogram.Patch *)
+module Patch = Iprogram__Patch
+
+(** @canonical Iprogram.Preproc *)
+module Preproc = Iprogram__Preproc
+
+(** @canonical Iprogram.ProcVar *)
+module ProcVar = Iprogram__ProcVar
+
+(** @canonical Iprogram.Profiler *)
+module Profiler = Iprogram__Profiler
+
+(** @canonical Iprogram.Program *)
+module Program = Iprogram__Program
+
+(** @canonical Iprogram.Vocab *)
+module Vocab = Iprogram__Vocab
+
+(** @canonical Iprogram.WeakMap *)
+module WeakMap = Iprogram__WeakMap
