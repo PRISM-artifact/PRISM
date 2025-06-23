@@ -1,5 +1,0 @@
-(** @canonical Dotnet.ResourceLeakCSDomain *)
-module ResourceLeakCSDomain = Dotnet__ResourceLeakCSDomain
-
-(** @canonical Dotnet.ResourceLeaksCS *)
-module ResourceLeaksCS = Dotnet__ResourceLeaksCS

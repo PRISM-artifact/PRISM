@@ -1,5 +1,0 @@
-(** @canonical APRVAL.Extractor *)
-module Extractor = APRVAL__Extractor
-
-(** @canonical APRVAL.PatchValidator *)
-module PatchValidator = APRVAL__PatchValidator

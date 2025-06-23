@@ -1,1 +1,0 @@
-src/test_determinator/JavaProfilerSamples.pp.ml: Atdgen_runtime IStd JProcname Java_profiler_samples_j Java_profiler_samples_t List Procname

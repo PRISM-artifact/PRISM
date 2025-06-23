@@ -1,1 +1,0 @@
-src/nullsafe/AssignmentRule.pp.mli: AnnotatedNullability AnnotatedSignature Fieldname IStd InferredNullability Location NullsafeIssue NullsafeMode Procname ProvisionalAnnotation

@@ -1,6 +1,0 @@
-
-(library
- (name OpenSource)
- (public_name infer.OpenSource)
-  (modules :standard)
-)

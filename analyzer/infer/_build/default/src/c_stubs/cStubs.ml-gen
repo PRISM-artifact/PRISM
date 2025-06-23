@@ -1,2 +1,0 @@
-(** @canonical CStubs.Fnv64Hash *)
-module Fnv64Hash = CStubs__Fnv64Hash
