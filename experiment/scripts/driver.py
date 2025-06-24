@@ -36,19 +36,24 @@ def process_job(args):
       is_compile, log = patch.bug.compile()
       results[hash_key].update({"is_compile": is_compile, "log": log})
       break
-    elif job == "gen_test":
-      bug.setup_randoop_test()
-      break
     elif job == "test":
       is_compile, is_pass, log = patch.run_test(rerun)      
       results[hash_key].update({"is_compile": is_compile, "is_pass": is_pass, "log": log})
-    elif job == "label":
-      correctness = patch.check_correctness(rerun)
-      results[hash_key]["correctness"] = correctness
     elif job == "patchsim":
       target = PatchSim(patch)
       label, execution_time, err_log = target.run(rerun)
       results[hash_key].update({"patchsim_result": label, "patchsim_time": execution_time, "err_log": err_log})
+    elif job == "ods-extract":
+      features = FeatureExtractor(patch).run(rerun)
+      results[hash_key]["syn_features"] = features
+    elif job == "shibboleth-extract":
+      try:
+        target = Shibboleth(patch)
+        target.setup_input_files()
+        result = target.extract_score(rerun)
+      except Exception as e:
+        result = {}
+      results[hash_key]["result"] = result
     elif job == "prism-capture":
       if org_flag:
         org = Patch(bug, patch_path, is_org=True)
@@ -67,12 +72,6 @@ def process_job(args):
       target = PrismTarget(patch)
       tracer_result = target.run_tracer(rerun)
       results[hash_key].update({"tracer result": tracer_result})
-    elif job == "prism-pre":
-      org = Patch(bug, patch_path, is_org=True)
-      target = PrismTarget(patch)
-      ret_org = PrismTarget(org).pre_analyze()
-      ret_patch = target.pre_analyze()
-      results[hash_key].update({"pre-analysis result": ret_org and ret_patch})
     elif job == "prism-run":
       try:
         org = Patch(bug, patch_path, is_org=True)
@@ -83,21 +82,6 @@ def process_job(args):
       except Exception as e:
         err_trace = traceback.format_exc() 
         results[hash_key].update({"features": dict(), "analysis_time": 0.0, "err_logs": err_trace})
-    elif job == "rename":
-      patch.renaming()
-    elif job == "ods-extract":
-      features = FeatureExtractor(patch).run(rerun)
-      results[hash_key]["syn_features"] = features
-    elif job == "shibboleth-extract":
-      try:
-        target = Shibboleth(patch)
-        target.setup_input_files()
-        result = target.extract_score(rerun)
-      except Exception as e:
-        result = {}
-      results[hash_key]["result"] = result
-    else:
-      continue
 
   # Logging
   logs = []

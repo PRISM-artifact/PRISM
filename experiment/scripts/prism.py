@@ -228,7 +228,9 @@ def run_prism(p_org:PrismTarget, p_patch:PrismTarget, rerun=False, debug=False):
   # Pre analysis
   ret_pre_org = p_org.pre_analyze()
   ret_pre_patch = p_patch.pre_analyze()
-  
+  # Move additional infos to root dir
+  shutil.copy(p_patch.infer_out_dir / "patch_mthds.results", p_patch.patch.hash_dir / "patch_mthds.results")
+
   # Analysis org program and obtain required info
   ret_main_org = p_org.main_analyze(debug)
   # Copy analysis result for incremental analysis

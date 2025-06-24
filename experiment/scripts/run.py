@@ -15,7 +15,6 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   parser.add_argument("--patch", type=Path, help="patch file path")
   parser.add_argument("--rerun", action=argparse.BooleanOptionalAction, default=False)
-  parser.add_argument("--is_org", action=argparse.BooleanOptionalAction, default=False)
   parser.add_argument("--mode", choices=MODES.keys())
   args = parser.parse_args()
   
@@ -28,8 +27,7 @@ if __name__ == '__main__':
     parser.error(f"Error: The patch file '{args.patch}' does not exist")
 
   bug = Bug(project, bugid)
-  print(bug)
-  patch = Patch(bug, args.patch, is_org=args.is_org)
+  patch = Patch(bug, args.patch)
   print(patch)
   rerun=args.rerun
 
@@ -51,38 +49,20 @@ if __name__ == '__main__':
     ret = target.extract_score(rerun)
     print(ret)
   elif args.mode == "prism-capture":
-    ret = PrismTarget(patch).capture(rerun)
-    print(ret)
-  elif args.mode == "prism-trace":
-    ret = PrismTarget(patch).run_tracer(rerun)
-    print(ret)
-  elif args.mode == "prism-pre":
     org = Patch(bug, args.patch, is_org=True)
-    ret1 = PrismTarget(org).pre_analyze()
-    ret2 = PrismTarget(patch).pre_analyze()
-    print(ret1, ret2)
+    ret_org = PrismTarget(org).capture(rerun)
+    ret = PrismTarget(patch).capture(rerun)
+    print("Capture Org: ", ret_org)
+    print("Capture Patch: ", ret)
+  elif args.mode == "prism-trace":
+    org = Patch(bug, args.patch, is_org=True)
+    ret_org = PrismTarget(org).run_tracer(rerun)
+    ret = PrismTarget(patch).run_tracer(rerun)
+    print("Trace Org: ", ret_org)
+    print("Trace Patch: ", ret)
   elif args.mode == "prism-run":
     org = Patch(bug, args.patch, is_org=True)
     p_org = PrismTarget(org)
     p_patch = PrismTarget(patch)
     ret = run_prism(p_org, p_patch, rerun)
     print(ret)
-  else:
-    # Fix erroneous bench
-    ret_patchsim = PatchSim(patch).run(rerun)
-    print("PatchSim :", ret_patchsim)
-    ret_ods = FeatureExtractor(patch).run(rerun)
-    print("ODS :", ret_ods)
-    ret_capture = PrismTarget(patch).capture(rerun)
-    print("Capture :", ret_capture)
-    ret_trace = PrismTarget(patch).run_tracer(rerun)
-    print("Tracer :", ret_trace)
-    org = Patch(bug, args.patch, is_org=True)
-    p_org = PrismTarget(org)
-    p_patch = PrismTarget(patch)
-    ret_prism = run_prism(p_org, p_patch, rerun)
-    print("PRISM :", ret_prism)
-    target = Shibboleth(patch)
-    target.setup_input_files()
-    ret_shb = target.extract_score()
-    print("Shibboleth :", ret_shb)
