@@ -69,7 +69,7 @@ class Shibboleth():
     
     # gen input-file.csv
     mthd_infos = []
-    with open(self.patch.hash_dir / "prism/infer-out/patch_mthds.results", "r") as f:
+    with open(self.patch.hash_dir / "patch_mthds.results", "r") as f:
       for input_text in f.readlines():
         input_text = input_text.strip()
         if not input_text:
@@ -140,7 +140,6 @@ class Shibboleth():
     cmd = (
       f"java -cp {SHIBBOLETH_JAR} {SHIBBOLETH_EXTRACTOR} -b {build_opt} -u {test_opt} -l {cp_opt}"
     )
-    print(cmd)
     ret = subprocess.run(cmd, shell=True, capture_output=True, text=True, cwd=self.bug.project_dir)
     out_file = self.bug.project_dir / "score.csv"
     if out_file.is_file():

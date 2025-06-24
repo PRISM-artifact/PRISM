@@ -291,6 +291,7 @@ def process_job(args):
 
   print(f"{SUCCESS} end process {bug_key} with {len(patch_list)} patches!")
   return results
+
 if __name__ == '__main__':    
   parser = argparse.ArgumentParser()
   parser.add_argument("--patch", type=Path, help="patch file path")

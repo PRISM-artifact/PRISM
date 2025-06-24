@@ -43,11 +43,11 @@ class FeatureExtractor:
   def run_coming(self):
     if not self.raw_feature_file.is_file():
       cmd = (
-        f"java -classpath {COMING_JAR} {COMING_CORE_CLASS} -input files -mode features "
+        f"{JAVA17} -classpath {COMING_JAR} {COMING_CORE_CLASS} -input files -mode features "
         f"-location {self.source_dir} -output {self.result_dir}"
       )
       print(cmd)
-      subprocess.run(cmd, shell=True, cwd=COMING_HOME)
+      subprocess.run(cmd, shell=True, cwd=TOOLS_HOME)
 
   def extract_features(self): 
     result = {}
