@@ -21,10 +21,10 @@ class Bug:
     self.project = project
     self.bug_id = bug_id
     self.project_dir = D4J_BUGS_DIR / f"{project}{bug_id}b"
-    # self.checkout()
-    # self.load_build_info()
-    # self.set_project_config(set_ant)
-    # self.setup_class_paths()
+    self.checkout()
+    self.load_build_info()
+    self.set_project_config(set_ant)
+    self.setup_class_paths()
     # Randoop test path: invoked only when it requried
     randoop_dir = RANDOOP_TEST_DIR / self.project / "randoop" / str(self.bug_id)
     randoop_path = randoop_dir / f"{self.project}-{self.bug_id}b-randoop.{self.bug_id}.tar.bz2"

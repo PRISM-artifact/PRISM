@@ -25,8 +25,8 @@ class Patch:
     self.execution_time = 0.0
     self.build_time = 0.0
     self.patch_path = Path(patch_path).resolve()
-    # self.patch_infos = self.get_patch_infos()
-    # self.modified_files = [info[0] for info in self.patch_infos]  
+    self.patch_infos = self.get_patch_infos()
+    self.modified_files = [info[0] for info in self.patch_infos]  
     if is_org:
       self.hash_dir = RESULTS_DIR / f"{self.bug.project}{self.bug.bug_id}b/org"
     else:
