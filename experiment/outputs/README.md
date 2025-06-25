@@ -1,7 +1,8 @@
 # Experiment Outputs (Zenodo Archive)
 
 This directory is *not* included in the GitHub repository or Docker image due to its large size (~133 GB).  
-To use the full set of experimental results, please download and extract the [Zenodo archive](https://doi.org/XXXX/YYYY) into this directory.  
+To use the full set of experimental results, please download and extract the Zenodo archive [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15735447.svg)](https://doi.org/10.5281/zenodo.15735447) into this directory.  
+
 This archive is primarily intended for those who wish to explore the raw outputs of each APCC tool.  
 If your goal is **simply to regenerate the experimental results in our paper**, please refer to the CSV-formatted summary data we separately provide.
 
