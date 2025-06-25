@@ -1,3 +1,0 @@
-D_pass:0.8
-D_fail:0.6060606060606061
-Incorrect

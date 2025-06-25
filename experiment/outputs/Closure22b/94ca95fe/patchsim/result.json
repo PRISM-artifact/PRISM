@@ -1,5 +1,0 @@
-{
-    "label": "unknown",
-    "execution_time": 233.83634853363037,
-    "error": "Traceback (most recent call last):\n  File \"/4tb/dowon/PRISM_evaluation/scripts/patchsim.py\", line 257, in run\n    result[\"label\"] = f.readlines()[-1].strip()\n                      ~~~~~~~~~~~~~^^^^\nIndexError: list index out of range\n"
-}

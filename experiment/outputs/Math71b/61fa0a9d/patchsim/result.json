@@ -1,5 +1,0 @@
-{
-    "label": "unknown",
-    "execution_time": 22.012362480163574,
-    "error": "Traceback (most recent call last):\n  File \"/4tb/dowon/PRISM_evaluation/scripts/patchsim.py\", line 251, in run\n    self.setup_tracer()\n  File \"/4tb/dowon/PRISM_evaluation/scripts/patchsim.py\", line 143, in setup_tracer\n    patched_cls, _, _, _, _ = self.get_patch_info()\n                              ^^^^^^^^^^^^^^^^^^^^^\n  File \"/4tb/dowon/PRISM_evaluation/scripts/patchsim.py\", line 136, in get_patch_info\n    patched_mthd, mthd_sig, start_line, end_line=lines[0].strip().split('\\t')\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: not enough values to unpack (expected 4, got 1)\n"
-}
