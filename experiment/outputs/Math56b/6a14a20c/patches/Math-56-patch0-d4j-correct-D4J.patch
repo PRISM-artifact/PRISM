@@ -1,0 +1,17 @@
+--- Math56b/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java	2021-10-27 13:44:04.593012644 +0900
++++ Math56f/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java	2021-10-27 13:44:07.057045161 +0900
+@@ -234,13 +234,7 @@
+             indices[i] = idx;
+         }
+ 
+-        int idx = 1;
+-        while (count < index) {
+-            count += idx;
+-            ++idx;
+-        }
+-        --idx;
+-        indices[last] = idx;
++        indices[last] = index - count;
+ 
+         return indices;
+     }

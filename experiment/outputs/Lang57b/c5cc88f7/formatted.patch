@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/LocaleUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/LocaleUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/LocaleUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/LocaleUtils.java
+@@ -86,7 +86,7 @@
+     return set;
+   }
+   public static boolean isAvailableLocale(Locale locale) {
+-    return cAvailableLocaleSet.containslocale;
++    return org.apache.commons.lang.LocaleUtils.cAvailableLocaleList.containslocale;
+   }
+   public static List languagesByCountry(String countryCode) {
+     List langs = List cLanguagesByCountry.getcountryCode; 

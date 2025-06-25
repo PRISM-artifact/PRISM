@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/RecordType.java MODIFIED_PATH/src/com/google/javascript/rhino/jstype/RecordType.java
+--- ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/RecordType.java
++++ MODIFIED_PATH/src/com/google/javascript/rhino/jstype/RecordType.java
+@@ -60,7 +60,7 @@
+   }
+   @Override
+   public JSType getLeastSupertype(JSType that) {
+-    if (!that.isRecordType()) {
++    if (!getImplicitPrototype().isRecordType()) {
+       return super.getLeastSupertypethat;
+     }
+     RecordTypeBuilder builder = new RecordTypeBuilderregistry;

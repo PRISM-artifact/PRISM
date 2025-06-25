@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+@@ -71,6 +71,7 @@
+     start(t0, y, t);
+     interpolator.reinitialize(stepStart, stepSize, scaled, nordsieck);
+     interpolator.storeTimestepStart;
++    stepSize = t - stepStart;
+     double hNew = stepSize;
+     interpolator.rescalehNew;
+     boolean lastStep = false;

@@ -1,0 +1,26 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java MODIFIED_PATH/src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/geometry/euclidean/threed/Rotation.java
+@@ -106,18 +106,19 @@
+     Vector3D k = v1Su1.crossProductv2Su2;
+     Vector3D u3 = u1.crossProductu2;
+     double c = k.dotProductu3;
+-    if (c == 0) {
++    final double inPlaneThreshold = 0.001;
++    if (c <= inPlaneThreshold * k.getNorm() * u3.getNorm()) {
+       Vector3D v3 = Vector3D.crossProduct(v1, v2);
+       Vector3D v3Su3 = v3.subtractu3;
+       k = v1Su1.crossProductv3Su3;
+       Vector3D u2Prime = u1.crossProductu3;
+       c = k.dotProductu2Prime;
+-      if (c == 0) {
++      if (c <= inPlaneThreshold * k.getNorm() * u2Prime.getNorm()) {
+         k = v2Su2.crossProductv3Su3;
+         ;
+         c = k.dotProduct(u2.crossProductu3);
+         ;
+-        if (c == 0) {
++        if (c <= 0) {
+           q0 = 1.0;
+           q1 = 0.0;
+           q2 = 0.0;

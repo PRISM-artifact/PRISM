@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/util/reflection/GenericMaster.java MODIFIED_PATH/src/org/mockito/internal/util/reflection/GenericMaster.java
+--- ORIGINAL_PATH/src/org/mockito/internal/util/reflection/GenericMaster.java
++++ MODIFIED_PATH/src/org/mockito/internal/util/reflection/GenericMaster.java
+@@ -8,7 +8,11 @@
+     Type generic = field.getGenericType();
+     if (generic != null && generic instanceof ParameterizedType) {
+       Type actual = (ParameterizedType generic).getActualTypeArguments()[0];
++      if (actual instanceof Class) {
+       return Class actual;
++      } else if (actual instanceof ParameterizedType) {
++        return Class (ParameterizedType actual).getRawType();
++      }
+     }
+     return Object.class;
+   }

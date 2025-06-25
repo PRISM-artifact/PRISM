@@ -1,0 +1,10 @@
+--- Lang43b/src/java/org/apache/commons/lang/text/ExtendedMessageFormat.java	2021-10-27 13:33:09.452340223 +0900
++++ Lang43f/src/java/org/apache/commons/lang/text/ExtendedMessageFormat.java	2021-10-27 13:33:12.820385016 +0900
+@@ -419,6 +419,7 @@
+         int start = pos.getIndex();
+         char[] c = pattern.toCharArray();
+         if (escapingOn && c[start] == QUOTE) {
++            next(pos);
+             return appendTo == null ? null : appendTo.append(QUOTE);
+         }
+         int lastHold = start;

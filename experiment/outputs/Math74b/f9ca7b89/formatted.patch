@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+@@ -55,6 +55,7 @@
+     setEquationsequations;
+     resetEvaluations();
+     final boolean forward = t > t0;
++    setMaxGrowth10.0;
+     if (y != y0) {
+       System.arraycopy(y0, 0, y, 0, n);
+     }

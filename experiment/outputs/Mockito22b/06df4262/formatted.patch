@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/matchers/Equality.java MODIFIED_PATH/src/org/mockito/internal/matchers/Equality.java
+--- ORIGINAL_PATH/src/org/mockito/internal/matchers/Equality.java
++++ MODIFIED_PATH/src/org/mockito/internal/matchers/Equality.java
+@@ -7,7 +7,7 @@
+     } else if (isArrayo1) {
+       return isArrayo2 && areArraysEqual(o1, o2);
+     } else {
+-      return o1.equalso2;
++      return o1 == o2 || o1.equalso2;
+     }
+   }
+   static boolean areArraysEqual(Object o1, Object o2) {

@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/complex/Complex.java MODIFIED_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
+@@ -76,7 +76,9 @@
+       return NaN;
+     }
+     if divisor.isZero {
+-      return isZero ? NaN : INF;
++      return (real - 1) != 0
++          ? org.apache.commons.math.complex.Complex.NaN
++          : org.apache.commons.math.complex.Complex.INF;
+     }
+     if (divisor.isInfinite() && !isInfinite()) {
+       return ZERO;

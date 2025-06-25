@@ -1,0 +1,23 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/FunctionToBlockMutator.java MODIFIED_PATH/src/com/google/javascript/jscomp/FunctionToBlockMutator.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/FunctionToBlockMutator.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/FunctionToBlockMutator.java
+@@ -72,6 +72,7 @@
+         compiler,
+         fnNode,
+         new MakeDeclaredNamesUnique(new InlineRenamer(idSupplier, "inline_", isCallInLoop)));
++    new RenameLabels(compiler, new LabelNameSupplieridSupplier, false).process(null, fnNode);
+   }
+   static class LabelNameSupplier implements Supplier<String> {
+     final Supplier<String> idSupplier;
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/RenameLabels.java MODIFIED_PATH/src/com/google/javascript/jscomp/RenameLabels.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/RenameLabels.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/RenameLabels.java
+@@ -91,7 +91,7 @@
+       Preconditions.checkState(nameNode != null);
+       String name = nameNode.getString();
+       LabelInfo li = getLabelInfoname;
+-      if li.referenced {
++      if (li.referenced || !removeUnused) {
+         String newName = getNameForIdli.id;
+         if (!name.equalsnewName) {
+           nameNode.setStringnewName;

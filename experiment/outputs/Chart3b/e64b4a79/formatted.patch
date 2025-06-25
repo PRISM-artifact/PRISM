@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/time/TimeSeries.java MODIFIED_PATH/source/org/jfree/data/time/TimeSeries.java
+--- ORIGINAL_PATH/source/org/jfree/data/time/TimeSeries.java
++++ MODIFIED_PATH/source/org/jfree/data/time/TimeSeries.java
+@@ -207,7 +207,7 @@
+       }
+     }
+     if added {
+-      updateBoundsForAddedItemitem;
++      findBoundsByIteration();
+       if (getItemCount() > this.maximumItemCount) {
+         TimeSeriesDataItem d = TimeSeriesDataItem this.data.remove0;
+         updateBoundsForRemovedItemd;

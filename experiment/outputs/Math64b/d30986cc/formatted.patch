@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+@@ -131,7 +131,6 @@
+           delta = Math.min(delta, lmNorm);
+         }
+         updateResidualsAndCost();
+-        current = new VectorialPointValuePair(point, objective);
+         double actRed = -1.0;
+         if (0.1 * cost < previousCost) {
+           double r = cost / previousCost;
+@@ -184,6 +183,7 @@
+           residuals = oldRes;
+           oldRes = tmpVec;
+         }
++        current = new VectorialPointValuePair(point, objective);
+         if (checker == null) {
+           if (((Math.absactRed <= costRelativeTolerance)
+                   && (preRed <= costRelativeTolerance)

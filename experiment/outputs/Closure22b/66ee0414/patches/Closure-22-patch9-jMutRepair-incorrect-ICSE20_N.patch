@@ -1,0 +1,11 @@
+--- Closure22b/src/com/google/javascript/jscomp/CheckSideEffects.java	2024-10-21 16:25:49.025883059 +0900
++++ Closure22f/src/com/google/javascript/jscomp/CheckSideEffects.java	2024-10-21 16:25:49.025883059 +0900
+@@ -111,7 +111,7 @@
+       if (n == parent.getLastChild()) {
+         for (Node an : parent.getAncestors()) {
+           int ancestorType = an.getType();
+-          if (ancestorType == Token.COMMA)
++          if (ancestorType >= Token.COMMA)
+             continue;
+           if (ancestorType != Token.EXPR_RESULT && ancestorType != Token.BLOCK)
+             return;

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CollapseProperties.java MODIFIED_PATH/src/com/google/javascript/jscomp/CollapseProperties.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CollapseProperties.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CollapseProperties.java
+@@ -66,7 +66,7 @@
+       if (name.type == Name.Type.GET || name.type == Name.Type.SET) {
+         continue;
+       }
+-      if (name.globalSets == 1 && name.localSets == 0 && name.aliasingGets > 0) {
++      if (!name.inExterns && name.globalSets == 1 && name.localSets == 0 && name.aliasingGets > 0) {
+         List<Ref> refs = Lists.newArrayList(name.getRefs());
+         for (Ref ref : refs) {
+           if (ref.type == Type.ALIASING_GET && ref.scope.isLocal()) {

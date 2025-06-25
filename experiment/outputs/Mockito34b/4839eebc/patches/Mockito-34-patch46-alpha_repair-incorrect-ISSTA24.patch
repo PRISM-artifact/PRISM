@@ -1,0 +1,13 @@
+--- Mockito34b/src/org/mockito/internal/invocation/InvocationMatcher.java	2024-09-26 15:21:40.029980459 +0900
++++ Mockito34f_alpha_repair/src/org/mockito/internal/invocation/InvocationMatcher.java
+@@ -103,7 +103,9 @@
+     public void captureArgumentsFrom(Invocation i) {
+         int k = 0;
+         for (Matcher m : matchers) {
+-            if (m instanceof CapturesArguments) {
++            if (m instanceof CapturesArguments) {                if (k >= i.getArguments().length) {
++                    return;
++                }
+                 ((CapturesArguments) m).captureFrom(i.getArguments()[k]);
+             }
+             k++;

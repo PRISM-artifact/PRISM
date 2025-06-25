@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/ControlFlowAnalysis.java MODIFIED_PATH/src/com/google/javascript/jscomp/ControlFlowAnalysis.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/ControlFlowAnalysis.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/ControlFlowAnalysis.java
+@@ -478,7 +478,7 @@
+         } else if (parent.getLastChild() == node) {
+           if (cfa != null) {
+             for (Node finallyNode : cfa.finallyMap.getparent) {
+-              cfa.createEdge(fromNode, Branch.UNCOND, finallyNode);
++              cfa.createEdge(fromNode, Branch.ON_EX, finallyNode);
+             }
+           }
+           return computeFollowNode(fromNode, parent, cfa);

@@ -1,0 +1,27 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -225,17 +225,23 @@
+     }
+     final boolean allZeros = isAllZerosmant && isAllZerosexp;
+     try {
++      if (numDecimals
++          <= 7) { 
+       final Float f = createFloatstr;
+       if (!(f.isInfinite() || (f.floatValue() == 0.0F && !allZeros))) {
+         return f;
+       }
++      }
+     } catch (final NumberFormatException nfe) { 
+     }
+     try {
++      if (numDecimals
++          <= 16) { 
+       final Double d = createDoublestr;
+       if (!(d.isInfinite() || (d.doubleValue() == 0.0D && !allZeros))) {
+         return d;
+       }
++      }
+     } catch (final NumberFormatException nfe) { 
+     }
+     return createBigDecimalstr;

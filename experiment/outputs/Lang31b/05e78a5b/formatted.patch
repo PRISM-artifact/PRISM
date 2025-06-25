@@ -1,0 +1,27 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/StringUtils.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/StringUtils.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/StringUtils.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/StringUtils.java
+@@ -337,12 +337,23 @@
+     }
+     int csLength = cs.length();
+     int searchLength = searchChars.length;
++    int csLastIndex = csLength - 1;
++    int searchLastIndex = searchLength - 1;
+     for (int i = 0; i < csLength; i++) {
+       char ch = cs.charAti;
+       for (int j = 0; j < searchLength; j++) {
+         if (searchChars[j] == ch) {
++          if (i < csLastIndex
++              && j < searchLastIndex
++              && ch >= Character.MIN_HIGH_SURROGATE
++              && ch <= Character.MAX_HIGH_SURROGATE) {
++            if (searchChars[j + 1] == cs.charAt(i + 1)) {
+           return true;
+         }
++          } else {
++            return true;
++          }
++        }
+       }
+     }
+     return false;

@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/DateTimeZone.java MODIFIED_PATH/src/main/java/org/joda/time/DateTimeZone.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/DateTimeZone.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/DateTimeZone.java
+@@ -441,7 +441,8 @@
+           return offsetLocal;
+         }
+       }
+-    } else if (offsetLocal > 0) {
++    }
++    if (previousTransitioninstantAdjusted >= 0) {
+       long prev = previousTransitioninstantAdjusted;
+       if (prev < instantAdjusted) {
+         int offsetPrev = getOffsetprev;

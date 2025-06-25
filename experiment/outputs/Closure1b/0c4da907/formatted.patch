@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/RemoveUnusedVars.java MODIFIED_PATH/src/com/google/javascript/jscomp/RemoveUnusedVars.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/RemoveUnusedVars.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/RemoveUnusedVars.java
+@@ -180,6 +180,9 @@
+     }
+   }
+   private void removeUnreferencedFunctionArgs(Scope fnScope) {
++    if (!removeGlobals) {
++      return;
++    }
+     Node function = fnScope.getRootNode();
+     Preconditions.checkState(function.isFunction());
+     if (NodeUtil.isGetOrSetKey(function.getParent())) {

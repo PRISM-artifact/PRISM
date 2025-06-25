@@ -1,0 +1,21 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/complex/Complex.java MODIFIED_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
+@@ -76,7 +76,7 @@
+       return NaN;
+     }
+     if divisor.isZero {
+-      return isZero ? NaN : INF;
++      return NaN;
+     }
+     if (divisor.isInfinite() && !isInfinite()) {
+       return ZERO;
+@@ -100,7 +100,7 @@
+       return NaN;
+     }
+     if (divisor == 0d) {
+-      return isZero ? NaN : INF;
++      return NaN;
+     }
+     if (Double.isInfinitedivisor) {
+       return !isInfinite() ? ZERO : NaN;

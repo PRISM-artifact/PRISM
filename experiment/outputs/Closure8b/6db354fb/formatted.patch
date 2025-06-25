@@ -1,0 +1,20 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CollapseVariableDeclarations.java MODIFIED_PATH/src/com/google/javascript/jscomp/CollapseVariableDeclarations.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CollapseVariableDeclarations.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CollapseVariableDeclarations.java
+@@ -82,9 +82,15 @@
+         return false;
+       }
+       Var var = s.getVar(lhs.getString());
+-      return var != null && var.getScope() == s && !blacklistedVars.containsvar;
++      return var != null
++          && var.getScope() == s
++          && !isNamedParametervar
++          && !blacklistedVars.containsvar;
+     }
+   }
++  private boolean isNamedParameter(Var v) {
++    return v.getParentNode().isParamList();
++  }
+   private void applyCollapses() {
+     for (Collapse collapse : collapses) {
+       Node var = new NodeToken.VAR;

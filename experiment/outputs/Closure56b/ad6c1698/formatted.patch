@@ -1,0 +1,16 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/SourceFile.java MODIFIED_PATH/src/com/google/javascript/jscomp/SourceFile.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/SourceFile.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/SourceFile.java
+@@ -121,8 +121,12 @@
+     lastOffset = pos;
+     lastLine = lineNumber;
+     if (js.indexOf('\n', pos) == -1) {
++      if (pos >= js.length()) {
+       return null;
+     } else {
++        return js.substring(pos, js.length());
++      }
++    } else {
+       return js.substring(pos, js.indexOf('\n', pos));
+     }
+   }

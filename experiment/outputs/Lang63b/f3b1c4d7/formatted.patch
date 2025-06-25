@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
+@@ -114,6 +114,7 @@
+     int hours = end.getCalendar.HOUR_OF_DAY - start.getCalendar.HOUR_OF_DAY;
+     int days = end.getCalendar.DAY_OF_MONTH - start.getCalendar.DAY_OF_MONTH;
+     int months = end.getCalendar.MONTH - start.getCalendar.MONTH;
++    months -= reduceAndCorrect(start, end, Calendar.MONTH, months);
+     int years = end.getCalendar.YEAR - start.getCalendar.YEAR;
+     while (milliseconds < 0) {
+       milliseconds += 1000;
+@@ -144,7 +145,6 @@
+     minutes -= reduceAndCorrect(start, end, Calendar.MINUTE, minutes);
+     hours -= reduceAndCorrect(start, end, Calendar.HOUR_OF_DAY, hours);
+     days -= reduceAndCorrect(start, end, Calendar.DAY_OF_MONTH, days);
+-    months -= reduceAndCorrect(start, end, Calendar.MONTH, months);
+     years -= reduceAndCorrect(start, end, Calendar.YEAR, years);
+     if (!Token.containsTokenWithValue(tokens, y)) {
+       if (Token.containsTokenWithValue(tokens, M)) {

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java MODIFIED_PATH/src/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java
+--- ORIGINAL_PATH/src/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java
++++ MODIFIED_PATH/src/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java
+@@ -37,7 +37,7 @@
+         return name.toString();
+       }
+     } else if (methodsGuru.isCompareToMethod(invocation.getMethod())) {
+-      return 1;
++      return invocation.getMock() == invocation.getArguments()[0] ? 0 : 1;
+     }
+     Class<?> returnType = invocation.getMethod().getReturnType();
+     return returnValueForreturnType;

@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
+@@ -161,7 +161,9 @@
+       y0 = y1;
+       if (Math.absdelta > tolerance) {
+         x1 = x1 + delta;
+-      } else if (dx > 0.0) {
++      } else if ((dx > 0.0)
++          || (org.apache.commons.math.analysis.solvers.BrentSolver.NON_BRACKETING_MESSAGE.length()
++              < x1)) {
+         x1 = x1 + 0.5 * tolerance;
+       } else if (dx <= 0.0) {
+         x1 = x1 - 0.5 * tolerance;

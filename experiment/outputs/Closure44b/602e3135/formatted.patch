@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CodeConsumer.java MODIFIED_PATH/src/com/google/javascript/jscomp/CodeConsumer.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CodeConsumer.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CodeConsumer.java
+@@ -92,6 +92,8 @@
+     char c = newcode.charAt0;
+     if ((isWordCharc || c == '\\') && isWordChar(getLastChar())) {
+       append(" ");
++    } else if (c == '/' && getLastChar() == '/') {
++      append(" ");
+     }
+     appendnewcode;
+   }

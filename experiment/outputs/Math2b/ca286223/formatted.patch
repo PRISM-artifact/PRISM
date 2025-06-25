@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
+@@ -116,7 +116,7 @@
+     return ret;
+   }
+   public double getNumericalMean() {
+-    return double (getSampleSize() * getNumberOfSuccesses()) / double getPopulationSize();
++    return (double (getSampleSize() * getSupportUpperBound()) / double getPopulationSize());
+   }
+   public double getNumericalVariance() {
+     if (!numericalVarianceIsCalculated) {

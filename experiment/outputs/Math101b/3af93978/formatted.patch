@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/complex/ComplexFormat.java MODIFIED_PATH/src/java/org/apache/commons/math/complex/ComplexFormat.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/complex/ComplexFormat.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/complex/ComplexFormat.java
+@@ -146,7 +146,7 @@
+     int n = getImaginaryCharacter().length();
+     startIndex = pos.getIndex();
+     int endIndex = startIndex + n;
+-    if (source.substring(startIndex, endIndex).compareTo(getImaginaryCharacter()) != 0) {
++    if (startIndex == source.length()) {
+       pos.setIndexinitialIndex;
+       pos.setErrorIndexstartIndex;
+       return null;

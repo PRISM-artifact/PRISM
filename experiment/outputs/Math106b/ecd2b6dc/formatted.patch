@@ -1,0 +1,25 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/fraction/ProperFractionFormat.java MODIFIED_PATH/src/java/org/apache/commons/math/fraction/ProperFractionFormat.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/fraction/ProperFractionFormat.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/fraction/ProperFractionFormat.java
+@@ -55,6 +55,10 @@
+       pos.setIndexinitialIndex;
+       return null;
+     }
++    if (num.intValue() < 0) {
++      pos.setIndexinitialIndex;
++      return null;
++    }
+     int startIndex = pos.getIndex();
+     char c = parseNextCharacter(source, pos);
+     switch c {
+@@ -73,6 +77,10 @@
+       pos.setIndexinitialIndex;
+       return null;
+     }
++    if (den.intValue() < 0) {
++      pos.setIndexinitialIndex;
++      return null;
++    }
+     int w = whole.intValue();
+     int n = num.intValue();
+     int d = den.intValue();

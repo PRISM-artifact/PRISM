@@ -1,0 +1,35 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/util/MathUtils.java MODIFIED_PATH/src/java/org/apache/commons/math/util/MathUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/util/MathUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/util/MathUtils.java
+@@ -138,8 +138,10 @@
+         2432902008176640000l
+       };
+   public static long factorial(final int n) {
+-    long result = Math.round(factorialDoublen);
+-    if (result == Long.MAX_VALUE) {
++    if (n < 0) {
++      throw new IllegalArgumentException("must have n >= 0 for n!");
++    }
++    if (n > 20) {
+       throw new ArithmeticException("factorial value is too large to fit in a long");
+     }
+     return factorials[n];
+@@ -148,12 +150,18 @@
+     if (n < 0) {
+       throw new IllegalArgumentException("must have n >= 0 for n!");
+     }
++    if (n < 21) {
++      return factorialn;
++    }
+     return Math.floor(Math.exp(factorialLogn) + 0.5);
+   }
+   public static double factorialLog(final int n) {
+     if (n < 0) {
+       throw new IllegalArgumentException("must have n > 0 for n!");
+     }
++    if (n < 21) {
++      return Math.log(factorialn);
++    }
+     double logSum = 0;
+     for (int i = 2; i <= n; i++) {
+       logSum += Math.log(double i);

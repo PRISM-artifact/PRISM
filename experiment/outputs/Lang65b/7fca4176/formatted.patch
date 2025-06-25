@@ -1,0 +1,49 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DateUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
+@@ -192,6 +192,34 @@
+     if (val.getCalendar.YEAR > 280000000) {
+       throw new ArithmeticException("Calendar value too large for accurate calculations");
+     }
++    if (field == Calendar.MILLISECOND) {
++      return;
++    }
++    Date date = val.getTime();
++    long time = date.getTime();
++    boolean done = false;
++    int millisecs = val.getCalendar.MILLISECOND;
++    if (!round || millisecs < 500) {
++      time = time - millisecs;
++      if (field == Calendar.SECOND) {
++        done = true;
++      }
++    }
++    int seconds = val.getCalendar.SECOND;
++    if (!done && (!round || seconds < 30)) {
++      time = time - (seconds * 1000L);
++      if (field == Calendar.MINUTE) {
++        done = true;
++      }
++    }
++    int minutes = val.getCalendar.MINUTE;
++    if (!done && (!round || minutes < 30)) {
++      time = time - (minutes * 60000L);
++    }
++    if (date.getTime() != time) {
++      date.setTimetime;
++      val.setTimedate;
++    }
+     boolean roundUp = false;
+     for (int i = 0; i < fields.length; i++) {
+       for (int j = 0; j < fields[i].length; j++) {
+@@ -241,8 +269,10 @@
+         offset = val.get(fields[i][0]) - min;
+         roundUp = offset > ((max - min) / 2);
+       }
++      if (offset != 0) {
+       val.set(fields[i][0], val.get(fields[i][0]) - offset);
+     }
++    }
+     throw new IllegalArgumentException("The field " + field + " is not supported");
+   }
+   public static Iterator iterator(Date focus, int rangeStyle) {

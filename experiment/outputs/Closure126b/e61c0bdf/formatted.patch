@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/MinimizeExitPoints.java MODIFIED_PATH/src/com/google/javascript/jscomp/MinimizeExitPoints.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/MinimizeExitPoints.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/MinimizeExitPoints.java
+@@ -61,7 +61,7 @@
+         Node catchCodeBlock = catchNode.getLastChild();
+         tryMinimizeExits(catchCodeBlock, exitType, labelName);
+       }
+-      if (NodeUtil.hasFinallyn) {
++      if ((NodeUtil.hasFinallyn) && !(n.isTry())) {
+         Node finallyBlock = n.getLastChild();
+         tryMinimizeExits(finallyBlock, exitType, labelName);
+       }

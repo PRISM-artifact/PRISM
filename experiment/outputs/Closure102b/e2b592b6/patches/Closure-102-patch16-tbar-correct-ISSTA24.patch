@@ -1,0 +1,18 @@
+--- Closure102b/src/com/google/javascript/jscomp/Normalize.java	2024-09-26 16:37:13.481462116 +0900
++++ Closure102f_tbar/src/com/google/javascript/jscomp/Normalize.java
+@@ -86,12 +86,14 @@
+   @Override
+   public void process(Node externs, Node root) {
+     NodeTraversal.traverse(compiler, root, this);
++    
++    removeDuplicateDeclarations(root);
+     if (MAKE_LOCAL_NAMES_UNIQUE) {
+       MakeDeclaredNamesUnique renamer = new MakeDeclaredNamesUnique();
+       NodeTraversal t = new NodeTraversal(compiler, renamer);
+       t.traverseRoots(externs, root);
+     }
+-    removeDuplicateDeclarations(root);
++
+     new PropogateConstantAnnotations(compiler, assertOnChange)
+         .process(externs, root);
+   }

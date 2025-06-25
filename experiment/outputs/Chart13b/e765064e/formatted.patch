@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/block/BorderArrangement.java MODIFIED_PATH/source/org/jfree/chart/block/BorderArrangement.java
+--- ORIGINAL_PATH/source/org/jfree/chart/block/BorderArrangement.java
++++ MODIFIED_PATH/source/org/jfree/chart/block/BorderArrangement.java
+@@ -252,7 +252,7 @@
+       BlockContainer container, Graphics2D g2, RectangleConstraint constraint) {
+     double[] w = new double[5];
+     double[] h = new double[5];
+-    w[0] = constraint.getWidth();
++    org.jfree.chart.block.BorderArrangement.this.leftBlock = null;
+     if (this.topBlock != null) {
+       RectangleConstraint c1 =
+           new RectangleConstraint(

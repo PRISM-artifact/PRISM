@@ -1,0 +1,24 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/creation/DelegatingMethod.java MODIFIED_PATH/src/org/mockito/internal/creation/DelegatingMethod.java
+--- ORIGINAL_PATH/src/org/mockito/internal/creation/DelegatingMethod.java
++++ MODIFIED_PATH/src/org/mockito/internal/creation/DelegatingMethod.java
+@@ -31,10 +31,18 @@
+   }
+   @Override
+   public boolean equals(Object o) {
++    if (this == o) {
++      return true;
++    }
++    if (o instanceof DelegatingMethod) {
++      DelegatingMethod that = DelegatingMethod o;
++      return method.equalsthat.method;
++    } else {
+     return method.equalso;
+   }
++  }
+   @Override
+   public int hashCode() {
+-    return 1;
++    return method.hashCode();
+   }
+ }
+\ No newline at end of file

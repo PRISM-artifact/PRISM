@@ -1,0 +1,47 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/UnreachableCodeElimination.java MODIFIED_PATH/src/com/google/javascript/jscomp/UnreachableCodeElimination.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/UnreachableCodeElimination.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/UnreachableCodeElimination.java
+@@ -70,20 +70,7 @@
+     if (gNode == null) {
+       return n;
+     }
+-    if (n.getParent() == null) {
+-      List<DiGraphEdge<Node, Branch>> outEdges = gNode.getOutEdges();
+-      if (outEdges.size() == 1) {
+-        return tryRemoveUnconditionalBranching(outEdges.get0.getDestination().getValue());
+-      }
+-    }
+     switch (n.getType()) {
+-      case Token.BLOCK:
+-        if (n.hasChildren()) {
+-          Node first = n.getFirstChild();
+-          return tryRemoveUnconditionalBranchingfirst;
+-        } else {
+-          return tryRemoveUnconditionalBranching(ControlFlowAnalysis.computeFollowNoden);
+-        }
+       case Token.RETURN:
+         if (n.hasChildren()) {
+           break;
+@@ -95,7 +82,7 @@
+             &&
+             (n.getNext() == null || n.getNext().getType() == Token.FUNCTION)) {
+           Preconditions.checkState(outEdges.get0.getValue() == Branch.UNCOND);
+-          Node fallThrough = tryRemoveUnconditionalBranching(computeFollowingn);
++          Node fallThrough = computeFollowingn;
+           Node nextCfgNode = outEdges.get0.getDestination().getValue();
+           if (nextCfgNode == fallThrough) {
+             removeDeadExprStatementSafelyn;
+@@ -107,6 +94,13 @@
+   }
+   private Node computeFollowing(Node n) {
+     Node next = ControlFlowAnalysis.computeFollowNoden;
++    while (next != null && next.getType() == Token.BLOCK) {
++      if (next.hasChildren()) {
++        next = next.getFirstChild();
++      } else {
++        next = computeFollowingnext;
++      }
++    }
+     return next;
+   }
+   private void removeDeadExprStatementSafely(Node n) {

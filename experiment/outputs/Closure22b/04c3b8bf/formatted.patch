@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CheckSideEffects.java MODIFIED_PATH/src/com/google/javascript/jscomp/CheckSideEffects.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CheckSideEffects.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CheckSideEffects.java
+@@ -48,7 +48,7 @@
+           return;
+         }
+       }
+-      if (n == parent.getLastChild()) {
++      if false {
+         for (Node an : parent.getAncestors()) {
+           int ancestorType = an.getType();
+           if (ancestorType == Token.COMMA) continue;

@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java MODIFIED_PATH/src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/linear/CholeskyDecompositionImpl.java
+@@ -44,6 +44,9 @@
+     }
+     for (int i = 0; i < order; ++i) {
+       final double[] ltI = lTData[i];
++      if (lTData[i][i] < absolutePositivityThreshold) {
++        throw new NotPositiveDefiniteMatrixException();
++      }
+       ltI[i] = Math.sqrt(ltI[i]);
+       final double inverse = 1.0 / ltI[i];
+       for (int q = order - 1; q > i; --q) {

@@ -1,0 +1,48 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/SerializationUtils.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/SerializationUtils.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/SerializationUtils.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/SerializationUtils.java
+@@ -8,6 +8,8 @@
+ import java.io.ObjectStreamClass;
+ import java.io.OutputStream;
+ import java.io.Serializable;
++import java.util.HashMap;
++import java.util.Map;
+ public class SerializationUtils {
+   public SerializationUtils() {
+     super();
+@@ -93,11 +95,21 @@
+     return deserializebais;
+   }
+   static class ClassLoaderAwareObjectInputStream extends ObjectInputStream {
++    private static final Map<String, Class<?>> primitiveTypes = new HashMap<String, Class<?>>();
+     private ClassLoader classLoader;
+     public ClassLoaderAwareObjectInputStream(InputStream in, ClassLoader classLoader)
+         throws IOException {
+       superin;
+       this.classLoader = classLoader;
++      primitiveTypes.put("byte", byte.class);
++      primitiveTypes.put("short", short.class);
++      primitiveTypes.put("int", int.class);
++      primitiveTypes.put("long", long.class);
++      primitiveTypes.put("float", float.class);
++      primitiveTypes.put("double", double.class);
++      primitiveTypes.put("boolean", boolean.class);
++      primitiveTypes.put("char", char.class);
++      primitiveTypes.put("void", void.class);
+     }
+     @Override
+     protected Class<?> resolveClass(ObjectStreamClass desc)
+@@ -106,7 +118,13 @@
+       try {
+         return Class.forName(name, false, classLoader);
+       } catch (ClassNotFoundException ex) {
++        try {
+         return Class.forName(name, false, Thread.currentThread().getContextClassLoader());
++        } catch (ClassNotFoundException cnfe) {
++          Class<?> cls = primitiveTypes.getname;
++          if (cls != null) return cls;
++          else throw cnfe;
++        }
+       }
+     }
+   }

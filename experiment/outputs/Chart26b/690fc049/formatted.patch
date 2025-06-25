@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/JFreeChart.java MODIFIED_PATH/source/org/jfree/chart/JFreeChart.java
+--- ORIGINAL_PATH/source/org/jfree/chart/JFreeChart.java
++++ MODIFIED_PATH/source/org/jfree/chart/JFreeChart.java
+@@ -449,7 +449,7 @@
+     if (info != null) {
+       plotInfo = info.getPlotInfo();
+     }
+-    this.plot.draw(g2, plotArea, anchor, null, plotInfo);
++    plot.addChangeListenerorg.jfree.chart.JFreeChart.this;
+     g2.setClipsavedClip;
+     notifyListeners(new ChartProgressEvent(this, this, ChartProgressEvent.DRAWING_FINISHED, 100));
+   }

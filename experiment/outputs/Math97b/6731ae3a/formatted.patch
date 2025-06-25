@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/analysis/BrentSolver.java MODIFIED_PATH/src/java/org/apache/commons/math/analysis/BrentSolver.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/analysis/BrentSolver.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/analysis/BrentSolver.java
+@@ -50,7 +50,7 @@
+     double ret = Double.NaN;
+     double yMin = f.valuemin;
+     double yMax = f.valuemax;
+-    double sign = yMin * yMax;
++    double sign = yMin - (0.5 * max);
+     if (sign >= 0) {
+       throw new IllegalArgumentException(
+           "Function values at endpoints do not have different signs."

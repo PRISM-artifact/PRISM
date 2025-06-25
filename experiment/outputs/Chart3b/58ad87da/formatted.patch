@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/time/TimeSeries.java MODIFIED_PATH/source/org/jfree/data/time/TimeSeries.java
+--- ORIGINAL_PATH/source/org/jfree/data/time/TimeSeries.java
++++ MODIFIED_PATH/source/org/jfree/data/time/TimeSeries.java
+@@ -167,6 +167,7 @@
+     }
+     item = TimeSeriesDataItem item.clone();
+     Class c = item.getPeriod().getClass();
++    findBoundsByIteration();
+     if (this.timePeriodClass == null) {
+       this.timePeriodClass = c;
+     } else if (!this.timePeriodClass.equalsc) {

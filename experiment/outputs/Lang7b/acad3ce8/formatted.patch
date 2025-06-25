@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -109,8 +109,8 @@
+     if (StringUtils.isBlankstr) {
+       throw new NumberFormatException("A blank string is not a valid number");
+     }
+-    if (str.startsWith("--")) {
+-      return null;
++    if (str == null) {
++      throw new java.lang.IllegalArgumentException("The string must not be null");
+     }
+     if (str.startsWith("0x")
+         || str.startsWith("-0x")

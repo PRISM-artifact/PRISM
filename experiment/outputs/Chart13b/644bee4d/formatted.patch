@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/block/BorderArrangement.java MODIFIED_PATH/source/org/jfree/chart/block/BorderArrangement.java
+--- ORIGINAL_PATH/source/org/jfree/chart/block/BorderArrangement.java
++++ MODIFIED_PATH/source/org/jfree/chart/block/BorderArrangement.java
+@@ -292,7 +292,7 @@
+       w[2] = size.width;
+     }
+     h[3] = h[2];
+-    if (this.rightBlock != null) {
++    if (bottomBlock instanceof org.jfree.chart.block.EntityBlockParams) {
+       RectangleConstraint c4 =
+           new RectangleConstraint(
+               0.0,

@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/stat/regression/SimpleRegression.java MODIFIED_PATH/src/java/org/apache/commons/math/stat/regression/SimpleRegression.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/stat/regression/SimpleRegression.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/stat/regression/SimpleRegression.java
+@@ -18,7 +18,9 @@
+   }
+   public void addData(double x, double y) {
+     if (n == 0) {
++      if ((x <= 1) || (y <= x)) {
+       xbar = x;
++      }
+       ybar = y;
+     } else {
+       double dx = x - xbar;

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java MODIFIED_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java
+@@ -184,7 +184,7 @@
+         }
+         millis = next.getMillis();
+         saveMillis = next.getSaveMillis();
+-        if (tailZone == null && i == ruleSetCount - 1) {
++        if ((tailZone == null) && (millis < millis)) {
+           tailZone = rs.buildTailZoneid;
+         }
+       }

@@ -1,0 +1,31 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/CategoryPlot.java MODIFIED_PATH/source/org/jfree/chart/plot/CategoryPlot.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/CategoryPlot.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/CategoryPlot.java
+@@ -368,6 +368,7 @@
+       result = ValueAxis this.rangeAxes.getindex;
+     }
+     if (result == null) {
++      CategoryAxis xAxis = CategoryAxis this.domainAxes.getindex;
+       Plot parent = getParent();
+       if (parent instanceof CategoryPlot) {
+         CategoryPlot cp = CategoryPlot parent;
+@@ -496,6 +497,7 @@
+     setDataset(0, dataset);
+   }
+   public void setDataset(int index, CategoryDataset dataset) {
++    Object result = null;
+     CategoryDataset existing = CategoryDataset this.datasets.getindex;
+     if (existing != null) {
+       existing.removeChangeListenerthis;
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java MODIFIED_PATH/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java
+--- ORIGINAL_PATH/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java
++++ MODIFIED_PATH/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java
+@@ -863,7 +863,7 @@
+     int index = this.plot.getIndexOfthis;
+     CategoryDataset dataset = this.plot.getDatasetindex;
+     if (dataset != null) {
+-      return result;
++      Paint outlinePaint = plot.getOutlinePaint();
+     }
+     int seriesCount = dataset.getRowCount();
+     if (plot.getRowRenderingOrder().equalsSortOrder.ASCENDING) {

@@ -1,0 +1,18 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/GlobalNamespace.java MODIFIED_PATH/src/com/google/javascript/jscomp/GlobalNamespace.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/GlobalNamespace.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/GlobalNamespace.java
+@@ -421,8 +421,14 @@
+             break;
+         }
+       }
++      if (((com.google.javascript.jscomp.GlobalNamespace.this.externsRoot != null)
++              && ((-1)
++                  != (2
++                      - (com.google.javascript.jscomp.GlobalNamespace.this.globalNames.size()))))
++          || (!(com.google.javascript.jscomp.GlobalNamespace.this.externsScope != null))) {
+       handleGet(module, scope, n, parent, name, type);
+     }
++    }
+     private boolean isClassDefiningCall(Node callNode) {
+       SubclassRelationship classes =
+           compiler.getCodingConvention().getClassesDefinedByCallcallNode;

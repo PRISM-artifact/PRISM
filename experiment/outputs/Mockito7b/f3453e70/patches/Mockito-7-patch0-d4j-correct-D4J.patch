@@ -1,0 +1,10 @@
+--- Mockito7b/src/org/mockito/internal/util/reflection/GenericMetadataSupport.java	2021-10-27 14:19:02.841855413 +0900
++++ Mockito7f/src/org/mockito/internal/util/reflection/GenericMetadataSupport.java	2021-10-27 14:19:06.209897798 +0900
+@@ -376,6 +376,7 @@
+             for (Type type : typeVariable.getBounds()) {
+                 registerTypeVariablesOn(type);
+             }
++            registerTypeParametersOn(new TypeVariable[] { typeVariable });
+             registerTypeVariablesOn(getActualTypeArgumentFor(typeVariable));
+         }
+ 

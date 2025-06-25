@@ -1,0 +1,11 @@
+--- Chart7b/source/org/jfree/data/time/TimePeriodValues.java	2024-10-21 14:44:32.357801093 +0900
++++ Chart7f/source/org/jfree/data/time/TimePeriodValues.java	2024-10-21 14:44:32.357801093 +0900
+@@ -549,7 +549,7 @@
+      * @return The index.
+      */
+     public int getMaxMiddleIndex() {
+-        return this.maxMiddleIndex;
++        return this.maxEndIndex;
+     }
+ 
+     /**

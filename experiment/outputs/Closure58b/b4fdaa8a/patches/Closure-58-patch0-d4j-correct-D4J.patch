@@ -1,0 +1,15 @@
+--- Closure58b/src/com/google/javascript/jscomp/LiveVariablesAnalysis.java	2021-10-26 15:35:51.156442544 +0900
++++ Closure58f/src/com/google/javascript/jscomp/LiveVariablesAnalysis.java	2021-10-26 15:35:53.128465314 +0900
+@@ -203,8 +203,12 @@
+             // for(var x in y) {...}
+             lhs = lhs.getLastChild();
+           }
++          if (NodeUtil.isName(lhs)) {
+             addToSetIfLocal(lhs, kill);
+             addToSetIfLocal(lhs, gen);
++          } else {
++            computeGenKill(lhs, gen, kill, conditional);
++          }
+           computeGenKill(rhs, gen, kill, conditional);
+         }
+         return;

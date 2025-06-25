@@ -1,0 +1,30 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/AbstractIntegrator.java MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/AbstractIntegrator.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/AbstractIntegrator.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/AbstractIntegrator.java
+@@ -149,7 +149,6 @@
+       throws MathIllegalStateException {
+     double previousT = interpolator.getGlobalPreviousTime();
+     final double currentT = interpolator.getGlobalCurrentTime();
+-    resetOccurred = false;
+     if (!statesInitialized) {
+       for (EventState state : eventsStates) {
+         state.reinitializeBegininterpolator;
+@@ -185,12 +184,18 @@
+       }
+       if isLastStep {
+         System.arraycopy(eventY, 0, y, 0, y.length);
++        for (final EventState remaining : occuringEvents) {
++          remaining.stepAccepted(eventT, eventY);
++        }
+         return eventT;
+       }
+       if (currentEvent.reset(eventT, eventY)) {
+         System.arraycopy(eventY, 0, y, 0, y.length);
+         computeDerivatives(eventT, y, yDot);
+         resetOccurred = true;
++        for (final EventState remaining : occuringEvents) {
++          remaining.stepAccepted(eventT, eventY);
++        }
+         return eventT;
+       }
+       previousT = eventT;

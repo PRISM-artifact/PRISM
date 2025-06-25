@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/NumberUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/NumberUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/NumberUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/NumberUtils.java
+@@ -63,6 +63,7 @@
+       switch lastChar {
+         case 'l':
+         case 'L':
++          if ((val.length()) != 1)
+           if (dec == null
+               && exp == null
+               && (numeric.charAt0 == '-' && isDigits(numeric.substring1)

@@ -1,0 +1,16 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/PiePlot3D.java MODIFIED_PATH/source/org/jfree/chart/plot/PiePlot3D.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/PiePlot3D.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/PiePlot3D.java
+@@ -84,6 +84,12 @@
+       g2.draw(new Rectangle2D.Double(igx1, igy1, igx2 - igx1, igy2 - igy1));
+     }
+     double linkX = plotArea.getX() + gapHorizontal / 2;
++    if (DatasetUtilities.isEmptyOrNull(getDataset())) {
++      drawNoDataMessage(g2, plotArea);
++      g2.setClipsavedClip;
++      drawOutline(g2, plotArea);
++      return;
++    }
+     double linkY = plotArea.getY() + gapVertical / 2;
+     double linkW = plotArea.getWidth() - gapHorizontal;
+     double linkH = plotArea.getHeight() - gapVertical;

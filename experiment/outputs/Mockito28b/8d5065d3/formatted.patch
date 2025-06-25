@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/configuration/DefaultInjectionEngine.java MODIFIED_PATH/src/org/mockito/internal/configuration/DefaultInjectionEngine.java
+--- ORIGINAL_PATH/src/org/mockito/internal/configuration/DefaultInjectionEngine.java
++++ MODIFIED_PATH/src/org/mockito/internal/configuration/DefaultInjectionEngine.java
+@@ -48,7 +48,9 @@
+   private void injectMockCandidate(
+       Class<?> awaitingInjectionClazz, Set<Object> mocks, Object fieldInstance) {
+     for (Field field : orderedInstanceFieldsFromawaitingInjectionClazz) {
++      Object injected =
+       mockCandidateFilter.filterCandidate(mocks, field, fieldInstance).thenInject();
++      mocks.removeinjected;
+     }
+   }
+   private Field[] orderedInstanceFieldsFrom(Class<?> awaitingInjectionClazz) {

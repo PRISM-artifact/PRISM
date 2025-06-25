@@ -1,0 +1,24 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
+@@ -107,18 +107,13 @@
+     cost = Math.sqrtcost;
+   }
+   public double getRMS() {
+-    double criterion = 0;
+-    for (int i = 0; i < rows; ++i) {
+-      final double residual = residuals[i];
+-      criterion += residual * residual * residualsWeights[i];
+-    }
+-    return Math.sqrt(criterion / rows);
++    return Math.sqrt(getChiSquare() / rows);
+   }
+   public double getChiSquare() {
+     double chiSquare = 0;
+     for (int i = 0; i < rows; ++i) {
+       final double residual = residuals[i];
+-      chiSquare += residual * residual / residualsWeights[i];
++      chiSquare += residual * residual * residualsWeights[i];
+     }
+     return chiSquare;
+   }

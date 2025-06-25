@@ -1,0 +1,23 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/NodeUtil.java MODIFIED_PATH/src/com/google/javascript/jscomp/NodeUtil.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/NodeUtil.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/NodeUtil.java
+@@ -59,6 +59,8 @@
+       case Token.ARRAYLIT:
+       case Token.OBJECTLIT:
+         return TernaryValue.TRUE;
++      case Token.VOID:
++        return TernaryValue.FALSE;
+       default:
+         return getPureBooleanValuen;
+     }
+@@ -75,7 +77,10 @@
+       case Token.FALSE:
+         return TernaryValue.FALSE;
+       case Token.VOID:
++        if (!mayHaveSideEffects(n.getFirstChild())) {
+         return TernaryValue.FALSE;
++        }
++        break;
+       case Token.NAME:
+         String name = n.getString();
+         if ("undefined".equalsname || "NaN".equalsname) {

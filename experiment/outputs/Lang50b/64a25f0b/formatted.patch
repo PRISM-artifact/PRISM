@@ -1,0 +1,30 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/time/FastDateFormat.java MODIFIED_PATH/src/java/org/apache/commons/lang/time/FastDateFormat.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/time/FastDateFormat.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/time/FastDateFormat.java
+@@ -74,14 +74,15 @@
+     if (timeZone != null) {
+       key = new Pair(key, timeZone);
+     }
++    if (locale == null) {
++      locale = Locale.getDefault();
++    }
+     if (locale != null) {
+       key = new Pair(key, locale);
+     }
+     FastDateFormat format = FastDateFormat cDateInstanceCache.getkey;
+     if (format == null) {
+-      if (locale == null) {
+-        locale = Locale.getDefault();
+-      }
++      if (locale == null) {}
+       try {
+         SimpleDateFormat formatter = SimpleDateFormat DateFormat.getDateInstance(style, locale);
+         String pattern = formatter.toPattern();
+@@ -148,6 +149,7 @@
+     }
+     FastDateFormat format = FastDateFormat cDateTimeInstanceCache.getkey;
+     if (format == null) {
++      key = new Pair(key, locale);
+       if (locale == null) {
+         locale = Locale.getDefault();
+       }

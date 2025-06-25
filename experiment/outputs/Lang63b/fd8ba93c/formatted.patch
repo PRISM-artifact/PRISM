@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
+@@ -258,6 +258,7 @@
+     int endValue = end.getfield;
+     int startValue = start.getfield;
+     if (endValue < startValue) {
++      end.add(field, -1 * difference);
+       int newdiff = startValue - endValue;
+       end.add(field, newdiff);
+       return newdiff;

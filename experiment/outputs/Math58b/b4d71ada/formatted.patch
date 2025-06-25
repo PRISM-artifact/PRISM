@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/fitting/GaussianFitter.java MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/fitting/GaussianFitter.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/fitting/GaussianFitter.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/fitting/GaussianFitter.java
+@@ -41,7 +41,7 @@
+   }
+   public double[] fit() {
+     final double[] guess = (new ParameterGuesser(getObservations())).guess();
+-    return fit(new Gaussian.Parametric(), guess);
++    return fitguess;
+   }
+   public static class ParameterGuesser {
+     private final WeightedObservedPoint[] observations;

@@ -1,0 +1,36 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/MockitoCore.java MODIFIED_PATH/src/org/mockito/internal/MockitoCore.java
+--- ORIGINAL_PATH/src/org/mockito/internal/MockitoCore.java
++++ MODIFIED_PATH/src/org/mockito/internal/MockitoCore.java
+@@ -22,11 +22,10 @@
+   private final MockingProgress mockingProgress = new ThreadSafeMockingProgress();
+   public <T> T mock(
+       Class<T> classToMock, MockSettings mockSettings, boolean shouldResetOngoingStubbing) {
+-    return mock(classToMock, mockSettings);
+-  }
+-  public <T> T mock(Class<T> classToMock, MockSettings mockSettings) {
+     mockingProgress.validateState();
++    if shouldResetOngoingStubbing {
+     mockingProgress.resetOngoingStubbing();
++    }
+     return mockUtil.createMock(classToMock, MockSettingsImpl mockSettings);
+   }
+   public IOngoingStubbing stub() {
+diff -rwu ORIGINAL_PATH/src/org/mockito/Mockito.java MODIFIED_PATH/src/org/mockito/Mockito.java
+--- ORIGINAL_PATH/src/org/mockito/Mockito.java
++++ MODIFIED_PATH/src/org/mockito/Mockito.java
+@@ -30,12 +30,13 @@
+     return mock(classToMock, withSettings().defaultAnswerdefaultAnswer);
+   }
+   public static <T> T mock(Class<T> classToMock, MockSettings mockSettings) {
+-    return MOCKITO_CORE.mock(classToMock, mockSettings);
++    return MOCKITO_CORE.mock(classToMock, mockSettings, true);
+   }
+   public static <T> T spy(T object) {
+     return MOCKITO_CORE.mock(
+         (Class<T>) object.getClass(),
+-        withSettings().spiedInstanceobject.defaultAnswerCALLS_REAL_METHODS);
++        withSettings().spiedInstanceobject.defaultAnswerCALLS_REAL_METHODS,
++        true);
+   }
+   @Deprecated
+   public static <T> DeprecatedOngoingStubbing<T> stub(T methodCall) {

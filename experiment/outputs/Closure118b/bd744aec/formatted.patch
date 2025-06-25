@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/DisambiguateProperties.java MODIFIED_PATH/src/com/google/javascript/jscomp/DisambiguateProperties.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/DisambiguateProperties.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/DisambiguateProperties.java
+@@ -301,6 +301,9 @@
+     }
+     private void handleObjectLit(NodeTraversal t, Node n) {
+       for (Node child = n.getFirstChild(); child != null; child = child.getNext()) {
++        if (child.isQuotedString()) {
++          continue;
++        }
+         String name = child.getString();
+         T type = typeSystem.getType(getScope(), n, name);
+         Property prop = getPropertyname;

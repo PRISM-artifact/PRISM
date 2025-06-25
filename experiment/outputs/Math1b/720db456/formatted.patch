@@ -1,0 +1,26 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/fraction/BigFraction.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/fraction/BigFraction.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/fraction/BigFraction.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/fraction/BigFraction.java
+@@ -120,6 +120,9 @@
+       p2 = (a1 * p1) + p0;
+       q2 = (a1 * q1) + q0;
+       if ((p2 > overflow) || (q2 > overflow)) {
++        if (epsilon == 0.0 && FastMath.absq1 < maxDenominator) {
++          break;
++        }
+         throw new FractionConversionException(value, p2, q2);
+       }
+       final double convergent = double p2 / double q2;
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java
+@@ -65,6 +65,9 @@
+       p2 = (a1 * p1) + p0;
+       q2 = (a1 * q1) + q0;
+       if ((FastMath.absp2 > overflow) || (FastMath.absq2 > overflow)) {
++        if (epsilon == 0.0 && FastMath.absq1 < maxDenominator) {
++          break;
++        }
+         throw new FractionConversionException(value, p2, q2);
+       }
+       double convergent = double p2 / double q2;

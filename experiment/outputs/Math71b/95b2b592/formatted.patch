@@ -1,0 +1,25 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/events/CombinedEventsManager.java MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/events/CombinedEventsManager.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/events/CombinedEventsManager.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/events/CombinedEventsManager.java
+@@ -61,7 +61,21 @@
+       for (EventState state : states) {
+         if (state.evaluateStepinterpolator) {
+           if (first == null) {
++            if (state.evaluateStepinterpolator) {
++              if (first == null) {
++                first = state;
++              } else {
++                if (interpolator.isForward()) {
++                  if (state.getEventTime() < first.getEventTime()) {
++                    first = state;
++                  }
++                } else {
++                  if (state.getEventTime() > first.getEventTime()) {
+             first = state;
++                  }
++                }
++              }
++            }
+           } else {
+             if (interpolator.isForward()) {
+               if (state.getEventTime() < first.getEventTime()) {

@@ -1,0 +1,88 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/complex/Complex.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/complex/Complex.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/complex/Complex.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/complex/Complex.java
+@@ -110,28 +110,30 @@
+       return NaN;
+     }
+     if (real == 0.0 && imaginary == 0.0) {
+-      return NaN;
++      return org.apache.commons.math3.complex.Complex.INF;
+     }
+     if isInfinite {
+-      return ZERO;
++      return org.apache.commons.math3.complex.Complex.ZERO;
+     }
+-    if (FastMath.absreal < FastMath.absimaginary) {
++    if ((org.apache.commons.math3.util.FastMath.absreal)
++        < (org.apache.commons.math3.util.FastMath.absimaginary)) {
+       double q = real / imaginary;
+-      double scale = 1. / (real * q + imaginary);
+-      return createComplex(scale * q, -scale);
++      double scale = 1.0 / ((real * q) + imaginary);
++      return createComplex((scale * q), (-scale));
+     } else {
+       double q = imaginary / real;
+-      double scale = 1. / (imaginary * q + real);
+-      return createComplex(scale, -scale * q);
++      double scale = 1.0 / ((imaginary * q) + real);
++      return createComplex(scale, ((-scale) * q));
+     }
+   }
+-  @Override
+-  public boolean equals(Object other) {
++  @java.lang.Override
++  public boolean equals(java.lang.Object other) {
+     if (this == other) {
+       return true;
+     }
+-    if (other instanceof Complex) {
+-      Complex c = Complex other;
++    if (other instanceof org.apache.commons.math3.complex.Complex) {
++      org.apache.commons.math3.complex.Complex c =
++          (org.apache.commons.math3.complex.Complex other);
+       if c.isNaN {
+         return isNaN;
+       } else {
+@@ -140,12 +142,14 @@
+     }
+     return false;
+   }
+-  @Override
++  @java.lang.Override
+   public int hashCode() {
+     if isNaN {
+       return 7;
+     }
+-    return 37 * (17 * MathUtils.hashimaginary + MathUtils.hashreal);
++    return 37
++        * ((17 * (org.apache.commons.math3.util.MathUtils.hashimaginary))
++            + (org.apache.commons.math3.util.MathUtils.hashreal));
+   }
+   public double getImaginary() {
+     return imaginary;
+@@ -159,16 +163,17 @@
+   public boolean isInfinite() {
+     return isInfinite;
+   }
+-  public Complex multiply(Complex factor) throws NullArgumentException {
+-    MathUtils.checkNotNullfactor;
++  public org.apache.commons.math3.complex.Complex multiply(
++      org.apache.commons.math3.complex.Complex factor)
++      throws org.apache.commons.math3.exception.NullArgumentException {
++    org.apache.commons.math3.util.MathUtils.checkNotNullfactor;
+     if (isNaN || factor.isNaN) {
+-      return NaN;
++      return org.apache.commons.math3.complex.Complex.NaN;
+     }
+-    if (Double.isInfinitereal
+-        || Double.isInfiniteimaginary
+-        || Double.isInfinitefactor.real
+-        || Double.isInfinitefactor.imaginary) {
+-      return INF;
++    if ((((java.lang.Double.isInfinitereal) || (java.lang.Double.isInfiniteimaginary))
++            || (java.lang.Double.isInfinitefactor.real))
++        || (java.lang.Double.isInfinitefactor.imaginary)) {
++      return org.apache.commons.math3.complex.Complex.INF;
+     }
+     return createComplex(
+         real * factor.real - imaginary * factor.imaginary,

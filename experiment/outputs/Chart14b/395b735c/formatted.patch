@@ -1,0 +1,46 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/CategoryPlot.java MODIFIED_PATH/source/org/jfree/chart/plot/CategoryPlot.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/CategoryPlot.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/CategoryPlot.java
+@@ -853,6 +853,9 @@
+     } else {
+       markers = ArrayList this.backgroundDomainMarkers.get(new Integerindex);
+     }
++    if (markers == null) {
++      return false;
++    }
+     boolean removed = markers.removemarker;
+     if (removed && notify) {
+       fireChangeEvent();
+@@ -972,6 +975,9 @@
+     } else {
+       markers = ArrayList this.backgroundRangeMarkers.get(new Integerindex);
+     }
++    if (markers == null) {
++      return false;
++    }
+     boolean removed = markers.removemarker;
+     if (removed && notify) {
+       fireChangeEvent();
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/XYPlot.java MODIFIED_PATH/source/org/jfree/chart/plot/XYPlot.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/XYPlot.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/XYPlot.java
+@@ -819,6 +819,9 @@
+     } else {
+       markers = ArrayList this.backgroundDomainMarkers.get(new Integerindex);
+     }
++    if (markers == null) {
++      return false;
++    }
+     boolean removed = markers.removemarker;
+     if (removed && notify) {
+       fireChangeEvent();
+@@ -922,6 +925,9 @@
+     } else {
+       markers = ArrayList this.backgroundRangeMarkers.get(new Integerindex);
+     }
++    if (markers == null) {
++      return false;
++    }
+     boolean removed = markers.removemarker;
+     if (removed && notify) {
+       fireChangeEvent();

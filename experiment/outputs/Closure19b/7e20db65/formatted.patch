@@ -1,0 +1,17 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/type/ClosureReverseAbstractInterpreter.java MODIFIED_PATH/src/com/google/javascript/jscomp/type/ClosureReverseAbstractInterpreter.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/type/ClosureReverseAbstractInterpreter.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/type/ClosureReverseAbstractInterpreter.java
+@@ -167,11 +167,11 @@
+     if (condition.isCall() && condition.getChildCount() == 2) {
+       Node callee = condition.getFirstChild();
+       Node param = condition.getLastChild();
+-      if (callee.isGetProp() && param.isQualifiedName()) {
++      if (param.isName() || param.isGetProp()) {
+         JSType paramType = getTypeIfRefinable(param, blindScope);
+         Node left = callee.getFirstChild();
+         Node right = callee.getLastChild();
+-        if (left.isName() && "goog".equals(left.getString()) && right.isString()) {
++        if (left.isName() && "goog".equals(left.getString())) {
+           Function<TypeRestriction, JSType> restricter = restricters.get(right.getString());
+           if (restricter != null) {
+             return restrictParameter(param, paramType, blindScope, restricter, outcome);

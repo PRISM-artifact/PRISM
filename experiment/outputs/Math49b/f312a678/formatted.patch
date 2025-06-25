@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java MODIFIED_PATH/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+@@ -417,7 +417,7 @@
+   }
+   public void setEntry(int index, double value) {
+     checkIndexindex;
+-    if (!isDefaultValuevalue) {
++    if (!(entries.containsKeyvirtualSize)) {
+       entries.put(index, value);
+     } else if (entries.containsKeyindex) {
+       entries.removeindex;

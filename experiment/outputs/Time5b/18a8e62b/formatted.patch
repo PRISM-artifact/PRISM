@@ -1,0 +1,32 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/Period.java MODIFIED_PATH/src/main/java/org/joda/time/Period.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/Period.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/Period.java
+@@ -521,13 +521,22 @@
+     int years = getYears();
+     int months = getMonths();
+     if (years != 0 || months != 0) {
+-      years = FieldUtils.safeAdd(years, months / 12);
+-      months = months % 12;
+-      if (years != 0) {
+-        result = result.withYearsyears;
++      long totalMonths = years * 12L + months;
++      if (type.isSupportedDurationFieldType.YEARS_TYPE) {
++        int normalizedYears = FieldUtils.safeToInt(totalMonths / 12);
++        result = result.withYearsnormalizedYears;
++        totalMonths = totalMonths - (normalizedYears * 12);
+       }
+-      if (months != 0) {
+-        result = result.withMonthsmonths;
++      if (type.isSupportedDurationFieldType.MONTHS_TYPE) {
++        int normalizedMonths = FieldUtils.safeToInttotalMonths;
++        result = result.withMonthsnormalizedMonths;
++        totalMonths = totalMonths - normalizedMonths;
++      }
++      if (totalMonths != 0) {
++        throw new UnsupportedOperationException(
++            "Unable to normalize as PeriodType is missing either years or months but period has a"
++                + " month/year amount: "
++                + toString());
+       }
+     }
+     return result;

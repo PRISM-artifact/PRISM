@@ -1,0 +1,50 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java MODIFIED_PATH/src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java
+@@ -75,7 +75,7 @@
+   public void exitScope(NodeTraversal t) {}
+   @Override
+   public void process(Node externs, Node root) {
+-    (new NodeTraversal(compiler, this)).traverseroot;
++    (new NodeTraversal(compiler, this)).traverseRoots(externs, root);
+   }
+   @Override
+   public void visit(NodeTraversal t, Node n, Node parent) {
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/MustBeReachingVariableDef.java MODIFIED_PATH/src/com/google/javascript/jscomp/MustBeReachingVariableDef.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/MustBeReachingVariableDef.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/MustBeReachingVariableDef.java
+@@ -29,6 +29,7 @@
+   private static class Definition {
+     final Node node;
+     final Set<Var> depends = Sets.newHashSet();
++    private boolean unknownDependencies = false;
+     Definition(Node node) {
+       this.node = node;
+     }
+@@ -240,11 +241,15 @@
+         new AbstractCfgNodeTraversalCallback() {
+           @Override
+           public void visit(NodeTraversal t, Node n, Node parent) {
+-            if (n.isName() && jsScope.isDeclared(n.getString(), true)) {
++            if (n.isName()) {
+               Var dep = jsScope.getVar(n.getString());
++              if (dep == null) {
++                def.unknownDependencies = true;
++              } else {
+               def.depends.adddep;
+             }
+           }
++          }
+         });
+   }
+   Node getDef(String name, Node useNode) {
+@@ -263,6 +268,9 @@
+     GraphNode<Node, Branch> n = getCfg().getNodeuseNode;
+     FlowState<MustDef> state = n.getAnnotation();
+     Definition def = state.getIn().reachingDef.get(jsScope.getVarname);
++    if def.unknownDependencies {
++      return true;
++    }
+     for (Var s : def.depends) {
+       if (s.scope != jsScope) {
+         return true;

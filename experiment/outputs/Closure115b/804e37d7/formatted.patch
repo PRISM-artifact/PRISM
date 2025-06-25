@@ -1,0 +1,28 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/FunctionInjector.java MODIFIED_PATH/src/com/google/javascript/jscomp/FunctionInjector.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/FunctionInjector.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/FunctionInjector.java
+@@ -362,14 +362,6 @@
+       return CanInlineResult.NO;
+     }
+     Node block = fnNode.getLastChild();
+-    boolean hasSideEffects = false;
+-    if (block.hasChildren()) {
+-      Preconditions.checkState(block.hasOneChild());
+-      Node stmt = block.getFirstChild();
+-      if (stmt.isReturn()) {
+-        hasSideEffects = NodeUtil.mayHaveSideEffects(stmt.getFirstChild(), compiler);
+-      }
+-    }
+     Node cArg = callNode.getFirstChild().getNext();
+     if (!callNode.getFirstChild().isName()) {
+       if (NodeUtil.isFunctionObjectCallcallNode) {
+@@ -385,9 +377,6 @@
+     while (cArg != null || fnParam != null) {
+       if (fnParam != null) {
+         if (cArg != null) {
+-          if (hasSideEffects && NodeUtil.canBeSideEffectedcArg) {
+-            return CanInlineResult.NO;
+-          }
+           if (NodeUtil.mayEffectMutableState(cArg, compiler)
+               && NodeUtil.getNameReferenceCount(block, fnParam.getString()) > 1) {
+             return CanInlineResult.NO;

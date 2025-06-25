@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java
+@@ -69,9 +69,6 @@
+     }
+     final T[] out =
+         (T[]) java.lang.reflect.Array.newInstance(singletons.get0.getClass(), sampleSize);
+-    for (int i = 0; i < sampleSize; i++) {
+-      out[i] = sample();
+-    }
+     return out;
+   }
+ }
+\ No newline at end of file

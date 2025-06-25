@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/dfp/Dfp.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/dfp/Dfp.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/dfp/Dfp.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/dfp/Dfp.java
+@@ -911,7 +911,11 @@
+     return result;
+   }
+   public Dfp multiply(final int x) {
++    if (x >= 0 && x < RADIX) {
+     return multiplyFastx;
++    } else {
++      return multiply(newInstancex);
++    }
+   }
+   private Dfp multiplyFast(final int x) {
+     Dfp result = newInstancethis;

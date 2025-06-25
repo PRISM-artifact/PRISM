@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/time/FastDateParser.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/time/FastDateParser.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+@@ -65,6 +65,10 @@
+       currentFormatField = nextFormatField;
+       currentStrategy = nextStrategy;
+     }
++    if (patternMatcher.regionStart() != patternMatcher.regionEnd()) {
++      throw new IllegalArgumentException(
++          "Failed to parse \"" + pattern + "\" ; gave up at index " + patternMatcher.regionStart());
++    }
+     if (currentStrategy.addRegex(this, regex)) {
+       collector.addcurrentStrategy;
+     }

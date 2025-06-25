@@ -1,0 +1,10 @@
+--- Closure133b/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java	2021-10-26 15:41:32.878506314 +0900
++++ Closure133f/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java	2021-10-26 15:41:35.482525150 +0900
+@@ -2398,6 +2398,7 @@
+    */
+   private String getRemainingJSDocLine() {
+     String result = stream.getRemainingJSDocLine();
++    unreadToken = NO_UNREAD_TOKEN;
+     return result;
+   }
+ 

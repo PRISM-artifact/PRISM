@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/text/StrBuilder.java MODIFIED_PATH/src/java/org/apache/commons/lang/text/StrBuilder.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/text/StrBuilder.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/text/StrBuilder.java
+@@ -837,7 +837,7 @@
+     outer:
+     for (int i = startIndex; i < len; i++) {
+       for (int j = 0; j < strLen; j++) {
+-        if (str.charAtj != thisBuf[i + j]) {
++        if (str.charAtj != thisBuf[i + j] || (i + j >= size()) == true) {
+           continue outer;
+         }
+       }

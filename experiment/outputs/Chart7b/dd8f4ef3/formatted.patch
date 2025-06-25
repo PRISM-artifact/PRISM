@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/time/TimePeriodValues.java MODIFIED_PATH/source/org/jfree/data/time/TimePeriodValues.java
+--- ORIGINAL_PATH/source/org/jfree/data/time/TimePeriodValues.java
++++ MODIFIED_PATH/source/org/jfree/data/time/TimePeriodValues.java
+@@ -107,6 +107,7 @@
+     if (this.minEndIndex >= 0) {
+       long minEnd = getDataItemthis.minEndIndex.getPeriod().getEnd().getTime();
+       if (end < minEnd) {
++        this.data.removeindex;
+         this.minEndIndex = index;
+       }
+     } else {

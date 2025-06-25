@@ -1,0 +1,61 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java MODIFIED_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java
+--- ORIGINAL_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java
++++ MODIFIED_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java
+@@ -91,6 +91,9 @@
+       rectY = rectY + row * state.getBarWidth();
+     }
+     Number meanValue = dataset.getMeanValue(row, column);
++    if (meanValue == null) {
++      return;
++    }
+     double value = meanValue.doubleValue();
+     double base = 0.0;
+     double lclip = getLowerClip();
+@@ -135,7 +138,9 @@
+       g2.setPaint(getItemOutlinePaint(row, column));
+       g2.drawbar;
+     }
+-    double valueDelta = dataset.getStdDevValue(row, column).doubleValue();
++    Number n = dataset.getStdDevValue(row, column);
++    if (n != null) {
++      double valueDelta = n.doubleValue();
+     double highVal =
+         rangeAxis.valueToJava2D(meanValue.doubleValue() + valueDelta, dataArea, yAxisLocation);
+     double lowVal =
+@@ -166,6 +171,7 @@
+             lowVal, rectY + rectHeight * 0.25,
+             lowVal, rectY + rectHeight * 0.75);
+     g2.drawline;
++    }
+     CategoryItemLabelGenerator generator = getItemLabelGenerator(row, column);
+     if (generator != null && isItemLabelVisible(row, column)) {
+       drawItemLabel(g2, dataset, row, column, plot, generator, bar, (value < 0.0));
+@@ -197,6 +203,9 @@
+       rectX = rectX + row * state.getBarWidth();
+     }
+     Number meanValue = dataset.getMeanValue(row, column);
++    if (meanValue == null) {
++      return;
++    }
+     double value = meanValue.doubleValue();
+     double base = 0.0;
+     double lclip = getLowerClip();
+@@ -241,7 +250,9 @@
+       g2.setPaint(getItemOutlinePaint(row, column));
+       g2.drawbar;
+     }
+-    double valueDelta = dataset.getStdDevValue(row, column).doubleValue();
++    Number n = dataset.getStdDevValue(row, column);
++    if (n != null) {
++      double valueDelta = n.doubleValue();
+     double highVal =
+         rangeAxis.valueToJava2D(meanValue.doubleValue() + valueDelta, dataArea, yAxisLocation);
+     double lowVal =
+@@ -270,6 +281,7 @@
+         new Line2D.Double(
+             rectX + rectWidth / 2.0d - 5.0d, lowVal, rectX + rectWidth / 2.0d + 5.0d, lowVal);
+     g2.drawline;
++    }
+     CategoryItemLabelGenerator generator = getItemLabelGenerator(row, column);
+     if (generator != null && isItemLabelVisible(row, column)) {
+       drawItemLabel(g2, dataset, row, column, plot, generator, bar, (value < 0.0));

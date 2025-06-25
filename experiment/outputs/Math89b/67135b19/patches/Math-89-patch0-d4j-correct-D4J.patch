@@ -1,0 +1,14 @@
+--- Math89b/src/java/org/apache/commons/math/stat/Frequency.java	2021-10-27 13:47:19.823587683 +0900
++++ Math89f/src/java/org/apache/commons/math/stat/Frequency.java	2021-10-27 13:47:23.267633088 +0900
+@@ -107,7 +107,11 @@
+      */
+     @Deprecated
+     public void addValue(Object v) {
++        if (v instanceof Comparable<?>){
+             addValue((Comparable<?>) v);            
++        } else {
++            throw new IllegalArgumentException("Object must implement Comparable");
++        }
+     }
+     
+     /**

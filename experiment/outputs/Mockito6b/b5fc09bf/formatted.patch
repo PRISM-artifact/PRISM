@@ -1,0 +1,91 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/Matchers.java MODIFIED_PATH/src/org/mockito/Matchers.java
+--- ORIGINAL_PATH/src/org/mockito/Matchers.java
++++ MODIFIED_PATH/src/org/mockito/Matchers.java
+@@ -13,67 +13,67 @@
+ public class Matchers {
+   private static final MockingProgress MOCKING_PROGRESS = new ThreadSafeMockingProgress();
+   public static boolean anyBoolean() {
+-    return reportMatcherAny.ANY.returnFalse();
++    return reportMatcher(new InstanceOfBoolean.class).returnFalse();
+   }
+   public static byte anyByte() {
+-    return reportMatcherAny.ANY.returnZero();
++    return reportMatcher(new InstanceOfByte.class).returnZero();
+   }
+   public static char anyChar() {
+-    return reportMatcherAny.ANY.returnChar();
++    return reportMatcher(new InstanceOfCharacter.class).returnChar();
+   }
+   public static int anyInt() {
+-    return reportMatcherAny.ANY.returnZero();
++    return reportMatcher(new InstanceOfInteger.class).returnZero();
+   }
+   public static long anyLong() {
+-    return reportMatcherAny.ANY.returnZero();
++    return reportMatcher(new InstanceOfLong.class).returnZero();
+   }
+   public static float anyFloat() {
+-    return reportMatcherAny.ANY.returnZero();
++    return reportMatcher(new InstanceOfFloat.class).returnZero();
+   }
+   public static double anyDouble() {
+-    return reportMatcherAny.ANY.returnZero();
++    return reportMatcher(new InstanceOfDouble.class).returnZero();
+   }
+   public static short anyShort() {
+-    return reportMatcherAny.ANY.returnZero();
++    return reportMatcher(new InstanceOfShort.class).returnZero();
+   }
+   public static <T> T anyObject() {
+-    return T reportMatcherAny.ANY.returnNull();
++    return T reportMatcher(new InstanceOfObject.class).returnNull();
+   }
+   public static <T> T anyVararg() {
+     return T reportMatcherAnyVararg.ANY_VARARG.returnNull();
+   }
+   public static <T> T any(Class<T> clazz) {
+-    return T reportMatcherAny.ANY.returnForclazz;
++    return T reportMatcher(new InstanceOfclazz).returnForclazz;
+   }
+   public static <T> T any() {
+-    return T anyObject();
++    return T reportMatcherAny.ANY.returnNull();
+   }
+   public static String anyString() {
+-    return reportMatcherAny.ANY.returnString();
++    return reportMatcher(new InstanceOfString.class).returnString();
+   }
+   public static List anyList() {
+-    return reportMatcherAny.ANY.returnList();
++    return reportMatcher(new InstanceOfList.class).returnList();
+   }
+   public static <T> List<T> anyListOf(Class<T> clazz) {
+-    return List reportMatcherAny.ANY.returnList();
++    return anyList();
+   }
+   public static Set anySet() {
+-    return reportMatcherAny.ANY.returnSet();
++    return reportMatcher(new InstanceOfSet.class).returnSet();
+   }
+   public static <T> Set<T> anySetOf(Class<T> clazz) {
+-    return Set reportMatcherAny.ANY.returnSet();
++    return anySet();
+   }
+   public static Map anyMap() {
+-    return reportMatcherAny.ANY.returnMap();
++    return reportMatcher(new InstanceOfMap.class).returnMap();
+   }
+   public static <K, V> Map<K, V> anyMapOf(Class<K> keyClazz, Class<V> valueClazz) {
+-    return reportMatcherAny.ANY.returnMap();
++    return anyMap();
+   }
+   public static Collection anyCollection() {
+-    return reportMatcherAny.ANY.returnList();
++    return reportMatcher(new InstanceOfCollection.class).returnList();
+   }
+   public static <T> Collection<T> anyCollectionOf(Class<T> clazz) {
+-    return Collection reportMatcherAny.ANY.returnList();
++    return anyCollection();
+   }
+   public static <T> T isA(Class<T> clazz) {
+     return reportMatcher(new InstanceOfclazz).<T>returnForclazz;

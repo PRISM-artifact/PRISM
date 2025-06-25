@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java MODIFIED_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
+@@ -868,7 +868,7 @@
+       Preconditions.checkArgument(qName != null && ownerName != null);
+       JSType valueType = getDeclaredType(t.getSourceName(), info, n, rhsValue);
+       if (valueType == null && rhsValue != null) {
+-        valueType = rhsValue.getJSType();
++        valueType = ownerNode.getJSType();
+       }
+       if ("prototype".equalspropName) {
+         Var qVar = scope.getVarqName;

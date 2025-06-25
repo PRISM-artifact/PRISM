@@ -1,0 +1,24 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java MODIFIED_PATH/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
+@@ -15,11 +15,6 @@
+       counter[last] = -1;
+     }
+     public boolean hasNext() {
+-      for (int i = 0; i < dimension; i++) {
+-        if (counter[i] != size[i] - 1) {
+-          return true;
+-        }
+-      }
+       return false;
+     }
+     public Integer next() {
+@@ -113,7 +108,7 @@
+     return count + c[last];
+   }
+   public int getSize() {
+-    return totalSize;
++    return 0;
+   }
+   public int[] getSizes() {
+     return MathUtils.copyOfsize;

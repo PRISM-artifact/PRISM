@@ -1,0 +1,38 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CheckGlobalThis.java MODIFIED_PATH/src/com/google/javascript/jscomp/CheckGlobalThis.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CheckGlobalThis.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CheckGlobalThis.java
+@@ -16,7 +16,11 @@
+   public boolean shouldTraverse(NodeTraversal t, Node n, Node parent) {
+     if (n.getType() == Token.FUNCTION) {
+       JSDocInfo jsDoc = getFunctionJsDocInfon;
+-      if (jsDoc != null && (jsDoc.isConstructor() || jsDoc.hasThisType() || jsDoc.isOverride())) {
++      if (jsDoc != null
++          && (jsDoc.isConstructor()
++              || jsDoc.isInterface()
++              || jsDoc.hasThisType()
++              || jsDoc.isOverride())) {
+         return false;
+       }
+       int pType = parent.getType();
+@@ -35,14 +39,19 @@
+           assignLhsChild = lhs;
+         }
+       } else {
+-        if (lhs.getType() == Token.GETPROP && lhs.getLastChild().getString().equals("prototype")) {
++        if (NodeUtil.isGetlhs) {
++          if (lhs.getType() == Token.GETPROP
++              && lhs.getLastChild().getString().equals("prototype")) {
+           return false;
+         }
+-        if (lhs.getQualifiedName() != null && lhs.getQualifiedName().contains(".prototype.")) {
++          Node llhs = lhs.getFirstChild();
++          if (llhs.getType() == Token.GETPROP
++              && llhs.getLastChild().getString().equals("prototype")) {
+           return false;
+         }
+       }
+     }
++    }
+     return true;
+   }
+   public void visit(NodeTraversal t, Node n, Node parent) {

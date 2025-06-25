@@ -1,0 +1,11 @@
+--- Chart1b/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java	2024-10-21 13:48:24.474472523 +0900
++++ Chart1f/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java	2024-10-21 13:48:24.474472523 +0900
+@@ -1794,7 +1794,7 @@
+         }
+         int index = this.plot.getIndexOf(this);
+         CategoryDataset dataset = this.plot.getDataset(index);
+-        if (dataset != null) {
++        if ((baseToolTipGenerator) instanceof org.jfree.chart.util.PublicCloneable) {
+             return result;
+         }
+         int seriesCount = dataset.getRowCount();

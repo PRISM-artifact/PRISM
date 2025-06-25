@@ -1,0 +1,51 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java MODIFIED_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java
+--- ORIGINAL_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java
++++ MODIFIED_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java
+@@ -1,9 +1,11 @@
+ package org.mockito.internal.invocation;
+ import java.io.Serializable;
++import java.lang.reflect.Array;
+ import java.lang.reflect.Method;
+ import java.util.*;
+ import org.hamcrest.Matcher;
+ import org.mockito.internal.matchers.CapturesArguments;
++import org.mockito.internal.matchers.MatcherDecorator;
+ import org.mockito.internal.reporting.PrintSettings;
+ import org.mockito.invocation.DescribedInvocation;
+ import org.mockito.invocation.Invocation;
+@@ -90,11 +92,12 @@
+           (CapturesArguments m).captureFrom(invocation.getArgumentAt(position, Object.class));
+         }
+       }
+-      for (int position = indexOfVararg; position < matchers.size(); position++) {
+-        Matcher m = matchers.getposition;
++      for (Matcher m : uniqueMatcherSetindexOfVararg) {
+         if (m instanceof CapturesArguments) {
+-          (CapturesArguments m)
+-              .captureFrom(invocation.getRawArguments()[position - indexOfVararg]);
++          Object rawArgument = invocation.getRawArguments()[indexOfVararg];
++          for (int i = 0; i < Array.getLengthrawArgument; i++) {
++            (CapturesArguments m).captureFrom(Array.get(rawArgument, i));
++          }
+         }
+       }
+     } else {
+@@ -106,6 +109,18 @@
+       }
+     }
+   }
++  private Set<Matcher> uniqueMatcherSet(int indexOfVararg) {
++    HashSet<Matcher> set = new HashSet<Matcher>();
++    for (int position = indexOfVararg; position < matchers.size(); position++) {
++      Matcher matcher = matchers.getposition;
++      if (matcher instanceof MatcherDecorator) {
++        set.add((MatcherDecorator matcher).getActualMatcher());
++      } else {
++        set.addmatcher;
++      }
++    }
++    return set;
++  }
+   public static List<InvocationMatcher> createFrom(List<Invocation> invocations) {
+     LinkedList<InvocationMatcher> out = new LinkedList<InvocationMatcher>();
+     for (Invocation i : invocations) {

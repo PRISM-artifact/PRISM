@@ -1,0 +1,17 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java MODIFIED_PATH/src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/chrono/BasicMonthOfYearDateTimeField.java
+@@ -98,6 +98,13 @@
+     if (valueToAdd == 0) {
+       return values;
+     }
++    if (partial.size() > 0
++        && partial.getFieldType0.equals(DateTimeFieldType.monthOfYear())
++        && fieldIndex == 0) {
++      int curMonth0 = partial.getValue0 - 1;
++      int newMonth = ((curMonth0 + (valueToAdd % 12) + 12) % 12) + 1;
++      return set(partial, 0, values, newMonth);
++    }
+     if (DateTimeUtils.isContiguouspartial) {
+       long instant = 0L;
+       for (int i = 0, isize = partial.size(); i < isize; i++) {

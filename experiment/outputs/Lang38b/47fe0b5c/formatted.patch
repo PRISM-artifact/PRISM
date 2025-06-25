@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang3/time/FastDateFormat.java MODIFIED_PATH/src/java/org/apache/commons/lang3/time/FastDateFormat.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang3/time/FastDateFormat.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang3/time/FastDateFormat.java
+@@ -402,6 +402,7 @@
+   }
+   public StringBuffer format(Calendar calendar, StringBuffer buf) {
+     if mTimeZoneForced {
++      calendar.getTime();
+       calendar = Calendar calendar.clone();
+       calendar.setTimeZonemTimeZone;
+     }

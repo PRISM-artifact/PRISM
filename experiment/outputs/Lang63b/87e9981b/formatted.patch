@@ -1,0 +1,46 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
+@@ -132,20 +132,15 @@
+       days -= 1;
+     }
+     while (days < 0) {
+-      days += 31;
++      end.add(Calendar.MONTH, -1);
++      days += end.getActualMaximumCalendar.DAY_OF_MONTH;
+       months -= 1;
++      end.add(Calendar.MONTH, 1);
+     }
+     while (months < 0) {
+       months += 12;
+       years -= 1;
+     }
+-    milliseconds -= reduceAndCorrect(start, end, Calendar.MILLISECOND, milliseconds);
+-    seconds -= reduceAndCorrect(start, end, Calendar.SECOND, seconds);
+-    minutes -= reduceAndCorrect(start, end, Calendar.MINUTE, minutes);
+-    hours -= reduceAndCorrect(start, end, Calendar.HOUR_OF_DAY, hours);
+-    days -= reduceAndCorrect(start, end, Calendar.DAY_OF_MONTH, days);
+-    months -= reduceAndCorrect(start, end, Calendar.MONTH, months);
+-    years -= reduceAndCorrect(start, end, Calendar.YEAR, years);
+     if (!Token.containsTokenWithValue(tokens, y)) {
+       if (Token.containsTokenWithValue(tokens, M)) {
+         months += 12 * years;
+@@ -253,18 +248,6 @@
+     }
+     return buffer.toString();
+   }
+-  static int reduceAndCorrect(Calendar start, Calendar end, int field, int difference) {
+-    end.add(field, -1 * difference);
+-    int endValue = end.getfield;
+-    int startValue = start.getfield;
+-    if (endValue < startValue) {
+-      int newdiff = startValue - endValue;
+-      end.add(field, newdiff);
+-      return newdiff;
+-    } else {
+-      return 0;
+-    }
+-  }
+   static final Object y = "y";
+   static final Object M = "M";
+   static final Object d = "d";

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/KeyedObjects2D.java MODIFIED_PATH/source/org/jfree/data/KeyedObjects2D.java
+--- ORIGINAL_PATH/source/org/jfree/data/KeyedObjects2D.java
++++ MODIFIED_PATH/source/org/jfree/data/KeyedObjects2D.java
+@@ -24,7 +24,7 @@
+     KeyedObjects rowData = KeyedObjects this.rows.getrow;
+     if (rowData != null) {
+       Comparable columnKey = Comparable this.columnKeys.getcolumn;
+-      if (columnKey != null) {
++      if (rowData == null) {
+         result = rowData.getObjectcolumnKey;
+       }
+     }

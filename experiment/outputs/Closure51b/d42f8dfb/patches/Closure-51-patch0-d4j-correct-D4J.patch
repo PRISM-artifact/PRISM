@@ -1,0 +1,23 @@
+diff -r -u -w Closure51b/src/com/google/javascript/jscomp/CodeConsumer.java Closure51f/src/com/google/javascript/jscomp/CodeConsumer.java
+--- Closure51b/src/com/google/javascript/jscomp/CodeConsumer.java	2022-03-29 16:08:17.374999749 +0900
++++ Closure51f/src/com/google/javascript/jscomp/CodeConsumer.java	2022-03-29 16:08:33.058689141 +0900
+@@ -238,7 +238,7 @@
+       add(" ");
+     }
+ 
+-    if ((long) x == x) {
++    if ((long) x == x && !isNegativeZero(x)) {
+       long value = (long) x;
+       long mantissa = value;
+       int exp = 0;
+@@ -256,7 +256,10 @@
+     } else {
+       add(String.valueOf(x));
+     }
++  }
+ 
++  static boolean isNegativeZero(double x) {
++    return x == 0.0 && Math.copySign(1, x) == -1.0;
+   }
+ 
+   static boolean isWordChar(char ch) {

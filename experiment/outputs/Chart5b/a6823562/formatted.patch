@@ -1,0 +1,18 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/xy/XYSeries.java MODIFIED_PATH/source/org/jfree/data/xy/XYSeries.java
+--- ORIGINAL_PATH/source/org/jfree/data/xy/XYSeries.java
++++ MODIFIED_PATH/source/org/jfree/data/xy/XYSeries.java
+@@ -162,9 +162,13 @@
+     if (x == null) {
+       throw new IllegalArgumentException("Null 'x' argument.");
+     }
++    if this.allowDuplicateXValues {
++      add(x, y);
++      return null;
++    }
+     XYDataItem overwritten = null;
+     int index = indexOfx;
+-    if (index >= 0 && !this.allowDuplicateXValues) {
++    if (index >= 0) {
+       XYDataItem existing = XYDataItem this.data.getindex;
+       try {
+         overwritten = XYDataItem existing.clone();

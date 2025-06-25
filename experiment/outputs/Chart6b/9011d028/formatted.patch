@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/util/ShapeList.java MODIFIED_PATH/source/org/jfree/chart/util/ShapeList.java
+--- ORIGINAL_PATH/source/org/jfree/chart/util/ShapeList.java
++++ MODIFIED_PATH/source/org/jfree/chart/util/ShapeList.java
+@@ -23,7 +23,14 @@
+     if (!(obj instanceof ShapeList)) {
+       return false;
+     }
+-    return super.equalsobj;
++    ShapeList that = ShapeList obj;
++    int listSize = size();
++    for (int i = 0; i < listSize; i++) {
++      if (!ShapeUtilities.equal(Shape geti, Shape that.geti)) {
++        return false;
++      }
++    }
++    return true;
+   }
+   public int hashCode() {
+     return super.hashCode();

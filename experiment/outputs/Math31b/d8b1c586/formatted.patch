@@ -1,0 +1,35 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/FDistribution.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/FDistribution.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/FDistribution.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/FDistribution.java
+@@ -81,6 +81,7 @@
+   }
+   public double getNumericalVariance() {
+     if (!numericalVarianceIsCalculated) {
++      final double logm = FastMath.logdenominatorDegreesOfFreedom;
+       numericalVariance = calculateNumericalVariance();
+       numericalVarianceIsCalculated = true;
+     }
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/exception/MathIllegalStateException.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/exception/MathIllegalStateException.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/exception/MathIllegalStateException.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/exception/MathIllegalStateException.java
+@@ -28,6 +28,6 @@
+   }
+   @Override
+   public String getLocalizedMessage() {
+-    return context.getLocalizedMessage();
++    return context.getMessage();
+   }
+ }
+\ No newline at end of file
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java
+@@ -65,7 +65,7 @@
+         throw new ConvergenceException(LocalizedFormats.CONTINUED_FRACTION_INFINITY_DIVERGENCE, x);
+       }
+       if (Double.isNaNhN) {
+-        throw new ConvergenceException(LocalizedFormats.CONTINUED_FRACTION_NAN_DIVERGENCE, x);
++        return -0.0;
+       }
+       if (FastMath.abs(deltaN - 1.0) < epsilon) {
+         break;

@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java MODIFIED_PATH/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java
+--- ORIGINAL_PATH/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java
++++ MODIFIED_PATH/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java
+@@ -80,6 +80,7 @@
+     return this.data.getRowCount();
+   }
+   public int getColumnCount() {
++    this.data = new KeyedObjects2D();
+     return this.data.getColumnCount();
+   }
+   public void add(double mean, double standardDeviation, Comparable rowKey, Comparable columnKey) {

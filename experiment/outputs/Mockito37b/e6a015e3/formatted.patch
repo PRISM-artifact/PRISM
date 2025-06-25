@@ -1,0 +1,18 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/stubbing/answers/AnswersValidator.java MODIFIED_PATH/src/org/mockito/internal/stubbing/answers/AnswersValidator.java
+--- ORIGINAL_PATH/src/org/mockito/internal/stubbing/answers/AnswersValidator.java
++++ MODIFIED_PATH/src/org/mockito/internal/stubbing/answers/AnswersValidator.java
+@@ -14,6 +14,14 @@
+     if (answer instanceof DoesNothing) {
+       validateDoNothing(DoesNothing answer, invocation);
+     }
++    if (answer instanceof CallsRealMethods) {
++      validateMockingConcreteClass(CallsRealMethods answer, invocation);
++    }
++  }
++  private void validateMockingConcreteClass(CallsRealMethods answer, Invocation invocation) {
++    if (invocation.getMethod().getDeclaringClass().isInterface()) {
++      reporter.cannotCallRealMethodOnInterface();
++    }
+   }
+   private void validateDoNothing(DoesNothing answer, Invocation invocation) {
+     if (!invocation.isVoid()) {

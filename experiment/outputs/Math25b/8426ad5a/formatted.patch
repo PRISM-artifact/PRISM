@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optimization/fitting/HarmonicFitter.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/optimization/fitting/HarmonicFitter.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optimization/fitting/HarmonicFitter.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/optimization/fitting/HarmonicFitter.java
+@@ -107,6 +107,9 @@
+         a = 0.5 * (yMax - yMin);
+       } else {
+         a = FastMath.sqrt(c1 / c2);
++        if (c2 == 0.0) {
++          throw new MathIllegalStateException();
++        }
+         omega = FastMath.sqrt(c2 / c3);
+       }
+     }

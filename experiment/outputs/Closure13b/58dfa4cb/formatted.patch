@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java MODIFIED_PATH/src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/PeepholeOptimizationsPass.java
+@@ -70,8 +70,8 @@
+     do {
+       Node c = node.getFirstChild();
+       while (c != null) {
+-        traversec;
+         Node next = c.getNext();
++        traversec;
+         c = next;
+       }
+       visitnode;

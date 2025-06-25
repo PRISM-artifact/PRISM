@@ -1,0 +1,10 @@
+--- Math41b/src/main/java/org/apache/commons/math/stat/descriptive/moment/Mean.java
++++ Math41f/src/main/java/org/apache/commons/math/stat/descriptive/moment/Mean.java
+@@ -216,3 +216,5 @@
+             }
+-            return xbarw + (correction/sumw);
++            if (xbarw < length) {
++                return xbarw + (correction/sumw);
++            }
+         }
+

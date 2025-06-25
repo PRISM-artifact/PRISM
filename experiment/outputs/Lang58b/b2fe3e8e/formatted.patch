@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/math/NumberUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/math/NumberUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/math/NumberUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/math/NumberUtils.java
+@@ -130,9 +130,8 @@
+       switch lastChar {
+         case 'l':
+         case 'L':
+-          if (dec == null
+-              && exp == null
+-              && isDigits(numeric.substring1)
++          if (dec == null && exp == null
++              || isDigits(numeric.substring1)
+               && (numeric.charAt0 == '-' || Character.isDigit(numeric.charAt0))) {
+             try {
+               return createLongnumeric;

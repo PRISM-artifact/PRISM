@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/MultistepIntegrator.java MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/MultistepIntegrator.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/MultistepIntegrator.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/MultistepIntegrator.java
+@@ -112,7 +112,7 @@
+       final double prev = interpolator.getPreviousTime();
+       final double curr = interpolator.getCurrentTime();
+       stepStart = prev;
+-      stepSize = (curr - prev) / (nSteps + 1);
++      stepSize = (curr - prev) / (n + 1);
+       interpolator.setInterpolatedTimeprev;
+       scaled = interpolator.getInterpolatedDerivatives().clone();
+       for (int j = 0; j < n; ++j) {

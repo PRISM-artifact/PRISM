@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+@@ -992,7 +992,7 @@
+     StringBuilder builder = new StringBuilder();
+     builder.appendline;
+     state = State.SEARCHING_ANNOTATION;
+-    token = next();
++    token = eatTokensUntilEOL();
+     boolean ignoreStar = false;
+     int lineStartChar = -1;
+     do {

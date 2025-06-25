@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/util/AbstractObjectList.java MODIFIED_PATH/source/org/jfree/chart/util/AbstractObjectList.java
+--- ORIGINAL_PATH/source/org/jfree/chart/util/AbstractObjectList.java
++++ MODIFIED_PATH/source/org/jfree/chart/util/AbstractObjectList.java
+@@ -52,6 +52,9 @@
+         return index;
+       }
+     }
++    if (object == null) {
++      throw new java.lang.IllegalArgumentException("Null 'object' argument.");
++    }
+     return -1;
+   }
+   public boolean equals(Object obj) {

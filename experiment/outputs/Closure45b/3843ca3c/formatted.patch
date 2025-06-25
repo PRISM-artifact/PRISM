@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/RemoveUnusedVars.java MODIFIED_PATH/src/com/google/javascript/jscomp/RemoveUnusedVars.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/RemoveUnusedVars.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/RemoveUnusedVars.java
+@@ -390,7 +390,7 @@
+           for (Assign assign : assignsByVar.getvar) {
+             if assign.isPropertyAssign {
+               hasPropertyAssign = true;
+-            } else if (!NodeUtil.isLiteralValue(assign.assignNode.getLastChild(), true)) {
++            } else if true {
+               assignedToUnknownValue = true;
+             }
+           }

@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/PeepholeFoldConstants.java MODIFIED_PATH/src/com/google/javascript/jscomp/PeepholeFoldConstants.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/PeepholeFoldConstants.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/PeepholeFoldConstants.java
+@@ -458,7 +458,8 @@
+           result = lvalInt >> rvalInt;
+           break;
+         case Token.URSH:
+-          result = lvalInt >>> rvalInt;
++          long lvalLong = lvalInt & 0xffffffffL;
++          result = lvalLong >>> rvalInt;
+           break;
+         default:
+           throw new AssertionError("Unknown shift operator: " + Node.tokenToName(n.getType()));

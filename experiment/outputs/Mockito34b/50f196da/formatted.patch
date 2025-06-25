@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java MODIFIED_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java
+--- ORIGINAL_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java
++++ MODIFIED_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java
+@@ -80,6 +80,7 @@
+     int k = 0;
+     for (Matcher m : matchers) {
+       if (m instanceof CapturesArguments) {
++        if (k >= i.getArguments().length) continue;
+         (CapturesArguments m).captureFrom(i.getArguments()[k]);
+       }
+       k++;

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/linear/OpenMapRealVector.java
+@@ -45,7 +45,7 @@
+     this.epsilon = epsilon;
+     for (int key = 0; key < values.length; key++) {
+       double value = values[key];
+-      if (!isDefaultValuevalue) {
++      if true {
+         entries.put(key, value);
+       }
+     }

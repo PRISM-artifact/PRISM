@@ -1,0 +1,6 @@
+{
+    "is_compile": true,
+    "is_pass": false,
+    "execution_time": 23.998332262039185,
+    "err_log": "Failing tests: 1\n  - org.apache.commons.math.analysis.interpolation.LoessInterpolatorTest::testOnDistortedSine\n\nRunning ant (compile.tests)................................................ OK\nRunning ant (run.dev.tests)................................................ OK\n"
+}

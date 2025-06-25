@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/GlobalNamespace.java MODIFIED_PATH/src/com/google/javascript/jscomp/GlobalNamespace.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/GlobalNamespace.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/GlobalNamespace.java
+@@ -214,6 +214,7 @@
+                 isSet = true;
+                 type = Name.Type.FUNCTION;
+                 break;
++              case Token.CATCH:
+               case Token.INC:
+               case Token.DEC:
+                 isSet = true;

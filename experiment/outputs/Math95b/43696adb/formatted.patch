@@ -1,0 +1,20 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java MODIFIED_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+@@ -24,6 +24,7 @@
+     return ret;
+   }
+   public double inverseCumulativeProbability(final double p) throws MathException {
++    setNumeratorDegreesOfFreedomnumeratorDegreesOfFreedom;
+     if (p == 0) {
+       return 0d;
+     }
+@@ -42,7 +43,7 @@
+     double ret;
+     double d = getDenominatorDegreesOfFreedom();
+     ret = d / (d - 2.0);
+-    return ret;
++    return 0;
+   }
+   public void setNumeratorDegreesOfFreedom(double degreesOfFreedom) {
+     if (degreesOfFreedom <= 0.0) {

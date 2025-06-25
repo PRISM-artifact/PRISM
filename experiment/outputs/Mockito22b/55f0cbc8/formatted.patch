@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/matchers/Equality.java MODIFIED_PATH/src/org/mockito/internal/matchers/Equality.java
+--- ORIGINAL_PATH/src/org/mockito/internal/matchers/Equality.java
++++ MODIFIED_PATH/src/org/mockito/internal/matchers/Equality.java
+@@ -2,7 +2,9 @@
+ import java.lang.reflect.Array;
+ public class Equality {
+   public static boolean areEqual(Object o1, Object o2) {
+-    if (o1 == null || o2 == null) {
++    if (o1 == o2) {
++      return true;
++    } else if (o1 == null || o2 == null) {
+       return o1 == null && o2 == null;
+     } else if (isArrayo1) {
+       return isArrayo2 && areArraysEqual(o1, o2);

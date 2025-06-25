@@ -1,0 +1,11 @@
+--- Math2b/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java	2021-10-27 13:37:53.764112091 +0900
++++ Math2f/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java	2021-10-27 13:37:57.172157208 +0900
+@@ -265,7 +265,7 @@
+      * size {@code n}, the mean is {@code n * m / N}.
+      */
+     public double getNumericalMean() {
+-        return (double) (getSampleSize() * getNumberOfSuccesses()) / (double) getPopulationSize();
++        return getSampleSize() * (getNumberOfSuccesses() / (double) getPopulationSize());
+     }
+ 
+     /**

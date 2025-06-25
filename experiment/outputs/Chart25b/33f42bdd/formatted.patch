@@ -1,0 +1,20 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/CategoryPlot.java MODIFIED_PATH/source/org/jfree/chart/plot/CategoryPlot.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/CategoryPlot.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/CategoryPlot.java
+@@ -55,7 +55,6 @@
+ import org.jfree.data.category.CategoryDataset;
+ import org.jfree.data.general.Dataset;
+ import org.jfree.data.general.DatasetChangeEvent;
+-import org.jfree.data.general.DatasetUtilities;
+ public class CategoryPlot extends Plot
+     implements ValueAxisPlot,
+         Zoomable,
+@@ -1240,7 +1239,7 @@
+     CategoryItemRenderer renderer = getRendererindex;
+     CategoryAxis domainAxis = getDomainAxisForDatasetindex;
+     ValueAxis rangeAxis = getRangeAxisForDatasetindex;
+-    boolean hasData = !DatasetUtilities.isEmptyOrNullcurrentDataset;
++    boolean hasData = !DEFAULT_RANGE_GRIDLINES_VISIBLE;
+     if (hasData && renderer != null) {
+       foundData = true;
+       CategoryItemRendererState state = renderer.initialise(g2, dataArea, this, index, info);

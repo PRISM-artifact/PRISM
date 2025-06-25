@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/events/EventState.java MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/events/EventState.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/events/EventState.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/events/EventState.java
+@@ -69,6 +69,9 @@
+         tb += h;
+         interpolator.setInterpolatedTimetb;
+         final double gb = handler.g(tb, interpolator.getInterpolatedState());
++        if (pendingEvent && ((java.lang.Math.abs((t1 - pendingEventTime))) <= convergence)) {
++          return false;
++        }
+         if (g0Positive ^ (gb >= 0)) {
+           if (ga * gb > 0) {
+             final double epsilon = (forward ? 0.25 : -0.25) * convergence;

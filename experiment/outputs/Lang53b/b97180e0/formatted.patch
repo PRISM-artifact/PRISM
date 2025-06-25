@@ -1,0 +1,23 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DateUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
+@@ -201,17 +201,17 @@
+     int millisecs = val.getCalendar.MILLISECOND;
+     if (!round || millisecs < 500) {
+       time = time - millisecs;
++    }
+       if (field == Calendar.SECOND) {
+         done = true;
+       }
+-    }
+     int seconds = val.getCalendar.SECOND;
+     if (!done && (!round || seconds < 30)) {
+       time = time - (seconds * 1000L);
++    }
+       if (field == Calendar.MINUTE) {
+         done = true;
+       }
+-    }
+     int minutes = val.getCalendar.MINUTE;
+     if (!done && (!round || minutes < 30)) {
+       time = time - (minutes * 60000L);

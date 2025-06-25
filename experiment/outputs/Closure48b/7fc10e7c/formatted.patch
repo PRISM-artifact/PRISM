@@ -1,0 +1,21 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java MODIFIED_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
+@@ -900,11 +900,12 @@
+                 || (info.isConstant() && valueType != null && !valueType.isUnknownType())
+                 || FunctionTypeBuilder.isFunctionTypeDeclarationinfo);
+       }
+-      if inferred {
+-        inferred =
+-            !(rhsValue != null
+-                && rhsValue.isFunction()
+-                && (info != null || !scope.isDeclared(qName, false)));
++      if (inferred && rhsValue != null && rhsValue.isFunction()) {
++        if (info != null) {
++          inferred = false;
++        } else if (!scope.isDeclared(qName, false) && n.isUnscopedQualifiedName()) {
++          inferred = false;
++        }
+       }
+       if (!inferred) {
+         ObjectType ownerType = getObjectSlotownerName;

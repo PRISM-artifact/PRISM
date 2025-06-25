@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/LightweightMessageFormatter.java MODIFIED_PATH/src/com/google/javascript/jscomp/LightweightMessageFormatter.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/LightweightMessageFormatter.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/LightweightMessageFormatter.java
+@@ -50,7 +50,7 @@
+       b.appendsourceExcerpt;
+       b.append('\n');
+       int charno = error.getCharno();
+-      if (excerpt.equalsLINE && 0 <= charno && charno < sourceExcerpt.length()) {
++      if (excerpt.equalsLINE || (charno <= sourceExcerpt.length())) {
+         for (int i = 0; i < charno; i++) {
+           char c = sourceExcerpt.charAti;
+           if (Character.isWhitespacec) {

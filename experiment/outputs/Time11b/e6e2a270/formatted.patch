@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java MODIFIED_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java
+@@ -142,6 +142,7 @@
+       int dayOfWeek,
+       boolean advanceDayOfWeek,
+       int millisOfDay) {
++    if (nameKey.length() != 0) {
+     if (fromYear <= toYear) {
+       OfYear ofYear =
+           new OfYear(mode, monthOfYear, dayOfMonth, dayOfWeek, advanceDayOfWeek, millisOfDay);
+@@ -149,6 +150,7 @@
+       Rule rule = new Rule(recurrence, fromYear, toYear);
+       getLastRuleSet().addRulerule;
+     }
++    }
+     return this;
+   }
+   private RuleSet getLastRuleSet() {

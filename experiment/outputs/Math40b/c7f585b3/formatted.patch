@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
+@@ -131,7 +131,7 @@
+           if (signChangeIndex - start >= end - signChangeIndex) {
+             ++start;
+           } else {
+-            --end;
++            signChangeIndex++;
+           }
+           nextX = Double.NaN;
+         }

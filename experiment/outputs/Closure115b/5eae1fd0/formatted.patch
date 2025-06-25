@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/FunctionInjector.java MODIFIED_PATH/src/com/google/javascript/jscomp/FunctionInjector.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/FunctionInjector.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/FunctionInjector.java
+@@ -385,7 +385,7 @@
+     while (cArg != null || fnParam != null) {
+       if (fnParam != null) {
+         if (cArg != null) {
+-          if (hasSideEffects && NodeUtil.canBeSideEffectedcArg) {
++          if (hasSideEffects && NodeUtil.canBeSideEffectedcArg && cArg.isThis()) {
+             return CanInlineResult.NO;
+           }
+           if (NodeUtil.mayEffectMutableState(cArg, compiler)

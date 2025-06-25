@@ -1,0 +1,11 @@
+--- Time16b/src/main/java/org/joda/time/format/DateTimeFormatter.java	2021-10-27 14:23:09.993179762 +0900
++++ Time16f/src/main/java/org/joda/time/format/DateTimeFormatter.java	2021-10-27 14:23:11.269199870 +0900
+@@ -706,7 +706,7 @@
+         chrono = selectChronology(chrono);
+         
+         DateTimeParserBucket bucket = new DateTimeParserBucket(
+-            instantLocal, chrono, iLocale, iPivotYear, iDefaultYear);
++            instantLocal, chrono, iLocale, iPivotYear, chrono.year().get(instantLocal));
+         int newPos = parser.parseInto(bucket, text, position);
+         instant.setMillis(bucket.computeMillis(false, text));
+         if (iOffsetParsed && bucket.getOffsetInteger() != null) {

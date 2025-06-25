@@ -1,0 +1,63 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/statistics/DefaultBoxAndWhiskerCategoryDataset.java MODIFIED_PATH/source/org/jfree/data/statistics/DefaultBoxAndWhiskerCategoryDataset.java
+--- ORIGINAL_PATH/source/org/jfree/data/statistics/DefaultBoxAndWhiskerCategoryDataset.java
++++ MODIFIED_PATH/source/org/jfree/data/statistics/DefaultBoxAndWhiskerCategoryDataset.java
+@@ -37,7 +37,7 @@
+     if ((this.maximumRangeValueRow == r && this.maximumRangeValueColumn == c)
+         || (this.minimumRangeValueRow == r && this.minimumRangeValueColumn == c)) {
+       updateBounds();
+-    }
++    } else {
+     double minval = Double.NaN;
+     if (item.getMinOutlier() != null) {
+       minval = item.getMinOutlier().doubleValue();
+@@ -64,6 +64,7 @@
+       this.minimumRangeValueRow = r;
+       this.minimumRangeValueColumn = c;
+     }
++    }
+     this.rangeBounds = new Range(this.minimumRangeValue, this.maximumRangeValue);
+     fireDatasetChanged();
+   }
+@@ -255,7 +256,42 @@
+   }
+   private void updateBounds() {
+     this.minimumRangeValue = Double.NaN;
++    this.minimumRangeValueRow = -1;
++    this.minimumRangeValueColumn = -1;
+     this.maximumRangeValue = Double.NaN;
++    this.maximumRangeValueRow = -1;
++    this.maximumRangeValueColumn = -1;
++    int rowCount = getRowCount();
++    int columnCount = getColumnCount();
++    for (int r = 0; r < rowCount; r++) {
++      for (int c = 0; c < columnCount; c++) {
++        BoxAndWhiskerItem item = getItem(r, c);
++        if (item != null) {
++          Number min = item.getMinOutlier();
++          if (min != null) {
++            double minv = min.doubleValue();
++            if (!Double.isNaNminv) {
++              if (minv < this.minimumRangeValue || Double.isNaNthis.minimumRangeValue) {
++                this.minimumRangeValue = minv;
++                this.minimumRangeValueRow = r;
++                this.minimumRangeValueColumn = c;
++              }
++            }
++          }
++          Number max = item.getMaxOutlier();
++          if (max != null) {
++            double maxv = max.doubleValue();
++            if (!Double.isNaNmaxv) {
++              if (maxv > this.maximumRangeValue || Double.isNaNthis.maximumRangeValue) {
++                this.maximumRangeValue = maxv;
++                this.maximumRangeValueRow = r;
++                this.maximumRangeValueColumn = c;
++              }
++            }
++          }
++        }
++      }
++    }
+   }
+   public boolean equals(Object obj) {
+     if (obj == this) {

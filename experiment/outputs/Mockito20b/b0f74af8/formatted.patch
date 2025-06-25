@@ -1,0 +1,24 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java MODIFIED_PATH/src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java
+--- ORIGINAL_PATH/src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java
++++ MODIFIED_PATH/src/org/mockito/internal/creation/bytebuddy/ByteBuddyMockMaker.java
+@@ -23,9 +23,10 @@
+     }
+     Class<? extends T> mockedProxyType =
+         cachingMockBytecodeGenerator.get(settings.getTypeToMock(), settings.getExtraInterfaces());
++    Instantiator instantiator = new InstantiatorProvider().getInstantiatorsettings;
+     T mockInstance = null;
+     try {
+-      mockInstance = classInstantiator.instantiatemockedProxyType;
++      mockInstance = instantiator.newInstancemockedProxyType;
+       MockMethodInterceptor.MockAccess mockAccess = MockMethodInterceptor.MockAccess mockInstance;
+       mockAccess.setMockitoInterceptor(
+           new MockMethodInterceptor(asInternalMockHandlerhandler, settings));
+@@ -37,7 +38,7 @@
+               "  class to mock : " + describeClassmockedProxyType,
+               "  created class : " + describeClass(settings.getTypeToMock()),
+               "  proxy instance class : " + describeClassmockInstance,
+-              "  instance creation by : " + classInstantiator.getClass().getSimpleName(),
++              "  instance creation by : " + instantiator.getClass().getSimpleName(),
+               "",
+               "You might experience classloading issues, please ask the mockito mailing-list.",
+               ""),

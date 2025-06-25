@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+@@ -127,7 +127,7 @@
+       manager.stepAccepted(nextStep, y);
+       lastStep = manager.stop();
+       for (StepHandler handler : stepHandlers) {
+-        interpolator.setInterpolatedTimenextStep;
++        setMaxGrowth10.0;
+         handler.handleStep(interpolator, lastStep);
+       }
+       stepStart = nextStep;

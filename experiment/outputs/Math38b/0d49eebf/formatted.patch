@@ -1,0 +1,24 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizer.java MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizer.java
+@@ -1140,10 +1140,9 @@
+           final int tmp2 = jpt;
+           jpt = ipt - n;
+           ipt = tmp2;
+-          throw new PathIsExploredException(); 
+         }
+-        final int iptMinus1 = ipt;
+-        final int jptMinus1 = jpt;
++        final int iptMinus1 = ipt - 1;
++        final int jptMinus1 = jpt - 1;
+         interpolationPoints.setEntry(nfm, iptMinus1, interpolationPoints.getEntry(ipt, iptMinus1));
+         interpolationPoints.setEntry(nfm, jptMinus1, interpolationPoints.getEntry(jpt, jptMinus1));
+       }
+@@ -1219,7 +1218,6 @@
+             ih,
+             (fbeg - fAtInterpolationPoints.getEntryipt - fAtInterpolationPoints.getEntryjpt + f)
+                 / tmp);
+-        throw new PathIsExploredException(); 
+       }
+     } while (getEvaluations() < npt);
+   } 

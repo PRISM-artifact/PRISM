@@ -1,0 +1,11 @@
+--- Math30b/src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java	2021-10-27 13:41:10.726716903 +0900
++++ Math30f/src/main/java/org/apache/commons/math3/stat/inference/MannWhitneyUTest.java	2021-10-27 13:41:14.150762143 +0900
+@@ -170,7 +170,7 @@
+                                              final int n2)
+         throws ConvergenceException, MaxCountExceededException {
+ 
+-        final int n1n2prod = n1 * n2;
++        final double n1n2prod = n1 * n2;
+ 
+         // http://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U#Normal_approximation
+         final double EU = n1n2prod / 2.0;

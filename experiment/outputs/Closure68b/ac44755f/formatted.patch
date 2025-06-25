@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+@@ -1181,6 +1181,7 @@
+   }
+   private Node parseFunctionType(JsDocToken token) {
+     if (token != JsDocToken.LP) {
++      restoreLookAheadtoken;
+       return reportTypeSyntaxWarning("msg.jsdoc.missing.lp");
+     }
+     Node functionType = newNodeToken.FUNCTION;

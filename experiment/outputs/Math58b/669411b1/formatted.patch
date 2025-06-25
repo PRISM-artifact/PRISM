@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+@@ -334,7 +334,9 @@
+       } else if (fp < 0) {
+         paru = FastMath.min(paru, lmPar);
+       }
+-      lmPar = FastMath.max(parl, lmPar + correction);
++      if (org.apache.commons.math.optimization.general.LevenbergMarquardtOptimizer.this
++              .orthoTolerance
++          < gNorm) lmPar = FastMath.max(parl, lmPar + correction);
+     }
+   }
+   private void determineLMDirection(double[] qy, double[] diag, double[] lmDiag, double[] work) {

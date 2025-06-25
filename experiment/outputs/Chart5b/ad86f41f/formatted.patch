@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/xy/XYSeries.java MODIFIED_PATH/source/org/jfree/data/xy/XYSeries.java
+--- ORIGINAL_PATH/source/org/jfree/data/xy/XYSeries.java
++++ MODIFIED_PATH/source/org/jfree/data/xy/XYSeries.java
+@@ -156,7 +156,7 @@
+     }
+   }
+   public XYDataItem addOrUpdate(double x, double y) {
+-    return addOrUpdate(new Doublex, new Doubley);
++    return addOrUpdate(new Doubley, new Doubley);
+   }
+   public XYDataItem addOrUpdate(Number x, Number y) {
+     if (x == null) {

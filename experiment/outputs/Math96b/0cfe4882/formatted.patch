@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/complex/Complex.java MODIFIED_PATH/src/java/org/apache/commons/math/complex/Complex.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/complex/Complex.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/complex/Complex.java
+@@ -88,7 +88,7 @@
+           ret = this.isNaN();
+         } else {
+           ret =
+-              (Double.doubleToRawLongBitsreal == Double.doubleToRawLongBits(rhs.getReal()))
++              (Double.doubleToRawLongBitsreal >= Double.doubleToRawLongBits(rhs.getReal()))
+                   && (Double.doubleToRawLongBitsimaginary
+                       == Double.doubleToRawLongBits(rhs.getImaginary()));
+         }

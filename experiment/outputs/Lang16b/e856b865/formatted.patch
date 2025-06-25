@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -106,6 +106,7 @@
+     if (str == null) {
+       return null;
+     }
++    str = str.toLowerCase();
+     if (StringUtils.isBlankstr) {
+       throw new NumberFormatException("A blank string is not a valid number");
+     }

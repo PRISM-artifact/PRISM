@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java MODIFIED_PATH/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java
+@@ -29,10 +29,12 @@
+ public class ZoneInfoCompiler {
+   static DateTimeOfYear cStartOfYear;
+   static Chronology cLenientISO;
+-  static ThreadLocal<Boolean> cVerbose = new ThreadLocal<Boolean>();
+-  static {
+-    cVerbose.setBoolean.FALSE;
++  static ThreadLocal<Boolean> cVerbose =
++      new ThreadLocal<Boolean>() {
++        protected Boolean initialValue() {
++          return Boolean.FALSE;
+   }
++      };
+   public static boolean verbose() {
+     return cVerbose.get();
+   }

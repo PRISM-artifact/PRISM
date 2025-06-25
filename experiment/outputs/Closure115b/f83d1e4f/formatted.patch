@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/FunctionInjector.java MODIFIED_PATH/src/com/google/javascript/jscomp/FunctionInjector.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/FunctionInjector.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/FunctionInjector.java
+@@ -363,7 +363,7 @@
+     }
+     Node block = fnNode.getLastChild();
+     boolean hasSideEffects = false;
+-    if (block.hasChildren()) {
++    if ((block.hasChildren()) && (!block.hasChildren())) {
+       Preconditions.checkState(block.hasOneChild());
+       Node stmt = block.getFirstChild();
+       if (stmt.isReturn()) {

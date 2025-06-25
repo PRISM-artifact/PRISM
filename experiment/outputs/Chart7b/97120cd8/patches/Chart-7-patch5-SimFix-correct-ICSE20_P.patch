@@ -1,0 +1,16 @@
+--- Chart7b/source/org/jfree/data/time/TimePeriodValues.java	2024-10-21 14:07:17.326816567 +0900
++++ test.java	2024-10-21 14:08:49.274849372 +0900
+@@ -295,11 +295,10 @@
+         else {
+             this.minMiddleIndex = index;
+         }
+-        
+         if (this.maxMiddleIndex >= 0) {
+-            long s = getDataItem(this.minMiddleIndex).getPeriod().getStart()
++            long s = getDataItem(this.maxMiddleIndex).getPeriod().getStart()
+                 .getTime();
+-            long e = getDataItem(this.minMiddleIndex).getPeriod().getEnd()
++            long e = getDataItem(this.maxMiddleIndex).getPeriod().getEnd()
+                 .getTime();
+             long maxMiddle = s + (e - s) / 2;
+             if (middle > maxMiddle) {

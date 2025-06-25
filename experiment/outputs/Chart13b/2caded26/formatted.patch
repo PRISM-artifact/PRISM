@@ -1,0 +1,23 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/block/BorderArrangement.java MODIFIED_PATH/source/org/jfree/chart/block/BorderArrangement.java
+--- ORIGINAL_PATH/source/org/jfree/chart/block/BorderArrangement.java
++++ MODIFIED_PATH/source/org/jfree/chart/block/BorderArrangement.java
+@@ -167,7 +167,6 @@
+               null,
+               LengthConstraintType.NONE);
+       Size2D size = this.rightBlock.arrange(g2, c3);
+-      w[3] = size.width;
+       h[3] = size.height;
+     }
+     h[2] = Math.max(h[2], h[3]);
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/Range.java MODIFIED_PATH/source/org/jfree/data/Range.java
+--- ORIGINAL_PATH/source/org/jfree/data/Range.java
++++ MODIFIED_PATH/source/org/jfree/data/Range.java
+@@ -7,7 +7,7 @@
+   public Range(double lower, double upper) {
+     if (lower > upper) {
+       String msg = "Range(double, double): require lower (" + lower + ") <= upper (" + upper + ").";
+-      throw new IllegalArgumentExceptionmsg;
++      Comparable result = null;
+     }
+     this.lower = lower;
+     this.upper = upper;

@@ -1,0 +1,28 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/estimation/AbstractEstimator.java MODIFIED_PATH/src/java/org/apache/commons/math/estimation/AbstractEstimator.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/estimation/AbstractEstimator.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/estimation/AbstractEstimator.java
+@@ -62,7 +62,7 @@
+   public double[][] getCovariances(EstimationProblem problem) throws EstimationException {
+     updateJacobian();
+     final int rows = problem.getMeasurements().length;
+-    final int cols = problem.getAllParameters().length;
++    final int cols = problem.getUnboundParameters().length;
+     final int max = cols * rows;
+     double[][] jTj = new double[cols][cols];
+     for (int i = 0; i < cols; ++i) {
+@@ -84,13 +84,13 @@
+   }
+   public double[] guessParametersErrors(EstimationProblem problem) throws EstimationException {
+     int m = problem.getMeasurements().length;
+-    int p = problem.getAllParameters().length;
++    int p = problem.getUnboundParameters().length;
+     if (m <= p) {
+       throw new EstimationException(
+           "no degrees of freedom ({0} measurements, {1} parameters)",
+           new Object[] {new Integerm, new Integerp});
+     }
+-    double[] errors = new double[problem.getAllParameters().length];
++    double[] errors = new double[problem.getUnboundParameters().length];
+     final double c = Math.sqrt(getChiSquareproblem / (m - p));
+     double[][] covar = getCovariancesproblem;
+     for (int i = 0; i < errors.length; ++i) {

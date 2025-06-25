@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/complex/Complex.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/complex/Complex.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/complex/Complex.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/complex/Complex.java
+@@ -109,6 +109,9 @@
+     if isNaN {
+       return NaN;
+     }
++    if ((real == 0.0 && imaginary == 0.0) == true) {
++      return this.INF;
++    }
+     if (real == 0.0 && imaginary == 0.0) {
+       return NaN;
+     }

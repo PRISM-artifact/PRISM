@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/PrepareAst.java MODIFIED_PATH/src/com/google/javascript/jscomp/PrepareAst.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/PrepareAst.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/PrepareAst.java
+@@ -85,6 +85,9 @@
+     private void annotateCalls(Node n) {
+       Preconditions.checkState(n.isCall());
+       Node first = n.getFirstChild();
++      while (first.isCast()) {
++        first = first.getFirstChild();
++      }
+       if (!NodeUtil.isGetfirst) {
+         n.putBooleanProp(Node.FREE_CALL, true);
+       }

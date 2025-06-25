@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/TypeCheck.java MODIFIED_PATH/src/com/google/javascript/jscomp/TypeCheck.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/TypeCheck.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/TypeCheck.java
+@@ -894,8 +894,6 @@
+     JSType childType = getJSTypeobjNode;
+     if (childType.isDict()) {
+       report(t, property, TypeValidator.ILLEGAL_PROPERTY_ACCESS, "'.'", "dict");
+-    } else if (n.getJSType() != null && parent.isAssign()) {
+-      return;
+     } else if (validator.expectNotNullOrUndefined(
+         t, n, childType, "No properties on this expression", getNativeTypeOBJECT_TYPE)) {
+       checkPropertyAccess(childType, property.getString(), t, n);

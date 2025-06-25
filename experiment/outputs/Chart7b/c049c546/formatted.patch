@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/time/TimePeriodValues.java MODIFIED_PATH/source/org/jfree/data/time/TimePeriodValues.java
+--- ORIGINAL_PATH/source/org/jfree/data/time/TimePeriodValues.java
++++ MODIFIED_PATH/source/org/jfree/data/time/TimePeriodValues.java
+@@ -224,7 +224,7 @@
+     return this.minMiddleIndex;
+   }
+   public int getMaxMiddleIndex() {
+-    return this.maxMiddleIndex;
++    return this.maxStartIndex;
+   }
+   public int getMinEndIndex() {
+     return this.minEndIndex;

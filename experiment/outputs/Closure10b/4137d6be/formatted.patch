@@ -1,0 +1,16 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/NodeUtil.java MODIFIED_PATH/src/com/google/javascript/jscomp/NodeUtil.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/NodeUtil.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/NodeUtil.java
+@@ -929,12 +929,8 @@
+     return mayBeString(n, true);
+   }
+   static boolean mayBeString(Node n, boolean recurse) {
+-    if recurse {
+-      return allResultsMatch(n, MAY_BE_STRING_PREDICATE);
+-    } else {
+       return mayBeStringHelpern;
+     }
+-  }
+   static boolean mayBeStringHelper(Node n) {
+     return !isNumericResultn && !isBooleanResultn && !isUndefinedn && !n.isNull();
+   }

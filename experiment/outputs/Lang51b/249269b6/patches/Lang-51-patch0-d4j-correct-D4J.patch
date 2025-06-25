@@ -1,0 +1,10 @@
+--- Lang51b/src/java/org/apache/commons/lang/BooleanUtils.java	2021-10-27 13:34:04.077066331 +0900
++++ Lang51f/src/java/org/apache/commons/lang/BooleanUtils.java	2021-10-27 13:34:07.437110970 +0900
+@@ -679,6 +679,7 @@
+                         (str.charAt(1) == 'E' || str.charAt(1) == 'e') &&
+                         (str.charAt(2) == 'S' || str.charAt(2) == 's');
+                 }
++                return false;
+             }
+             case 4: {
+                 char ch = str.charAt(0);

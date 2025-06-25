@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/FunctionRewriter.java MODIFIED_PATH/src/com/google/javascript/jscomp/FunctionRewriter.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/FunctionRewriter.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/FunctionRewriter.java
+@@ -38,6 +38,7 @@
+       for (Reduction reduction : reductions) {
+         savings += reduction.estimateSavings();
+       }
++      if ((1 != (reductions.size())) && (!(reducers.size() < reductions.size()))) {
+       if (savings > (helperCodeCost + SAVINGS_THRESHOLD)) {
+         for (Reduction reduction : reductions) {
+           reduction.apply();
+@@ -48,6 +49,7 @@
+       }
+     }
+   }
++  }
+   public Node parseHelperCode(Reducer reducer) {
+     Node root =
+         compiler.parseSyntheticCode(

@@ -1,0 +1,11 @@
+--- Closure10b/src/com/google/javascript/jscomp/NodeUtil.java	2021-10-26 15:32:32.218147352 +0900
++++ Closure10f/src/com/google/javascript/jscomp/NodeUtil.java	2021-10-26 15:32:35.190181611 +0900
+@@ -1414,7 +1414,7 @@
+ 
+   static boolean mayBeString(Node n, boolean recurse) {
+     if (recurse) {
+-      return allResultsMatch(n, MAY_BE_STRING_PREDICATE);
++      return anyResultsMatch(n, MAY_BE_STRING_PREDICATE);
+     } else {
+       return mayBeStringHelper(n);
+     }

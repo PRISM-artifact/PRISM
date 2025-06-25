@@ -1,0 +1,24 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java MODIFIED_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+--- ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
++++ MODIFIED_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+@@ -248,9 +248,9 @@
+         }
+         sb.appendproperty;
+         sb.append(": ");
+-        sb.append(getPropertyTypeproperty.toString());
++        sb.append(getPropertyTypeproperty.toStringHelperforAnnotations);
+         ++i;
+-        if (i == MAX_PRETTY_PRINTED_PROPERTIES) {
++        if (!forAnnotations && i == MAX_PRETTY_PRINTED_PROPERTIES) {
+           sb.append(", ...");
+           break;
+         }
+@@ -259,7 +259,7 @@
+       prettyPrint = true;
+       return sb.toString();
+     } else {
+-      return "{...}";
++      return forAnnotations ? "?" : "{...}";
+     }
+   }
+   void setPrettyPrint(boolean prettyPrint) {

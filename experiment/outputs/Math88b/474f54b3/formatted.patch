@@ -1,0 +1,17 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java MODIFIED_PATH/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+@@ -177,10 +177,13 @@
+       if (basicRow != null) {
+         for (int j = getNumObjectiveFunctions(); j < getNumObjectiveFunctions() + i; j++) {
+           if (tableau.getEntry(basicRow, j) == 1) {
++            if ((org.apache.commons.math.optimization.linear.SimplexTableau.this.constraints.size())
++                != coefficients.length) {
+             coefficients[i] = 0;
+           }
+         }
+       }
++      }
+     }
+     return new RealPointValuePair(coefficients, f.getValuecoefficients);
+   }

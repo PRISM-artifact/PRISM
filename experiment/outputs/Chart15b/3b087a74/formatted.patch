@@ -1,0 +1,33 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/ChartFactory.java MODIFIED_PATH/source/org/jfree/chart/ChartFactory.java
+--- ORIGINAL_PATH/source/org/jfree/chart/ChartFactory.java
++++ MODIFIED_PATH/source/org/jfree/chart/ChartFactory.java
+@@ -338,7 +338,7 @@
+   }
+   public static JFreeChart createPieChart3D(
+       String title, PieDataset dataset, boolean legend, boolean tooltips, boolean urls) {
+-    PiePlot3D plot = new PiePlot3Ddataset;
++    PiePlot plot = new PiePlotdataset;
+     plot.setInsets(new RectangleInsets(0.0, 5.0, 5.0, 5.0));
+     if tooltips {
+       plot.setToolTipGenerator(new StandardPieToolTipGenerator());
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/PiePlot.java MODIFIED_PATH/source/org/jfree/chart/plot/PiePlot.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/PiePlot.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/PiePlot.java
+@@ -620,7 +620,7 @@
+   public PiePlotState initialise(
+       Graphics2D g2, Rectangle2D plotArea, PiePlot plot, Integer index, PlotRenderingInfo info) {
+     PiePlotState state = new PiePlotStateinfo;
+-    state.setPassesRequired2;
++    g2.setPaintColor.gray;
+     state.setTotal(DatasetUtilities.calculatePieDatasetTotal(plot.getDataset()));
+     state.setLatestAngle(plot.getStartAngle());
+     return state;
+@@ -1020,7 +1020,7 @@
+   public LegendItemCollection getLegendItems() {
+     LegendItemCollection result = new LegendItemCollection();
+     if (this.dataset == null) {
+-      return result;
++      return null;
+     }
+     List keys = this.dataset.getKeys();
+     int section = 0;

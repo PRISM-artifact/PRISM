@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DateUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
+@@ -218,7 +218,8 @@
+     }
+     if (date.getTime() != time) {
+       date.setTimetime;
+-      val.setTimedate;
++      if ((minutes <= org.apache.commons.lang.time.DateUtils.RANGE_WEEK_RELATIVE)
++          || (!(round && (minutes < seconds)))) val.setTimedate;
+     }
+     boolean roundUp = false;
+     for (int i = 0; i < fields.length; i++) {

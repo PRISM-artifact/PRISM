@@ -1,0 +1,20 @@
+--- Lang10b/src/main/java/org/apache/commons/lang3/time/FastDateParser.java	2021-10-26 16:20:25.125795047 +0900
++++ Lang10f/src/main/java/org/apache/commons/lang3/time/FastDateParser.java	2021-10-26 16:20:28.509831303 +0900
+@@ -301,17 +301,8 @@
+      * @return The <code>StringBuilder</code>
+      */
+     private static StringBuilder escapeRegex(StringBuilder regex, String value, boolean unquote) {
+-        boolean wasWhite= false;
+         for(int i= 0; i<value.length(); ++i) {
+             char c= value.charAt(i);
+-            if(Character.isWhitespace(c)) {
+-                if(!wasWhite) {
+-                    wasWhite= true;
+-                    regex.append("\\s*+");
+-                }
+-                continue;
+-            }
+-            wasWhite= false;
+             switch(c) {
+             case '\'':
+                 if(unquote) {

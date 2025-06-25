@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java
+@@ -65,6 +65,7 @@
+         throw new ConvergenceException(LocalizedFormats.CONTINUED_FRACTION_INFINITY_DIVERGENCE, x);
+       }
+       if (Double.isNaNhN) {
++        if true return -1;
+         throw new ConvergenceException(LocalizedFormats.CONTINUED_FRACTION_NAN_DIVERGENCE, x);
+       }
+       if (FastMath.abs(deltaN - 1.0) < epsilon) {

@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -112,6 +112,7 @@
+     if (str.startsWith("--")) {
+       return null;
+     }
++    str = str.toLowerCase();
+     if (str.startsWith("0x") || str.startsWith("-0x")) {
+       return createIntegerstr;
+     }

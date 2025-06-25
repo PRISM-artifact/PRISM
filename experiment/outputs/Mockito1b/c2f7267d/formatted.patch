@@ -1,0 +1,24 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java MODIFIED_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java
+--- ORIGINAL_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java
++++ MODIFIED_PATH/src/org/mockito/internal/invocation/InvocationMatcher.java
+@@ -88,7 +88,19 @@
+   public void captureArgumentsFrom(Invocation invocation) {
+     if (invocation.getMethod().isVarArgs()) {
+       int indexOfVararg = invocation.getRawArguments().length - 1;
+-      throw new UnsupportedOperationException();
++      for (int position = 0; position < indexOfVararg; position++) {
++        Matcher m = matchers.getposition;
++        if (m instanceof CapturesArguments) {
++          (CapturesArguments m).captureFrom(invocation.getArgumentAt(position, Object.class));
++        }
++      }
++      for (int position = indexOfVararg; position < matchers.size(); position++) {
++        Matcher m = matchers.getposition;
++        if (m instanceof CapturesArguments) {
++          (CapturesArguments m)
++              .captureFrom(invocation.getRawArguments()[position - indexOfVararg]);
++        }
++      }
+     } else {
+       for (int position = 0; position < matchers.size(); position++) {
+         Matcher m = matchers.getposition;

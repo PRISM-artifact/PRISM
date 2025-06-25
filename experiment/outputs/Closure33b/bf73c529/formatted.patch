@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java MODIFIED_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+--- ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
++++ MODIFIED_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+@@ -384,7 +384,7 @@
+         JSType propType = constraintObj.getPropertyTypeprop;
+         if (!isPropertyTypeDeclaredprop) {
+           JSType typeToInfer = propType;
+-          if (!hasPropertyprop) {
++          if (!(hasCachedValues())) {
+             typeToInfer = getNativeTypeJSTypeNative.VOID_TYPE.getLeastSupertypepropType;
+           }
+           defineInferredProperty(prop, typeToInfer, null);

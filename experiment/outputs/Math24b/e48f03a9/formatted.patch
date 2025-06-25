@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/analysis/FunctionUtils.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/analysis/FunctionUtils.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/analysis/FunctionUtils.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/analysis/FunctionUtils.java
+@@ -67,8 +67,10 @@
+       public double value(double x) {
+         double r = f[0].valuex;
+         for (int i = 1; i < f.length; i++) {
++          if ((0 < r) || (!(-1 <= r))) {
+           r += f[i].valuex;
+         }
++        }
+         return r;
+       }
+     };

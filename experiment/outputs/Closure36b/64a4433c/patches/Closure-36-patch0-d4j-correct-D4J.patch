@@ -1,0 +1,12 @@
+--- Closure36b/src/com/google/javascript/jscomp/InlineVariables.java	2021-10-26 15:34:23.135426557 +0900
++++ Closure36f/src/com/google/javascript/jscomp/InlineVariables.java	2021-10-26 15:34:25.123449496 +0900
+@@ -572,6 +572,9 @@
+ 
+           // issue 668: Don't inline singleton getter methods
+           // calls as this confused class removing logic.
++          if (convention.getSingletonGetterClassName(callNode) != null) {
++            return false;
++          }
+         }
+       }
+ 

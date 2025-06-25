@@ -1,0 +1,6 @@
+{
+    "is_compile": true,
+    "is_pass": false,
+    "execution_time": 81.87800359725952,
+    "err_log": "Failing tests: 1\n  - org.apache.commons.math3.ml.clustering.FuzzyKMeansClustererTest::testGetters\n\nRunning ant (compile.tests)................................................ OK\nRunning ant (run.dev.tests)................................................ OK\n"
+}

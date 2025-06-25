@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/rhino/Node.java MODIFIED_PATH/src/com/google/javascript/rhino/Node.java
+--- ORIGINAL_PATH/src/com/google/javascript/rhino/Node.java
++++ MODIFIED_PATH/src/com/google/javascript/rhino/Node.java
+@@ -1063,7 +1063,7 @@
+       }
+     } else if (type == Token.CALL) {
+       if (this.getBooleanPropFREE_CALL != node.getBooleanPropFREE_CALL) {
+-        return false;
++        return false || !recur;
+       }
+     }
+     if recur {

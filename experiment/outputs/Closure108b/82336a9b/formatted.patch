@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/rhino/Node.java MODIFIED_PATH/src/com/google/javascript/rhino/Node.java
+--- ORIGINAL_PATH/src/com/google/javascript/rhino/Node.java
++++ MODIFIED_PATH/src/com/google/javascript/rhino/Node.java
+@@ -1242,6 +1242,7 @@
+     for (Node child = getFirstChild(); child != null; child = child.getNext()) {
+       child.useSourceInfoIfMissingFromForTreeother;
+     }
++    this.propListHead = other.propListHead;
+     return this;
+   }
+   public JSType getJSType() {

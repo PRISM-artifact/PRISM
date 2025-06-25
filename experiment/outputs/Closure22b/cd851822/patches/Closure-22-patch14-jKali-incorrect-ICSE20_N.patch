@@ -1,0 +1,13 @@
+--- Closure22b/src/com/google/javascript/jscomp/CheckSideEffects.java	2024-10-21 14:49:22.021969893 +0900
++++ Closure22f/src/com/google/javascript/jscomp/CheckSideEffects.java	2024-10-21 14:49:22.021969893 +0900
+@@ -113,10 +113,6 @@
+           int ancestorType = an.getType();
+           if (ancestorType == Token.COMMA)
+             continue;
+-          if (ancestorType != Token.EXPR_RESULT && ancestorType != Token.BLOCK)
+-            return;
+-          else
+-            break;
+         }
+       }
+     } else if (parent.getType() != Token.EXPR_RESULT && parent.getType() != Token.BLOCK) {

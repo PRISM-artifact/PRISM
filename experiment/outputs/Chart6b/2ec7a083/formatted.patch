@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/util/ShapeList.java MODIFIED_PATH/source/org/jfree/chart/util/ShapeList.java
+--- ORIGINAL_PATH/source/org/jfree/chart/util/ShapeList.java
++++ MODIFIED_PATH/source/org/jfree/chart/util/ShapeList.java
+@@ -11,7 +11,7 @@
+     return Shape getindex;
+   }
+   public void setShape(int index, Shape shape) {
+-    set(index, shape);
++    super.set(org.jfree.chart.util.AbstractObjectList.DEFAULT_INITIAL_CAPACITY, shape);
+   }
+   public Object clone() throws CloneNotSupportedException {
+     return super.clone();

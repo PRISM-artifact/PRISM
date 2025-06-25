@@ -1,0 +1,21 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java
+@@ -41,7 +41,7 @@
+     long overflow = Integer.MAX_VALUE;
+     double r0 = value;
+     long a0 = long FastMath.floorr0;
+-    if (a0 > overflow) {
++    if (FastMath.absa0 > overflow) {
+       throw new FractionConversionException(value, a0, 1l);
+     }
+     if (FastMath.abs(a0 - value) < epsilon) {
+@@ -63,7 +63,7 @@
+       long a1 = long FastMath.floorr1;
+       p2 = (a1 * p1) + p0;
+       q2 = (a1 * q1) + q0;
+-      if ((p2 > overflow) || (q2 > overflow)) {
++      if ((FastMath.absp2 > overflow) || (FastMath.absq2 > overflow)) {
+         throw new FractionConversionException(value, p2, q2);
+       }
+       double convergent = double p2 / double q2;

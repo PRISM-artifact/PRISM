@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java MODIFIED_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java
+--- ORIGINAL_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java
++++ MODIFIED_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java
+@@ -63,11 +63,6 @@
+     }
+     StatisticalCategoryDataset statData = StatisticalCategoryDataset data;
+     PlotOrientation orientation = plot.getOrientation();
+-    if (orientation == PlotOrientation.HORIZONTAL) {
+-      drawHorizontalItem(g2, state, dataArea, plot, domainAxis, rangeAxis, statData, row, column);
+-    } else if (orientation == PlotOrientation.VERTICAL) {
+-      drawVerticalItem(g2, state, dataArea, plot, domainAxis, rangeAxis, statData, row, column);
+-    }
+   }
+   protected void drawHorizontalItem(
+       Graphics2D g2,

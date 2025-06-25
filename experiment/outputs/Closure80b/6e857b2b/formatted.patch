@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/NodeUtil.java MODIFIED_PATH/src/com/google/javascript/jscomp/NodeUtil.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/NodeUtil.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/NodeUtil.java
+@@ -824,6 +824,7 @@
+       case Token.IN:
+       case Token.INSTANCEOF:
+       case Token.NOT:
++      case Token.DELPROP:
+         return true;
+       default:
+         return false;
+@@ -1809,6 +1810,7 @@
+       case Token.ARRAYLIT:
+       case Token.OBJECTLIT:
+         return true;
++      case Token.DELPROP:
+       case Token.IN:
+         return true;
+       default:

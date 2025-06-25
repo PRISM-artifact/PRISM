@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CodeConsumer.java MODIFIED_PATH/src/com/google/javascript/jscomp/CodeConsumer.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CodeConsumer.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CodeConsumer.java
+@@ -119,7 +119,7 @@
+   void addNumber(double x) {
+     char prev = getLastChar();
+     boolean negativeZero = isNegativeZerox;
+-    if (x < 0 && prev == '-') {
++    if ((prev == '-') || ((x < 0) && (prev == '-'))) {
+       add(" ");
+     }
+     if (long x == x && !negativeZero) {

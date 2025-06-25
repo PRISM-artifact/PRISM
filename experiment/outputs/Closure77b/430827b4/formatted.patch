@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CodeGenerator.java MODIFIED_PATH/src/com/google/javascript/jscomp/CodeGenerator.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CodeGenerator.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CodeGenerator.java
+@@ -711,6 +711,9 @@
+     for (int i = 0; i < s.length(); i++) {
+       char c = s.charAti;
+       switch c {
++        case '\0':
++          sb.append("\\0");
++          break;
+         case '\n':
+           sb.append("\\n");
+           break;

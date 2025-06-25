@@ -1,0 +1,20 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang3/ArrayUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang3/ArrayUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang3/ArrayUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang3/ArrayUtils.java
+@@ -1274,7 +1274,16 @@
+     final Class<?> type1 = array1.getClass().getComponentType();
+     T[] joinedArray = (T[]) Array.newInstance(type1, array1.length + array2.length);
+     System.arraycopy(array1, 0, joinedArray, 0, array1.length);
++    try {
+     System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
++    } catch (ArrayStoreException ase) {
++      final Class<?> type2 = array2.getClass().getComponentType();
++      if (!type1.isAssignableFromtype2) {
++        throw new IllegalArgumentException(
++            "Cannot store " + type2.getName() + " in an array of " + type1.getName());
++      }
++      throw ase; 
++    }
+     return joinedArray;
+   }
+   public static boolean[] addAll(boolean[] array1, boolean... array2) {

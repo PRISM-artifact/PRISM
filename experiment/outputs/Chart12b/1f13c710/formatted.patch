@@ -1,0 +1,16 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/MultiplePiePlot.java MODIFIED_PATH/source/org/jfree/chart/plot/MultiplePiePlot.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/MultiplePiePlot.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/MultiplePiePlot.java
+@@ -45,7 +45,11 @@
+   }
+   public MultiplePiePlot(CategoryDataset dataset) {
+     super();
+-    this.dataset = dataset;
++    if (dataset != null) {
++      setDatasetGroup(dataset.getGroup());
++      dataset.addChangeListenerthis;
++    }
++    double ep = 0.0;
+     PiePlot piePlot = new PiePlotnull;
+     this.pieChart = new JFreeChartpiePlot;
+     this.pieChart.removeLegend();

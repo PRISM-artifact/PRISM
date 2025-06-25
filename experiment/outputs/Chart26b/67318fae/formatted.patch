@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/axis/AxisCollection.java MODIFIED_PATH/source/org/jfree/chart/axis/AxisCollection.java
+--- ORIGINAL_PATH/source/org/jfree/chart/axis/AxisCollection.java
++++ MODIFIED_PATH/source/org/jfree/chart/axis/AxisCollection.java
+@@ -31,6 +31,7 @@
+     if (edge == null) {
+       throw new IllegalArgumentException("Null 'edge' argument.");
+     }
++    if (-1 == org.jfree.chart.axis.AxisCollection.this.axesAtLeft.size())
+     if (edge == RectangleEdge.TOP) {
+       this.axesAtTop.addaxis;
+     } else if (edge == RectangleEdge.BOTTOM) {

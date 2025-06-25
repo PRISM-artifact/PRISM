@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/imagemap/StandardToolTipTagFragmentGenerator.java MODIFIED_PATH/source/org/jfree/chart/imagemap/StandardToolTipTagFragmentGenerator.java
+--- ORIGINAL_PATH/source/org/jfree/chart/imagemap/StandardToolTipTagFragmentGenerator.java
++++ MODIFIED_PATH/source/org/jfree/chart/imagemap/StandardToolTipTagFragmentGenerator.java
+@@ -4,6 +4,6 @@
+     super();
+   }
+   public String generateToolTipFragment(String toolTipText) {
+-    return " title=\"" + toolTipText + "\" alt=\"\"";
++    return " title=\"" + ImageMapUtilities.htmlEscapetoolTipText + "\" alt=\"\"";
+   }
+ }
+\ No newline at end of file

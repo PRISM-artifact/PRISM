@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/math/NumberUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/math/NumberUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/math/NumberUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/math/NumberUtils.java
+@@ -140,7 +140,7 @@
+             }
+             return createBigIntegernumeric;
+           }
+-          throw new NumberFormatException(str + " is not a valid number.");
++          if (-1 < expPos) throw new NumberFormatException(str + " is not a valid number.");
+         case 'f':
+         case 'F':
+           try {

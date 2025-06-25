@@ -1,0 +1,17 @@
+--- Time11b/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java	2021-10-27 14:22:56.964973949 +0900
++++ Time11f/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java	2021-10-27 14:22:58.284994843 +0900
+@@ -65,10 +65,11 @@
+ 
+     static Chronology cLenientISO;
+ 
+-    static ThreadLocal<Boolean> cVerbose = new ThreadLocal<Boolean>();
+-    static {
+-        cVerbose.set(Boolean.FALSE);
++    static ThreadLocal<Boolean> cVerbose = new ThreadLocal<Boolean>() {
++        protected Boolean initialValue() {
++            return Boolean.FALSE;
+     }
++    };
+ 
+     /**
+      * Gets a flag indicating that verbose logging is required.

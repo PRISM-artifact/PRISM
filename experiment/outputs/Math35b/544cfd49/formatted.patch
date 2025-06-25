@@ -1,0 +1,17 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/genetics/ElitisticListPopulation.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/genetics/ElitisticListPopulation.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/genetics/ElitisticListPopulation.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/genetics/ElitisticListPopulation.java
+@@ -9,11 +9,11 @@
+   public ElitisticListPopulation(
+       final List<Chromosome> chromosomes, final int populationLimit, final double elitismRate) {
+     super(chromosomes, populationLimit);
+-    this.elitismRate = elitismRate;
++    setElitismRateelitismRate;
+   }
+   public ElitisticListPopulation(final int populationLimit, final double elitismRate) {
+     superpopulationLimit;
+-    this.elitismRate = elitismRate;
++    setElitismRateelitismRate;
+   }
+   public Population nextGeneration() {
+     ElitisticListPopulation nextGeneration =

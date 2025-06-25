@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/JFreeChart.java MODIFIED_PATH/source/org/jfree/chart/JFreeChart.java
+--- ORIGINAL_PATH/source/org/jfree/chart/JFreeChart.java
++++ MODIFIED_PATH/source/org/jfree/chart/JFreeChart.java
+@@ -424,7 +424,6 @@
+       }
+     }
+     Rectangle2D nonTitleArea = new Rectangle2D.Double();
+-    nonTitleArea.setRectchartArea;
+     this.padding.trimnonTitleArea;
+     EntityCollection entities = null;
+     if (info != null) {

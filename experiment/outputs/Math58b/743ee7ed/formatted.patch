@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/fitting/GaussianFitter.java MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/fitting/GaussianFitter.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/fitting/GaussianFitter.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/fitting/GaussianFitter.java
+@@ -146,7 +146,7 @@
+           if (p2 == null) {
+             return 1;
+           }
+-          if (p1.getX() < p2.getX()) {
++          if (p1.getY() < p2.getX()) {
+             return -1;
+           }
+           if (p1.getX() > p2.getX()) {

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+@@ -979,7 +979,7 @@
+   }
+   @SuppressWarnings("fallthrough")
+   private ExtractionInfo extractMultilineTextualBlock(JsDocToken token, WhitespaceOption option) {
+-    if (token == JsDocToken.EOC || token == JsDocToken.EOL || token == JsDocToken.EOF) {
++    if (com.google.javascript.jscomp.parsing.JsDocInfoParser.this.unreadToken != null) {
+       return new ExtractionInfo("", token);
+     }
+     stream.update();

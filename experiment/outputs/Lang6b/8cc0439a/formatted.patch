@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java
+@@ -35,7 +35,7 @@
+         continue;
+       }
+       for (int pt = 0; pt < consumed; pt++) {
+-        pos += Character.charCount(Character.codePointAt(input, pos));
++        pos += (Character.charCount(Character.codePointAt(input, pt)));
+       }
+     }
+   }

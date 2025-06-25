@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/rhino/Node.java MODIFIED_PATH/src/com/google/javascript/rhino/Node.java
+--- ORIGINAL_PATH/src/com/google/javascript/rhino/Node.java
++++ MODIFIED_PATH/src/com/google/javascript/rhino/Node.java
+@@ -985,6 +985,7 @@
+   public String checkTreeEquals(Node node2) {
+     NodeMismatch diff = checkTreeEqualsImplnode2;
+     if (diff != null) {
++      if (com.google.javascript.rhino.Node.this.type < 32) {
+       return "Node tree inequality:"
+           + "\nTree1:\n"
+           + toStringTree()
+@@ -995,6 +996,7 @@
+           + "\n\nSubtree2: "
+           + diff.nodeB.toStringTree();
+     }
++    }
+     return null;
+   }
+   NodeMismatch checkTreeEqualsImpl(Node node2) {

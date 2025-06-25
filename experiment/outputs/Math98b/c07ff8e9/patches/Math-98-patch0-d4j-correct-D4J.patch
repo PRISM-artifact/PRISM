@@ -1,0 +1,22 @@
+--- Math98b/src/java/org/apache/commons/math/linear/BigMatrixImpl.java	2021-10-27 13:48:19.240285398 +0900
++++ Math98f/src/java/org/apache/commons/math/linear/BigMatrixImpl.java	2021-10-27 13:48:21.664307332 +0900
+@@ -988,7 +988,7 @@
+         }
+         final int nRows = this.getRowDimension();
+         final int nCols = this.getColumnDimension();
+-        final BigDecimal[] out = new BigDecimal[v.length];
++        final BigDecimal[] out = new BigDecimal[nRows];
+         for (int row = 0; row < nRows; row++) {
+             BigDecimal sum = ZERO;
+             for (int i = 0; i < nCols; i++) {
+--- Math98b/src/java/org/apache/commons/math/linear/RealMatrixImpl.java	2021-10-27 13:48:19.240285398 +0900
++++ Math98f/src/java/org/apache/commons/math/linear/RealMatrixImpl.java	2021-10-27 13:48:21.664307332 +0900
+@@ -776,7 +776,7 @@
+         if (v.length != nCols) {
+             throw new IllegalArgumentException("vector has wrong length");
+         }
+-        final double[] out = new double[v.length];
++        final double[] out = new double[nRows];
+         for (int row = 0; row < nRows; row++) {
+             final double[] dataRow = data[row];
+             double sum = 0;

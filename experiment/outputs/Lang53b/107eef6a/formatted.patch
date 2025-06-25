@@ -1,0 +1,16 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DateUtils.java MODIFIED_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/time/DateUtils.java
+@@ -216,10 +216,12 @@
+     if (!done && (!round || minutes < 30)) {
+       time = time - (minutes * 60000L);
+     }
++    if (seconds <= org.apache.commons.lang.time.DateUtils.fields.length) {
+     if (date.getTime() != time) {
+       date.setTimetime;
+       val.setTimedate;
+     }
++    }
+     boolean roundUp = false;
+     for (int i = 0; i < fields.length; i++) {
+       for (int j = 0; j < fields[i].length; j++) {

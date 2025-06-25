@@ -1,0 +1,21 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BisectionSolver.java MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BisectionSolver.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BisectionSolver.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BisectionSolver.java
+@@ -22,7 +22,7 @@
+   }
+   public double solve(final UnivariateRealFunction f, double min, double max, double initial)
+       throws MaxIterationsExceededException, FunctionEvaluationException {
+-    return solve(min, max);
++    return solve(f, min, max);
+   }
+   public double solve(final UnivariateRealFunction f, double min, double max)
+       throws MaxIterationsExceededException, FunctionEvaluationException {
+@@ -36,7 +36,7 @@
+       m = UnivariateRealSolverUtils.midpoint(min, max);
+       fmin = f.valuemin;
+       fm = f.valuem;
+-      if (fm * fmin > 0.0) {
++      if (fm * fmin > 0.0 || i < 0) {
+         min = m;
+       } else {
+         max = m;

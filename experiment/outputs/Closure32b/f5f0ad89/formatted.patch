@@ -1,0 +1,51 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+@@ -929,10 +929,12 @@
+     state = State.SEARCHING_ANNOTATION;
+     token = next();
+     boolean ignoreStar = false;
++    int lineStartChar = -1;
+     do {
+       switch token {
+         case STAR:
+           if ignoreStar {
++            lineStartChar = stream.getCharno() + 1;
+           } else {
+             if (builder.length() > 0) {
+               builder.append(' ');
+@@ -946,11 +948,24 @@
+             builder.append("\n");
+           }
+           ignoreStar = true;
++          lineStartChar = 0;
+           token = next();
+           continue;
+         default:
+           ignoreStar = false;
+           state = State.SEARCHING_ANNOTATION;
++          boolean isEOC = token == JsDocToken.EOC;
++          if (!isEOC) {
++            if (lineStartChar != -1 && option == WhitespaceOption.PRESERVE) {
++              int numSpaces = stream.getCharno() - lineStartChar;
++              for (int i = 0; i < numSpaces; i++) {
++                builder.append(' ');
++              }
++              lineStartChar = -1;
++            } else if (builder.length() > 0) {
++              builder.append(' ');
++            }
++          }
+           if (token == JsDocToken.EOC
+               || token == JsDocToken.EOF
+               ||
+@@ -966,9 +981,6 @@
+             }
+             return new ExtractionInfo(multilineText, token);
+           }
+-          if (builder.length() > 0) {
+-            builder.append(' ');
+-          }
+           builder.append(toStringtoken);
+           line = stream.getRemainingJSDocLine();
+           if (option != WhitespaceOption.PRESERVE) {

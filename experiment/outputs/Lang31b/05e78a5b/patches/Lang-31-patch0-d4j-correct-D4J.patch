@@ -1,0 +1,27 @@
+--- Lang31b/src/main/java/org/apache/commons/lang3/StringUtils.java	2021-10-27 13:31:47.339247115 +0900
++++ Lang31f/src/main/java/org/apache/commons/lang3/StringUtils.java	2021-10-27 13:31:50.731292312 +0900
+@@ -1443,16 +1443,24 @@
+ 		}
+ 		int csLength = cs.length();
+ 		int searchLength = searchChars.length;
++		int csLastIndex = csLength - 1;
++		int searchLastIndex = searchLength - 1;
+ 		for (int i = 0; i < csLength; i++) {
+ 			char ch = cs.charAt(i);
+ 			for (int j = 0; j < searchLength; j++) {
+ 				if (searchChars[j] == ch) {
++					if (i < csLastIndex && j < searchLastIndex && ch >= Character.MIN_HIGH_SURROGATE && ch <= Character.MAX_HIGH_SURROGATE) {
+ 						// ch is a supplementary character
++						if (searchChars[j + 1] == cs.charAt(i + 1)) {
++							return true;
++						}
++					} else {
+ 						// ch is in the Basic Multilingual Plane
+ 						return true;
+ 				}
+ 			}
+ 		}
++		}
+ 		return false;
+ 	}
+ 

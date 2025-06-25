@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+@@ -572,7 +572,7 @@
+       return res;
+     }
+     public double[] repairAndDecode(final double[] x) {
+-      return decodex;
++      return boundaries != null && isRepairMode ? decode(repairx) : decodex;
+     }
+     public double[] decode(final double[] x) {
+       if (boundaries == null) {

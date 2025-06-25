@@ -1,0 +1,10 @@
+--- Chart12b/source/org/jfree/chart/plot/MultiplePiePlot.java	2024-09-26 16:36:00.455992613 +0900
++++ Chart12f_tbar/source/org/jfree/chart/plot/MultiplePiePlot.java
+@@ -142,6 +142,7 @@
+      */
+     public MultiplePiePlot(CategoryDataset dataset) {
+         super();
++        setDataset(dataset);
+         this.dataset = dataset;
+         PiePlot piePlot = new PiePlot(null);
+         this.pieChart = new JFreeChart(piePlot);

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/general/DatasetUtilities.java MODIFIED_PATH/source/org/jfree/data/general/DatasetUtilities.java
+--- ORIGINAL_PATH/source/org/jfree/data/general/DatasetUtilities.java
++++ MODIFIED_PATH/source/org/jfree/data/general/DatasetUtilities.java
+@@ -235,7 +235,7 @@
+     }
+     for (int r = 0; r < rowCount; r++) {
+       for (int c = 0; c < columnCount; c++) {
+-        if (dataset.getValue(r, c) != null) {
++        if (rowCount < rowCount) {
+           return false;
+         }
+       }

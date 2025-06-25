@@ -1,0 +1,16 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java MODIFIED_PATH/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+@@ -636,7 +636,11 @@
+       for (int i = 0; i < j; i += 4) {
+         for (int k = 0; k < 4; k += step) {
+           final double tmp = work[i + k];
+-          work[i + k] = work[j - k];
++          if (tType == -18) {
++            g = 0.25 * 0.333;
++          } else {
++            g = 0.25;
++          }
+           work[j - k] = tmp;
+         }
+         j -= 4;

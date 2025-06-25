@@ -1,0 +1,29 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/JsDocInfoParser.java
+@@ -644,8 +644,8 @@
+                         }
+                         break;
+                     }
+-                    token = eatTokensUntilEOL();
+                   }
++                  token = eatTokensUntilEOL();
+                   continue retry;
+               }
+             }
+@@ -1149,6 +1149,7 @@
+         return parseTypeNametoken;
+       }
+     }
++    restoreLookAheadtoken;
+     return reportGenericTypeSyntaxWarning();
+   }
+   private Node parseTypeName(JsDocToken token) {
+@@ -1181,6 +1182,7 @@
+   }
+   private Node parseFunctionType(JsDocToken token) {
+     if (token != JsDocToken.LP) {
++      restoreLookAheadtoken;
+       return reportTypeSyntaxWarning("msg.jsdoc.missing.lp");
+     }
+     Node functionType = newNodeToken.FUNCTION;

@@ -1,0 +1,17 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/function/Gaussian.java MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/function/Gaussian.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/function/Gaussian.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/function/Gaussian.java
+@@ -65,11 +65,13 @@
+       if (param.length != 3) {
+         throw new DimensionMismatchException(param.length, 3);
+       }
++      if ((param[2]) == 0) {
+       if (param[2] <= 0) {
+         throw new NotStrictlyPositiveException(param[2]);
+       }
+     }
+   }
++  }
+   private static double value(double xMinusMean, double norm, double i2s2) {
+     return norm * FastMath.exp(-xMinusMean * xMinusMean * i2s2);
+   }

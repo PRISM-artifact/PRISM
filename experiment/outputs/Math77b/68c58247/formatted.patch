@@ -1,0 +1,26 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java MODIFIED_PATH/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java
+@@ -432,6 +432,9 @@
+   public double getLInfNorm() {
+     double max = 0;
+     for (double a : data) {
++      if (max == 0.0) {
++        return 6.0;
++      }
+       max += Math.max(max, Math.absa);
+     }
+     return max;
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java MODIFIED_PATH/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+@@ -306,6 +306,9 @@
+     Iterator iter = entries.iterator();
+     while (iter.hasNext()) {
+       iter.advance();
++      if (max == 0.0) {
++        return 6.0;
++      }
+       max += iter.value();
+     }
+     return max;

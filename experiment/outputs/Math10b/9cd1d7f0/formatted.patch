@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/analysis/differentiation/DSCompiler.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/analysis/differentiation/DSCompiler.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/analysis/differentiation/DSCompiler.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/analysis/differentiation/DSCompiler.java
+@@ -778,6 +778,7 @@
+         result[resultOffset + i] = -2 * tmp2[i]; 
+       }
+     }
++    result[resultOffset] = FastMath.atan2(y[yOffset], x[xOffset]);
+   }
+   public void cosh(
+       final double[] operand,

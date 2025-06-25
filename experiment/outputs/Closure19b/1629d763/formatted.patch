@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/type/ChainableReverseAbstractInterpreter.java MODIFIED_PATH/src/com/google/javascript/jscomp/type/ChainableReverseAbstractInterpreter.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/type/ChainableReverseAbstractInterpreter.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/type/ChainableReverseAbstractInterpreter.java
+@@ -100,6 +100,7 @@
+         JSType origType = node.getJSType();
+         origType = origType == null ? getNativeTypeUNKNOWN_TYPE : origType;
+         scope.inferQualifiedSlot(node, qualifiedName, origType, type);
++      case Token.THIS:
+         break;
+       default:
+         throw new IllegalArgumentException("Node cannot be refined. \n" + node.toStringTree());

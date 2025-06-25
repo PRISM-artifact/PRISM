@@ -1,0 +1,25 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/base/BasePeriod.java MODIFIED_PATH/src/main/java/org/joda/time/base/BasePeriod.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/base/BasePeriod.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/base/BasePeriod.java
+@@ -11,6 +11,7 @@
+ import org.joda.time.ReadableInstant;
+ import org.joda.time.ReadablePartial;
+ import org.joda.time.ReadablePeriod;
++import org.joda.time.chrono.ISOChronology;
+ import org.joda.time.convert.ConverterManager;
+ import org.joda.time.convert.PeriodConverter;
+ import org.joda.time.field.FieldUtils;
+@@ -110,7 +111,12 @@
+     iValues = chrono.get(this, startMillis, endMillis);
+   }
+   protected BasePeriod(long duration) {
+-    this(duration, null, null);
++    super();
++    iType = PeriodType.time();
++    int[] values = ISOChronology.getInstanceUTC().get(this, duration);
++    iType = PeriodType.standard();
++    iValues = new int[8];
++    System.arraycopy(values, 0, iValues, 4, 4);
+   }
+   protected BasePeriod(long duration, PeriodType type, Chronology chrono) {
+     super();

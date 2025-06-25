@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/InlineVariables.java MODIFIED_PATH/src/com/google/javascript/jscomp/InlineVariables.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/InlineVariables.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/InlineVariables.java
+@@ -171,7 +171,10 @@
+       if (!maybeModifiedArguments
+           && !staleVars.containsv
+           && referenceInfo.isWellDefined()
+-          && referenceInfo.isAssignedOnceInLifetime()) {
++          && referenceInfo.isAssignedOnceInLifetime()
++          &&
++          (isInlineableDeclaredConstant(v, referenceInfo)
++              || referenceInfo.isOnlyAssignmentSameScopeAsDeclaration())) {
+         List<Reference> refs = referenceInfo.references;
+         for (int i = 1 ; i < refs.size(); i++) {
+           Node nameNode = refs.geti.getNode();

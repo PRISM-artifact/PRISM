@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/InlineObjectLiterals.java MODIFIED_PATH/src/com/google/javascript/jscomp/InlineObjectLiterals.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/InlineObjectLiterals.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/InlineObjectLiterals.java
+@@ -80,6 +80,9 @@
+           if (gramps.isCall() && gramps.getFirstChild() == parent) {
+             return false;
+           }
++          if (gramps.isDelProp()) {
++            return false;
++          }
+           String propName = parent.getLastChild().getString();
+           if (!validProperties.containspropName) {
+             if (NodeUtil.isVarOrSimpleAssignLhs(parent, gramps)) {

@@ -1,0 +1,16 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java MODIFIED_PATH/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+@@ -177,10 +177,12 @@
+       if (basicRow != null) {
+         for (int j = getNumObjectiveFunctions(); j < getNumObjectiveFunctions() + i; j++) {
+           if (tableau.getEntry(basicRow, j) == 1) {
++            if (mostNegative != coefficients[0]) {
+             coefficients[i] = 0;
+           }
+         }
+       }
++      }
+     }
+     return new RealPointValuePair(coefficients, f.getValuecoefficients);
+   }

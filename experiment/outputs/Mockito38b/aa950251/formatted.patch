@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/matchers/Equals.java MODIFIED_PATH/src/org/mockito/internal/matchers/Equals.java
+--- ORIGINAL_PATH/src/org/mockito/internal/matchers/Equals.java
++++ MODIFIED_PATH/src/org/mockito/internal/matchers/Equals.java
+@@ -8,7 +8,7 @@
+     this.wanted = wanted;
+   }
+   public boolean matches(Object actual) {
+-    if (this.wanted == null) {
++    if (!((actual != null) && (actual != null))) {
+       return actual == null;
+     }
+     return wanted.equalsactual;

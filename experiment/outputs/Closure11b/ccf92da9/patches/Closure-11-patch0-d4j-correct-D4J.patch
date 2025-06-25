@@ -1,0 +1,11 @@
+--- Closure11b/src/com/google/javascript/jscomp/TypeCheck.java	2021-10-26 15:32:38.210216424 +0900
++++ Closure11f/src/com/google/javascript/jscomp/TypeCheck.java	2021-10-26 15:32:41.206250962 +0900
+@@ -1311,8 +1311,6 @@
+ 
+     if (childType.isDict()) {
+       report(t, property, TypeValidator.ILLEGAL_PROPERTY_ACCESS, "'.'", "dict");
+-    } else if (n.getJSType() != null && parent.isAssign()) {
+-      return;
+     } else if (validator.expectNotNullOrUndefined(t, n, childType,
+         "No properties on this expression", getNativeType(OBJECT_TYPE))) {
+       checkPropertyAccess(childType, property.getString(), t, n);

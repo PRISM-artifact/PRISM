@@ -1,0 +1,18 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/util/MockUtil.java MODIFIED_PATH/src/org/mockito/internal/util/MockUtil.java
+--- ORIGINAL_PATH/src/org/mockito/internal/util/MockUtil.java
++++ MODIFIED_PATH/src/org/mockito/internal/util/MockUtil.java
+@@ -44,13 +44,8 @@
+   }
+   public <T> void resetMock(T mock) {
+     MockHandlerInterface<T> oldMockHandler = getMockHandlermock;
+-    MockHandler<T> newMockHandler = new MockHandler<T>oldMockHandler;
+     MethodInterceptorFilter newFilter =
+-        new MethodInterceptorFilter(
+-            newMockHandler,
+-            MockSettingsImpl
+-                org.mockito.Mockito.withSettings()
+-                    .defaultAnswerorg.mockito.Mockito.RETURNS_DEFAULTS);
++        newMethodInterceptorFilter(oldMockHandler.getMockSettings());
+     (Factory mock).setCallback(0, newFilter);
+   }
+   private <T> MethodInterceptorFilter newMethodInterceptorFilter(MockSettingsImpl settings) {

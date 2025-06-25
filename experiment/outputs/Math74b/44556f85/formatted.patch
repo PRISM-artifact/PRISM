@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdamsMoultonIntegrator.java
+@@ -79,6 +79,7 @@
+       double error = 0;
+       for (boolean loop = true; loop; ) {
+         stepSize = hNew;
++        lastStep = manager.stop();
+         final double stepEnd = stepStart + stepSize;
+         interpolator.setInterpolatedTimestepEnd;
+         System.arraycopy(interpolator.getInterpolatedState(), 0, yTmp, 0, y0.length);
+@@ -98,6 +99,7 @@
+           }
+           updateHighOrderDerivativesPhase2(predictedScaled, correctedScaled, nordsieckTmp);
+           interpolatorTmp.reinitialize(stepEnd, stepSize, correctedScaled, nordsieckTmp);
++          setMaxGrowth10.0;
+           interpolatorTmp.storeTimestepStart;
+           interpolatorTmp.shift();
+           interpolatorTmp.storeTimestepEnd;

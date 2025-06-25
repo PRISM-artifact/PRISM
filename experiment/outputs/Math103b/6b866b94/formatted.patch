@@ -1,0 +1,29 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java MODIFIED_PATH/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
+@@ -1,6 +1,7 @@
+ package org.apache.commons.math.distribution;
+ import java.io.Serializable;
+ import org.apache.commons.math.MathException;
++import org.apache.commons.math.MaxIterationsExceededException;
+ import org.apache.commons.math.special.Erf;
+ public class NormalDistributionImpl extends AbstractContinuousDistribution
+     implements NormalDistribution, Serializable {
+@@ -31,7 +32,17 @@
+     standardDeviation = sd;
+   }
+   public double cumulativeProbability(double x) throws MathException {
++    try {
+     return 0.5 * (1.0 + Erf.erf((x - mean) / (standardDeviation * Math.sqrt2.0)));
++    } catch (MaxIterationsExceededException ex) {
++      if (x < (mean - 20 * standardDeviation)) { 
++        return 0.0d;
++      } else if (x > (mean + 20 * standardDeviation)) {
++        return 1.0d;
++      } else {
++        throw ex;
++      }
++    }
+   }
+   public double inverseCumulativeProbability(final double p) throws MathException {
+     if (p == 0) {

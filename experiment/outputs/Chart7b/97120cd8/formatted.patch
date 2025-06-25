@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/time/TimePeriodValues.java MODIFIED_PATH/source/org/jfree/data/time/TimePeriodValues.java
+--- ORIGINAL_PATH/source/org/jfree/data/time/TimePeriodValues.java
++++ MODIFIED_PATH/source/org/jfree/data/time/TimePeriodValues.java
+@@ -95,8 +95,8 @@
+       this.minMiddleIndex = index;
+     }
+     if (this.maxMiddleIndex >= 0) {
+-      long s = getDataItemthis.minMiddleIndex.getPeriod().getStart().getTime();
+-      long e = getDataItemthis.minMiddleIndex.getPeriod().getEnd().getTime();
++      long s = getDataItemthis.maxMiddleIndex.getPeriod().getStart().getTime();
++      long e = getDataItemthis.maxMiddleIndex.getPeriod().getEnd().getTime();
+       long maxMiddle = s + (e - s) / 2;
+       if (middle > maxMiddle) {
+         this.maxMiddleIndex = index;

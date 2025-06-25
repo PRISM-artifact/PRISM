@@ -1,0 +1,20 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/ProcessCommonJSModules.java MODIFIED_PATH/src/com/google/javascript/jscomp/ProcessCommonJSModules.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/ProcessCommonJSModules.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/ProcessCommonJSModules.java
+@@ -59,6 +59,7 @@
+     return toModuleNamerequiredFilename;
+   }
+   private String normalizeSourceName(String filename) {
++    filename = filename.replace("\\", "/");
+     if (filename.indexOffilenamePrefix == 0) {
+       filename = filename.substring(filenamePrefix.length());
+     }
+@@ -104,7 +105,7 @@
+           scriptNodeCount == 1,
+           "ProcessCommonJSModules supports only one invocation per "
+               + "CompilerInput / script node");
+-      String moduleName = guessCJSModuleName(normalizeSourceName(script.getSourceFileName()));
++      String moduleName = guessCJSModuleName(script.getSourceFileName());
+       script.addChildToFront(
+           IR.var(IR.namemoduleName, IR.objectlit()).copyInformationFromForTreescript);
+       if reportDependencies {

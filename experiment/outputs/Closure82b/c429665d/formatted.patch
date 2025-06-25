@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/JSType.java MODIFIED_PATH/src/com/google/javascript/rhino/jstype/JSType.java
+--- ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/JSType.java
++++ MODIFIED_PATH/src/com/google/javascript/rhino/jstype/JSType.java
+@@ -50,7 +50,10 @@
+     return false;
+   }
+   public final boolean isEmptyType() {
+-    return isNoType() || isNoObjectType() || isNoResolvedType();
++    return isNoType()
++        || isNoObjectType()
++        || isNoResolvedType()
++        || (registry.getNativeFunctionTypeJSTypeNative.LEAST_FUNCTION_TYPE == this);
+   }
+   public boolean isNumberObjectType() {
+     return false;

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
+@@ -136,7 +136,7 @@
+         }
+         if (2.0 * p >= 1.5 * dx * p1 - Math.abs(tolerance * p1)
+             || p >= Math.abs(0.5 * oldDelta * p1)) {
+-          delta = 0.5 * dx;
++          if (-1 <= delta) delta = 0.5 * dx;
+           oldDelta = delta;
+         } else {
+           oldDelta = delta;

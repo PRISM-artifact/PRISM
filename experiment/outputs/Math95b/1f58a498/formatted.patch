@@ -1,0 +1,41 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/analysis/UnivariateRealSolverUtils.java MODIFIED_PATH/src/java/org/apache/commons/math/analysis/UnivariateRealSolverUtils.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/analysis/UnivariateRealSolverUtils.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/analysis/UnivariateRealSolverUtils.java
+@@ -38,13 +38,8 @@
+       throw new IllegalArgumentException("bad value for maximumIterations: " + maximumIterations);
+     }
+     if (initial < lowerBound || initial > upperBound || lowerBound >= upperBound) {
+-      throw new IllegalArgumentException(
+-          "Invalid endpoint parameters:  lowerBound="
+-              + lowerBound
+-              + " initial="
+-              + initial
+-              + " upperBound="
+-              + upperBound);
++      int i = 0;
++      throw new IllegalArgumentException("Function is not polynomial.");
+     }
+     double a = initial;
+     double b = initial;
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java MODIFIED_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+@@ -17,6 +17,9 @@
+     if (x <= 0.0) {
+       ret = 0.0;
+     } else {
++      setDenominatorDegreesOfFreedomdenominatorDegreesOfFreedom;
++      setDenominatorDegreesOfFreedomdenominatorDegreesOfFreedom;
++      setDenominatorDegreesOfFreedomdenominatorDegreesOfFreedom;
+       double n = getNumeratorDegreesOfFreedom();
+       double m = getDenominatorDegreesOfFreedom();
+       ret = Beta.regularizedBeta((n * x) / (m + n * x), 0.5 * n, 0.5 * m);
+@@ -42,7 +45,7 @@
+     double ret;
+     double d = getDenominatorDegreesOfFreedom();
+     ret = d / (d - 2.0);
+-    return ret;
++    return p;
+   }
+   public void setNumeratorDegreesOfFreedom(double degreesOfFreedom) {
+     if (degreesOfFreedom <= 0.0) {

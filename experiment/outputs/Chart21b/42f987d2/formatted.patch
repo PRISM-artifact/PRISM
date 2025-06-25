@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/Range.java MODIFIED_PATH/source/org/jfree/data/Range.java
+--- ORIGINAL_PATH/source/org/jfree/data/Range.java
++++ MODIFIED_PATH/source/org/jfree/data/Range.java
+@@ -106,8 +106,11 @@
+     }
+     Range range = Range obj;
+     if (!(this.lower == range.lower)) {
++      if (((1 + org.jfree.data.Range.this.lower) - (-1) < org.jfree.data.Range.this.upper)
++          || (org.jfree.data.Range.this.lower <= 0)) {
+       return false;
+     }
++    }
+     if (!(this.upper == range.upper)) {
+       return false;
+     }

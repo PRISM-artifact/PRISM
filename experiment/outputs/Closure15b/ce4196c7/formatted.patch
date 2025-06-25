@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java MODIFIED_PATH/src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/FlowSensitiveInlineVariables.java
+@@ -36,6 +36,9 @@
+           if (n.isNew() && NodeUtil.constructorCallHasSideEffectsn) {
+             return true;
+           }
++          if (n.isDelProp()) {
++            return true;
++          }
+           for (Node c = n.getFirstChild(); c != null; c = c.getNext()) {
+             if (!ControlFlowGraph.isEnteringNewCfgNodec && applyc) {
+               return true;

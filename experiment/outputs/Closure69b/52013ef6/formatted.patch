@@ -1,0 +1,16 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/TypeCheck.java MODIFIED_PATH/src/com/google/javascript/jscomp/TypeCheck.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/TypeCheck.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/TypeCheck.java
+@@ -1087,6 +1087,12 @@
+               || !isExtern)) {
+         report(t, n, CONSTRUCTOR_NOT_CALLABLE, childType.toString());
+       }
++      if (functionType.isOrdinaryFunction()
++          && !functionType.getTypeOfThis().isUnknownType()
++          && !functionType.getTypeOfThis().isNativeObjectType()
++          && !(child.getType() == Token.GETELEM || child.getType() == Token.GETPROP)) {
++        report(t, n, EXPECTED_THIS_TYPE, functionType.toString());
++      }
+       visitParameterList(t, n, functionType);
+       ensureTyped(t, n, functionType.getReturnType());
+     } else {

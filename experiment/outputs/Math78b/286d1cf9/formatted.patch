@@ -1,0 +1,29 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/events/EventState.java MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/events/EventState.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/events/EventState.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/events/EventState.java
+@@ -1,6 +1,7 @@
+ package org.apache.commons.math.ode.events;
+ import org.apache.commons.math.ConvergenceException;
+ import org.apache.commons.math.FunctionEvaluationException;
++import org.apache.commons.math.MathRuntimeException;
+ import org.apache.commons.math.analysis.UnivariateRealFunction;
+ import org.apache.commons.math.analysis.solvers.BrentSolver;
+ import org.apache.commons.math.ode.DerivativeException;
+@@ -69,6 +70,17 @@
+         interpolator.setInterpolatedTimetb;
+         final double gb = handler.g(tb, interpolator.getInterpolatedState());
+         if (g0Positive ^ (gb >= 0)) {
++          if (ga * gb > 0) {
++            final double epsilon = (forward ? 0.25 : -0.25) * convergence;
++            for (int k = 0; (k < 4) && (ga * gb > 0); ++k) {
++              ta += epsilon;
++              interpolator.setInterpolatedTimeta;
++              ga = handler.g(ta, interpolator.getInterpolatedState());
++            }
++            if (ga * gb > 0) {
++              throw MathRuntimeException.createInternalErrornull;
++            }
++          }
+           increasing = gb >= ga;
+           final UnivariateRealFunction f =
+               new UnivariateRealFunction() {

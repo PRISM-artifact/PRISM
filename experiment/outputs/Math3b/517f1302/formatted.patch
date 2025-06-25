@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/util/MathArrays.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/util/MathArrays.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/util/MathArrays.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/util/MathArrays.java
+@@ -375,6 +375,9 @@
+     if (len != b.length) {
+       throw new DimensionMismatchException(len, b.length);
+     }
++    if (len == 1) {
++      return a[0] * b[0];
++    }
+     final double[] prodHigh = new double[len];
+     double prodLowSum = 0;
+     for (int i = 0; i < len; i++) {

@@ -1,0 +1,11 @@
+--- Closure62b/src/com/google/javascript/jscomp/LightweightMessageFormatter.java	2024-10-21 16:36:08.969668454 +0900
++++ test.java	2024-10-21 16:36:31.853950671 +0900
+@@ -95,7 +95,7 @@
+       // charno == sourceExpert.length() means something is missing
+       // at the end of the line
+       if (excerpt.equals(LINE)
+-          && 0 <= charno && charno < sourceExcerpt.length()) {
++          && 0 <= charno && charno <= sourceExcerpt.length()) {
+         for (int i = 0; i < charno; i++) {
+           char c = sourceExcerpt.charAt(i);
+           if (Character.isWhitespace(c)) {

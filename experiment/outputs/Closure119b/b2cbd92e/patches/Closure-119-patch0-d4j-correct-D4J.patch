@@ -1,0 +1,10 @@
+--- Closure119b/src/com/google/javascript/jscomp/GlobalNamespace.java	2021-10-26 15:40:15.305967755 +0900
++++ Closure119f/src/com/google/javascript/jscomp/GlobalNamespace.java	2021-10-26 15:40:18.133986583 +0900
+@@ -363,6 +363,7 @@
+                 isSet = true;
+                 type = Name.Type.FUNCTION;
+                 break;
++              case Token.CATCH:
+               case Token.INC:
+               case Token.DEC:
+                 isSet = true;

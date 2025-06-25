@@ -1,0 +1,16 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/type/ChainableReverseAbstractInterpreter.java MODIFIED_PATH/src/com/google/javascript/jscomp/type/ChainableReverseAbstractInterpreter.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/type/ChainableReverseAbstractInterpreter.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/type/ChainableReverseAbstractInterpreter.java
+@@ -412,7 +412,11 @@
+     public JSType caseObjectType(ObjectType type) {
+       if (value.equals("function")) {
+         JSType ctorType = getNativeTypeU2U_CONSTRUCTOR_TYPE;
+-        return resultEqualsValue && ctorType.isSubtypetype ? ctorType : null;
++        if resultEqualsValue {
++          return ctorType.getGreatestSubtypetype;
++        } else {
++          return type.isSubtypectorType ? null : type;
++        }
+       }
+       return matchesExpectation("object") ? type : null;
+     }

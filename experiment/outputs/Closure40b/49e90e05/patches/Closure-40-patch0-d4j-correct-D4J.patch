@@ -1,0 +1,18 @@
+--- Closure40b/src/com/google/javascript/jscomp/NameAnalyzer.java	2021-10-26 15:34:39.139611236 +0900
++++ Closure40f/src/com/google/javascript/jscomp/NameAnalyzer.java	2021-10-26 15:34:41.135634270 +0900
+@@ -632,14 +632,12 @@
+         Node nameNode = n.getFirstChild();
+         NameInformation ns = createNameInformation(t, nameNode, n);
+         if (ns != null && ns.onlyAffectsClassDef) {
+-          JsName name = getName(ns.name, false);
+-          if (name != null) {
++          JsName name = getName(ns.name, true);
+           refNodes.add(new ClassDefiningFunctionNode(
+               name, n, parent, parent.getParent()));
+           }
+         }
+       }
+-    }
+ 
+     /**
+      * Records the assignment of a value to a global name.

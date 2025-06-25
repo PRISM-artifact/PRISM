@@ -1,0 +1,28 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/Matchers.java MODIFIED_PATH/src/org/mockito/Matchers.java
+--- ORIGINAL_PATH/src/org/mockito/Matchers.java
++++ MODIFIED_PATH/src/org/mockito/Matchers.java
+@@ -73,7 +73,7 @@
+     return Collection reportMatcherAny.ANY.returnList();
+   }
+   public static <T> T isA(Class<T> clazz) {
+-    return reportMatcher(new InstanceOfclazz).<T>returnNull();
++    return reportMatcher(new InstanceOfclazz).<T>returnForclazz;
+   }
+   public static boolean eq(boolean value) {
+     return reportMatcher(new Equalsvalue).returnFalse();
+@@ -100,13 +100,13 @@
+     return reportMatcher(new Equalsvalue).returnZero();
+   }
+   public static <T> T eq(T value) {
+-    return reportMatcher(new Equalsvalue).<T>returnNull();
++    return T reportMatcher(new Equalsvalue).<T>returnFor(Class value.getClass());
+   }
+   public static <T> T refEq(T value, String... excludeFields) {
+     return reportMatcher(new ReflectionEquals(value, excludeFields)).<T>returnNull();
+   }
+   public static <T> T same(T value) {
+-    return reportMatcher(new Samevalue).<T>returnNull();
++    return T reportMatcher(new Samevalue).<T>returnFor(Class value.getClass());
+   }
+   public static Object isNull() {
+     return reportMatcherNull.NULL.returnNull();

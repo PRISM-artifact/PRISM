@@ -1,0 +1,16 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java MODIFIED_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
+@@ -1068,7 +1068,11 @@
+           Node jsDocParameter = jsDocParameters.getFirstChild();
+           for (Node astParameter : astParameters.children()) {
+             if (jsDocParameter != null) {
+-              defineSlot(astParameter, functionNode, jsDocParameter.getJSType(), true);
++              defineSlot(
++                  astParameter,
++                  functionNode,
++                  jsDocParameter.getJSType(),
++                  jsDocParameter.isVarArgs());
+               jsDocParameter = jsDocParameter.getNext();
+             } else {
+               defineSlot(astParameter, functionNode, null, true);

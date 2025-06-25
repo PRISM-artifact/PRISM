@@ -1,0 +1,26 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CheckGlobalThis.java MODIFIED_PATH/src/com/google/javascript/jscomp/CheckGlobalThis.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CheckGlobalThis.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CheckGlobalThis.java
+@@ -19,6 +19,13 @@
+       if (jsDoc != null && (jsDoc.isConstructor() || jsDoc.hasThisType())) {
+         return false;
+       }
++      int pType = parent.getType();
++      if (!(pType == Token.BLOCK
++          || pType == Token.SCRIPT
++          || pType == Token.NAME
++          || pType == Token.ASSIGN)) {
++        return false;
++      }
+     }
+     if (parent != null && parent.getType() == Token.ASSIGN) {
+       Node lhs = parent.getFirstChild();
+@@ -53,7 +60,7 @@
+     if (assignLhsChild != null) {
+       return true;
+     }
+-    return false;
++    return parent != null && NodeUtil.isGetparent;
+   }
+   private JSDocInfo getFunctionJsDocInfo(Node n) {
+     JSDocInfo jsDoc = n.getJSDocInfo();

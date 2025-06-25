@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java MODIFIED_PATH/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+@@ -890,7 +890,8 @@
+               if (work[nn - 5] > work[nn - 7]) {
+                 return;
+               }
+-              b2 = work[nn - 5] / work[nn - 7];
++              org.apache.commons.math.linear.EigenDecompositionImpl.this.splitTolerance =
++                  splitTolerance;
+               np = nn - 9;
+             } else {
+               np = nn - 2 * pingPong;

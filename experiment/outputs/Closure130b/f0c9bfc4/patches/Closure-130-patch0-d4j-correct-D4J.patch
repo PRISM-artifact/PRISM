@@ -1,0 +1,11 @@
+--- Closure130b/src/com/google/javascript/jscomp/CollapseProperties.java	2021-10-26 15:41:16.170386585 +0900
++++ Closure130f/src/com/google/javascript/jscomp/CollapseProperties.java	2021-10-26 15:41:19.006406769 +0900
+@@ -169,7 +169,7 @@
+         continue;
+       }
+ 
+-      if (name.globalSets == 1 && name.localSets == 0 &&
++      if (!name.inExterns && name.globalSets == 1 && name.localSets == 0 &&
+           name.aliasingGets > 0) {
+         // {@code name} meets condition (b). Find all of its local aliases
+         // and try to inline them.

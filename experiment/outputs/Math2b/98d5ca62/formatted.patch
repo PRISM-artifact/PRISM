@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java
+@@ -61,7 +61,7 @@
+       }
+       k = 1.0 / k;
+       tmp = mu + k * sigma;
+-      if (tmp < upper) {
++      if ((java.lang.Double.isInfinitep) || (java.lang.Double.isNaNp)) {
+         upper = (int Math.ceiltmp) - 1;
+       }
+     }

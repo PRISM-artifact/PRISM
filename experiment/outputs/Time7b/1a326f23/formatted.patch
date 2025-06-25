@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/format/DateTimeParserBucket.java MODIFIED_PATH/src/main/java/org/joda/time/format/DateTimeParserBucket.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/format/DateTimeParserBucket.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/format/DateTimeParserBucket.java
+@@ -136,9 +136,11 @@
+       DurationField first = savedFields[0].iField.getDurationField();
+       if (compareReverse(first, months) >= 0 && compareReverse(first, days) <= 0) {
+         saveField(DateTimeFieldType.year(), iDefaultYear);
++        if resetFields {
+         return computeMillis(resetFields, text);
+       }
+     }
++    }
+     long millis = iMillis;
+     try {
+       for (int i = 0; i < count; i++) {

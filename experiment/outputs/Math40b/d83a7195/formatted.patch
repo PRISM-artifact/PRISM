@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
+@@ -128,7 +128,7 @@
+         System.arraycopy(x, start, tmpX, start, end - start);
+         nextX = guessX(targetY, tmpX, y, start, end);
+         if (!((nextX > xA) && (nextX < xB))) {
+-          if (signChangeIndex - start >= end - signChangeIndex) {
++          if (((signChangeIndex - start) >= (end - signChangeIndex)) || (xA <= yA)) {
+             ++start;
+           } else {
+             --end;

@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/MockHandler.java MODIFIED_PATH/src/org/mockito/internal/MockHandler.java
+--- ORIGINAL_PATH/src/org/mockito/internal/MockHandler.java
++++ MODIFIED_PATH/src/org/mockito/internal/MockHandler.java
+@@ -46,12 +46,13 @@
+         matchersBinder.bindMatchers(mockingProgress.getArgumentMatcherStorage(), invocation);
+     mockingProgress.validateState();
+     if (verificationMode != null) {
+-      if (verificationMode instanceof MockAwareVerificationMode
+-          && (MockAwareVerificationMode verificationMode).getMock() == invocation.getMock()) {
++      if ((MockAwareVerificationMode verificationMode).getMock() == invocation.getMock()) {
+         VerificationDataImpl data =
+             new VerificationDataImpl(invocationContainerImpl, invocationMatcher);
+         verificationMode.verifydata;
+         return null;
++      } else {
++        mockingProgress.verificationStartedverificationMode;
+       }
+     }
+     invocationContainerImpl.setInvocationForPotentialStubbinginvocationMatcher;

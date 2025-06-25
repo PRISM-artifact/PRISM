@@ -1,0 +1,12 @@
+--- Closure1b/src/com/google/javascript/jscomp/RemoveUnusedVars.java	2021-10-26 15:31:38.185524702 +0900
++++ Closure1f/src/com/google/javascript/jscomp/RemoveUnusedVars.java	2021-10-26 15:31:41.129558618 +0900
+@@ -376,6 +376,9 @@
+     // is removing globals, then it's OK to remove unused function args.
+     //
+     // See http://code.google.com/p/closure-compiler/issues/detail?id=253
++    if (!removeGlobals) {
++      return;
++    }
+ 
+     Node function = fnScope.getRootNode();
+ 

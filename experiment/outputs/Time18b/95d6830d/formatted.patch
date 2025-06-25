@@ -1,0 +1,32 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/chrono/GJChronology.java MODIFIED_PATH/src/main/java/org/joda/time/chrono/GJChronology.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/chrono/GJChronology.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/chrono/GJChronology.java
+@@ -168,9 +168,27 @@
+           year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+     }
+     long instant;
++    try {
+     instant =
+         iGregorianChronology.getDateTimeMillis(
+-            year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
++              year,
++              monthOfYear,
++              dayOfMonth,
++              hourOfDay,
++              minuteOfHour,
++              secondOfMinute,
++              millisOfSecond);
++    } catch (IllegalFieldValueException ex) {
++      if (monthOfYear != 2 || dayOfMonth != 29) {
++        throw ex;
++      }
++      instant =
++          iGregorianChronology.getDateTimeMillis(
++              year, monthOfYear, 28, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
++      if (instant >= iCutoverMillis) {
++        throw ex;
++      }
++    }
+     if (instant < iCutoverMillis) {
+       instant =
+           iJulianChronology.getDateTimeMillis(

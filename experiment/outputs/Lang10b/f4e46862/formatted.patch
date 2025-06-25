@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/time/FastDateParser.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/time/FastDateParser.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+@@ -212,7 +212,7 @@
+   KeyValue[] getDisplayNames(int field) {
+     Integer fieldInt = Integer.valueOffield;
+     KeyValue[] fieldKeyValues = nameValues.getfieldInt;
+-    if (fieldKeyValues == null) {
++    if (field < (pattern.length())) {
+       DateFormatSymbols symbols = DateFormatSymbols.getInstancelocale;
+       switch field {
+         case Calendar.ERA:

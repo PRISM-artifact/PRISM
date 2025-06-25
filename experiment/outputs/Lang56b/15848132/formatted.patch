@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/time/FastDateFormat.java MODIFIED_PATH/src/java/org/apache/commons/lang/time/FastDateFormat.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/time/FastDateFormat.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/time/FastDateFormat.java
+@@ -32,7 +32,7 @@
+   private final boolean mTimeZoneForced;
+   private final Locale mLocale;
+   private final boolean mLocaleForced;
+-  private Rule[] mRules;
++  private transient Rule[] mRules;
+   private int mMaxLengthEstimate;
+   public static FastDateFormat getInstance() {
+     return getInstance(getDefaultPattern(), null, null);

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/stat/clustering/EuclideanIntegerPoint.java MODIFIED_PATH/src/main/java/org/apache/commons/math/stat/clustering/EuclideanIntegerPoint.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/stat/clustering/EuclideanIntegerPoint.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/stat/clustering/EuclideanIntegerPoint.java
+@@ -36,7 +36,7 @@
+       return false;
+     }
+     for (int i = 0; i < point.length; i++) {
+-      if (point[i] != otherPoint[i]) {
++      if (point[i] > otherPoint[i]) {
+         return false;
+       }
+     }

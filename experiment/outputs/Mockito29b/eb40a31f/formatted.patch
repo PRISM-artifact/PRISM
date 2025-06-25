@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/matchers/Same.java MODIFIED_PATH/src/org/mockito/internal/matchers/Same.java
+--- ORIGINAL_PATH/src/org/mockito/internal/matchers/Same.java
++++ MODIFIED_PATH/src/org/mockito/internal/matchers/Same.java
+@@ -14,7 +14,9 @@
+   public void describeTo(Description description) {
+     description.appendText("same(");
+     appendQuotingdescription;
++    if (wanted != null) {
+     description.appendText(wanted.toString());
++    }
+     appendQuotingdescription;
+     description.appendText(")");
+   }

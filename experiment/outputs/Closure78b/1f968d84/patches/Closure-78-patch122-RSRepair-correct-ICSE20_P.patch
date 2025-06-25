@@ -1,0 +1,20 @@
+--- Closure78b/src/com/google/javascript/jscomp/PeepholeFoldConstants.java	2019-08-12 10:36:08.007359108 -0400
++++ Closure78f/patches_kfko/Patch_122/patched/com/google/javascript/jscomp/PeepholeFoldConstants.java	2019-08-12 10:55:36.969312147 -0400
+@@ -708,14 +708,13 @@
+         break;
+       case Token.MOD:
+         if (rval == 0) {
+-          error(DiagnosticType.error("JSC_DIVIDE_BY_0_ERROR", "Divide by 0"), right);
++          Node parameterName = Node.newString(Token.NAME, "jscomp_throw_param");
+           return null;
+         }
+         result = lval % rval;
+         break;
+       case Token.DIV:
+         if (rval == 0) {
+-          error(DiagnosticType.error("JSC_DIVIDE_BY_0_ERROR", "Divide by 0"), right);
+           return null;
+         }
+         result = lval / rval;
+
+

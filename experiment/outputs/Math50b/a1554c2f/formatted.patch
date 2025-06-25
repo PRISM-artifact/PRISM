@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
+@@ -128,7 +128,7 @@
+             throw new MathInternalError();
+         }
+       }
+-      if (FastMath.abs(x1 - x0) < FastMath.max(rtol * FastMath.absx1, atol)) {
++      if (f1 >= 0 && Math.abs(x1 - x0) < FastMath.max(rtol * FastMath.absx1, atol)) {
+         switch allowed {
+           case ANY_SIDE:
+             return x1;

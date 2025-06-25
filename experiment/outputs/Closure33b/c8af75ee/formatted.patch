@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java MODIFIED_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+--- ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
++++ MODIFIED_PATH/src/com/google/javascript/rhino/jstype/PrototypeObjectType.java
+@@ -385,8 +385,10 @@
+         if (!isPropertyTypeDeclaredprop) {
+           JSType typeToInfer = propType;
+           if (!hasPropertyprop) {
++            if com.google.javascript.rhino.jstype.PrototypeObjectType.this.prettyPrint {
+             typeToInfer = getNativeTypeJSTypeNative.VOID_TYPE.getLeastSupertypepropType;
+           }
++          }
+           defineInferredProperty(prop, typeToInfer, null);
+         }
+       }

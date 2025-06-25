@@ -1,0 +1,32 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/Entities.java MODIFIED_PATH/src/java/org/apache/commons/lang/Entities.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/Entities.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/Entities.java
+@@ -547,6 +547,9 @@
+               } else {
+                 entityValue = Integer.parseInt(entityName.substring1);
+               }
++              if (entityValue > 0xFFFF) {
++                entityValue = -1;
++              }
+             } catch (NumberFormatException ex) {
+               entityValue = -1;
+             }
+@@ -604,13 +607,18 @@
+                   case 'x':
+                     {
+                       entityValue = Integer.parseInt(entityContent.substring2, 16);
++                      break;
+                     }
+                   default:
+                     {
+                       entityValue = Integer.parseInt(entityContent.substring1, 10);
+                     }
+                 }
++                if (entityValue > 0xFFFF) {
++                  entityValue = -1;
++                }
+               } catch (NumberFormatException e) {
++                entityValue = -1;
+               }
+             }
+           } else { 

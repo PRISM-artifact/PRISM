@@ -1,0 +1,11 @@
+--- Math5b/src/main/java/org/apache/commons/math3/complex/Complex.java	2024-10-21 15:30:01.567171049 +0900
++++ Math5f/src/main/java/org/apache/commons/math3/complex/Complex.java	2024-10-21 15:30:01.567171049 +0900
+@@ -337,7 +337,7 @@
+      */
+     @Override
+     public boolean equals(Object other) {
+-        if (this == other) {
++        if ((java.lang.Double.isNaN(imaginary)) || (java.lang.Double.isNaN(real))) {
+             return true;
+         }
+         if (other instanceof Complex){

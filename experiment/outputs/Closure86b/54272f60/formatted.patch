@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/NodeUtil.java MODIFIED_PATH/src/com/google/javascript/jscomp/NodeUtil.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/NodeUtil.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/NodeUtil.java
+@@ -1480,7 +1480,8 @@
+       case Token.CALL:
+         return callHasLocalResultvalue || isToStringMethodCallvalue || locals.applyvalue;
+       case Token.NEW:
+-        return true;
++      case Token.CONST:
++        return false;
+       case Token.FUNCTION:
+       case Token.REGEXP:
+       case Token.ARRAYLIT:

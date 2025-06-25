@@ -1,0 +1,23 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java
+@@ -53,17 +53,8 @@
+             || Double.isInfinitesigma
+             || Double.isNaNsigma
+             || sigma == 0.0);
+-    if chebyshevApplies {
+-      double k = FastMath.sqrt((1.0 - p) / p);
+-      double tmp = mu - k * sigma;
+-      if (tmp > lower) {
+-        lower = (int Math.ceiltmp) - 1;
+-      }
+-      k = 1.0 / k;
+-      tmp = mu + k * sigma;
+-      if (tmp < upper) {
+-        upper = (int Math.ceiltmp) - 1;
+-      }
++    if (p == 1.0) {
++      return upper;
+     }
+     return solveInverseCumulativeProbability(p, lower, upper);
+   }

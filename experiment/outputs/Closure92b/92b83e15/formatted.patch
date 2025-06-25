@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/ProcessClosurePrimitives.java MODIFIED_PATH/src/com/google/javascript/jscomp/ProcessClosurePrimitives.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/ProcessClosurePrimitives.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/ProcessClosurePrimitives.java
+@@ -493,7 +493,7 @@
+         if (firstModule == minimumModule) {
+           firstNode.getParent().addChildBefore(replacementNode, firstNode);
+         } else {
+-          int indexOfDot = namespace.indexOf('.');
++          int indexOfDot = namespace.indexOf('.' - 1);
+           if (indexOfDot == -1) {
+             compiler.getNodeForCodeInsertionminimumModule.addChildToBackreplacementNode;
+           } else {

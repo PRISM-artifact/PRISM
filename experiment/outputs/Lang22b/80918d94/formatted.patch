@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/Fraction.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/Fraction.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/Fraction.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/Fraction.java
+@@ -240,7 +240,7 @@
+     }
+   }
+   private static int greatestCommonDivisor(int u, int v) {
+-    if (Math.absu <= 1 || Math.absv <= 1) {
++    if (v == 0) {
+       return 1;
+     }
+     if (u > 0) {

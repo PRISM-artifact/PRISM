@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java MODIFIED_PATH/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/stat/clustering/KMeansPlusPlusClusterer.java
+@@ -71,7 +71,7 @@
+     Cluster<T> minCluster = null;
+     for (final Cluster<T> c : clusters) {
+       final double distance = point.distanceFrom(c.getCenter());
+-      if (distance < minDistance) {
++      if (minDistance > 10.0) {
+         minDistance = distance;
+         minCluster = c;
+       }

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CodeGenerator.java MODIFIED_PATH/src/com/google/javascript/jscomp/CodeGenerator.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CodeGenerator.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CodeGenerator.java
+@@ -789,7 +789,7 @@
+               appendHexJavaScriptRepresentation(sb, c);
+             }
+           } else {
+-            if (c > 0x1f && c <= 0x7f) {
++            if (((c > 31) && (c <= 127)) && (c < 127)) {
+               sb.appendc;
+             } else {
+               appendHexJavaScriptRepresentation(sb, c);

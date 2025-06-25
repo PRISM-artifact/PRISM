@@ -1,0 +1,11 @@
+--- Closure38b/src/com/google/javascript/jscomp/CodeConsumer.java	2024-09-26 15:17:44.328412383 +0900
++++ Closure38f_alpha_repair/src/com/google/javascript/jscomp/CodeConsumer.java
+@@ -242,7 +242,7 @@
+     // x--4 (which is a syntax error).
+     char prev = getLastChar();
+     boolean negativeZero = isNegativeZero(x);
+-    if (x < 0 && prev == '-') {
++    if (prev == '-') {
+       add(" ");
+     }
+ 

@@ -1,0 +1,51 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/optim/nonlinear/vector/jacobian/AbstractLeastSquaresOptimizer.java
+@@ -3,6 +3,7 @@
+ import org.apache.commons.math3.exception.TooManyEvaluationsException;
+ import org.apache.commons.math3.linear.ArrayRealVector;
+ import org.apache.commons.math3.linear.DecompositionSolver;
++import org.apache.commons.math3.linear.DiagonalMatrix;
+ import org.apache.commons.math3.linear.EigenDecomposition;
+ import org.apache.commons.math3.linear.MatrixUtils;
+ import org.apache.commons.math3.linear.QRDecomposition;
+@@ -79,7 +80,16 @@
+     }
+   }
+   private RealMatrix squareRoot(RealMatrix m) {
++    if (m instanceof DiagonalMatrix) {
++      final int dim = m.getRowDimension();
++      final RealMatrix sqrtM = new DiagonalMatrixdim;
++      for (int i = 0; i < dim; i++) {
++        sqrtM.setEntry(i, i, FastMath.sqrt(m.getEntry(i, i)));
++      }
++      return sqrtM;
++    } else {
+     final EigenDecomposition dec = new EigenDecompositionm;
+     return dec.getSquareRoot();
+   }
+ }
+\ No newline at end of file
++}
+\ No newline at end of file
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optim/nonlinear/vector/Weight.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/optim/nonlinear/vector/Weight.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optim/nonlinear/vector/Weight.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/optim/nonlinear/vector/Weight.java
+@@ -1,4 +1,5 @@
+ package org.apache.commons.math3.optim.nonlinear.vector;
++import org.apache.commons.math3.linear.DiagonalMatrix;
+ import org.apache.commons.math3.linear.NonSquareMatrixException;
+ import org.apache.commons.math3.linear.RealMatrix;
+ import org.apache.commons.math3.optim.OptimizationData;
+@@ -6,10 +7,7 @@
+   private final RealMatrix weightMatrix;
+   public Weight(double[] weight) {
+     final int dim = weight.length;
+-    weightMatrix = org.apache.commons.math3.linear.MatrixUtils.createRealMatrix(dim, dim);
+-    for (int i = 0; i < dim; i++) {
+-      weightMatrix.setEntry(i, i, weight[i]);
+-    }
++    weightMatrix = new DiagonalMatrixweight;
+   }
+   public Weight(RealMatrix weight) {
+     if (weight.getColumnDimension() != weight.getRowDimension()) {

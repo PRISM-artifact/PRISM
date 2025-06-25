@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/XYPlot.java MODIFIED_PATH/source/org/jfree/chart/plot/XYPlot.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/XYPlot.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/XYPlot.java
+@@ -2036,6 +2036,7 @@
+             result = Range.combine(result, DatasetUtilities.findRangeBoundsd);
+           }
+         }
++        if (r == null) continue;
+         Collection c = r.getAnnotations();
+         Iterator i = c.iterator();
+         while (i.hasNext()) {

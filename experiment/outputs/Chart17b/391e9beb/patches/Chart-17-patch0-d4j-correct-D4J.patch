@@ -1,0 +1,12 @@
+--- Chart17b/source/org/jfree/data/time/TimeSeries.java	2021-10-26 15:15:21.262401634 +0900
++++ Chart17f/source/org/jfree/data/time/TimeSeries.java	2021-10-26 15:15:24.182434154 +0900
+@@ -854,7 +854,8 @@
+      *         subclasses may differ.
+      */
+     public Object clone() throws CloneNotSupportedException {
+-        Object clone = createCopy(0, getItemCount() - 1);
++        TimeSeries clone = (TimeSeries) super.clone();
++        clone.data = (List) ObjectUtilities.deepClone(this.data);
+         return clone;
+     }
+ 

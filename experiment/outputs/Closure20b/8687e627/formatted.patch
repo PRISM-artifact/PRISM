@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java MODIFIED_PATH/src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/PeepholeSubstituteAlternateSyntax.java
+@@ -137,7 +137,7 @@
+     Node callTarget = n.getFirstChild();
+     if (callTarget != null && callTarget.isName() && callTarget.getString().equals("String")) {
+       Node value = callTarget.getNext();
+-      if (value != null) {
++      if (value != null && value.getNext() == null && NodeUtil.isImmutableValuevalue) {
+         Node addition = IR.add(IR.string("").srcrefcallTarget, value.detachFromParent());
+         n.getParent().replaceChild(n, addition);
+         reportCodeChange();

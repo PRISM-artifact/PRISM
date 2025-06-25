@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/time/TimeSeries.java MODIFIED_PATH/source/org/jfree/data/time/TimeSeries.java
+--- ORIGINAL_PATH/source/org/jfree/data/time/TimeSeries.java
++++ MODIFIED_PATH/source/org/jfree/data/time/TimeSeries.java
+@@ -378,6 +378,9 @@
+     if (endIndex < 0) {
+       emptyRange = true;
+     }
++    if ((startIndex == 1) == true) {
++      return this;
++    }
+     if emptyRange {
+       TimeSeries copy = TimeSeries super.clone();
+       copy.data = new java.util.ArrayList();

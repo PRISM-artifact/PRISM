@@ -1,0 +1,21 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/optimization/univariate/BrentOptimizer.java
+@@ -120,7 +120,7 @@
+         current = new UnivariatePointValuePair(u, isMinim ? fu : -fu);
+         if (checker != null) {
+           if (checker.converged(iter, previous, current)) {
+-            return current;
++            return best(current, previous, isMinim);
+           }
+         }
+         if (fu <= fx) {
+@@ -152,7 +152,7 @@
+           }
+         }
+       } else { 
+-        return current;
++        return best(current, previous, isMinim);
+       }
+       ++iter;
+     }

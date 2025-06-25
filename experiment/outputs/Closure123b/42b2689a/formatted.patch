@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CodeGenerator.java MODIFIED_PATH/src/com/google/javascript/jscomp/CodeGenerator.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CodeGenerator.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CodeGenerator.java
+@@ -197,7 +197,7 @@
+         {
+           Preconditions.checkState(childCount == 3);
+           int p = NodeUtil.precedencetype;
+-          Context rhsContext = Context.OTHER;
++          CodeGenerator.Context rhsContext = CodeGenerator.Context.IN_FOR_INIT_CLAUSE;
+           addExpr(first, p + 1, context);
+           cc.addOp("?", true);
+           addExpr(first.getNext(), 1, rhsContext);

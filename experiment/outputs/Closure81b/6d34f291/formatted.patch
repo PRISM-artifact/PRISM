@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/IRFactory.java MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/IRFactory.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/parsing/IRFactory.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/parsing/IRFactory.java
+@@ -375,6 +375,11 @@
+       Name name = functionNode.getFunctionName();
+       Boolean isUnnamedFunction = false;
+       if (name == null) {
++        int functionType = functionNode.getFunctionType();
++        if (functionType != FunctionNode.FUNCTION_EXPRESSION) {
++          errorReporter.error(
++              "unnamed function statement", sourceName, functionNode.getLineno(), "", 0);
++        }
+         name = new Name();
+         name.setIdentifier("");
+         isUnnamedFunction = true;

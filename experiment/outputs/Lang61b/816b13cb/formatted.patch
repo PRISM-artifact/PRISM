@@ -1,0 +1,23 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/text/StrBuilder.java MODIFIED_PATH/src/java/org/apache/commons/lang/text/StrBuilder.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/text/StrBuilder.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/text/StrBuilder.java
+@@ -818,6 +818,11 @@
+     return indexOf(str, 0);
+   }
+   public int indexOf(String str, int startIndex) {
++    if (buffer.length > length()) {
++      char[] old = buffer;
++      buffer = new char[length()];
++      System.arraycopy(old, 0, buffer, 0, size);
++    }
+     startIndex = (startIndex < 0 ? 0 : startIndex);
+     if (str == null || startIndex >= size) {
+       return -1;
+@@ -829,6 +834,7 @@
+     if (strLen == 0) {
+       return startIndex;
+     }
++    ensureCapacity(size + 4);
+     if (strLen > size) {
+       return -1;
+     }

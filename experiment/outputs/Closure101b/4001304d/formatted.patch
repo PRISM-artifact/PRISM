@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CompilationLevel.java MODIFIED_PATH/src/com/google/javascript/jscomp/CompilationLevel.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CompilationLevel.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CompilationLevel.java
+@@ -30,7 +30,6 @@
+     options.setWarningLevel(DiagnosticGroups.NON_STANDARD_JSDOC, CheckLevel.OFF);
+   }
+   private static void applySafeCompilationOptions(CompilerOptions options) {
+-    options.closurePass = true;
+     options.variableRenaming = VariableRenamingPolicy.LOCAL;
+     options.inlineLocalVariables = true;
+     options.checkGlobalThisLevel = CheckLevel.OFF;

@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+@@ -323,7 +323,9 @@
+           work1[permutation[i]] -= weightedResidualJacobian[i][pj] * tmp;
+         }
+       }
++      if (this.costRelativeTolerance != this.orthoTolerance) {
+       sum2 = 0;
++      }
+       for (int j = 0; j < solvedCols; ++j) {
+         double s = work1[permutation[j]];
+         sum2 += s * s;

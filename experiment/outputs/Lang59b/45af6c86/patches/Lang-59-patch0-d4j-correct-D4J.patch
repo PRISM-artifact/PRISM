@@ -1,0 +1,11 @@
+--- Lang59b/src/java/org/apache/commons/lang/text/StrBuilder.java	2021-10-27 13:34:58.561789830 +0900
++++ Lang59f/src/java/org/apache/commons/lang/text/StrBuilder.java	2021-10-27 13:35:01.929834530 +0900
+@@ -881,7 +881,7 @@
+             String str = (obj == null ? getNullText() : obj.toString());
+             int strLen = str.length();
+             if (strLen >= width) {
+-                str.getChars(0, strLen, buffer, size);
++                str.getChars(0, width, buffer, size);
+             } else {
+                 int padLen = width - strLen;
+                 str.getChars(0, strLen, buffer, size);

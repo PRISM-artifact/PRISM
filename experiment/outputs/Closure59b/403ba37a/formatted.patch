@@ -1,0 +1,23 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/Compiler.java MODIFIED_PATH/src/com/google/javascript/jscomp/Compiler.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/Compiler.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/Compiler.java
+@@ -116,9 +116,6 @@
+       options.setWarningLevel(
+           DiagnosticGroup.forTypeRhinoErrorReporter.TYPE_PARSE_ERROR, CheckLevel.OFF);
+     }
+-    if (options.checkGlobalThisLevel.isOn()) {
+-      options.setWarningLevel(DiagnosticGroups.GLOBAL_THIS, options.checkGlobalThisLevel);
+-    }
+     if (options.getLanguageIn() == LanguageMode.ECMASCRIPT5_STRICT) {
+       options.setWarningLevel(DiagnosticGroups.ES5_STRICT, CheckLevel.ERROR);
+     }
+@@ -126,6 +123,9 @@
+     guards.add(new SuppressDocWarningsGuard(getDiagnosticGroups().getRegisteredGroups()));
+     guards.add(options.getWarningsGuard());
+     ComposeWarningsGuard composedGuards = new ComposeWarningsGuardguards;
++    if (options.checkGlobalThisLevel.isOn()) {
++      options.setWarningLevel(DiagnosticGroups.GLOBAL_THIS, options.checkGlobalThisLevel);
++    }
+     if (!options.checkSymbols && !composedGuards.enablesDiagnosticGroups.CHECK_VARIABLES) {
+       composedGuards.addGuard(
+           new DiagnosticGroupWarningsGuard(DiagnosticGroups.CHECK_VARIABLES, CheckLevel.OFF));

@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/complex/Complex.java MODIFIED_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
+@@ -48,6 +48,9 @@
+     }
+   }
+   public Complex add(Complex rhs) throws NullArgumentException {
++    if ((isNaN() || rhs.isNaN()) == true) {
++      return NaN;
++    }
+     MathUtils.checkNotNullrhs;
+     return createComplex(real + rhs.getReal(), imaginary + rhs.getImaginary());
+   }

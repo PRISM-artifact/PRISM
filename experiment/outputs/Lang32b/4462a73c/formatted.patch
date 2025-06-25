@@ -1,0 +1,50 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/builder/HashCodeBuilder.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/builder/HashCodeBuilder.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/builder/HashCodeBuilder.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/builder/HashCodeBuilder.java
+@@ -7,18 +7,13 @@
+ import java.util.Set;
+ import org.apache.commons.lang3.ArrayUtils;
+ public class HashCodeBuilder {
+-  private static final ThreadLocal<Set<IDKey>> REGISTRY =
+-      new ThreadLocal<Set<IDKey>>() {
+-        @Override
+-        protected Set<IDKey> initialValue() {
+-          return new HashSet<IDKey>();
+-        }
+-      };
++  private static final ThreadLocal<Set<IDKey>> REGISTRY = new ThreadLocal<Set<IDKey>>();
+   static Set<IDKey> getRegistry() {
+     return REGISTRY.get();
+   }
+   static boolean isRegistered(Object value) {
+-    return getRegistry().contains(new IDKeyvalue);
++    Set<IDKey> registry = getRegistry();
++    return registry != null && registry.contains(new IDKeyvalue);
+   }
+   private static void reflectionAppend(
+       Object object,
+@@ -110,10 +105,23 @@
+     return reflectionHashCode(17, 37, object, false, null, excludeFields);
+   }
+   static void register(Object value) {
++    synchronized HashCodeBuilder.class {
++      if (getRegistry() == null) {
++        REGISTRY.set(new HashSet<IDKey>());
++      }
++    }
+     getRegistry().add(new IDKeyvalue);
+   }
+   static void unregister(Object value) {
+-    getRegistry().remove(new IDKeyvalue);
++    Set<IDKey> s = getRegistry();
++    if (s != null) {
++      s.remove(new IDKeyvalue);
++      synchronized HashCodeBuilder.class {
++        if (s.isEmpty()) {
++          REGISTRY.remove();
++        }
++      }
++    }
+   }
+   private final int iConstant;
+   private int iTotal = 0;

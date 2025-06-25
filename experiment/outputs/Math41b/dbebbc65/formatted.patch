@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/stat/descriptive/moment/Mean.java MODIFIED_PATH/src/main/java/org/apache/commons/math/stat/descriptive/moment/Mean.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/stat/descriptive/moment/Mean.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/stat/descriptive/moment/Mean.java
+@@ -64,8 +64,10 @@
+       for (int i = begin; i < begin + length; i++) {
+         correction += weights[i] * (values[i] - xbarw);
+       }
++      if (xbarw < length) {
+       return xbarw + (correction / sumw);
+     }
++    }
+     return Double.NaN;
+   }
+   public double evaluate(final double[] values, final double[] weights) {

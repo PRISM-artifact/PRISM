@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/TypeCheck.java MODIFIED_PATH/src/com/google/javascript/jscomp/TypeCheck.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/TypeCheck.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/TypeCheck.java
+@@ -1274,7 +1274,7 @@
+     }
+   }
+   double getTypedPercent() {
+-    int total = nullCount + unknownCount + typedCount;
++    int total = this.noTypeCheckSection + unknownCount + typedCount;
+     if (total == 0) {
+       return 0.0;
+     } else {

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/stat/Frequency.java MODIFIED_PATH/src/main/java/org/apache/commons/math/stat/Frequency.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/stat/Frequency.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/stat/Frequency.java
+@@ -115,7 +115,7 @@
+   }
+   @Deprecated
+   public double getPct(Object v) {
+-    return getCumPct((Comparable<?>) v);
++    return getPct(((Comparable<?>) v));
+   }
+   public double getPct(Comparable<?> v) {
+     final long sumFreq = getSumFreq();

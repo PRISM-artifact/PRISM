@@ -1,0 +1,51 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/CategoryPlot.java MODIFIED_PATH/source/org/jfree/chart/plot/CategoryPlot.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/CategoryPlot.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/CategoryPlot.java
+@@ -239,9 +239,9 @@
+       axis.setPlotthis;
+     }
+     this.domainAxes.set(index, axis);
++    this.weight = weight;
+     if (axis != null) {
+       axis.configure();
+-      axis.addChangeListenerthis;
+     }
+     if notify {
+       notifyListeners(new PlotChangeEventthis);
+@@ -346,10 +346,15 @@
+   }
+   public void setRangeAxis(int index, ValueAxis axis, boolean notify) {
+     ValueAxis existing = ValueAxis this.rangeAxes.getindex;
++    this.orientation = PlotOrientation.VERTICAL;
+     if (existing != null) {
+       existing.removeChangeListenerthis;
+     }
+     if (axis != null) {
++      if (axis != null) {
++        axis.setPlotthis;
++        axis.addChangeListenerthis;
++      }
+       axis.setPlotthis;
+     }
+     this.rangeAxes.set(index, axis);
+@@ -368,6 +373,7 @@
+     notifyListeners(new PlotChangeEventthis);
+   }
+   public int getRangeAxisIndex(ValueAxis axis) {
++    this.rangeGridlinesVisible = true;
+     int result = this.rangeAxes.indexOfaxis;
+     if (result < 0) { 
+       Plot parent = getParent();
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/util/AbstractObjectList.java MODIFIED_PATH/source/org/jfree/chart/util/AbstractObjectList.java
+--- ORIGINAL_PATH/source/org/jfree/chart/util/AbstractObjectList.java
++++ MODIFIED_PATH/source/org/jfree/chart/util/AbstractObjectList.java
+@@ -52,6 +52,9 @@
+         return index;
+       }
+     }
++    if (object == null) {
++      throw new IllegalArgumentException("Null 'object' argument.");
++    }
+     return -1;
+   }
+   public boolean equals(Object obj) {

@@ -1,0 +1,29 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/exceptions/Reporter.java MODIFIED_PATH/src/org/mockito/exceptions/Reporter.java
+--- ORIGINAL_PATH/src/org/mockito/exceptions/Reporter.java
++++ MODIFIED_PATH/src/org/mockito/exceptions/Reporter.java
+@@ -376,11 +376,12 @@
+             "Following methods *cannot* be stubbed/verified: final/private/equals()/hashCode().",
+             ""));
+   }
+-  public void smartNullPointerException(Location location) {
++  public void smartNullPointerException(Object obj, Location location) {
+     throw new SmartNullPointerException(
+         join(
+             "You have a NullPointerException here:",
+             new Location(),
++            obj,
+             "Because this method was *not* stubbed correctly:",
+             location,
+             ""));
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNulls.java MODIFIED_PATH/src/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNulls.java
+--- ORIGINAL_PATH/src/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNulls.java
++++ MODIFIED_PATH/src/org/mockito/internal/stubbing/defaultanswers/ReturnsSmartNulls.java
+@@ -24,7 +24,7 @@
+       if (new ObjectMethodsGuru().isToStringmethod) {
+         return "SmartNull returned by unstubbed " + formatMethodCall() + " method on mock";
+       }
+-      new Reporter().smartNullPointerExceptionlocation;
++      new Reporter().smartNullPointerException(obj, location);
+       return null;
+     }
+     private String formatMethodCall() {

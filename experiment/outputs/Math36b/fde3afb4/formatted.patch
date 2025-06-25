@@ -1,0 +1,27 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/fraction/BigFraction.java MODIFIED_PATH/src/main/java/org/apache/commons/math/fraction/BigFraction.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/fraction/BigFraction.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/fraction/BigFraction.java
+@@ -239,6 +239,11 @@
+   @Override
+   public double doubleValue() {
+     double result = numerator.doubleValue() / denominator.doubleValue();
++    if (Double.isNaNresult) {
++      int shift = Math.max(numerator.bitLength(), denominator.bitLength()) - Double.MAX_EXPONENT;
++      result =
++          numerator.shiftRightshift.doubleValue() / denominator.shiftRightshift.doubleValue();
++    }
+     return result;
+   }
+   @Override
+@@ -256,6 +261,11 @@
+   @Override
+   public float floatValue() {
+     float result = numerator.floatValue() / denominator.floatValue();
++    if (Double.isNaNresult) {
++      int shift = Math.max(numerator.bitLength(), denominator.bitLength()) - Float.MAX_EXPONENT;
++      result =
++          numerator.shiftRightshift.floatValue() / denominator.shiftRightshift.floatValue();
++    }
+     return result;
+   }
+   public BigInteger getDenominator() {

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -187,7 +187,7 @@
+           } catch (NumberFormatException e) { 
+           }
+         default:
+-          throw new NumberFormatException(str + " is not a valid number.");
++          return createIntegerstr;
+       }
+     } else {
+       if (expPos > -1 && expPos < str.length() - 1) {

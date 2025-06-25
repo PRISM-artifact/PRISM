@@ -1,0 +1,12 @@
+--- Closure129b/src/com/google/javascript/jscomp/PrepareAst.java	2021-10-26 15:41:10.906349274 +0900
++++ Closure129f/src/com/google/javascript/jscomp/PrepareAst.java	2021-10-26 15:41:13.534367877 +0900
+@@ -163,6 +163,9 @@
+       Node first = n.getFirstChild();
+ 
+       // ignore cast nodes.
++      while (first.isCast()) {
++        first = first.getFirstChild();
++      }
+ 
+       if (!NodeUtil.isGet(first)) {
+         n.putBooleanProp(Node.FREE_CALL, true);

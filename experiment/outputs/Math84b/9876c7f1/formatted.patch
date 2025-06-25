@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java
+@@ -34,6 +34,7 @@
+       if (comparator.compare(contracted, best) < 0) {
+         return;
+       }
++      return;
+     }
+   }
+   private RealPointValuePair evaluateNewSimplex(

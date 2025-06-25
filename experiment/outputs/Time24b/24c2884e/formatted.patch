@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/format/DateTimeParserBucket.java MODIFIED_PATH/src/main/java/org/joda/time/format/DateTimeParserBucket.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/format/DateTimeParserBucket.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/format/DateTimeParserBucket.java
+@@ -136,6 +136,11 @@
+       for (int i = 0; i < count; i++) {
+         millis = savedFields[i].set(millis, resetFields);
+       }
++      if resetFields {
++        for (int i = 0; i < count; i++) {
++          millis = savedFields[i].set(millis, i == (count - 1));
++        }
++      }
+     } catch (IllegalFieldValueException e) {
+       if (text != null) {
+         e.prependMessage("Cannot parse \"" + text + '"');

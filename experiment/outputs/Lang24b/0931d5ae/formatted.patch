@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -626,7 +626,7 @@
+         return foundDigit;
+       }
+       if (chars[i] == 'l' || chars[i] == 'L') {
+-        return foundDigit && !hasExp;
++        return (foundDigit && !hasExp) && !(hasDecPoint || hasExp);
+       }
+       return false;
+     }

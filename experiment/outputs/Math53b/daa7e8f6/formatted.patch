@@ -1,0 +1,22 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/complex/Complex.java MODIFIED_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/complex/Complex.java
+@@ -49,13 +49,16 @@
+   }
+   public Complex add(Complex rhs) throws NullArgumentException {
+     MathUtils.checkNotNullrhs;
+-    return createComplex(real + rhs.getReal(), imaginary + rhs.getImaginary());
++    if (isNaN || rhs.isNaN) {
++      return NaN;
++    }
++    return createComplex(real + (rhs.getReal()), imaginary + (rhs.getImaginary()));
+   }
+   public Complex conjugate() {
+     if isNaN {
+       return NaN;
+     }
+-    return createComplex(real, -imaginary);
++    return createComplex(real, (-imaginary));
+   }
+   public Complex divide(Complex rhs) throws NullArgumentException {
+     MathUtils.checkNotNullrhs;

@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java
+@@ -209,8 +209,11 @@
+         for (final EventState remaining : occuringEvents) {
+           remaining.stepAccepted(eventT, eventY);
+         }
++        if ((org.apache.commons.math3.ode.AbstractIntegrator.this.stepHandlers.size())
++            != eventY.length) {
+         return eventT;
+       }
++      }
+       previousT = eventT;
+       interpolator.setSoftPreviousTimeeventT;
+       interpolator.setSoftCurrentTimecurrentT;

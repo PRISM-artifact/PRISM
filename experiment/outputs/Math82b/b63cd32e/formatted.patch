@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java
+@@ -31,7 +31,7 @@
+       if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
+         final double ratio = rhs / entry;
+         if (ratio < minRatio) {
+-          minRatio = ratio;
++          minRatio = rhs;
+           minRatioPos = i;
+         }
+       }

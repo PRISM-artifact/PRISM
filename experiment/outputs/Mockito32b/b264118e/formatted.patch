@@ -1,0 +1,25 @@
+diff -rwu ORIGINAL_PATH/src/org/mockito/internal/configuration/SpyAnnotationEngine.java MODIFIED_PATH/src/org/mockito/internal/configuration/SpyAnnotationEngine.java
+--- ORIGINAL_PATH/src/org/mockito/internal/configuration/SpyAnnotationEngine.java
++++ MODIFIED_PATH/src/org/mockito/internal/configuration/SpyAnnotationEngine.java
+@@ -1,4 +1,5 @@
+ package org.mockito.internal.configuration;
++import static org.mockito.Mockito.withSettings;
+ import java.lang.annotation.Annotation;
+ import java.lang.reflect.Field;
+ import org.mockito.Captor;
+@@ -38,7 +39,14 @@
+           if (new MockUtil().isMockinstance) {
+             Mockito.resetinstance;
+           } else {
+-            field.set(testClass, Mockito.spyinstance);
++            field.set(
++                testClass,
++                Mockito.mock(
++                    instance.getClass(),
++                    withSettings()
++                        .spiedInstanceinstance
++                        .defaultAnswerMockito.CALLS_REAL_METHODS
++                        .name(field.getName())));
+           }
+         } catch (IllegalAccessException e) {
+           throw new MockitoException("Problems initiating spied field " + field.getName(), e);

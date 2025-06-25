@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/stat/regression/SimpleRegression.java MODIFIED_PATH/src/java/org/apache/commons/math/stat/regression/SimpleRegression.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/stat/regression/SimpleRegression.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/stat/regression/SimpleRegression.java
+@@ -66,7 +66,7 @@
+     return sumXY / sumXX;
+   }
+   public double getSumSquaredErrors() {
+-    return sumYY - sumXY * sumXY / sumXX;
++    return Math.max(0d, sumYY - sumXY * sumXY / sumXX);
+   }
+   public double getTotalSumSquares() {
+     if (n < 2) {

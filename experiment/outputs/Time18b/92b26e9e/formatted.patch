@@ -1,0 +1,44 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/chrono/GJChronology.java MODIFIED_PATH/src/main/java/org/joda/time/chrono/GJChronology.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/chrono/GJChronology.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/chrono/GJChronology.java
+@@ -153,40 +153,6 @@
+     }
+     return instant;
+   }
+-  public long getDateTimeMillis(
+-      int year,
+-      int monthOfYear,
+-      int dayOfMonth,
+-      int hourOfDay,
+-      int minuteOfHour,
+-      int secondOfMinute,
+-      int millisOfSecond)
+-      throws IllegalArgumentException {
+-    Chronology base;
+-    if ((base = getBase()) != null) {
+-      return base.getDateTimeMillis(
+-          year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+-    }
+-    long instant;
+-    instant =
+-        iGregorianChronology.getDateTimeMillis(
+-            year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+-    if (instant < iCutoverMillis) {
+-      instant =
+-          iJulianChronology.getDateTimeMillis(
+-              year,
+-              monthOfYear,
+-              dayOfMonth,
+-              hourOfDay,
+-              minuteOfHour,
+-              secondOfMinute,
+-              millisOfSecond);
+-      if (instant >= iCutoverMillis) {
+-        throw new IllegalArgumentException("Specified date does not exist");
+-      }
+-    }
+-    return instant;
+-  }
+   public Instant getGregorianCutover() {
+     return iCutoverInstant;
+   }

@@ -1,0 +1,12 @@
+--- Closure118b/src/com/google/javascript/jscomp/DisambiguateProperties.java	2021-10-26 15:40:09.941932217 +0900
++++ Closure118f/src/com/google/javascript/jscomp/DisambiguateProperties.java	2021-10-26 15:40:12.689950395 +0900
+@@ -492,6 +492,9 @@
+           child != null;
+           child = child.getNext()) {
+         // Maybe STRING, GET, SET
++        if (child.isQuotedString()) {
++          continue;
++        }
+ 
+         // We should never see a mix of numbers and strings.
+         String name = child.getString();

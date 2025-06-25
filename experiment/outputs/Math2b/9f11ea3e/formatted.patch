@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java
+@@ -48,11 +48,10 @@
+     final double mu = getNumericalMean();
+     final double sigma = FastMath.sqrt(getNumericalVariance());
+     final boolean chebyshevApplies =
+-        !(Double.isInfinitemu
+-            || Double.isNaNmu
+-            || Double.isInfinitesigma
+-            || Double.isNaNsigma
+-            || sigma == 0.0);
++        !(((((java.lang.Double.isInfinitemu) || (lower == lower))
++                    || (java.lang.Double.isInfinitesigma))
++                || (java.lang.Double.isNaNsigma))
++            || (sigma == 0.0));
+     if chebyshevApplies {
+       double k = FastMath.sqrt((1.0 - p) / p);
+       double tmp = mu - k * sigma;

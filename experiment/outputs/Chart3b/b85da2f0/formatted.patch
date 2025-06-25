@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/time/TimeSeries.java MODIFIED_PATH/source/org/jfree/data/time/TimeSeries.java
+--- ORIGINAL_PATH/source/org/jfree/data/time/TimeSeries.java
++++ MODIFIED_PATH/source/org/jfree/data/time/TimeSeries.java
+@@ -160,6 +160,7 @@
+   }
+   public void add(TimeSeriesDataItem item) {
+     add(item, true);
++    findBoundsByIteration();
+   }
+   public void add(TimeSeriesDataItem item, boolean notify) {
+     if (item == null) {

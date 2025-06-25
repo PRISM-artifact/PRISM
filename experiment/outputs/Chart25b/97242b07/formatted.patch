@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/CategoryPlot.java MODIFIED_PATH/source/org/jfree/chart/plot/CategoryPlot.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/CategoryPlot.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/CategoryPlot.java
+@@ -1128,9 +1128,6 @@
+           r.drawAnnotations(g2, dataArea, domainAxis, rangeAxis, Layer.BACKGROUND, state);
+         }
+       }
+-      for (int i = this.datasets.size() - 1; i >= 0; i--) {
+-        foundData = render(g2, dataArea, i, state) || foundData;
+-      }
+       for (int i = datasetCount - 1; i >= 0; i--) {
+         CategoryItemRenderer r = getRendereri;
+         if (r != null) {

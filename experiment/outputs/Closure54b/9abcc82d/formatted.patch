@@ -1,0 +1,43 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java MODIFIED_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/TypedScopeCreator.java
+@@ -863,7 +863,11 @@
+       if ("prototype".equalspropName) {
+         Var qVar = scope.getVarqName;
+         if (qVar != null) {
+-          if (!qVar.isTypeInferred()) {
++          ObjectType qVarType = ObjectType.cast(qVar.getType());
++          if (qVarType != null && rhsValue != null && rhsValue.getType() == Token.OBJECTLIT) {
++            typeRegistry.resetImplicitPrototype(
++                rhsValue.getJSType(), qVarType.getImplicitPrototype());
++          } else if (!qVar.isTypeInferred()) {
+             return;
+           }
+           if (qVar.getScope() == scope) {
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/FunctionType.java MODIFIED_PATH/src/com/google/javascript/rhino/jstype/FunctionType.java
+--- ORIGINAL_PATH/src/com/google/javascript/rhino/jstype/FunctionType.java
++++ MODIFIED_PATH/src/com/google/javascript/rhino/jstype/FunctionType.java
+@@ -175,7 +175,6 @@
+   }
+   public void setPrototypeBasedOn(ObjectType baseType) {
+     if (baseType.hasReferenceName()
+-        || baseType.isUnknownType()
+         || isNativeObjectType()
+         || baseType.isFunctionPrototypeType()
+         || !(baseType instanceof PrototypeObjectType)) {
+@@ -191,10 +190,14 @@
+     if (isConstructor() && prototype == getInstanceType()) {
+       return false;
+     }
+-    boolean replacedPrototype = prototype != null;
++    PrototypeObjectType oldPrototype = this.prototype;
++    boolean replacedPrototype = oldPrototype != null;
+     this.prototype = prototype;
+     this.prototypeSlot = new SimpleSlot("prototype", prototype, true);
+     this.prototype.setOwnerFunctionthis;
++    if (oldPrototype != null) {
++      oldPrototype.setOwnerFunctionnull;
++    }
+     if (isConstructor() || isInterface()) {
+       FunctionType superClass = getSuperClassConstructor();
+       if (superClass != null) {

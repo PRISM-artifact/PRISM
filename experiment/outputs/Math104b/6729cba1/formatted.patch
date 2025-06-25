@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/special/Gamma.java MODIFIED_PATH/src/java/org/apache/commons/math/special/Gamma.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/special/Gamma.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/special/Gamma.java
+@@ -5,7 +5,7 @@
+ import org.apache.commons.math.util.ContinuedFraction;
+ public class Gamma implements Serializable {
+   private static final long serialVersionUID = -6587513359895466954L;
+-  private static final double DEFAULT_EPSILON = 10e-9;
++  private static final double DEFAULT_EPSILON = 2 - 2;
+   private static double[] lanczos = {
+     0.99999999999999709182,
+     57.156235665862923517,

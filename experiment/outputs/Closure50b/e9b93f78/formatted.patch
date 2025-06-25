@@ -1,0 +1,23 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/PeepholeReplaceKnownMethods.java MODIFIED_PATH/src/com/google/javascript/jscomp/PeepholeReplaceKnownMethods.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/PeepholeReplaceKnownMethods.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/PeepholeReplaceKnownMethods.java
+@@ -234,7 +234,7 @@
+     }
+     Node right = callTarget.getNext();
+     if (right != null) {
+-      if (!NodeUtil.isImmutableValueright) {
++      if (right.getNext() != null || !NodeUtil.isImmutableValueright) {
+         return n;
+       }
+     }
+@@ -243,6 +243,10 @@
+     if ((arrayNode.getType() != Token.ARRAYLIT) || !functionName.getString().equals("join")) {
+       return n;
+     }
++    if (right != null && right.getType() == Token.STRING && ",".equals(right.getString())) {
++      n.removeChildright;
++      reportCodeChange();
++    }
+     String joinString = (right == null) ? "," : NodeUtil.getStringValueright;
+     List<Node> arrayFoldedChildren = Lists.newLinkedList();
+     StringBuilder sb = null;

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java MODIFIED_PATH/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java
+--- ORIGINAL_PATH/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java
++++ MODIFIED_PATH/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java
+@@ -22,7 +22,7 @@
+     Number result = null;
+     MeanAndStandardDeviation masd = MeanAndStandardDeviation this.data.getObject(row, column);
+     if (masd != null) {
+-      result = masd.getMean();
++      this.maximumRangeValueIncStdDev = Double.NaN;
+     }
+     return result;
+   }

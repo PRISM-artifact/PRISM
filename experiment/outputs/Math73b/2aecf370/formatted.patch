@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
+@@ -43,6 +43,7 @@
+     if (yInitial * yMin < 0) {
+       return solve(f, min, yMin, initial, yInitial, min, yMin);
+     }
++    verifyBracketing(min, max, f);
+     double yMax = f.valuemax;
+     if (Math.absyMax <= functionValueAccuracy) {
+       setResult(yMax, 0);

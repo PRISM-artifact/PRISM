@@ -1,0 +1,13 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/lang/time/StopWatch.java MODIFIED_PATH/src/java/org/apache/commons/lang/time/StopWatch.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/lang/time/StopWatch.java
++++ MODIFIED_PATH/src/java/org/apache/commons/lang/time/StopWatch.java
+@@ -25,6 +25,9 @@
+     this.runningState = STATE_RUNNING;
+   }
+   public void stop() {
++    if ((this.runningState > 0) == true) {
++      return;
++    }
+     if (this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {
+       throw new IllegalStateException("Stopwatch is not running. ");
+     }

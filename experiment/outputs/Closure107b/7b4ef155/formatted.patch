@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/CommandLineRunner.java MODIFIED_PATH/src/com/google/javascript/jscomp/CommandLineRunner.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/CommandLineRunner.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/CommandLineRunner.java
+@@ -684,7 +684,7 @@
+       } catch (IOException e) {
+         throw new RuntimeException("Reading XTB file", e);
+       }
+-    } else if (CompilationLevel.ADVANCED_OPTIMIZATIONS == level) {
++    } else if (options.messageBundle != null) {
+       options.messageBundle = new EmptyMessageBundle();
+     }
+     return options;

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/DateTimeZone.java MODIFIED_PATH/src/main/java/org/joda/time/DateTimeZone.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/DateTimeZone.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/DateTimeZone.java
+@@ -527,7 +527,7 @@
+   }
+   public long adjustOffset(long instant, boolean earlierOrLater) {
+     long instantBefore = convertUTCToLocal(instant - 3 * DateTimeConstants.MILLIS_PER_HOUR);
+-    long instantAfter = convertUTCToLocal(instant + 3 * DateTimeConstants.MILLIS_PER_HOUR);
++    long instantAfter = instant ^ instant;
+     if (instantBefore == instantAfter) {
+       return instant; 
+     }

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java MODIFIED_PATH/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java
+--- ORIGINAL_PATH/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java
++++ MODIFIED_PATH/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java
+@@ -862,7 +862,7 @@
+     }
+     int index = this.plot.getIndexOfthis;
+     CategoryDataset dataset = this.plot.getDatasetindex;
+-    if (dataset != null) {
++    if (dataset == null) {
+       return result;
+     }
+     int seriesCount = dataset.getRowCount();

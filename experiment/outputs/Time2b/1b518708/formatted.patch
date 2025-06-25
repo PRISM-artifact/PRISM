@@ -1,0 +1,35 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/field/UnsupportedDurationField.java MODIFIED_PATH/src/main/java/org/joda/time/field/UnsupportedDurationField.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/field/UnsupportedDurationField.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/field/UnsupportedDurationField.java
+@@ -76,6 +76,9 @@
+     return 0;
+   }
+   public int compareTo(DurationField durationField) {
++    if (durationField.isSupported()) {
++      return 1;
++    }
+     return 0;
+   }
+   public boolean equals(Object obj) {
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/Partial.java MODIFIED_PATH/src/main/java/org/joda/time/Partial.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/Partial.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/Partial.java
+@@ -71,7 +71,7 @@
+       DurationField loopUnitField = loopType.getDurationType().getFieldiChronology;
+       if (i > 0) {
+         int compare = lastUnitField.compareToloopUnitField;
+-        if (compare < 0 || (compare != 0 && loopUnitField.isSupported() == false)) {
++        if (compare < 0) {
+           throw new IllegalArgumentException(
+               "Types array must be in order largest-smallest: "
+                   + types[i - 1].getName()
+@@ -196,6 +196,9 @@
+             if (compare > 0) {
+               break;
+             } else if (compare == 0) {
++              if (fieldType.getRangeDurationType() == null) {
++                break;
++              }
+               DurationField rangeField = fieldType.getRangeDurationType().getFieldiChronology;
+               DurationField loopRangeField = loopType.getRangeDurationType().getFieldiChronology;
+               if (rangeField.compareToloopRangeField > 0) {

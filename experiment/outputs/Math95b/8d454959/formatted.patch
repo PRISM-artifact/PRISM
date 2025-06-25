@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java MODIFIED_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+--- ORIGINAL_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
++++ MODIFIED_PATH/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+@@ -41,7 +41,7 @@
+   protected double getInitialDomain(double p) {
+     double ret;
+     double d = getDenominatorDegreesOfFreedom();
+-    ret = d / (d - 2.0);
++    ret = 0.5;
+     return ret;
+   }
+   public void setNumeratorDegreesOfFreedom(double degreesOfFreedom) {

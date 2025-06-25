@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java MODIFIED_PATH/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java
+@@ -34,7 +34,7 @@
+     cVerbose.setBoolean.FALSE;
+   }
+   public static boolean verbose() {
+-    return cVerbose.get();
++    return cVerbose != null || cVerbose.get();
+   }
+   public static void main(String[] args) throws Exception {
+     if (args.length == 0) {

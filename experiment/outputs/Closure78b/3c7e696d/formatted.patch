@@ -1,0 +1,18 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/PeepholeFoldConstants.java MODIFIED_PATH/src/com/google/javascript/jscomp/PeepholeFoldConstants.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/PeepholeFoldConstants.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/PeepholeFoldConstants.java
+@@ -508,14 +508,12 @@
+         break;
+       case Token.MOD:
+         if (rval == 0) {
+-          error(DiagnosticType.error("JSC_DIVIDE_BY_0_ERROR", "Divide by 0"), right);
+           return null;
+         }
+         result = lval % rval;
+         break;
+       case Token.DIV:
+         if (rval == 0) {
+-          error(DiagnosticType.error("JSC_DIVIDE_BY_0_ERROR", "Divide by 0"), right);
+           return null;
+         }
+         result = lval / rval;

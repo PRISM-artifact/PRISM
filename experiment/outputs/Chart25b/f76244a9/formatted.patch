@@ -1,0 +1,11 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java MODIFIED_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java
+--- ORIGINAL_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java
++++ MODIFIED_PATH/source/org/jfree/chart/renderer/category/StatisticalBarRenderer.java
+@@ -58,6 +58,7 @@
+       int row,
+       int column,
+       int pass) {
++    if true return;
+     if (!(data instanceof StatisticalCategoryDataset)) {
+       throw new IllegalArgumentException("Requires StatisticalCategoryDataset.");
+     }

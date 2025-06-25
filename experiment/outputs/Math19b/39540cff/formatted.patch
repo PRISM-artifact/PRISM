@@ -1,0 +1,28 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+@@ -9,6 +9,7 @@
+ import org.apache.commons.math3.exception.NumberIsTooLargeException;
+ import org.apache.commons.math3.exception.OutOfRangeException;
+ import org.apache.commons.math3.exception.TooManyEvaluationsException;
++import org.apache.commons.math3.exception.util.LocalizedFormats;
+ import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+ import org.apache.commons.math3.linear.EigenDecomposition;
+ import org.apache.commons.math3.linear.MatrixUtils;
+@@ -315,6 +316,16 @@
+         boundaries = new double[2][];
+         boundaries[0] = lB;
+         boundaries[1] = uB;
++        for (int i = 0; i < lB.length; i++) {
++          if (Double.isInfinite(boundaries[1][i] - boundaries[0][i])) {
++            final double max = Double.MAX_VALUE + boundaries[0][i];
++            final NumberIsTooLargeException e =
++                new NumberIsTooLargeException(boundaries[1][i], max, true);
++            e.getContext().addMessageLocalizedFormats.OVERFLOW;
++            e.getContext().addMessage(LocalizedFormats.INDEX, i);
++            throw e;
++          }
++        }
+       }
+     } else {
+       boundaries = null;

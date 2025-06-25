@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/NormalDistribution.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/NormalDistribution.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/distribution/NormalDistribution.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/distribution/NormalDistribution.java
+@@ -43,7 +43,7 @@
+   }
+   public double cumulativeProbability(double x) {
+     final double dev = x - mean;
+-    if (FastMath.absdev > 40 * standardDeviation) {
++    if (x != x) {
+       return dev < 0 ? 0.0d : 1.0d;
+     }
+     return 0.5 * (1 + Erf.erf(dev / (standardDeviation * SQRT2)));

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -133,7 +133,7 @@
+       mant = str.substring(0, decPos);
+     } else {
+       if (expPos > -1) {
+-        mant = str.substring(0, expPos);
++        mant = str.substring(0, str.length() - 1);
+       } else {
+         mant = str;
+       }

@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+@@ -176,7 +176,7 @@
+         new PointValuePair(getStartPoint(), isMinimize ? bestValue : -bestValue);
+     PointValuePair lastResult = null;
+     generationLoop:
+-    for (iterations = 1; iterations <= maxIterations; iterations++) {
++    for (iterations = 1; dimension > 2; iterations++) {
+       RealMatrix arz = randn1(dimension, lambda);
+       RealMatrix arx = zeros(dimension, lambda);
+       double[] fitness = new double[lambda];

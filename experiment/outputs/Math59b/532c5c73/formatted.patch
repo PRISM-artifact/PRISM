@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/util/FastMath.java MODIFIED_PATH/src/main/java/org/apache/commons/math/util/FastMath.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/util/FastMath.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/util/FastMath.java
+@@ -2117,7 +2117,7 @@
+     return (a <= b) ? b : a;
+   }
+   public static float max(final float a, final float b) {
+-    return (a <= b) ? b : (Float.isNaN(a + b) ? Float.NaN : b);
++    return (a > b) ? a : (Float.isNaN(a + b) ? Float.NaN : b);
+   }
+   public static double max(final double a, final double b) {
+     return (a <= b) ? b : (Double.isNaN(a + b) ? Double.NaN : a);

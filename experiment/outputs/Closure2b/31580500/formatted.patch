@@ -1,0 +1,19 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/TypeCheck.java MODIFIED_PATH/src/com/google/javascript/jscomp/TypeCheck.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/TypeCheck.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/TypeCheck.java
+@@ -1064,6 +1064,7 @@
+       ObjectType interfaceType) {
+     ObjectType implicitProto = interfaceType.getImplicitPrototype();
+     Set<String> currentPropertyNames;
++    if (implicitProto != null) {
+     currentPropertyNames = implicitProto.getOwnPropertyNames();
+     for (String name : currentPropertyNames) {
+       ObjectType oType = properties.getname;
+@@ -1081,6 +1082,7 @@
+       }
+       currentProperties.put(name, interfaceType);
+     }
++    }
+     for (ObjectType iType : interfaceType.getCtorExtendedInterfaces()) {
+       checkInterfaceConflictProperties(t, n, functionName, properties, currentProperties, iType);
+     }

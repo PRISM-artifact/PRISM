@@ -1,0 +1,26 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/ScopedAliases.java MODIFIED_PATH/src/com/google/javascript/jscomp/ScopedAliases.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/ScopedAliases.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/ScopedAliases.java
+@@ -183,19 +183,19 @@
+         Node n = v.getNode();
+         int type = n.getType();
+         Node parent = n.getParent();
+-        if (parent.isVar()) {
+-          if (n.hasChildren() && n.getFirstChild().isQualifiedName()) {
++        if (parent.isVar() && n.hasChildren() && n.getFirstChild().isQualifiedName()) {
+             String name = n.getString();
+             Var aliasVar = scope.getVarname;
+             aliases.put(name, aliasVar);
+             String qualifiedName = aliasVar.getInitialValue().getQualifiedName();
+             transformation.addAlias(name, qualifiedName);
++        } else if (v.isBleedingFunction()) {
++        } else if (parent.getType() == Token.LP) {
+           } else {
+             report(t, n, GOOG_SCOPE_NON_ALIAS_LOCAL, n.getString());
+           }
+         }
+       }
+-    }
+     private void validateScopeCall(NodeTraversal t, Node n, Node parent) {
+       if (preprocessorSymbolTable != null) {
+         preprocessorSymbolTable.addReference(n.getFirstChild());

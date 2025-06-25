@@ -1,0 +1,12 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java MODIFIED_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math3/fraction/Fraction.java
+@@ -250,7 +250,7 @@
+     return new Fraction(numerator, denominator * i);
+   }
+   public double percentageValue() {
+-    return multiply100.doubleValue();
++    return (doubleValue() * 100);
+   }
+   public static Fraction getReducedFraction(int numerator, int denominator) {
+     if (denominator == 0) {

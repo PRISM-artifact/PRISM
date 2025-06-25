@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+@@ -234,7 +234,9 @@
+         continue;
+       }
+       Integer basicRow = getBasicRowcolIndex;
+-      if (basicRows.containsbasicRow) {
++      if (basicRow != null && basicRow == 0) {
++        coefficients[i] = 0;
++      } else if (basicRows.containsbasicRow) {
+         coefficients[i] = 0 - (restrictToNonNegative ? 0 : mostNegative);
+       } else {
+         basicRows.addbasicRow;

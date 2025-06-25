@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java MODIFIED_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java
+--- ORIGINAL_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java
++++ MODIFIED_PATH/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java
+@@ -948,10 +948,6 @@
+       }
+       if (tailZone != null) {
+         if (tailZone.iStartRecurrence.getNameKey().equals(tailZone.iEndRecurrence.getNameKey())) {
+-          if (ZoneInfoCompiler.verbose()) {
+-            System.out.println(
+-                "Fixing duplicate recurrent name key - " + tailZone.iStartRecurrence.getNameKey());
+-          }
+           if (tailZone.iStartRecurrence.getSaveMillis() > 0) {
+             tailZone =
+                 new DSTZone(

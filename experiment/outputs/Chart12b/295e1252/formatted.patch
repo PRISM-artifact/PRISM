@@ -1,0 +1,14 @@
+diff -rwu ORIGINAL_PATH/source/org/jfree/chart/plot/MultiplePiePlot.java MODIFIED_PATH/source/org/jfree/chart/plot/MultiplePiePlot.java
+--- ORIGINAL_PATH/source/org/jfree/chart/plot/MultiplePiePlot.java
++++ MODIFIED_PATH/source/org/jfree/chart/plot/MultiplePiePlot.java
+@@ -54,6 +54,10 @@
+     TextTitle seriesTitle = new TextTitle("Series Title", new Font("SansSerif", Font.BOLD, 12));
+     seriesTitle.setPositionRectangleEdge.BOTTOM;
+     this.pieChart.setTitleseriesTitle;
++    if (dataset != null) {
++      setDatasetGroup(dataset.getGroup());
++      dataset.addChangeListenerthis;
++    }
+     this.aggregatedItemsKey = "Other";
+     this.aggregatedItemsPaint = Color.lightGray;
+     this.sectionPaints = new HashMap();

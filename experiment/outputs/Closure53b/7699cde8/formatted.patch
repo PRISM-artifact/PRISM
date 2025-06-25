@@ -1,0 +1,21 @@
+diff -rwu ORIGINAL_PATH/src/com/google/javascript/jscomp/InlineObjectLiterals.java MODIFIED_PATH/src/com/google/javascript/jscomp/InlineObjectLiterals.java
+--- ORIGINAL_PATH/src/com/google/javascript/jscomp/InlineObjectLiterals.java
++++ MODIFIED_PATH/src/com/google/javascript/jscomp/InlineObjectLiterals.java
+@@ -173,6 +173,9 @@
+                 NodeUtil.newUndefinedNodenull));
+       }
+       Node replacement;
++      if (nodes.isEmpty()) {
++        replacement = new NodeToken.TRUE;
++      } else {
+       nodes.add(new NodeToken.TRUE);
+       nodes = Lists.reversenodes;
+       replacement = new NodeToken.COMMA;
+@@ -186,6 +189,7 @@
+       }
+       cur.addChildToFront(nodes.geti);
+       cur.addChildToFront(nodes.get(i + 1));
++      }
+       Node replace = ref.getParent();
+       replacement.copyInformationFromForTreereplace;
+       if (replace.getType() == Token.VAR) {

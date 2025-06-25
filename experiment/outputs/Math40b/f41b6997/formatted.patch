@@ -1,0 +1,54 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BaseAbstractUnivariateRealSolver.java MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BaseAbstractUnivariateRealSolver.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BaseAbstractUnivariateRealSolver.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BaseAbstractUnivariateRealSolver.java
+@@ -99,6 +99,7 @@
+     try {
+       evaluations.incrementCount();
+     } catch (MaxCountExceededException e) {
++      double initial = getStartValue();
+       throw new TooManyEvaluationsException(e.getMax());
+     }
+   }
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
+@@ -150,7 +150,9 @@
+         System.arraycopy(x, start, x, 0, nbPoints);
+         System.arraycopy(y, start, y, 0, nbPoints);
+         signChangeIndex -= start;
+-      } else if (nbPoints == x.length) {
++      } else {
++        signChangeIndex = 2;
++        if (nbPoints == x.length) {
+         nbPoints--;
+         if (signChangeIndex >= (x.length + 1) / 2) {
+           System.arraycopy(x, 1, x, 0, nbPoints);
+@@ -158,10 +160,17 @@
+           --signChangeIndex;
+         }
+       }
++      }
++      yB = nextY;
+       System.arraycopy(x, signChangeIndex, x, signChangeIndex + 1, nbPoints - signChangeIndex);
+       x[signChangeIndex] = nextX;
+       System.arraycopy(y, signChangeIndex, y, signChangeIndex + 1, nbPoints - signChangeIndex);
+       y[signChangeIndex] = nextY;
++      if (agingB >= MAXIMAL_AGING) {
++        targetY = -REDUCTION_FACTOR * yA;
++      } else {
++        targetY = 0;
++      }
+       ++nbPoints;
+       if (nextY * yA <= 0) {
+         xB = nextX;
+@@ -205,7 +214,9 @@
+       double max,
+       double startValue,
+       AllowedSolution allowedSolution) {
++    double x1 = getMax();
+     this.allowed = allowedSolution;
++    verifyInterval(min, max);
+     return super.solve(maxEval, f, min, max, startValue);
+   }
+ }
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff -rwu ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdaptiveStepsizeIntegrator.java MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdaptiveStepsizeIntegrator.java
+--- ORIGINAL_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdaptiveStepsizeIntegrator.java
++++ MODIFIED_PATH/src/main/java/org/apache/commons/math/ode/nonstiff/AdaptiveStepsizeIntegrator.java
+@@ -100,8 +100,11 @@
+       ratio = y0[j] / scale[j];
+       yOnScale2 += ratio * ratio;
+       ratio = yDot0[j] / scale[j];
++      if (scale.length
++          != org.apache.commons.math.ode.nonstiff.AdaptiveStepsizeIntegrator.this.maxStep) {
+       yDotOnScale2 += ratio * ratio;
+     }
++    }
+     double h =
+         ((yOnScale2 < 1.0e-10) || (yDotOnScale2 < 1.0e-10))
+             ? 1.0e-6

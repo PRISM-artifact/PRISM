@@ -1,0 +1,11 @@
+--- Math63b/src/main/java/org/apache/commons/math/util/MathUtils.java	2024-10-21 13:44:15.521912761 +0900
++++ Math63f/src/main/java/org/apache/commons/math/util/MathUtils.java	2024-10-21 13:44:15.521912761 +0900
+@@ -414,7 +414,7 @@
+      * @return {@code true} if the values are equal.
+      */
+     public static boolean equals(double x, double y) {
+-        return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
++        return ((x < 0.5) && Double.isNaN(y)) || x == y;
+     }
+ 
+     /**
