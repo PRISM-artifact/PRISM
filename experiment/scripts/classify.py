@@ -80,7 +80,6 @@ class ODSClassifier(Classifier):
 		outliers_to_drop = detect_outliers(training_df, 15, numerical_features)
 		print(f"Removing {len(outliers_to_drop)} outliers...")
 
-		# 이상치 제거 후 데이터 재구성
 		training_df = training_df.drop(index=outliers_to_drop).reset_index(drop=True)
   
 		X_train = training_df.iloc[:,2:]
@@ -172,7 +171,7 @@ class PrismClassifier(Classifier):
 	def	__init__(self, patch: Patch):
 		super().__init__(patch)
 		self.feature_file = PrismTarget(patch).result_dir / "result.json"
-		self.model_path = PRISM_MODEL_DIR / "0.90" / f"formula_prism_{patch.bug.project}.pkl"
+		self.model_path = PRISM_MODEL_DIR / "0.90" / f"formula_sem_{patch.bug.project}.pkl"
 		assert self.feature_file.is_file(), f"{ERROR}: {self.feature_file} does not exsits"
 		assert self.model_path.is_file(), f"{ERROR}: {self.model_path} does not exists"
 		self.model = self.load_model()
@@ -187,27 +186,9 @@ class PrismClassifier(Classifier):
 		patch_row = process_features(pd.DataFrame([target_vec])).iloc[0]
 		return 0 if self.model.eval_patch(patch_row) else 1
 
-def eval_all(patch_file: Path) -> Tuple[bool, bool, bool, bool, bool]:
-	project = args.patch.name.split("-")[0]
-	bug_id = int(args.patch.name.split("-")[1])
-	bug = Bug(project, bug_id, set_ant=False)
-	patch = Patch(bug, args.patch)
-	
-	patchsim = PatchSimClassifier(patch)
-	r_patchsim = patchsim.classify() == 0
-	ods = ODSClassifier(patch)
-	r_ods = ods.classify()[0] == 0
-	shib = ShibbolethClassifier(patch)
-	r_shib = shib.classify()[0] == 0
-	prism = PrismClassifier(patch)
-	r_prism = prism.classify() == 0
-	return (patch.patch_id, r_patchsim, r_ods, r_shib, r_prism)
-
 if __name__ == '__main__':    
 	parser = argparse.ArgumentParser()
-	# parser.add_argument("-p", required=True, type=str, choices=["Chart", "Closure", "Lang",  "Math", "Time", "Mockito"], help="Target D4J1.2 project")
-	# parser.add_argument("-v", type=int, required=True, help="Corresponding bug id of target project")
-	parser.add_argument("--apcc", type=str, choices=["patchsim", "ods", "shibboleth", "prism", "all"], help="Target instance for ranking", default="all")
+	parser.add_argument("--apcc", type=str, choices=["patchsim", "ods", "shibboleth", "prism"], help="Target instance for ranking", default="prism")
 	parser.add_argument("--patch", type=Path, required=True, help="patch file path")
 	args = parser.parse_args()
 	project = args.patch.name.split("-")[0]
@@ -215,17 +196,15 @@ if __name__ == '__main__':
 	bug = Bug(project, bug_id, set_ant=False)
 	patch = Patch(bug, args.patch)
 	
-	if args.apcc == "all":
-		res = eval_all(args.patch)
-		print(res)
-	elif args.apcc == "prism":
-		print(patch.patch_id)
-		prism = PrismClassifier(patch)
-		r_prism = prism.classify() == 0
-		print(r_prism)
+	#pipeline for one benchmark		
+	if args.apcc == "patchsim":
+		clf = PatchSimClassifier(patch)
 	elif args.apcc == "ods":
-		print(patch.patch_id)
-		ods = ODSClassifier(patch)
-		r = ods.classify() == 0
-		print(r)
-	#pipeline for one benchmark
+		clf = ODSClassifier(patch)
+	elif args.apcc == "shibboleth":
+		clf = ShibbolethClassifier(patch)
+	elif args.apcc == "prism":
+		clf = PrismClassifier(patch)
+	r = "Incorrect" if clf.classify() == 1 else "Correct"
+	print(f"Classify {patch.patch_id} by {args.apcc}: {r}")
+
