@@ -22,6 +22,7 @@ MODES = {
 
 # Main directory and files
 SCRIPT_DIR = Path(__file__).parent.resolve()
+EXPERIMENT_DIR = (SCRIPT_DIR / "..").resolve()
 LOG_DIR = SCRIPT_DIR / "logs"
 BENCHMARKS_DIR = (SCRIPT_DIR / "../benchmarks").resolve()
 TRAINING_DIR = BENCHMARKS_DIR / "rq2"
@@ -29,7 +30,9 @@ D4J_BUGS_DIR = (SCRIPT_DIR / "../d4j_projects").resolve()
 D4J_BUGS_DIR.mkdir(parents=True, exist_ok=True)
 TOOLS_HOME = (SCRIPT_DIR / "../tools").resolve()
 RESULTS_DIR = (SCRIPT_DIR / "../outputs").resolve()
-RANDOOP_TEST_DIR = (SCRIPT_DIR / "../randoop_tests").resolve()
+
+RESOURECES_DIR = EXPERIMENT_DIR / "resources"
+RANDOOP_TEST_DIR = (RESOURECES_DIR / "randoop_tests").resolve()
 DEV_PATCH_DIR = BENCHMARKS_DIR / "rq2/d4j_patches/Correct/d4j"
 
 FORMATTED_PATCH = "formatted.patch"
@@ -41,7 +44,6 @@ FORMATTER = TOOLS_HOME / "google-java-format-1.25.2-all-deps.jar"
 GOOGLE_JAVA_FORMAT = f"{JAVA17} -jar {FORMATTER}"
 
 # Learning Models
-RESOURECES_DIR = SCRIPT_DIR / "resources"
 CSV_DIR = RESOURECES_DIR / "csv"
 MODELS_DIR = RESOURECES_DIR / "models"
 PRISM_MODEL_DIR = RESOURECES_DIR / "formula"
@@ -65,7 +67,8 @@ BTRACE_JAR = BTRACE_HOME / "btrace-agent.jar"
 
 # ODS
 SOURCES_DIR = "sources"
-COMING_JAR = TOOLS_HOME / "coming-0-SNAPSHOT-jar-with-dependencies.jar"
+COMING_HOME = TOOLS_HOME / "coming" 
+COMING_JAR = COMING_HOME / "target/coming-0-SNAPSHOT-jar-with-dependencies.jar"
 COMING_CORE_CLASS = "fr.inria.coming.main.ComingMain"
 
 # Shibboleth 
