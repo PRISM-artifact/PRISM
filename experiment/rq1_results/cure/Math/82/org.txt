@@ -1,6 +1,0 @@
-4: Math-82-7a469834 (incorrect)
-6: Math-82-1c995c39 (correct)
-8: Math-82-53a2c32b (correct)
-22: Math-82-2e4ed409 (incorrect)
-24: Math-82-3f9fbe9c (incorrect)
-38: Math-82-4cdcc8ad (incorrect)

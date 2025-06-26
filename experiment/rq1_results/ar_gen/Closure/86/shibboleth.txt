@@ -1,8 +1,0 @@
-(-0.0, -0.0, -1.0): Closure-86-62298bf2 (incorrect)
-(-0.0, -0.0, -1.0): Closure-86-ec26f875 (incorrect)
-(-0.0, -0.0, -1.0): Closure-86-ab7ac59d (correct)
-(-0.0, -0.0, -1.0): Closure-86-2cb3d52e (incorrect)
-(-0.0, -0.0, -1.0): Closure-86-2705f9bb (incorrect)
-(-0.0, -0.0, -1.0): Closure-86-acb6f3ff (incorrect)
-(-0.0, -0.0, -1.0): Closure-86-b4fee8a5 (incorrect)
-(-0.0, -0.0, -1.0): Closure-86-5c476cfe (incorrect)

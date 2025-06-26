@@ -1,6 +1,0 @@
-(-0.0, -0.0, -1.0): Math-30-5d83cf10 (incorrect)
-(-0.0, -0.0, -1.0): Math-30-f238f033 (incorrect)
-(-0.0, -0.0, -1.0): Math-30-e4eb2203 (incorrect)
-(-0.0, -0.0, -1.0): Math-30-5f84b4e5 (incorrect)
-(-0.0, -0.0, -1.0): Math-30-b1c26cbc (incorrect)
-(-0.0, -0.0, -1.0): Math-30-9634b702 (correct)

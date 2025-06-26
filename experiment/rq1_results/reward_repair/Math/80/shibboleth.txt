@@ -1,7 +1,0 @@
-(-0.0, -0.0, -1.0): Math-80-cf079ce6 (correct)
-(-0.0, -0.0, -1.0): Math-80-ed26202f (correct)
-(-0.0, -0.0, -1.0): Math-80-cf079ce6 (correct)
-(-0.0, -0.0, -1.0): Math-80-104ee6ed (incorrect)
-(-0.0, -0.0, -1.0): Math-80-cf079ce6 (correct)
-(-0.0, -0.0, -1.0): Math-80-104ee6ed (incorrect)
-(-0.0, -0.0, -1.0): Math-80-104ee6ed (incorrect)

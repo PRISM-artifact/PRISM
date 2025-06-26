@@ -1,5 +1,0 @@
-(-0.0, -0.0, -1.0): Closure-62-ec6f6cfe (incorrect)
-(-0.0, -0.0, -1.0): Closure-62-974be517 (incorrect)
-(-0.0, -0.0, -1.0): Closure-62-44e80df4 (incorrect)
-(-0.0, -0.0, -1.0): Closure-62-566085c0 (correct)
-(-0.0, -0.0, -1.0): Closure-62-93160eb2 (incorrect)

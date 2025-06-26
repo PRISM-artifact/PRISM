@@ -1,6 +1,0 @@
-(-0.0, -0.0, -1.0): Closure-57-f4dbc764 (correct)
-(-0.0, -0.0, -1.0): Closure-57-0adec829 (incorrect)
-(-0.0, -0.0, -1.0): Closure-57-f4dbc764 (correct)
-(-0.0, -0.0, -1.0): Closure-57-f4dbc764 (correct)
-(-0.0, -0.0, -1.0): Closure-57-f4dbc764 (correct)
-(-0.0, -0.0, -1.0): Closure-57-f4dbc764 (correct)

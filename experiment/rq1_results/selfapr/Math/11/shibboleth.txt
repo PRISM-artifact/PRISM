@@ -1,2 +1,0 @@
-(-0.0, -0.0, -1.0): Math-11-28ae57fd (correct)
-(-0.0, -0.0, -1.0): Math-11-28ae57fd (correct)

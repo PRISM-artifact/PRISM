@@ -1,5 +1,0 @@
-24: Math-32-2e708001 (incorrect)
-27: Math-32-d64b2fa4 (incorrect)
-31: Math-32-d64b2fa4 (incorrect)
-52: Math-32-2e708001 (incorrect)
-98: Math-32-98d5e169 (incorrect)

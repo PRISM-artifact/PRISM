@@ -1,2 +1,0 @@
-(-0.0, -0.0, -1.0): Closure-73-9d81578a (correct)
-(-0.0, -0.0, -1.0): Closure-73-6d499f7b (correct)

@@ -1,4 +1,0 @@
-(-0.0, -0.0, -1.0): Math-11-df8276ba (incorrect)
-(-0.0, -0.0, -1.0): Math-11-0027fc0e (correct)
-(-0.0, -0.0, -1.0): Math-11-28ae57fd (correct)
-(-0.0, -0.0, -1.0): Math-11-71371c83 (incorrect)

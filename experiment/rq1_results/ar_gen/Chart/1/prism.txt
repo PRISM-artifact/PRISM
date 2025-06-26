@@ -1,7 +1,0 @@
-0: Chart-1-642cd9b0 (correct)
-1: Chart-1-88f33949 (incorrect)
-2: Chart-1-20c1687d (correct)
-3: Chart-1-a680e77a (incorrect)
-6: Chart-1-b75eced5 (incorrect)
-12: Chart-1-590f57a6 (incorrect)
-15: Chart-1-b70c9b2d (incorrect)

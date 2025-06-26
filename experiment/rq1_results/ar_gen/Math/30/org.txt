@@ -1,6 +1,0 @@
-2: Math-30-9634b702 (correct)
-4: Math-30-e4eb2203 (incorrect)
-7: Math-30-b1c26cbc (incorrect)
-9: Math-30-f238f033 (incorrect)
-10: Math-30-5d83cf10 (incorrect)
-11: Math-30-5f84b4e5 (incorrect)

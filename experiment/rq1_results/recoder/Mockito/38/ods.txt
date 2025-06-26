@@ -1,4 +1,0 @@
-0: Mockito-38-87164a29 (correct)
-9: Mockito-38-2ab90743 (incorrect)
-23: Mockito-38-d6e0f986 (incorrect)
-41: Mockito-38-76ff0289 (incorrect)

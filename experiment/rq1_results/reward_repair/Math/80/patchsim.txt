@@ -1,7 +1,0 @@
-1: Math-80-104ee6ed (incorrect)
-3: Math-80-104ee6ed (incorrect)
-11: Math-80-cf079ce6 (correct)
-25: Math-80-104ee6ed (incorrect)
-60: Math-80-cf079ce6 (correct)
-73: Math-80-ed26202f (correct)
-74: Math-80-cf079ce6 (correct)

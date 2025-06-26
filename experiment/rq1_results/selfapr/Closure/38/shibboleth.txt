@@ -1,8 +1,0 @@
-(-0.0, -0.0, -1.0): Closure-38-62cd155a (incorrect)
-(-0.0, -0.0, -1.0): Closure-38-62cd155a (incorrect)
-(-0.0, -0.0, -1.0): Closure-38-608f05ab (incorrect)
-(-0.0, -0.0, -1.0): Closure-38-62cd155a (incorrect)
-(-0.0, -0.0, -1.0): Closure-38-62cd155a (incorrect)
-(-0.0, -0.0, -1.0): Closure-38-62cd155a (incorrect)
-(-0.0, -0.0, -1.0): Closure-38-62cd155a (incorrect)
-(-0.0, -0.0, -1.0): Closure-38-62cd155a (incorrect)
