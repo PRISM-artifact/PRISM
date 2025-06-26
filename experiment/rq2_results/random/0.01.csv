@@ -3,7 +3,7 @@ Chart-3-97f88eb1,1,1
 Chart-3-1ac2ed40,1,1
 Chart-3-6adfe5aa,1,1
 Chart-3-6172cf3e,1,1
-Chart-3-8118ce4e,1,1
+Chart-3-8118ce4e,1,0
 Chart-3-f773c191,1,1
 Chart-3-44a7052b,1,1
 Chart-3-4184ed6d,1,1
@@ -36,7 +36,7 @@ Chart-5-60757e21,1,1
 Chart-5-697a6bbd,1,1
 Chart-5-a6823562,0,1
 Chart-14-395b735c,0,1
-Chart-14-2cd2f98c,1,1
+Chart-14-2cd2f98c,1,0
 Chart-19-98370211,0,1
 Chart-19-ce6902ae,1,1
 Chart-19-d373e10f,1,1
@@ -68,7 +68,7 @@ Chart-25-dc2b511c,1,1
 Chart-25-5be1ca77,1,1
 Chart-25-8078fcc8,1,1
 Chart-25-1f3cc30f,1,1
-Chart-25-4c5768ab,1,0
+Chart-25-4c5768ab,1,1
 Chart-25-553483a7,1,1
 Chart-25-4ddfa743,1,1
 Chart-25-c1b4dbf7,1,1
@@ -191,7 +191,7 @@ Chart-13-74eaac0f,1,1
 Chart-13-8281fb6d,1,1
 Chart-13-a797bd7d,1,1
 Chart-13-0e607620,1,1
-Chart-13-df013b15,1,0
+Chart-13-df013b15,1,1
 Chart-13-9fd23a6c,1,1
 Chart-13-57586915,1,1
 Chart-13-ee2add67,1,1
@@ -211,7 +211,7 @@ Chart-21-a8a3ed5c,1,1
 Chart-21-0bd3ffdc,0,1
 Chart-9-8f58480f,1,1
 Chart-9-930f5e14,1,1
-Chart-9-7c4d25ba,1,0
+Chart-9-7c4d25ba,1,1
 Chart-9-d034a484,1,1
 Chart-9-b7a27e57,1,1
 Chart-9-30dfb212,1,1
@@ -273,7 +273,7 @@ Chart-2-5fdc8130,0,1
 Chart-23-3b2bb012,0,1
 Chart-22-b94edff5,0,1
 Chart-16-9c419909,0,1
-Closure-126-9081d514,0,0
+Closure-126-9081d514,0,1
 Closure-126-34549587,0,1
 Closure-126-9b21820d,0,1
 Closure-126-391668b4,0,1
@@ -313,7 +313,7 @@ Closure-29-217642cf,0,1
 Closure-133-046739ea,1,1
 Closure-133-58e89d54,1,1
 Closure-133-1f8c7f2a,1,1
-Closure-133-27d141bd,0,1
+Closure-133-27d141bd,0,0
 Closure-119-6f0b3342,1,1
 Closure-119-b2cbd92e,0,1
 Closure-36-a325c417,1,1
@@ -352,7 +352,7 @@ Closure-62-15430ef4,1,1
 Closure-62-e4d9a758,0,1
 Closure-62-566085c0,0,1
 Closure-62-974be517,1,1
-Closure-62-8402baef,1,1
+Closure-62-8402baef,1,0
 Closure-62-7f06dd3d,1,1
 Closure-62-ec6f6cfe,1,1
 Closure-35-cf2ee9f8,1,1
@@ -407,7 +407,7 @@ Closure-12-884b2ca2,1,1
 Closure-12-6178b6c6,1,1
 Closure-12-6395bccb,0,1
 Closure-76-1f7baaa9,1,1
-Closure-76-7c41a902,0,1
+Closure-76-7c41a902,0,0
 Closure-72-b8ac473f,1,1
 Closure-72-dcbdfdb3,0,1
 Closure-130-4d4cb001,1,1
@@ -428,7 +428,7 @@ Closure-21-e948930f,1,1
 Closure-21-6e43d80c,1,1
 Closure-21-36e1827c,1,1
 Closure-21-55696ec1,1,1
-Closure-21-50f1860f,1,0
+Closure-21-50f1860f,1,1
 Closure-21-5d8a7426,1,1
 Closure-21-edfb338c,1,1
 Closure-21-e1ea6fe3,1,1
@@ -438,10 +438,10 @@ Closure-21-f46c521d,1,1
 Closure-21-0e223a1e,1,1
 Closure-21-477598e9,1,1
 Closure-21-41cf9b35,1,1
-Closure-21-ae3c9fc1,1,1
+Closure-21-ae3c9fc1,1,0
 Closure-21-8f5a43d8,1,1
 Closure-21-45152a01,1,1
-Closure-21-eb218c7d,1,1
+Closure-21-eb218c7d,1,0
 Closure-21-85260e21,1,1
 Closure-21-6957a0e3,1,1
 Closure-21-2d9d196d,1,1
@@ -498,7 +498,7 @@ Closure-92-5a8a581e,1,1
 Closure-92-98215368,1,1
 Closure-92-1094e38b,1,1
 Closure-92-03342263,0,1
-Closure-86-75145e93,1,1
+Closure-86-75145e93,1,0
 Closure-86-847d9e68,1,1
 Closure-86-ec26f875,1,1
 Closure-86-05baaf04,1,1
@@ -557,7 +557,7 @@ Closure-4-e01e4934,1,1
 Closure-4-cce27e69,0,1
 Closure-117-8abf17da,0,1
 Closure-19-a1849ebc,1,1
-Closure-19-1629d763,0,1
+Closure-19-1629d763,0,0
 Closure-19-7e20db65,1,1
 Closure-19-4eef3cc9,0,1
 Closure-19-7e414395,1,1
@@ -571,7 +571,7 @@ Closure-48-7fc10e7c,0,1
 Closure-108-569e88bd,1,1
 Closure-108-82336a9b,1,1
 Closure-108-3313056d,0,1
-Closure-110-6fdd89ef,0,0
+Closure-110-6fdd89ef,0,1
 Closure-91-8a7c5dac,0,1
 Closure-99-0a3353ca,0,1
 Closure-27-21608150,0,1
@@ -606,7 +606,7 @@ Closure-95-b6f97e66,0,1
 Closure-87-47a38e92,0,1
 Closure-42-196a016c,0,1
 Closure-25-85ef3acb,0,1
-Closure-64-a95bb1f7,0,0
+Closure-64-a95bb1f7,0,1
 Closure-54-9abcc82d,0,1
 Closure-53-7699cde8,0,1
 Closure-71-2fcf0f5a,0,1
@@ -667,13 +667,13 @@ Lang-24-4ff52c18,0,1
 Lang-24-9d385c36,1,1
 Lang-24-77c20f84,1,1
 Lang-24-28bcbe5a,1,1
-Lang-24-24523e47,0,1
+Lang-24-24523e47,0,0
 Lang-24-0931d5ae,0,1
 Lang-24-59b8fc02,1,1
 Lang-24-25ae70c7,0,1
 Lang-7-fd14b48b,0,1
 Lang-7-6760406e,1,1
-Lang-7-811374c6,1,0
+Lang-7-811374c6,1,1
 Lang-7-cb66caf5,1,1
 Lang-7-3011bf17,1,1
 Lang-7-10313fa1,1,1
@@ -786,7 +786,7 @@ Lang-59-b3d39393,1,1
 Lang-59-9fce9fe9,1,1
 Lang-59-dbd3c1bc,1,1
 Lang-59-93f44e06,1,1
-Lang-59-56ab113f,1,0
+Lang-59-56ab113f,1,1
 Lang-59-8e5c8505,1,1
 Lang-59-3c90f766,1,1
 Lang-59-8adb49bc,1,1
@@ -898,7 +898,7 @@ Lang-21-5d77d77b,1,1
 Lang-46-266b24a0,1,1
 Lang-46-3489caa6,0,1
 Lang-13-7f4f4445,1,1
-Lang-13-812e13b9,1,0
+Lang-13-812e13b9,1,1
 Lang-13-eb87a358,0,1
 Lang-56-15848132,1,1
 Lang-56-0e8a85ec,0,1
@@ -974,7 +974,7 @@ Math-50-1df3b88f,1,1
 Math-50-71e3ca73,1,1
 Math-50-961abd51,1,1
 Math-5-86350a4e,0,1
-Math-5-b91ae3e4,1,1
+Math-5-b91ae3e4,1,0
 Math-5-3875c637,1,1
 Math-5-7fa73491,1,1
 Math-5-6b3e91e5,1,1
@@ -989,7 +989,7 @@ Math-5-d5e77ca7,0,1
 Math-5-4002b871,1,1
 Math-5-91dfd26c,0,1
 Math-53-9c3b115f,0,1
-Math-53-25e28009,1,0
+Math-53-25e28009,1,1
 Math-53-c37e4e0a,1,1
 Math-53-2ebd7c93,1,1
 Math-53-fc28fe46,1,1
@@ -1047,7 +1047,7 @@ Math-85-699b6657,1,1
 Math-85-2f41ca3f,1,1
 Math-85-183bc7d3,1,1
 Math-85-be84789f,1,1
-Math-85-9ae36c4e,1,1
+Math-85-9ae36c4e,1,0
 Math-85-70a4ae8a,1,1
 Math-85-e1de9595,1,1
 Math-85-49eb96fb,1,1
@@ -1065,7 +1065,7 @@ Math-85-5b65456b,1,1
 Math-85-6ffe9f7c,1,1
 Math-85-72934d0b,1,1
 Math-85-4bef22f7,1,1
-Math-85-062ab6c9,1,1
+Math-85-062ab6c9,1,0
 Math-85-b938cda3,1,1
 Math-85-a8f45b90,1,1
 Math-85-06632610,1,1
@@ -1186,7 +1186,7 @@ Math-32-2717a30e,0,1
 Math-32-f66bb602,0,1
 Math-40-d83a7195,1,1
 Math-40-cbef905f,1,1
-Math-40-b3c35cf9,1,0
+Math-40-b3c35cf9,1,1
 Math-40-b50806d7,1,1
 Math-40-e418642e,1,1
 Math-40-c7f585b3,1,1
@@ -1374,7 +1374,7 @@ Math-2-5798eb65,1,1
 Math-2-dd5040d8,1,1
 Math-2-585ee0ca,1,1
 Math-2-faa0595c,1,1
-Math-2-4b4bb1a9,1,1
+Math-2-4b4bb1a9,1,0
 Math-2-4aeee9cc,1,1
 Math-2-d4062b35,1,1
 Math-2-4ae57f3a,1,1
@@ -1408,7 +1408,7 @@ Math-24-e48f03a9,1,1
 Math-24-ba545220,0,1
 Math-88-bb6569ae,1,1
 Math-88-b4986efe,1,1
-Math-88-7b1cf4ab,1,1
+Math-88-7b1cf4ab,1,0
 Math-88-29e7b6b3,1,1
 Math-88-eea73479,1,1
 Math-88-6e0b9245,1,1
@@ -1588,7 +1588,7 @@ Math-63-2dace43a,1,1
 Math-63-a8a532a8,0,1
 Math-63-6d51041c,1,1
 Math-63-20f918f0,1,1
-Math-63-c7e12b6e,1,0
+Math-63-c7e12b6e,1,1
 Math-63-f86fc549,0,1
 Math-30-d7c3e4f4,1,1
 Math-30-ce839de5,1,1
@@ -1613,7 +1613,7 @@ Math-18-8e6563e1,0,1
 Math-62-23124818,1,1
 Math-62-c457edfe,1,1
 Math-62-2af02b72,1,1
-Math-62-e2ea0230,1,1
+Math-62-e2ea0230,1,0
 Math-62-1044e613,0,1
 Math-46-3bb976ae,1,1
 Math-46-ae56c86e,1,1
@@ -1661,7 +1661,7 @@ Math-47-e516875d,0,1
 Math-45-cef06834,0,1
 Math-14-0a3696d8,0,1
 Math-13-d175b72f,0,1
-Math-37-cc530511,0,1
+Math-37-cc530511,0,0
 Math-76-f493b4ca,0,1
 Math-21-095a633e,0,1
 Math-92-bda51d3e,0,1
@@ -1705,7 +1705,7 @@ Time-4-d94cb86f,1,1
 Time-4-cb75be93,1,1
 Time-4-82a60c98,1,1
 Time-4-528c2391,1,1
-Time-4-c70c6f6e,1,0
+Time-4-c70c6f6e,1,1
 Time-4-394d24a6,1,1
 Time-4-6e0934ca,1,1
 Time-4-fbc41f04,1,1
@@ -1724,7 +1724,7 @@ Time-11-3712ed74,1,1
 Time-11-c027a24f,1,1
 Time-11-77f8d0f9,1,1
 Time-11-4322e5b2,1,1
-Time-11-53c62fc7,1,0
+Time-11-53c62fc7,1,1
 Time-11-de5ba49a,1,1
 Time-11-d8877818,1,1
 Time-11-564c7b9b,1,1
@@ -1755,7 +1755,7 @@ Time-14-28e474df,1,1
 Time-14-1e6afb6f,1,1
 Time-14-e67e7aaa,0,1
 Time-16-485d3beb,1,1
-Time-16-20edb6cc,0,0
+Time-16-20edb6cc,0,1
 Time-7-1a326f23,1,1
 Time-7-b73a2c5a,1,1
 Time-7-76dff970,0,1
