@@ -5,11 +5,19 @@ import subprocess
 
 from collections import defaultdict
 from typing import List, Tuple, Union, Dict
+from multiprocessing import Pool
+from tabulate import tabulate
 
 from config import *
 from utils import *
 from ranking import *
 
+RQ1_RESULT_DIR = Path(f"../rq1_results").resolve()
+classifiers_to_run = ["org", "patchsim", "ods", "shibboleth", "prism"]
+
+###################################
+# sub-modules for data extraction #
+###################################
 def run_apcc(project, bug_id, patch_dir, classifier_type):
   if classifier_type == "patchsim":
     ranker = PatchSimRanker(project, bug_id, patch_dir)
@@ -29,43 +37,42 @@ def run_apcc(project, bug_id, patch_dir, classifier_type):
   ranking_str = str(ranker)
   return ranking_str
 
-def rank_bug_with_apcc(project, bug_id, patch_dir, classifier_choice):
-  baseline_result = run_apcc(project, bug_id, patch_dir, "org")
-  results = defaultdict()
-  if classifier_choice == "all":
-    classifiers_to_run = ["org", "patchsim", "ods", "shibboleth", "prism"]
-  else:
-    classifiers_to_run = [classifier_choice]
+def rank_bug_with_apcc(args):
+  project, bug_id, patch_dir, apr_name = args
   for clf in classifiers_to_run:
+    out_dir = RQ1_RESULT_DIR / apr_name / project / str(bug_id)
+    out_file = out_dir / f"{clf}.txt"
+    if out_file.exists():
+      print(f"{SUCCESS}: Evaluation for {clf} with {apr_name} on {project}-{bug_id} already done")
+      continue
+    out_dir.mkdir(parents=True, exist_ok=True)
     try:
-      if clf == "org":
-        result = baseline_result
-      else:
-        result = run_apcc(project, bug_id, patch_dir, clf)
+      result = run_apcc(project, bug_id, patch_dir, clf)
     except Exception as e:
+      # If failed to run, return the original rank
       print(f"Evaluation failed for {clf} on project {project}, bug {bug_id}: {e}")
-      result = baseline_result
-    results[clf] = result
-    
-  return results
+      result = run_apcc(project, bug_id, patch_dir, "org")
+    with open(out_file, "w") as f:
+      f.write(result)
 
-def rank_apr_with_apcc(apr_dir, classifier_choice):
+def rank_apr_with_apcc(apr_dir):
   patches_dir = Path(apr_dir)
   apr_name = apr_dir.name
+  tasks = []
+
   for project_dir in patches_dir.iterdir():
     if project_dir.is_dir():
       project_name = project_dir.name
       for bug_dir in project_dir.iterdir():
         if bug_dir.is_dir():
           bug_id = int(bug_dir.name)
-          res_dict = rank_bug_with_apcc(project_name, bug_id, bug_dir, classifier_choice)
-          for clf, rank_str in res_dict.items():
-            out_dir = Path(f"./rq1_results") / apr_name / project_name / str(bug_id)
-            out_dir.mkdir(parents=True, exist_ok=True)
-            out_file = out_dir / f"{clf}.txt"
-            with open(out_file, "w") as f:
-              f.write(rank_str)
+          tasks.append((project_name, bug_id, bug_dir, apr_name))
+  with Pool(processes=24) as pool:
+    pool.map(rank_bug_with_apcc, tasks)
 
+######################################
+# sub-modules for data summarization #
+######################################
 def parse_ranking_data(result_file):
   correct_indices = []
   cnt = 0
@@ -81,7 +88,6 @@ def parse_ranking_data(result_file):
         correct_indices.append(cnt)
 
   num_to_first = correct_indices[0] if correct_indices else 0
-  print(result_file, correct_indices, num_to_first)
   num_to_last = correct_indices[-1] if correct_indices else 0
   num_correct = len(correct_indices)
   num_incorrect = cnt-num_correct
@@ -91,24 +97,16 @@ def parse_ranking_data(result_file):
 
   return (top1, top5, top_inf, num_to_first, num_to_last, num_correct, num_incorrect)
 
-def eval_bug_with_apcc(apr, project, bug_id, classifier_choice):
-  base_dir = Path(f"./rq1_results") / apr / project / bug_id
+def eval_bug_with_apcc(apr, project, bug_id):
+  base_dir = RQ1_RESULT_DIR / apr / project / bug_id
   results = {}
-  
-  if classifier_choice == "all":
-    classifiers_to_run = ["org", "patchsim", "ods", "shibboleth", "prism"]
-  elif classifier_choice == "org":
-    classifiers_to_run = ["org"]
-  else:
-    classifiers_to_run = ["org", classifier_choice]
   for clf in classifiers_to_run:
     target_result = base_dir / f"{clf}.txt"
     target_result = parse_ranking_data(target_result)
     results[clf] = target_result
-  print(results)
   return results
 
-def eval_apr_with_apcc(apr_dir, classifier_choice):
+def eval_apr_with_apcc(apr_dir):
   patches_dir = Path(apr_dir)
   apr_name = apr_dir.name    
   results = defaultdict(lambda: defaultdict(int))
@@ -119,9 +117,8 @@ def eval_apr_with_apcc(apr_dir, classifier_choice):
       for bug_dir in project_dir.iterdir():
         if bug_dir.is_dir():
           bug_id = bug_dir.name
-          res_dict = eval_bug_with_apcc(apr_name, project_name, bug_id, classifier_choice)
+          res_dict = eval_bug_with_apcc(apr_name, project_name, bug_id)
           for clf, (top1, top5, top_inf, num_to_first, num_to_last, num_correct, num_incorrect) in res_dict.items():
-            print(clf, project_name, bug_id, top1, top5, top_inf, num_to_first, num_to_last, num_correct, num_incorrect)
             results[clf]["top-1"] += top1
             results[clf]["top-5"] += top5
             results[clf]["top-inf"] += top_inf
@@ -132,62 +129,112 @@ def eval_apr_with_apcc(apr_dir, classifier_choice):
             bug_details[clf].append((project_name, bug_id, top1, top5, top_inf, num_to_first, num_to_last, num_correct, num_incorrect))
   return results, bug_details
 
-def process_benchmark_directory(benchmark_dir, classifier_choice, mode):
-  benchmark_path = Path(benchmark_dir)
-  overall_aggregated = defaultdict(dict)  # {classifier: {apr_name: aggregated_result, ...}, ...}
+if __name__ == '__main__':
+  benchmark_path = BENCHMARKS_DIR / "rq1"
+  # Extract ranking info using APCC
   for apr_dir in benchmark_path.iterdir():
     if apr_dir.is_dir():
       print(f"\nProcessing APR directory: {apr_dir.name}")
-      if mode == "run":
-        rank_apr_with_apcc(apr_dir, classifier_choice)
-      elif mode == "eval":
-        aggregated_results, bug_details = eval_apr_with_apcc(apr_dir, classifier_choice)
-        apr_base_dir = Path(f"./rq1_results") / apr_dir.name
-        apr_base_dir.mkdir(parents=True, exist_ok=True)
-        
-        # 1. APR 단위 집계 CSV 파일 (예: org_apr.csv)
-        for clf, result in aggregated_results.items():
-          out_file = apr_base_dir / f"{clf}.csv"
-          with open(out_file, "w", newline='') as f:
-            writer = csv.writer(f)
-            header = ["top-1", "top-5", "top-inf", "#P-F", "#P-L", "#C", "#I"]
-            writer.writerow(header)
-            writer.writerow([
-                result["top-1"], result["top-5"], result["top-inf"],
-                result["#P-F"], result["#P-L"], result["#C"], result["#I"]
-            ])
-          # 누적 APR별 결과를 benchmark CSV에 쓸 수 있도록 저장
-          overall_aggregated[clf][apr_dir.name] = result
-        
-        # 2. bug id–레벨 CSV 파일 (예: org.csv)
-        for clf, bug_rows in bug_details.items():
-          bug_out_file = apr_base_dir / f"{clf}_bug.csv"
-          with open(bug_out_file, "w", newline='') as f:
-            writer = csv.writer(f)
-            header = ["Project", "Bug ID", "top-1", "top-5", "top-inf", "#P-F", "#P-L", "#C", "#I"]
-            writer.writerow(header)
-            for row in bug_rows:
-                writer.writerow(row)
-    
-    if mode == "eval":
-      benchmark_output_dir = Path("./rq1_results")
-      for clf, apr_results in overall_aggregated.items():
-        out_file = benchmark_output_dir / f"{clf}.csv"
+      rank_apr_with_apcc(apr_dir)
+  
+  # Extract summurized csv for table construction
+  overall_aggregated = defaultdict(dict)  # {classifier: {apr_name: aggregated_result, ...}, ...}
+  for apr_dir in benchmark_path.iterdir():
+    if apr_dir.is_dir():
+      aggregated_results, bug_details = eval_apr_with_apcc(apr_dir)
+      apr_base_dir = RQ1_RESULT_DIR / apr_dir.name
+      apr_base_dir.mkdir(parents=True, exist_ok=True)
+      
+      # summarize ranking per each APR with APCC
+      for clf, result in aggregated_results.items():
+        out_file = apr_base_dir / f"{clf}.csv"
         with open(out_file, "w", newline='') as f:
           writer = csv.writer(f)
-          header = ["APR", "top-1", "top-5", "top-inf", "#P-F", "#P-L", "#C", "#I"]
+          header = ["top-1", "top-5", "top-inf", "#P-F", "#P-L", "#C", "#I"]
           writer.writerow(header)
-          for apr, result in apr_results.items():
-            writer.writerow([
-              apr, result["top-1"], result["top-5"], result["top-inf"],
+          writer.writerow([
+              result["top-1"], result["top-5"], result["top-inf"],
               result["#P-F"], result["#P-L"], result["#C"], result["#I"]
-            ])
+          ])
+        overall_aggregated[clf][apr_dir.name] = result
 
- 
-if __name__ == '__main__':    
-  parser = argparse.ArgumentParser()
-  parser.add_argument("--patches", type=Path, help="apr result direcotry")
-  parser.add_argument("--apcc", type=str, choices=["org", "patchsim", "ods", "shibboleth", "prism", "all"], help="Target instance for ranking", default="all")
-  parser.add_argument("--mode", choices=["run", "eval"])
-  args = parser.parse_args()
-  process_benchmark_directory(args.patches, args.apcc, args.mode)
+  # summarize the total result
+  for clf, apr_results in overall_aggregated.items():
+    out_file = RQ1_RESULT_DIR / f"{clf}.csv"
+    with open(out_file, "w", newline='') as f:
+      writer = csv.writer(f)
+
+      header = ["APR", "top-1(Δ)", "top-5(Δ)", "top-inf(Δ)", "#C(Δ)", "#I(Δ)", "#P-F(Δ)", "#P-L(Δ)"]
+      writer.writerow(header)
+
+      for apr, result in apr_results.items():
+        org_result = overall_aggregated["org"][apr]  # 기준 값
+        def delta(val):
+          d = result[val] - org_result[val]
+          return f"{'+' if d > 0 else ''}{d}"
+
+        row = [
+          apr,
+          f'{result["top-1"]} ({delta("top-1")})',
+          f'{result["top-5"]} ({delta("top-5")})',
+          f'{result["top-inf"]} ({delta("top-inf")})',
+          f'{result["#C"]} ({delta("#C")})',
+          f'{result["#I"]} ({delta("#I")})',
+          f'{result["#P-F"]} ({delta("#P-F")})',
+          f'{result["#P-L"]} ({delta("#P-L")})',
+        ]
+        writer.writerow(row)
+  
+  # Print total table
+  classifiers = ["patchsim", "ods", "shibboleth", "prism"]
+  org_data = overall_aggregated["org"]
+
+  all_metrics = ["top-1", "top-5", "top-inf", "#C", "#I", "#P-F", "#P-L"]
+  table_rows = []
+
+  for apr in sorted(org_data.keys()):
+      first_row = True
+      for clf in classifiers:
+          if apr not in overall_aggregated[clf]:
+              continue
+          result = overall_aggregated[clf][apr]
+          org = org_data[apr]
+
+          def fmt(val):
+              diff = result[val] - org[val]
+              delta = f" ({'+' if diff > 0 else ''}{diff})" if diff != 0 else ""
+              return f"{result[val]}{delta}"
+
+          row = [
+              apr if first_row else "",
+              clf,
+          ] + [fmt(m) for m in all_metrics]
+          table_rows.append(row)
+          first_row = False
+      table_rows.append(["-----"] * (2 + len(all_metrics)))
+
+  total_rows = []
+  for idx, clf in enumerate(classifiers):
+      result_sum = {m: 0 for m in all_metrics}
+      org_sum = {m: 0 for m in all_metrics}
+
+      for apr in org_data:
+          if apr in overall_aggregated[clf]:
+              for m in all_metrics:
+                  result_sum[m] += overall_aggregated[clf][apr][m]
+                  org_sum[m] += org_data[apr][m]
+
+      def fmt_total(val):
+          d = result_sum[val] - org_sum[val]
+          delta = f" ({'+' if d > 0 else ''}{d})" if d != 0 else ""
+          return f"{result_sum[val]}{delta}"
+
+      total_rows.append([
+          "TOTAL" if idx == 0 else "",
+          clf,
+      ] + [fmt_total(m) for m in all_metrics])
+
+  table_rows.extend(total_rows)
+
+  headers = ["APR", "APCC"] + [f"{m} (Δ)" for m in all_metrics]
+  print(tabulate(table_rows, headers=headers, tablefmt="github"))

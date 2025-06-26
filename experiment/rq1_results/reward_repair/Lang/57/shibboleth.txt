@@ -1,0 +1,7 @@
+(-0.0, -0.0, -1.0): Lang-57-4d21b2d8 (incorrect)
+(-0.0, -0.0, -1.0): Lang-57-7ece69d9 (incorrect)
+(-0.0, -0.0, -1.0): Lang-57-1b975dde (incorrect)
+(-0.0, -0.0, -1.0): Lang-57-503832aa (incorrect)
+(-0.0, -0.0, -1.0): Lang-57-d574af1f (incorrect)
+(-0.0, -0.0, -1.0): Lang-57-1b975dde (incorrect)
+(-0.0, -0.0, -1.0): Lang-57-9e9828cc (incorrect)

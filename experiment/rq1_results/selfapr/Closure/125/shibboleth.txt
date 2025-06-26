@@ -1,0 +1,6 @@
+(-0.0, -0.0, -1.0): Closure-125-25603db7 (incorrect)
+(-0.0, -0.0, -1.0): Closure-125-ee8b3fa6 (incorrect)
+(-0.0, -0.0, -1.0): Closure-125-ee8b3fa6 (incorrect)
+(-0.0, -0.0, -1.0): Closure-125-c1755b82 (correct)
+(-0.0, -0.0, -1.0): Closure-125-ee8b3fa6 (incorrect)
+(-0.0, -0.0, -1.0): Closure-125-25603db7 (incorrect)

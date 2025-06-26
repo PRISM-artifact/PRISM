@@ -1,0 +1,4 @@
+(-0.0, -0.0, -1.0): Chart-4-cdeeb7b5 (correct)
+(-0.0, -0.0, -1.0): Chart-4-229ffd0a (incorrect)
+(-0.0, -0.0, -1.0): Chart-4-40933d66 (incorrect)
+(-0.0, -0.0, -1.0): Chart-4-c56c0e92 (correct)

@@ -1,0 +1,8 @@
+2: Chart-13-b64003aa (incorrect)
+18: Chart-13-c321a951 (incorrect)
+20: Chart-13-1e0b8cf2 (incorrect)
+24: Chart-13-e7572f33 (incorrect)
+58: Chart-13-d2f47c47 (incorrect)
+60: Chart-13-9b835e47 (incorrect)
+82: Chart-13-439fa6db (incorrect)
+108: Chart-13-399de405 (incorrect)

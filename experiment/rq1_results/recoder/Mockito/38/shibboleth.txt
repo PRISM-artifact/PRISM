@@ -1,0 +1,6 @@
+(-0.0, -0.0, -1.0): Mockito-38-2ab90743 (incorrect)
+(-0.0, -0.0, -1.0): Mockito-38-87164a29 (correct)
+(-0.0, -0.0, -1.0): Mockito-38-72d876d6 (incorrect)
+(-0.0, -0.0, -1.0): Mockito-38-d6e0f986 (incorrect)
+(-0.0, -0.0, -1.0): Mockito-38-76ff0289 (incorrect)
+(-0.0, -0.0, -1.0): Mockito-38-4aa66250 (incorrect)
