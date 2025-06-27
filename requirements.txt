@@ -1,0 +1,9 @@
+tabulate
+pandas
+matplotlib
+scikit-learn
+colorama
+psutil
+xgboost
+imblearn
+statsmodels
