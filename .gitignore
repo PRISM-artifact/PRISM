@@ -194,5 +194,6 @@ autom4te.cache/
 **/targe
 
 # raw data for evaluation
-**/data
-
+experiment/outputs
+experiment/d4j_projects
+experiment/scripts/learned_formula

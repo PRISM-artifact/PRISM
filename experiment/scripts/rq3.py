@@ -2,33 +2,34 @@ import argparse
 import numpy as np
 import joblib
 
-from sklearn.utils import shuffle
-from sklearn.ensemble import RandomForestClassifier
-
-from multiprocessing import Pool
+from tabulate import tabulate
 
 from config import *
 from utils import *
 from learn import *
 
-OUT_DIR = Path("../rq3_results")
-
-def learn_rf(project, feature_type):
-	model_path = RESOURECES_DIR / "rf" / f"rf_{feature_type}_{project}.pkl"
-	if model_path.is_file():
-		model = joblib.load(model_path)
-		return model
-	df = pd.read_csv(OUT_DIR / f"{feature_type}.csv", encoding='latin1',index_col=False)
-	training_df = df[~df["id"].astype(str).str.contains(project)].copy()
-	X_train = training_df.iloc[:,2:]
-	Y_train = training_df.iloc[:,1]
-	X_train, Y_train = shuffle(X_train, Y_train, random_state=0)
-	model = RandomForestClassifier(random_state=42)
-	model.fit(X_train, Y_train)
-	joblib.dump(model, model_path)
-	return model
-
-def eval_rf(model, testing_set, threshold=0.5):
+def eval_rf(model, testing_set, feature_type, threshold):
+	if feature_type == "syn":
+		if threshold == 70:
+			threshold = 0.715
+		elif threshold == 80:	
+			threshold = 0.78
+		elif threshold == 90:
+			threshold = 0.84
+	elif feature_type == "sem":
+		if threshold == 70:
+			threshold = 0.65
+		elif threshold == 80:	
+			threshold = 0.735
+		elif threshold == 90:
+			threshold = 0.815
+	elif feature_type == "synsem":
+		if threshold == 70:
+			threshold = 0.685
+		elif threshold == 80:	
+			threshold = 0.765
+		elif threshold == 90:
+			threshold = 0.85
 	prob = model.predict_proba(testing_set.iloc[:, 2:])[:, 1]
 	pred = (prob >= threshold).astype(int)
 	result_df = testing_set[["id", "label"]].copy()
@@ -54,50 +55,53 @@ def eval_prism(model, testing_set):
 	result_df = evaluate_formula_on_dataset(model, testing_set)
 	return result_df
 	
-if __name__ == '__main__':    
-	parser = argparse.ArgumentParser()
-	parser.add_argument("--feature", type=str, choices=["syn", "sem", "synsem"], required=True, help="training csv file")
-	parser.add_argument("--mode", type=str, choices=["rf", "prism"], default="run")
-	args = parser.parse_args()
-	
-	#pipeline for one benchmark
-	projects = ["Chart", "Closure", "Lang", "Math", "Time", "Mockito"]
-	outfile = OUT_DIR / f"total_{args.feature}_{args.mode}.csv"
-	feature_type = args.feature
-	all_results = []
-	for threshold in np.arange(0.70, 1.00, 0.01):
-		total_df = pd.DataFrame()
-		is_checked = False
-		for project in projects:
-			df = pd.read_csv(CSV_DIR / f"training_{feature_type}.csv", encoding='latin1',index_col=False)
-			testing_df = df[df["id"].astype(str).str.contains(project)].copy()
-			if args.mode == "rf":
-				model = learn_rf(project, feature_type)
-				result_df = eval_rf(model, testing_df, threshold)
-			elif args.mode == "prism":
-				model_path = PRISM_MODEL_DIR / f"formula/{threshold:.2f}" / f"formula_{feature_type}_{project}.pkl"
-				if not model_path.is_file():
-					print(f"{WARNING} not found {model_path}")
-					break
-				model = joblib.load(model_path)
-				is_checked = True
-				result_df = eval_prism(model, testing_df)
+if __name__ == '__main__':
+	thresholds = [70, 80, 90]
+	feature_types = ["syn", "sem", "synsem"]
 
-			total_df = pd.concat([total_df, result_df], ignore_index=True)
+	result_table = {}
+	for threshold in thresholds:
+		for feature_type in feature_types:
+			total_rf_TP = total_rf_TN = total_rf_FP = total_rf_FN = 0
+			total_prism_TP = total_prism_TN = total_prism_FP = total_prism_FN = 0
+			for project in ["Chart", "Closure", "Lang", "Math", "Time", "Mockito"]:
+				df = pd.read_csv(CSV_DIR / f"training_{feature_type}.csv", encoding='latin1', index_col=False)
+				testing_df = df[df["id"].astype(str).str.contains(project)].copy()
 
-		if not is_checked:
-			continue
-		TP = ((total_df["label"] == 1) & (total_df["pred"] == 1)).sum()
-		FN = ((total_df["label"] == 1) & (total_df["pred"] == 0)).sum()
-		TN = ((total_df["label"] == 0) & (total_df["pred"] == 0)).sum()
-		FP = ((total_df["label"] == 0) & (total_df["pred"] == 1)).sum()
+				# RF
+				rf_model = joblib.load(RESOURECES_DIR / f"rq3/rf/rf_{feature_type}_{project}.pkl")
+				result_rf = eval_rf(rf_model, testing_df, feature_type, threshold)
+				total_rf_TP += ((result_rf["label"] == 1) & (result_rf["pred"] == 1)).sum()
+				total_rf_FN += ((result_rf["label"] == 1) & (result_rf["pred"] == 0)).sum()
 
-		cpr = TN / (TN + FP) if (TN + FP) > 0 else 0
-		idr = TP / (TP + FN) if (TP + FN) > 0 else 0
+				# PRISM
+				prism_model = joblib.load(RESOURECES_DIR / f"rq3/formula/{threshold}/formula_{feature_type}_{project}.pkl")
+				result_prism = eval_prism(prism_model, testing_df)
+				total_prism_TP += ((result_prism["label"] == 1) & (result_prism["pred"] == 1)).sum()
+				total_prism_FN += ((result_prism["label"] == 1) & (result_prism["pred"] == 0)).sum()
 
-		print(f"{threshold},{TN}({cpr}),{TP}({idr})")
-		all_results.append(f"{threshold},{TN}({cpr}),{TP}({idr})")
+			# Compute IDR
+			rf_idr_ratio = total_rf_TP / (total_rf_TP + total_rf_FN) if (total_rf_TP + total_rf_FN) > 0 else 0
+			prism_idr_ratio = total_prism_TP / (total_prism_TP + total_prism_FN) if (total_prism_TP + total_prism_FN) > 0 else 0
 
-	with open(outfile, "w") as f:
-		f.write("\n".join(all_results))
-	
+			result_table[(feature_type, threshold)] = (
+					total_rf_TP, rf_idr_ratio, total_prism_TP, prism_idr_ratio
+			)
+
+	# Table Construction
+	headers = ["Feature Type"]
+	for t in thresholds:
+			headers += [f"RF@{t}%", f"PRISM@{t}%"]
+
+	# Body rows
+	rows = []
+	for feature_type in feature_types:
+			row = [feature_type.capitalize() if feature_type != "synsem" else "Syn+Sem"]
+			for t in thresholds:
+					rf_tp, rf_idr, prism_tp, prism_idr = result_table[(feature_type, t)]
+					row.append(f"{rf_tp} ({int(rf_idr * 100)}%)")
+					row.append(f"{prism_tp} ({int(prism_idr * 100)}%)")
+			rows.append(row)
+
+
+	print(tabulate(rows, headers=headers, tablefmt="github"))
