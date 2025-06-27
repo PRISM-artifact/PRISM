@@ -41,8 +41,8 @@ class Bug:
     # set proper ant version
     if set_ant:
       d4j_ant_path = D4J_HOME / "major/bin/ant"
-      expected_ant_path = RESOURECES_DIR / f"major/bin/ant.{self.ant_version}"
-      
+      expected_ant_path = RESOURECES_DIR / f"ant.{self.ant_version}"
+
       ret = subprocess.run(f"{d4j_ant_path} -version", shell=True, stdout=subprocess.PIPE, text=True, check=True)
       if self.ant_version not in ret.stdout:
         print(f"[INFO] Switching Ant version to {self.ant_version} for project {self.project}")
