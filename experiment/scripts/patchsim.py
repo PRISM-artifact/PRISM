@@ -231,7 +231,6 @@ class PatchSim:
     subprocess.run(f"java classifier {self.parse_out_dir} {threshold} > {self.classify_dir / f"result_{threshold}.txt"}", shell=True, cwd=PATCHSIM_HOME)
 
   def run(self, rerun=False):
-    set_java_version("1.8.0.432") # java 1.7 is not works well with btrace
     print(f"{PROGRESS} running PatchSim: {self.patch.patch_path.name}({self.patch.hash_dir.name})....")
     start_time = time.time()
 
