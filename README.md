@@ -129,11 +129,11 @@ For running PRISM, build INFER and our dynamic tracer:
 ```
 # 1. Build PRISM analyzer
 cd /app/analyzer
-./build_infer.sh java
+./build-infer.sh java
 sudo make install
 
 # 2. Build tracer
-cd /app/compoments
+cd /app/components
 mvn package
 ```
 
@@ -173,7 +173,7 @@ The result will be stored in `experiment/outputs/[bugid]/[patchid]/patchsim/resu
 To extract the syntactic featrues used in ODS, compile [coming](./experiment/tools/coming).
 ```
 cd /app/experiment/tools/coming
-coming mvn package
+mvn package
 ```
 
 Extracting ODS's syntactic feature is conducted as following:
